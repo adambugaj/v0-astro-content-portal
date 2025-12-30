@@ -1,0 +1,279 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const categories = [
+  {
+    title: 'Budowa',
+    description: 'Porady budowlane, materiały i technologie',
+    icon: '🏗️',
+    slug: 'budowa'
+  },
+  {
+    title: 'Dom',
+    description: 'Wszystko o utrzymaniu i remontach domów',
+    icon: '🏠',
+    slug: 'dom'
+  },
+  {
+    title: 'Wnętrza',
+    description: 'Aranżacje i projektowanie wnętrz',
+    icon: '🛋️',
+    slug: 'wnetrza'
+  },
+  {
+    title: 'Ogród',
+    description: 'Ogrody, rośliny i architektura krajobrazu',
+    icon: '🌳',
+    slug: 'ogrod'
+  }
+];
+
+const latestArticles = [
+  {
+    title: 'Jak wybrać fundamenty pod dom jednorodzinny',
+    excerpt: 'Kompleksowy przewodnik po typach fundamentów, ich zaletach i wadach oraz kosztach wykonania.',
+    category: 'Budowa',
+    slug: 'fundamenty-dom-jednorodzinny',
+    date: '2024-03-15'
+  },
+  {
+    title: 'Izolacja termiczna ścian zewnętrznych',
+    excerpt: 'Porównanie metod docieplenia budynków, materiałów izolacyjnych i wskazówki praktyczne.',
+    category: 'Dom',
+    slug: 'izolacja-termiczna-scian',
+    date: '2024-03-14'
+  },
+  {
+    title: 'Projektowanie małej łazienki - 10 zasad',
+    excerpt: 'Praktyczne porady jak maksymalnie wykorzystać przestrzeń w małym pomieszczeniu.',
+    category: 'Wnętrza',
+    slug: 'projektowanie-malej-lazienki',
+    date: '2024-03-13'
+  }
+];
+
+const calculators = [
+  {
+    title: 'Kalkulator materiałów budowlanych',
+    description: 'Oblicz ilość cegieł, betonu i innych materiałów',
+    slug: 'materialy-budowlane'
+  },
+  {
+    title: 'Kalkulator kosztów budowy',
+    description: 'Szacunkowe koszty budowy domu',
+    slug: 'koszty-budowy'
+  },
+  {
+    title: 'Kalkulator zaprawy',
+    description: 'Ile zaprawy potrzebujesz do murowania',
+    slug: 'zaprawy'
+  }
+];
+---
+
+<BaseLayout 
+  title="Portal Eksperta - Budowa, Dom, Wnętrza, Ogród | Porady Budowlane" 
+  description="Profesjonalne porady budowlane, projektowe i ogrodnicze. Kalkulatory, artykuły eksperckie i praktyczne wskazówki dla Twojego domu."
+>
+  <header class="border-b border-border bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex items-center justify-between">
+        <div class="text-xl font-bold text-foreground">Portal Eksperta</div>
+        <nav class="hidden md:flex gap-6">
+          <a href="/budowa" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Budowa</a>
+          <a href="/dom" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Dom</a>
+          <a href="/wnetrza" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Wnętrza</a>
+          <a href="/ogrod" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Ogród</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="bg-gradient-to-b from-muted/50 to-background py-20 sm:py-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+            Twój przewodnik po budownictwie i aranżacji wnętrz
+          </h1>
+          <p class="text-xl text-muted-foreground mb-8 text-pretty">
+            Eksperckie porady, kalkulatory budowlane i sprawdzone rozwiązania dla Twojego domu. Wszystko czego potrzebujesz w jednym miejscu.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a 
+              href="#artykuly" 
+              class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-primary-foreground bg-primary hover:bg-primary/90 transition-colors rounded-lg"
+            >
+              Przeglądaj artykuły
+            </a>
+            <a 
+              href="#kalkulatory" 
+              class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-foreground bg-secondary hover:bg-secondary/80 transition-colors rounded-lg"
+            >
+              Użyj kalkulatora
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-foreground mb-12 text-center">Kategorie tematyczne</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {categories.map((category) => (
+            <a 
+              href={`/${category.slug}`}
+              class="group block p-6 bg-card border border-border rounded-lg hover:shadow-lg hover:border-primary/50 transition-all"
+            >
+              <div class="text-4xl mb-4">{category.icon}</div>
+              <h3 class="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                {category.title}
+              </h3>
+              <p class="text-sm text-muted-foreground">
+                {category.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="artykuly" class="py-16 sm:py-20 bg-muted/30">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between mb-12">
+          <div>
+            <h2 class="text-3xl font-bold text-foreground mb-2">Najnowsze artykuły</h2>
+            <p class="text-muted-foreground">Sprawdzone porady od ekspertów</p>
+          </div>
+          <a href="/artykuly" class="text-sm font-medium text-primary hover:underline hidden sm:block">
+            Zobacz wszystkie →
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {latestArticles.map((article) => (
+            <article class="bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+              <div class="p-6">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
+                    {article.category}
+                  </span>
+                  <span class="text-xs text-muted-foreground">
+                    {article.date}
+                  </span>
+                </div>
+                <h3 class="text-xl font-semibold text-foreground mb-3 hover:text-primary transition-colors">
+                  <a href={`/artykuly/${article.slug}`}>
+                    {article.title}
+                  </a>
+                </h3>
+                <p class="text-sm text-muted-foreground mb-4">
+                  {article.excerpt}
+                </p>
+                <a 
+                  href={`/artykuly/${article.slug}`}
+                  class="text-sm font-medium text-primary hover:underline"
+                >
+                  Czytaj więcej →
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="text-center mt-8 sm:hidden">
+          <a href="/artykuly" class="text-sm font-medium text-primary hover:underline">
+            Zobacz wszystkie artykuły →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="kalkulatory" class="py-16 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-foreground mb-2">Kalkulatory budowlane</h2>
+          <p class="text-muted-foreground">Oblicz dokładne ilości materiałów i kosztów</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {calculators.map((calculator) => (
+            <a 
+              href={`/kalkulatory/${calculator.slug}`}
+              class="block p-6 bg-card border border-border rounded-lg hover:shadow-lg hover:border-primary/50 transition-all"
+            >
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-foreground mb-2">
+                    {calculator.title}
+                  </h3>
+                  <p class="text-sm text-muted-foreground">
+                    {calculator.description}
+                  </p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 sm:py-20 bg-primary text-primary-foreground">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold mb-4">Gotowy na rozpoczęcie projektu?</h2>
+        <p class="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
+          Skorzystaj z naszych kalkulatorów i poradników, aby zaplanować swój budowlany projekt od A do Z.
+        </p>
+        <a 
+          href="/kalkulatory" 
+          class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-primary bg-primary-foreground hover:bg-primary-foreground/90 transition-colors rounded-lg"
+        >
+          Rozpocznij planowanie
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-border bg-card py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="font-bold text-foreground mb-4">Portal Eksperta</div>
+          <p class="text-sm text-muted-foreground">
+            Twoje źródło wiedzy o budownictwie i aranżacji wnętrz.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-foreground mb-4">Kategorie</h3>
+          <ul class="space-y-2">
+            <li><a href="/budowa" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Budowa</a></li>
+            <li><a href="/dom" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Dom</a></li>
+            <li><a href="/wnetrza" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Wnętrza</a></li>
+            <li><a href="/ogrod" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Ogród</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-foreground mb-4">Narzędzia</h3>
+          <ul class="space-y-2">
+            <li><a href="/kalkulatory" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Kalkulatory</a></li>
+            <li><a href="/artykuly" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Artykuły</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-foreground mb-4">Informacje</h3>
+          <ul class="space-y-2">
+            <li><a href="/o-nas" class="text-sm text-muted-foreground hover:text-foreground transition-colors">O nas</a></li>
+            <li><a href="/kontakt" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Kontakt</a></li>
+            <li><a href="/polityka-prywatnosci" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Polityka prywatności</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground">
+        © 2025 Portal Eksperta. Wszelkie prawa zastrzeżone.
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
