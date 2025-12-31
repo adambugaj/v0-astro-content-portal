@@ -1,0 +1,88 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+const breadcrumbs = [
+  { label: 'Strona główna', href: '/' },
+  { label: 'Budowa' }
+];
+
+const articles = [
+  {
+    title: 'Koszt Budowy Domu 2026 - Kompletny Przewodnik',
+    excerpt: 'Sprawdź aktualny koszt budowy domu w 2026 roku. Skorzystaj z kalkulatora budowlanego, checklisty i dowiedz się, jak zaplanować budżet.',
+    href: '/budowa/koszt-budowy-domu-2026',
+    category: 'Budowa',
+    date: '2026-01-15'
+  },
+  {
+    title: 'Jak wybrać najlepsze materiały do budowy domu',
+    excerpt: 'Poznaj kluczowe aspekty wyboru materiałów budowlanych. Dowiedz się, na co zwrócić uwagę przy zakupie cegły, betonu i innych elementów konstrukcyjnych.',
+    href: '/budowa/materialy-budowlane',
+    category: 'Budowa',
+    date: '2024-01-15'
+  },
+  {
+    title: 'Instalacja fotowoltaiczna - czy się opłaca?',
+    excerpt: 'Analiza kosztów i korzyści instalacji paneli słonecznych. Zwrot inwestycji, dotacje i najlepsze systemy fotowoltaiczne na rynku.',
+    href: '/budowa/fotowoltaika',
+    category: 'Budowa',
+    date: '2024-01-12'
+  }
+];
+---
+
+<MainLayout 
+  title="Budowa - Kompletny przewodnik budowlany | Portal Budowlany"
+  description="Wszystko o budowie domu - projekty, materiały, technologie, kalkulatory kosztów i praktyczne porady dla inwestorów."
+>
+  <Header />
+  
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+    
+    <header class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-zinc-700 mb-6">
+        Budowa
+      </h1>
+      <p class="text-xl text-zinc-600 max-w-3xl">
+        Profesjonalne porady dotyczące budowy domu od podstaw. Projekty architektoniczne, materiały budowlane, 
+        technologie konstrukcyjne i kalkulatory kosztów.
+      </p>
+    </header>
+
+    <section class="bg-stone-200 rounded-2xl p-8 md:p-12 mb-12">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl font-bold text-zinc-700 mb-4">
+          Rozpocznij planowanie budowy
+        </h2>
+        <p class="text-zinc-600 mb-6">
+          Skorzystaj z naszych kalkulatorów i narzędzi, aby precyzyjnie oszacować koszty budowy 
+          i przygotować się do procesu inwestycyjnego.
+        </p>
+        <a 
+          href="/budowa/koszt-budowy-domu-2026" 
+          class="inline-block bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
+        >
+          Kalkulator Kosztów Budowy 2026
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-zinc-700 mb-8">
+        Najnowsze artykuły
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {articles.map((article) => (
+          <ArticleCard {...article} />
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</MainLayout>

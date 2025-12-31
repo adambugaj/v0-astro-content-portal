@@ -1,0 +1,491 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+  { label: 'Strona główna', href: '/' },
+  { label: 'Budowa', href: '/budowa' },
+  { label: 'Koszt Budowy Domu 2026' }
+];
+---
+
+<MainLayout 
+  title="Koszt Budowy Domu 2026 - Kompletny Przewodnik | Portal Budowlany"
+  description="Sprawdź aktualny koszt budowy domu w 2026 roku. Skorzystaj z kalkulatora budowlanego, checklisty i dowiedz się, jak zaplanować budżet."
+>
+  <Header />
+  
+  <article class="max-w-5xl mx-auto px-4 py-8">
+    <Breadcrumbs items={breadcrumbs} />
+    
+    <header class="mb-12">
+      <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-sm font-semibold mb-4">
+        Aktualizacja: Styczeń 2026
+      </span>
+      <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-700 mb-6">
+        Koszt Budowy Domu 2026: Kompletny Przewodnik Inwestora
+      </h1>
+      <p class="text-xl text-zinc-600 leading-relaxed">
+        Planujesz budowę domu w 2026 roku? Ceny materiałów i robocizny dynamicznie się zmieniają. 
+        Nasz przewodnik pomoże Ci precyzyjnie oszacować budżet, uniknąć ukrytych kosztów i przygotować się 
+        do procesu inwestycyjnego krok po kroku.
+      </p>
+    </header>
+
+    {/* Calculator Section */}
+    <section class="py-12 bg-stone-200 rounded-2xl border border-stone-300 mb-12" id="kalkulator">
+      <div class="px-6 md:px-12">
+        <h2 class="text-3xl font-bold text-zinc-700 mb-8 text-center">
+          Szacunkowy Kalkulator Budowy 2026
+        </h2>
+        <div class="bg-white rounded-2xl shadow-xl border border-stone-300 p-6 md:p-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            {/* Input Column */}
+            <div class="space-y-6">
+              <div>
+                <label for="calc-area" class="block text-sm font-medium text-zinc-700 mb-2">
+                  Powierzchnia użytkowa domu (m²)
+                </label>
+                <input 
+                  id="calc-area" 
+                  type="number" 
+                  min="35" 
+                  max="500" 
+                  value="120"
+                  class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all text-lg font-semibold text-zinc-700"
+                />
+                <input 
+                  id="calc-area-range" 
+                  type="range" 
+                  min="35" 
+                  max="300" 
+                  value="120"
+                  class="w-full mt-3 h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-orange-500"
+                />
+              </div>
+
+              <div>
+                <span class="block text-sm font-medium text-zinc-700 mb-2">
+                  Standard wykończenia
+                </span>
+                <div class="grid grid-cols-3 gap-2">
+                  <button 
+                    type="button" 
+                    data-standard="economic"
+                    class="calc-std-btn py-2 px-3 rounded-lg text-sm font-medium transition-all border bg-white text-zinc-600 border-stone-300 hover:bg-stone-100"
+                  >
+                    Ekonomiczny
+                  </button>
+                  <button 
+                    type="button" 
+                    data-standard="standard"
+                    class="calc-std-btn py-2 px-3 rounded-lg text-sm font-medium transition-all border bg-orange-500 text-white border-orange-500 shadow-md"
+                  >
+                    Standardowy
+                  </button>
+                  <button 
+                    type="button" 
+                    data-standard="premium"
+                    class="calc-std-btn py-2 px-3 rounded-lg text-sm font-medium transition-all border bg-white text-zinc-600 border-stone-300 hover:bg-stone-100"
+                  >
+                    Premium
+                  </button>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <input 
+                  id="calc-garage" 
+                  type="checkbox" 
+                  checked
+                  class="w-5 h-5 rounded border-stone-300 text-orange-500 focus:ring-orange-500"
+                />
+                <label for="calc-garage" class="text-sm font-medium text-zinc-700">
+                  Dodaj garaż (+45 000 zł)
+                </label>
+              </div>
+            </div>
+
+            {/* Results Column */}
+            <div class="bg-stone-100 rounded-xl p-6 space-y-4">
+              <div>
+                <p class="text-sm text-zinc-600 mb-1">Szacunkowy koszt całkowity</p>
+                <p id="calc-result-total" class="text-4xl font-bold text-zinc-700">
+                  741 000 zł
+                </p>
+              </div>
+              
+              <div class="border-t border-stone-300 pt-4">
+                <p class="text-sm text-zinc-600 mb-1">Koszt za m²</p>
+                <p id="calc-result-m2" class="text-2xl font-bold text-zinc-700">
+                  6 175 zł/m²
+                </p>
+              </div>
+
+              <div class="border-t border-stone-300 pt-4 space-y-2">
+                <div class="flex justify-between text-sm">
+                  <span class="text-zinc-600">Stan surowy zamknięty (35%):</span>
+                  <span id="calc-result-raw" class="font-semibold text-zinc-700">259 350 zł</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                  <span class="text-zinc-600">Stan deweloperski (45%):</span>
+                  <span id="calc-result-dev" class="font-semibold text-zinc-700">333 450 zł</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                  <span class="text-zinc-600">Stan pod klucz (20%):</span>
+                  <span id="calc-result-key" class="font-semibold text-zinc-700">148 200 zł</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Article Content */}
+    <section class="prose prose-lg max-w-none mb-12">
+      <h2 class="text-3xl font-bold text-zinc-700 mt-12 mb-6">
+        Aktualne Ceny Budowy w 2026 Roku
+      </h2>
+      <p class="text-zinc-600 leading-relaxed mb-6">
+        W 2026 roku rynek budowlany w Polsce stabilizuje się po kilku latach dynamicznych zmian. 
+        Średni koszt budowy domu jednorodzinnego wynosi obecnie <strong>5 800 zł/m²</strong> w standardzie średnim, 
+        choć ceny mogą się znacznie różnić w zależności od lokalizacji, standardu wykończenia i wybranych materiałów.
+      </p>
+
+      <h3 class="text-2xl font-bold text-zinc-700 mt-8 mb-4">
+        Podział Kosztów Według Etapów Budowy
+      </h3>
+      <div class="bg-stone-100 rounded-lg p-6 mb-6">
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="inline-block w-2 h-2 bg-orange-500 rounded-full mt-2"></span>
+            <div>
+              <strong class="text-zinc-700">Stan surowy zamknięty (35%):</strong>
+              <span class="text-zinc-600"> fundamenty, ściany, dach, okna i drzwi zewnętrzne</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="inline-block w-2 h-2 bg-orange-500 rounded-full mt-2"></span>
+            <div>
+              <strong class="text-zinc-700">Stan deweloperski (45%):</strong>
+              <span class="text-zinc-600"> instalacje elektryczne, hydrauliczne, tynki, wylewki</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="inline-block w-2 h-2 bg-orange-500 rounded-full mt-2"></span>
+            <div>
+              <strong class="text-zinc-700">Stan pod klucz (20%):</strong>
+              <span class="text-zinc-600"> wykończenie wnętrz, podłogi, łazienki, kuchnia</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="text-2xl font-bold text-zinc-700 mt-8 mb-4">
+        Czynniki Wpływające na Koszty
+      </h3>
+      <p class="text-zinc-600 leading-relaxed mb-4">
+        Ostateczny koszt budowy zależy od wielu czynników. Najważniejsze z nich to:
+      </p>
+      <ul class="list-disc pl-6 space-y-2 text-zinc-600 mb-6">
+        <li>Lokalizacja działki (województwo, dostęp do mediów)</li>
+        <li>Projekt architektoniczny (prostota bryły vs. zaawansowany design)</li>
+        <li>Materiały budowlane (tradycyjne vs. nowoczesne/ekologiczne)</li>
+        <li>Standard wykończenia (ekonomiczny, średni, premium)</li>
+        <li>Technologia budowy (tradycyjna, modułowa, pasywna)</li>
+        <li>Koszt robocizny (znacznie różni się między regionami)</li>
+      </ul>
+
+      <h3 class="text-2xl font-bold text-zinc-700 mt-8 mb-4">
+        Ukryte Koszty Budowy
+      </h3>
+      <p class="text-zinc-600 leading-relaxed mb-4">
+        Wielu inwestorów zapomina o dodatkowych wydatkach, które mogą stanowić 15-25% całkowitego budżetu:
+      </p>
+      <ul class="list-disc pl-6 space-y-2 text-zinc-600 mb-6">
+        <li><strong>Przygotowanie działki:</strong> niwelacja, dojazd, ogrodzenie (20 000 - 80 000 zł)</li>
+        <li><strong>Przyłącza mediów:</strong> prąd, woda, kanalizacja, gaz (30 000 - 100 000 zł)</li>
+        <li><strong>Pozwolenia i opłaty:</strong> projekt, nadzór, zgłoszenia (15 000 - 40 000 zł)</li>
+        <li><strong>Zagospodarowanie terenu:</strong> chodniki, podjazd, ogród (40 000 - 150 000 zł)</li>
+      </ul>
+    </section>
+
+    {/* Checklist Section */}
+    <section class="bg-white border border-stone-300 rounded-2xl p-6 md:p-8 mb-12">
+      <h2 class="text-3xl font-bold text-zinc-700 mb-6">
+        Checklista Przed Rozpoczęciem Budowy
+      </h2>
+      
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm font-medium text-zinc-600">Twój postęp:</span>
+          <span id="checklist-progress-text" class="text-sm font-bold text-orange-500">0%</span>
+        </div>
+        <div class="w-full bg-stone-200 rounded-full h-3 overflow-hidden">
+          <div id="checklist-progress-bar" class="bg-orange-500 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div id="checklist-instruction-msg" class="mb-4 p-3 bg-stone-100 rounded-lg text-sm text-zinc-600">
+        Zaznacz kolejne kroki, aby śledzić postępy w przygotowaniach do budowy
+      </div>
+
+      <div id="checklist-success-msg" class="hidden mb-4 p-3 bg-orange-100 rounded-lg text-sm text-orange-700 font-semibold">
+        Gratulacje! Ukończyłeś wszystkie kroki przygotowawcze.
+      </div>
+
+      <div class="space-y-3">
+        {[
+          { label: 'Wybór i zakup działki budowlanej', tip: 'Sprawdź plan zagospodarowania przestrzennego i warunki zabudowy' },
+          { label: 'Określenie budżetu z 20% rezerwą', tip: 'Zawsze planuj dodatkowe środki na nieprzewidziane wydatki' },
+          { label: 'Wybór projektu domu', tip: 'Dostosuj projekt do wielkości działki i Twoich potrzeb' },
+          { label: 'Uzyskanie pozwolenia na budowę', tip: 'Proces może potrwać 2-3 miesiące' },
+          { label: 'Wybór wykonawcy lub ekipy budowlanej', tip: 'Sprawdź referencje i wcześniejsze realizacje' },
+          { label: 'Zabezpieczenie finansowania', tip: 'Kredyt hipoteczny lub środki własne - porównaj oferty banków' },
+          { label: 'Organizacja placu budowy', tip: 'Ogrodzenie, kontener na narzędzia, energia elektryczna' },
+          { label: 'Zamówienie przyłączy mediów', tip: 'Rozpocznij procedury wcześnie - czas realizacji 3-6 miesięcy' }
+        ].map((item) => (
+          <div class="checklist-item-container flex items-start gap-3 p-3 rounded-lg hover:bg-stone-50 transition-colors">
+            <input 
+              type="checkbox" 
+              class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 focus:ring-orange-500 mt-0.5 flex-shrink-0"
+            />
+            <div class="flex-1">
+              <label class="checklist-label text-zinc-700 font-medium cursor-pointer">
+                {item.label}
+              </label>
+              <p class="checklist-tip text-xs text-zinc-500 mt-1">
+                {item.tip}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* FAQ Section */}
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-zinc-700 mb-8">
+        Najczęściej Zadawane Pytania
+      </h2>
+      <div class="space-y-4">
+        {[
+          {
+            q: 'Ile kosztuje budowa domu 120m² w 2026 roku?',
+            a: 'Przy standardzie średnim (5 800 zł/m²) koszt wyniesie około 696 000 zł. Z garażem i zagospodarowaniem działki łączny budżet to ok. 750 000 - 850 000 zł.'
+          },
+          {
+            q: 'Czy lepiej budować dom systemem gospodarczym czy zlecić firmie?',
+            a: 'System gospodarczy może zaoszczędzić 15-25% kosztów, ale wymaga dużego zaangażowania czasowego i wiedzy budowlanej. Firma budowlana daje gwarancję i szybszą realizację.'
+          },
+          {
+            q: 'Jak długo trwa budowa domu jednorodzinnego?',
+            a: 'Przeciętny dom o powierzchni 100-150m² buduje się 12-18 miesięcy. Stan surowy to 4-6 miesięcy, wykończenie kolejne 6-9 miesięcy.'
+          },
+          {
+            q: 'Jakie są opcje finansowania budowy?',
+            a: 'Kredyt hipoteczny na budowę (transzowy), pożyczka budowlana, środki własne lub rozwiązania hybrydowe. Warto porównać oferty minimum 3 banków.'
+          }
+        ].map((faq, index) => (
+          <div class="border border-stone-300 rounded-lg overflow-hidden">
+            <button
+              type="button"
+              class="faq-toggle w-full px-6 py-4 text-left bg-white hover:bg-stone-50 transition-colors flex items-center justify-between"
+              aria-expanded="false"
+            >
+              <span class="font-semibold text-zinc-700">{faq.q}</span>
+              <svg class="icon-transform w-5 h-5 text-orange-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+              <div class="px-6 py-4 bg-stone-50 text-zinc-600">
+                {faq.a}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* CTA Section */}
+    <section class="bg-orange-500 rounded-2xl p-8 md:p-12 text-white text-center">
+      <h2 class="text-3xl font-bold mb-4">
+        Potrzebujesz bardziej szczegółowego kosztorysu?
+      </h2>
+      <p class="text-lg mb-6 text-orange-100">
+        Skorzystaj z naszych zaawansowanych kalkulatorów lub skonsultuj się z ekspertami budowlanymi.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/kalkulatory" class="inline-block bg-white text-orange-500 px-8 py-3 rounded-lg font-semibold hover:bg-stone-100 transition-colors">
+          Wszystkie Kalkulatory
+        </a>
+        <a href="/budowa" class="inline-block bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors border-2 border-white">
+          Więcej Artykułów
+        </a>
+      </div>
+    </section>
+  </article>
+
+  <Footer />
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Calculator Logic
+      const calcArea = document.getElementById('calc-area') as HTMLInputElement;
+      const calcRange = document.getElementById('calc-area-range') as HTMLInputElement;
+      const calcGarage = document.getElementById('calc-garage') as HTMLInputElement;
+      const calcBtns = document.querySelectorAll('.calc-std-btn');
+      
+      const elTotal = document.getElementById('calc-result-total');
+      const elM2 = document.getElementById('calc-result-m2');
+      const elRaw = document.getElementById('calc-result-raw');
+      const elDev = document.getElementById('calc-result-dev');
+      const elKey = document.getElementById('calc-result-key');
+
+      let state = {
+        area: 120,
+        standard: 'standard',
+        garage: true
+      };
+
+      const RATES: Record<string, number> = {
+        'economic': 4200,
+        'standard': 5800,
+        'premium': 8500
+      };
+      const GARAGE_COST = 45000;
+
+      function formatCurrency(val: number): string {
+        return new Intl.NumberFormat('pl-PL', {
+          style: 'currency', 
+          currency: 'PLN', 
+          maximumFractionDigits: 0
+        }).format(val);
+      }
+
+      function updateCalc() {
+        let base = state.area * RATES[state.standard];
+        if (state.garage) base += GARAGE_COST;
+        
+        if(elTotal) elTotal.innerText = formatCurrency(base);
+        if(elM2) elM2.innerText = formatCurrency(Math.round(base / state.area));
+        
+        if(elRaw) elRaw.innerText = formatCurrency(base * 0.35);
+        if(elDev) elDev.innerText = formatCurrency(base * 0.45);
+        if(elKey) elKey.innerText = formatCurrency(base * 0.20);
+      }
+
+      if(calcArea) {
+        calcArea.addEventListener('input', (e) => {
+          state.area = Number((e.target as HTMLInputElement).value);
+          if(calcRange) calcRange.value = state.area.toString();
+          updateCalc();
+        });
+      }
+      if(calcRange) {
+        calcRange.addEventListener('input', (e) => {
+          state.area = Number((e.target as HTMLInputElement).value);
+          if(calcArea) calcArea.value = state.area.toString();
+          updateCalc();
+        });
+      }
+      if(calcGarage) {
+        calcGarage.addEventListener('change', (e) => {
+          state.garage = (e.target as HTMLInputElement).checked;
+          updateCalc();
+        });
+      }
+      
+      calcBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.standard = btn.getAttribute('data-standard') || 'standard';
+          
+          calcBtns.forEach(b => {
+            b.classList.remove('bg-orange-500', 'text-white', 'border-orange-500', 'shadow-md');
+            b.classList.add('bg-white', 'text-zinc-600', 'border-stone-300');
+          });
+          btn.classList.remove('bg-white', 'text-zinc-600', 'border-stone-300');
+          btn.classList.add('bg-orange-500', 'text-white', 'border-orange-500', 'shadow-md');
+          
+          updateCalc();
+        });
+      });
+
+      // Checklist Logic
+      const checkboxes = document.querySelectorAll('.checklist-checkbox');
+      const progressText = document.getElementById('checklist-progress-text');
+      const progressBar = document.getElementById('checklist-progress-bar');
+      const successMsg = document.getElementById('checklist-success-msg');
+      const instructMsg = document.getElementById('checklist-instruction-msg');
+
+      function updateChecklist() {
+        const total = checkboxes.length;
+        let checked = 0;
+        
+        checkboxes.forEach(cb => {
+          const container = (cb as HTMLElement).closest('.checklist-item-container');
+          const label = container?.querySelector('.checklist-label');
+          const tip = container?.querySelector('.checklist-tip');
+          
+          if((cb as HTMLInputElement).checked) {
+            checked++;
+            label?.classList.add('text-zinc-400', 'line-through');
+            label?.classList.remove('text-zinc-700');
+            if(tip) (tip as HTMLElement).style.display = 'none';
+          } else {
+            label?.classList.remove('text-zinc-400', 'line-through');
+            label?.classList.add('text-zinc-700');
+            if(tip) (tip as HTMLElement).style.display = 'block';
+          }
+        });
+
+        const percent = Math.round((checked / total) * 100);
+        if(progressText) progressText.innerText = percent + '%';
+        if(progressBar) (progressBar as HTMLElement).style.width = percent + '%';
+
+        if(checked === total) {
+          successMsg?.classList.remove('hidden');
+          successMsg?.classList.add('block');
+          instructMsg?.classList.add('hidden');
+        } else {
+          successMsg?.classList.add('hidden');
+          successMsg?.classList.remove('block');
+          instructMsg?.classList.remove('hidden');
+        }
+      }
+
+      checkboxes.forEach(cb => {
+        cb.addEventListener('change', updateChecklist);
+      });
+
+      // FAQ Logic
+      const faqToggles = document.querySelectorAll('.faq-toggle');
+      
+      faqToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(this: HTMLElement) {
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          const content = this.nextElementSibling as HTMLElement;
+          const icon = this.querySelector('.icon-transform') as HTMLElement;
+
+          this.setAttribute('aria-expanded', (!expanded).toString());
+          if(!expanded) {
+            content.classList.remove('max-h-0', 'opacity-0');
+            content.classList.add('max-h-48', 'opacity-100');
+            icon.classList.add('rotate-180');
+          } else {
+            content.classList.add('max-h-0', 'opacity-0');
+            content.classList.remove('max-h-48', 'opacity-100');
+            icon.classList.remove('rotate-180');
+          }
+        });
+      });
+
+      updateCalc();
+      updateChecklist();
+    });
+  </script>
+</MainLayout>
