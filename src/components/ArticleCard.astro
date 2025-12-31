@@ -1,0 +1,19 @@
+---
+const { title, excerpt, href, category, date } = Astro.props;
+---
+
+<article class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+  <a href={href} class="block p-6">
+    <div class="flex items-center gap-2 text-xs text-blue-600 font-semibold mb-3">
+      <span>{category}</span>
+      <span class="text-gray-400">•</span>
+      <time datetime={date} class="text-gray-500">{date}</time>
+    </div>
+    <h3 class="text-lg font-bold text-gray-900 mb-2 hover:text-blue-600 transition-colors">
+      {title}
+    </h3>
+    <p class="text-sm text-gray-600 line-clamp-2">
+      {excerpt}
+    </p>
+  </a>
+</article>
