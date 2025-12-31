@@ -1,14 +1,172 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CategoryGrid from '../components/CategoryGrid.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+
+const latestArticles = [
+  {
+    title: 'Jak wybrać najlepsze materiały do budowy domu',
+    excerpt: 'Poznaj kluczowe aspekty wyboru materiałów budowlanych. Dowiedz się, na co zwrócić uwagę przy zakupie cegły, betonu i innych elementów konstrukcyjnych.',
+    href: '/budowa/materialy-budowlane',
+    category: 'Budowa',
+    date: '2024-01-15'
+  },
+  {
+    title: '10 pomysłów na aranżację małego salonu',
+    excerpt: 'Maksymalne wykorzystanie przestrzeni w małym salonie. Praktyczne wskazówki dotyczące mebli, kolorów i oświetlenia dla małych wnętrz.',
+    href: '/wnetrza/aranzacja-salonu',
+    category: 'Wnętrza',
+    date: '2024-01-14'
+  },
+  {
+    title: 'Ogród w stylu japońskim - poradnik krok po kroku',
+    excerpt: 'Stwórz spokojną oazę w swoim ogrodzie. Poznaj zasady projektowania ogrodu japońskiego, wybór roślin i elementów dekoracyjnych.',
+    href: '/ogrod/ogrod-japonski',
+    category: 'Ogród',
+    date: '2024-01-13'
+  },
+  {
+    title: 'Instalacja fotowoltaiczna - czy się opłaca?',
+    excerpt: 'Analiza kosztów i korzyści instalacji paneli słonecznych. Zwrot inwestycji, dotacje i najlepsze systemy fotowoltaiczne na rynku.',
+    href: '/budowa/fotowoltaika',
+    category: 'Budowa',
+    date: '2024-01-12'
+  },
+  {
+    title: 'Trendy w projektowaniu kuchni 2024',
+    excerpt: 'Najnowsze trendy w aranżacji kuchni. Kolory, materiały, meble i sprzęty AGD, które będą dominować w tym roku.',
+    href: '/wnetrza/trendy-kuchnia',
+    category: 'Wnętrza',
+    date: '2024-01-11'
+  },
+  {
+    title: 'Jak przygotować ogród na wiosnę',
+    excerpt: 'Kompleksowy przewodnik wiosennych prac ogrodowych. Kiedy rozpocząć prace, jakie rośliny sadzić i jak pielęgnować trawnik.',
+    href: '/ogrod/przygotowanie-wiosna',
+    category: 'Ogród',
+    date: '2024-01-10'
+  }
+];
+
+const featuredCalculators = [
+  {
+    title: 'Kalkulator materiałów budowlanych',
+    description: 'Oblicz ilość cegły, cementu i innych materiałów',
+    href: '/kalkulatory/materialy',
+    icon: '📐'
+  },
+  {
+    title: 'Kalkulator kosztów budowy',
+    description: 'Oszacuj koszty budowy domu krok po kroku',
+    href: '/kalkulatory/koszty',
+    icon: '💰'
+  },
+  {
+    title: 'Kalkulator powierzchni',
+    description: 'Oblicz powierzchnię ścian, podłóg i dachu',
+    href: '/kalkulatory/powierzchnia',
+    icon: '📏'
+  }
+];
 ---
 
 <BaseLayout 
-  title="Astro Content Portal - Test"
-  description="Minimal Astro test page for Vercel deployment"
+  title="Portal Budowlany - Ekspertka wiedza o budowie, wnętrzach i ogrodzie"
+  description="Profesjonalny portal dla właścicieli domów i inwestorów. Artykuły, poradniki i kalkulatory dotyczące budowy, aranżacji wnętrz i ogrodnictwa."
 >
-  <div class="min-h-screen flex items-center justify-center p-4">
-    <h1 class="text-4xl font-bold text-blue-600">
-      Witaj w Astro Content Portal
-    </h1>
-  </div>
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-50 to-white py-16 px-4">
+      <div class="max-w-7xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          Twoje źródło wiedzy o <span class="text-blue-600">budowie</span> i <span class="text-blue-600">wnętrzach</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          Profesjonalne porady, szczegółowe poradniki i praktyczne kalkulatory dla właścicieli domów, inwestorów i entuzjastów aranżacji wnętrz.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/budowa" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            Przeglądaj artykuły
+          </a>
+          <a href="/kalkulatory" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-colors">
+            Użyj kalkulatorów
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-16 px-4 bg-white">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+          Odkryj nasze kategorie
+        </h2>
+        <CategoryGrid />
+      </div>
+    </section>
+
+    <!-- Latest Articles Section -->
+    <section class="py-16 px-4 bg-gray-50">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+            Najnowsze artykuły
+          </h2>
+          <a href="/artykuly" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+            Zobacz wszystkie →
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {latestArticles.map((article) => (
+            <ArticleCard {...article} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Calculators Section -->
+    <section class="py-16 px-4 bg-white">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-4">
+          Kalkulatory budowlane
+        </h2>
+        <p class="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+          Skorzystaj z naszych profesjonalnych kalkulatorów, aby precyzyjnie oszacować koszty i materiały.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {featuredCalculators.map((calc) => (
+            <a 
+              href={calc.href}
+              class="bg-white border border-gray-200 rounded-lg p-8 hover:border-blue-600 hover:shadow-lg transition-all text-center"
+            >
+              <div class="text-5xl mb-4">{calc.icon}</div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{calc.title}</h3>
+              <p class="text-sm text-gray-600">{calc.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4 bg-blue-600 text-white">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Zacznij swoją budowlaną przygodę już dziś
+        </h2>
+        <p class="text-lg mb-8 text-blue-100">
+          Dołącz do tysięcy czytelników, którzy ufają naszym poradom i korzystają z naszych narzędzi.
+        </p>
+        <a href="/budowa" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+          Przeglądaj ekspertkie treści
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
 </BaseLayout>
