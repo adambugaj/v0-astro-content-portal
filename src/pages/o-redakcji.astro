@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const authors = [
+  {
+    name: 'Marek Kowalski',
+    title: 'Kierownik Budowy | Uprawnienia Konstrukcyjno-Budowlane',
+    description: 'Od 15 lat prowadzi inwestycje budowlane od fundamentów po dach. Specjalizuje się w kosztorysowaniu i optymalizacji wydatków na etapie budowy.',
+    imageQuery: 'professional middle-aged male construction manager in hard hat',
+    achievements: '2 400+ przeanalizowanych kosztorysów'
+  },
+  {
+    name: 'Anna Nowak',
+    title: 'Architekt Wnętrz | Technolog Budowlany',
+    description: 'Łączy wiedzę techniczną z doświadczeniem projektowym. Prowadzi własną pracownię i konsultuje inwestorów na etapie planowania.',
+    imageQuery: 'professional female architect with blueprints',
+    achievements: '340+ projektów realizacyjnych'
+  },
+  {
+    name: 'Piotr Zieliński',
+    title: 'Inżynier Instalacji Sanitarnych',
+    description: 'Ekspert od systemów grzewczych, wentylacji i OZE. Prowadzi szkolenia z montażu pomp ciepła i fotowoltaiki.',
+    imageQuery: 'professional male engineer with solar panels',
+    achievements: '15+ lat doświadczenia branżowego'
+  },
+  {
+    name: 'Katarzyna Wiśniewska',
+    title: 'Rzeczoznawca Budowlany',
+    description: 'Certyfikowany rzeczoznawca z uprawnieniami do badania stanu technicznego budynków. Autor ekspertyz i audytów energetycznych.',
+    imageQuery: 'professional female building inspector with clipboard',
+    achievements: '850+ ekspertyz budowlanych'
+  }
+];
+---
+
+<BaseLayout 
+  title="Redakcja i Eksperci - domjakosci.pl"
+  description="Poznaj zespół ekspertów domjakosci.pl. Inżynierowie, architekci i rzeczoznawcy budowlani z wieloletnim doświadczeniem."
+>
+  <Header />
+  
+  <main class="min-h-screen">
+    <section class="bg-white border-slate-200 py-16 mt-0 pt-16">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="text-center mb-20">
+          <span class="text-orange-500 font-bold tracking-wider uppercase text-sm mb-3 block">Redakcja domjakosci.pl</span>
+          <h1 class="text-4xl lg:text-5xl font-extrabold text-zinc-700 mb-6">Poznaj ekspertów, którym możesz zaufać</h1>
+          <div class="max-w-3xl mx-auto text-lg text-zinc-600 leading-relaxed space-y-4">
+            <p>Budowa domu to gra o wysoką stawkę. Jeden błąd w kosztorysie może oznaczać lata spłacania niepotrzebnych kredytów. Dlatego w <strong>domjakosci.pl</strong> nie ma miejsca na anonimowe treści copywriterów.</p>
+            <p>Za każdym artykułem, wyliczeniem i poradą stoi konkretny człowiek z uprawnieniami, nazwiskiem i wieloletnim doświadczeniem na placu budowy.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
+          <div class="bg-white p-6 rounded-2xl text-center border border-stone-300 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default">
+            <div class="text-3xl lg:text-4xl font-extrabold text-orange-500 mb-2 group-hover:scale-110 transition-transform duration-300">15+</div>
+            <div class="text-sm font-semibold text-zinc-600 uppercase tracking-wide">Lat na rynku</div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl text-center border border-stone-300 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default">
+            <div class="text-3xl lg:text-4xl font-extrabold text-orange-500 mb-2 group-hover:scale-110 transition-transform duration-300">2,400+</div>
+            <div class="text-sm font-semibold text-zinc-600 uppercase tracking-wide">Przeanalizowanych kosztorysów</div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl text-center border border-stone-300 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default">
+            <div class="text-3xl lg:text-4xl font-extrabold text-orange-500 mb-2 group-hover:scale-110 transition-transform duration-300">100%</div>
+            <div class="text-sm font-semibold text-zinc-600 uppercase tracking-wide">Weryfikacja merytoryczna</div>
+          </div>
+          <div class="bg-white p-6 rounded-2xl text-center border border-stone-300 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default">
+            <div class="text-3xl lg:text-4xl font-extrabold text-orange-500 mb-2 group-hover:scale-110 transition-transform duration-300">0</div>
+            <div class="text-sm font-semibold text-zinc-600 uppercase tracking-wide">Anonimowych autorów</div>
+          </div>
+        </div>
+
+        <h2 class="text-3xl font-bold text-zinc-700 mb-12 text-center">Poznaj naszych ekspertów</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+          {authors.map((author) => (
+            <div class="bg-stone-50 rounded-2xl p-8 border border-stone-300 hover:shadow-xl transition-all duration-300">
+              <div class="flex items-start gap-6">
+                <img 
+                  src={`/placeholder.svg?height=120&width=120&query=${encodeURIComponent(author.imageQuery)}`}
+                  alt={author.name}
+                  class="w-28 h-28 rounded-full object-cover border-4 border-orange-500"
+                />
+                <div class="flex-1">
+                  <h3 class="text-2xl font-bold text-zinc-700 mb-2">{author.name}</h3>
+                  <p class="text-sm font-semibold text-orange-500 mb-3">{author.title}</p>
+                  <p class="text-sm text-zinc-600 mb-4 leading-relaxed">{author.description}</p>
+                  <div class="bg-white px-4 py-2 rounded-lg border border-orange-200 inline-block">
+                    <p class="text-xs font-bold text-orange-600">{author.achievements}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl p-12 text-white text-center shadow-2xl">
+          <h2 class="text-3xl font-bold mb-4">Zaufaj ekspertom</h2>
+          <p class="text-lg mb-8 text-orange-100 max-w-2xl mx-auto">
+            Każda treść na domjakosci.pl jest weryfikowana przez specjalistów z uprawnieniami budowlanymi.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/kontakt" class="inline-block bg-white text-orange-500 px-8 py-3 rounded-lg font-semibold hover:bg-stone-100 transition-colors">
+              Skontaktuj się
+            </a>
+            <a href="/polityka-redakcyjna" class="inline-block border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-orange-500 transition-colors">
+              Polityka Redakcyjna
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

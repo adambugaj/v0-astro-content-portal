@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Polityka Redakcyjna - domjakosci.pl"
+  description="Poznaj standardy jakości i zasady tworzenia treści w domjakosci.pl. Transparentność, weryfikacja merytoryczna i etyka dziennikarska."
+>
+  <Header />
+  
+  <main class="min-h-screen">
+    <section class="bg-white border-slate-200 py-16 mt-0 pt-16">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="text-center mb-20">
+          <span class="text-orange-500 font-bold tracking-wider uppercase text-sm mb-3 block">Standardy i Zasady</span>
+          <h1 class="text-4xl lg:text-5xl font-extrabold text-zinc-700 mb-6">Polityka Redakcyjna domjakosci.pl</h1>
+          <div class="max-w-3xl mx-auto text-lg text-zinc-600 leading-relaxed space-y-4">
+            <p>W dobie informacyjnego chaosu stawiamy na <strong>radykalną jakość</strong>. Nasze treści to nie tylko słowa – to inżynierska wiedza przekuta w praktyczne porady dla inwestorów budujących dom w 2026 roku.</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-24">
+          <div class="bg-stone-50 p-8 rounded-2xl border border-stone-300 hover:shadow-lg transition-all duration-300">
+            <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 text-orange-500 text-3xl">
+              ✓
+            </div>
+            <h3 class="text-xl font-bold text-zinc-700 mb-3">100% Weryfikacja</h3>
+            <p class="text-zinc-600">Każdy artykuł przechodzi przez ręce eksperta z uprawnieniami budowlanymi</p>
+          </div>
+          <div class="bg-stone-50 p-8 rounded-2xl border border-stone-300 hover:shadow-lg transition-all duration-300">
+            <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 text-orange-500 text-3xl">
+              👤
+            </div>
+            <h3 class="text-xl font-bold text-zinc-700 mb-3">0 Anonimów</h3>
+            <p class="text-zinc-600">Za każdą poradą stoi konkretna osoba z nazwiskiem i doświadczeniem</p>
+          </div>
+          <div class="bg-stone-50 p-8 rounded-2xl border border-stone-300 hover:shadow-lg transition-all duration-300">
+            <div class="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 text-orange-500 text-3xl">
+              📊
+            </div>
+            <h3 class="text-xl font-bold text-zinc-700 mb-3">Transparentność</h3>
+            <p class="text-zinc-600">Każda współpraca komercyjna jest jasno oznaczona</p>
+          </div>
+        </div>
+
+        <div class="space-y-16">
+          <div>
+            <h2 class="text-3xl font-bold text-zinc-700 mb-6">1. Niezależność redakcyjna</h2>
+            <div class="bg-stone-50 p-8 rounded-xl border border-stone-300">
+              <p class="text-zinc-600 leading-relaxed mb-4">
+                <strong>domjakosci.pl</strong> to niezależny portal ekspercki. Nie jesteśmy powiązani z żadnym producentem materiałów budowlanych, deweloperem ani siecią handlową.
+              </p>
+              <ul class="space-y-3 text-zinc-600">
+                <li class="flex items-start">
+                  <span class="text-orange-500 mr-3 font-bold">→</span>
+                  <span>Nasze rekomendacje opierają się wyłącznie na doświadczeniu ekspertów</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-orange-500 mr-3 font-bold">→</span>
+                  <span>Nie przyjmujemy wynagrodzenia za pozytywne recenzje produktów</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-orange-500 mr-3 font-bold">→</span>
+                  <span>Treści sponsorowane są zawsze oznaczone jako "Artykuł sponsorowany"</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-3xl font-bold text-zinc-700 mb-6">2. Weryfikacja merytoryczna</h2>
+            <div class="bg-stone-50 p-8 rounded-xl border border-stone-300">
+              <p class="text-zinc-600 leading-relaxed mb-4">
+                Każdy artykuł, porada i kalkulator przechodzi przez wieloetapowy proces kontroli jakości:
+              </p>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 class="font-bold text-zinc-700 mb-3">Faza 1: Tworzenie</h4>
+                  <ul class="space-y-2 text-sm text-zinc-600">
+                    <li>• Autor z uprawnieniami budowlanymi</li>
+                    <li>• Minimum 5 lat doświadczenia w branży</li>
+                    <li>• Weryfikacja aktualnych norm i przepisów</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-bold text-zinc-700 mb-3">Faza 2: Kontrola</h4>
+                  <ul class="space-y-2 text-sm text-zinc-600">
+                    <li>• Przegląd przez redaktora technicznego</li>
+                    <li>• Weryfikacja obliczeń i kosztorysów</li>
+                    <li>• Sprawdzenie źródeł i aktualności danych</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-3xl font-bold text-zinc-700 mb-6">3. Aktualizacja treści</h2>
+            <div class="bg-stone-50 p-8 rounded-xl border border-stone-300">
+              <p class="text-zinc-600 leading-relaxed">
+                Budownictwo ewoluuje – ceny rosną, normy się zmieniają, pojawiają się nowe technologie. 
+                Dlatego regularnie aktualizujemy nasze artykuły, szczególnie te dotyczące kosztów, przepisów i nowości technologicznych.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-3xl font-bold text-zinc-700 mb-6">4. Oznaczanie treści komercyjnych</h2>
+            <div class="bg-stone-50 p-8 rounded-xl border border-stone-300">
+              <p class="text-zinc-600 leading-relaxed mb-4">
+                Jesteśmy transparentni w kwestii współpracy komercyjnej. Każda treść sponsorowana, artykuł partnerski lub affiliate link jest wyraźnie oznaczony.
+              </p>
+              <div class="bg-white border-l-4 border-orange-500 p-6 rounded">
+                <p class="text-sm font-bold text-orange-600 mb-2">PRZYKŁAD OZNACZENIA:</p>
+                <p class="text-zinc-700">"Ten artykuł powstał we współpracy z firmą XYZ. Opinie techniczne i weryfikacja merytoryczna są niezależne."</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-3xl font-bold text-zinc-700 mb-6">5. Kontakt i zgłaszanie błędów</h2>
+            <div class="bg-stone-50 p-8 rounded-xl border border-stone-300">
+              <p class="text-zinc-600 leading-relaxed mb-6">
+                Znalazłeś błąd? Masz wątpliwości co do poprawności treści? Napisz do nas:
+              </p>
+              <a href="mailto:redakcja@domjakosci.pl" class="inline-block bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+                redakcja@domjakosci.pl
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 bg-gradient-to-br from-zinc-700 to-zinc-800 rounded-3xl p-12 text-white text-center">
+          <h2 class="text-3xl font-bold mb-4">Zaufaj ekspertom</h2>
+          <p class="text-lg mb-8 text-zinc-300 max-w-2xl mx-auto">
+            Każda treść na domjakosci.pl jest weryfikowana przez specjalistów z uprawnieniami budowlanymi.
+          </p>
+          <a href="/o-redakcji" class="inline-block bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+            Poznaj naszych ekspertów
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
