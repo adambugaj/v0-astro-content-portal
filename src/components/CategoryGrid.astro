@@ -2,42 +2,124 @@
 const categories = [
   {
     title: 'Budowa',
-    description: 'Projekty, materiały, technologie budowlane',
+    heading: 'Budowa domu – koszty, technologie i etapy',
+    description: 'Kompleksowe poradniki dotyczące budowy domu – od kosztów budowy domu, przez technologie budowlane, aż po materiały i formalności. Sprawdź realne ceny, kalkulatory kosztów i checklisty budowlane.',
     href: '/budowa',
-    icon: '🏗️'
+    icon: '🏗️',
+    deepLinks: [
+      { label: 'Koszt budowy domu', href: '/budowa/koszt-budowy-domu' },
+      { label: 'Budowa domu krok po kroku', href: '/budowa/bledy-przy-budowie' },
+      { label: 'Technologie budowy domów', href: '/budowa/system-gospodarczy' },
+      { label: 'Materiały budowlane', href: '/budowa/koszt-120m2' }
+    ],
+    seoCluster: [
+      'Koszt budowy domu 100 m²',
+      'Koszt budowy domu systemem gospodarczym',
+      'Koszt budowy domu pod klucz',
+      'Budowa domu bez pozwolenia'
+    ]
   },
   {
     title: 'Dom',
-    description: 'Wykończenie, instalacje, rozwiązania domowe',
+    heading: 'Dom – inspiracje do aranżacji i instalacji',
+    description: 'Nowoczesne rozwiązania do wykończenia domu, systemy instalacyjne i praktyczne porady dotyczące wyposażenia.',
     href: '/dom',
-    icon: '🏠'
+    icon: '🏠',
+    deepLinks: [
+      { label: 'Trendy w wnętrzach', href: '#' },
+      { label: 'Instalacje domowe', href: '#' },
+      { label: 'Grzewcze systemy', href: '#' }
+    ],
+    seoCluster: [
+      'Aranżacja nowoczesnego domu',
+      'Systemy grzewcze',
+      'Oświetlenie LED',
+      'Izolacja termiczna'
+    ]
   },
   {
     title: 'Energia / OZE',
-    description: 'Fotowoltaika, pompy ciepła, odnawialne źródła energii',
+    heading: 'Energia – panele słoneczne, pompy ciepła i OZE',
+    description: 'Kompleksowe informacje o odnawialnych źródłach energii, fotowoltaice, pompach ciepła i nowoczesnych systemach energetycznych.',
     href: '/energia-oze',
-    icon: '⚡'
+    icon: '⚡',
+    deepLinks: [
+      { label: 'Panele słoneczne', href: '/budowa/fotowoltaika' },
+      { label: 'Pompy ciepła', href: '#' },
+      { label: 'Magazynowanie energii', href: '#' }
+    ],
+    seoCluster: [
+      'Instalacja fotowoltaiki',
+      'Koszty paneli słonecznych',
+      'Pompy ciepła powietrze-woda',
+      'Dotacje na OZE 2026'
+    ]
   },
   {
     title: 'Ogród',
-    description: 'Rośliny, projektowanie, pielęgnacja ogrodu',
+    heading: 'Ogród – projektowanie, rośliny i pielęgnacja',
+    description: 'Porady dotyczące projektowania ogrodu, wyboru roślin i regularnej pielęgnacji przestrzeni zielonej.',
     href: '/ogrod',
-    icon: '🌿'
+    icon: '🌿',
+    deepLinks: [
+      { label: 'Projektowanie ogrodu', href: '/ogrod/ogrod-japonski' },
+      { label: 'Pielęgnacja trawnika', href: '/ogrod/przygotowanie-wiosna' },
+      { label: 'Rośliny sezonowe', href: '#' }
+    ],
+    seoCluster: [
+      'Ogród nowoczesny',
+      'Pielęgnacja ogrodu',
+      'Rośliny wieczne',
+      'Nawadnianie ogrodów'
+    ]
   }
 ];
 ---
 
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="space-y-12">
   {categories.map((category) => (
-    <a 
-      href={category.href}
-      class="group bg-white rounded-lg border border-stone-300 p-6 hover:border-orange-500 hover:shadow-lg transition-all"
-    >
-      <div class="text-4xl mb-4">{category.icon}</div>
-      <h3 class="text-xl font-bold text-zinc-700 mb-2 group-hover:text-orange-500 transition-colors">
-        {category.title}
-      </h3>
-      <p class="text-sm text-zinc-600">{category.description}</p>
-    </a>
+    <div class="border-l-4 border-orange-500 pl-6">
+      <!-- Main Category Card -->
+      <a 
+        href={category.href}
+        class="group block mb-6"
+      >
+        <div class="text-4xl mb-3">{category.icon}</div>
+        <!-- Changed from h3 title to h2 heading with extended description -->
+        <h2 class="text-2xl font-bold text-zinc-700 mb-3 group-hover:text-orange-500 transition-colors">
+          {category.heading}
+        </h2>
+        <p class="text-zinc-600 mb-4 leading-relaxed">
+          {category.description}
+        </p>
+      </a>
+
+      <!-- Added deep links section for internal linking -->
+      <div class="mb-6">
+        <p class="text-xs font-bold text-zinc-600 mb-3 uppercase">Podlinkowane tematy:</p>
+        <div class="flex flex-wrap gap-2">
+          {category.deepLinks.map((link) => (
+            <a 
+              href={link.href}
+              class="text-sm text-orange-500 hover:text-orange-600 hover:underline transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Added SEO link cluster with frequently searched terms -->
+      <div class="bg-stone-100 rounded-lg p-4">
+        <p class="text-xs font-bold text-zinc-600 mb-3 uppercase">Najczęściej wyszukiwane:</p>
+        <ul class="space-y-2">
+          {category.seoCluster.map((term) => (
+            <li>
+              <span class="text-sm text-zinc-600">→ {term}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   ))}
 </div>
