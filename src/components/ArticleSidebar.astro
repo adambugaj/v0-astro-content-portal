@@ -74,16 +74,16 @@ const displayEditors = editors.length > 0 ? editors : defaultEditors;
       {displayEditors.map((editor) => (
         <a href={editor.href} class="flex items-center gap-3 hover:opacity-75 transition-opacity">
           {editor.name === 'Dariusz Nowicki' && (
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-zinc-600 to-zinc-800 flex items-center justify-center text-white text-xs font-bold">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-zinc-600 to-zinc-800 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
               DN
             </div>
           )}
           {editor.name === 'Monika Zielińska' && (
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-xs font-bold">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
               MZ
             </div>
           )}
-          <div>
+          <div class="min-w-0">
             <p class="text-sm font-bold text-zinc-700">{editor.name}</p>
             <p class="text-xs text-zinc-500">{editor.title}</p>
           </div>
