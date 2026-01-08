@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://twoja-domena.pl/sitemap.xml
+Sitemap: https://domjakosci.pl/sitemap.xml
 
 # Disallow admin or private areas (if any in future)
 # Disallow: /admin/

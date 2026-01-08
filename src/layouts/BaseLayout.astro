@@ -1,8 +1,15 @@
 ---
 const { 
-  title = "Astro Content Portal", 
-  description = "Expert content portal built with Astro"
+  title = "Ekspercki Portal o Budowie Domów, Kosztach, Energetyce i Inwestowaniu w Nieruchomości", 
+  description = "Portal ekspercki o budowie domów, kosztach realizacji, energii odnawialnej i inwestowaniu w nieruchomości – z praktycznymi kalkulatorami i poradnikami krok po kroku.",
+  canonical,
+  type = "website",
+  image = "https://domjakosci.pl/og-image.jpg",
+  author = "Dariusz Nowicki"
 } = Astro.props;
+
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
+const siteName = "Dom Jakości";
 ---
 
 <!doctype html>
@@ -12,7 +19,56 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="pl_PL" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": type === "article" ? "Article" : "WebSite",
+      "name": siteName,
+      "url": canonicalURL,
+      "description": description,
+      "publisher": {
+        "@type": "Organization",
+        "name": siteName,
+        "url": "https://domjakosci.pl",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://domjakosci.pl/favicon.svg"
+        }
+      },
+      ...(type === "article" && {
+        "author": {
+          "@type": "Person",
+          "name": author
+        },
+        "headline": title,
+        "image": image,
+        "datePublished": new Date().toISOString(),
+        "dateModified": new Date().toISOString()
+      })
+    })} />
   </head>
   <body class="min-h-screen bg-white">
     <slot />
