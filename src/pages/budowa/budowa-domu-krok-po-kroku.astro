@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ArticleSidebar from '../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+  { label: 'Strona główna', href: '/' },
+  { label: 'Budowa', href: '/budowa' },
+  { label: 'Budowa Domu Krok po Kroku' }
+];
+---
+
+<BaseLayout 
+  title="Budowa Domu Krok po Kroku - Kompletny Przewodnik | domjakosci.pl"
+  description="Pełna instrukcja budowy domu od fundamentów po dach. Etapy budowy, harmonogram, formalności i praktyczne porady dla inwestorów."
+  type="article"
+  author="Monika Zielińska"
+>
+  <Header />
+  
+  <!-- Progress bar under header -->
+  <div class="sticky top-16 z-40 h-1 bg-stone-200">
+    <div id="progressBar" class="h-full bg-orange-500 transition-all duration-300" style="width: 0%"></div>
+  </div>
+
+  <!-- Sticky left sidebar with TOC -->
+  <div class="fixed left-0 top-20 hidden lg:block w-48 h-[calc(100vh-80px)] overflow-y-auto border-r border-stone-300 bg-stone-50 p-6 z-30">
+    <nav id="tocNav" class="space-y-2">
+      <p class="text-xs font-bold text-zinc-600 mb-4 uppercase">Spis treści</p>
+    </nav>
+  </div>
+  
+  <main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <article class="lg:col-span-2">
+        <header class="mb-12">
+          <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-sm font-semibold mb-4">
+            Aktualizacja: Styczeń 2026
+          </span>
+          <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-700 mb-6">
+            Budowa Domu Krok po Kroku: Pełny Przewodnik Inwestora
+          </h1>
+          <p class="text-xl text-zinc-600 leading-relaxed">
+            Czy budowa domu wydaje Ci się procesem zbyt skomplikowanym? Ten przewodnik rozkłada całą inwestycję na 12 jasnych etapów. 
+            Dowiedz się, co dzieje się na każdym stadium budowy, jakie formalności musisz załatwić i jak uniknąć pułapek.
+          </p>
+        </header>
+
+        <section class="mb-12 bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Kalkulator harmonogramu budowy</h2>
+          <div class="bg-white p-6 rounded-lg border border-blue-200">
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-zinc-700 mb-2">Powierzchnia domu (m²):</label>
+              <input type="number" id="calcArea" placeholder="np. 120" class="w-full border border-zinc-300 rounded px-4 py-2" value="120" />
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-zinc-700 mb-2">Typ fundamentów:</label>
+              <select id="calcFoundation" class="w-full border border-zinc-300 rounded px-4 py-2">
+                <option value="paletyFundamentowe">Palety fundamentowe</option>
+                <option value="stopyIzolowane">Stopy izolowane</option>
+                <option value="plytaFundamentowa">Płyta fundamentowa</option>
+              </select>
+            </div>
+            <button onclick="calculateSchedule()" class="w-full bg-blue-500 text-white py-2 rounded font-semibold hover:bg-blue-600 transition-colors">
+              Oblicz harmonogram
+            </button>
+            <div id="scheduleResult" class="mt-4 hidden p-4 bg-green-50 border border-green-300 rounded">
+              <p class="text-sm text-green-800"><strong>Szacunkowy czas budowy:</strong> <span id="durationResult">12-18 miesięcy</span></p>
+            </div>
+          </div>
+        </section>
+
+        <h2 class="text-2xl font-bold text-zinc-700 mt-8 mb-4">Etap 1: Przygotowanie i formalności (0-3 miesiące)</h2>
+        <p class="mb-4 text-zinc-600">
+          Zanim przystąpisz do pierwszych prac, musisz zdobyć niezbędne pozwolenia i dokumenty. Na tym etapie:
+        </p>
+        <ul class="mb-6 space-y-2 text-zinc-600">
+          <li class="flex gap-3"><span class="text-orange-500">✓</span> Badanie gruntu i geotechnika</li>
+          <li class="flex gap-3"><span class="text-orange-500">✓</span> Projekt budowlany i architektoniczny</li>
+          <li class="flex gap-3"><span class="text-orange-500">✓</span> Uzyskanie pozwolenia na budowę lub zgłoszenia</li>
+          <li class="flex gap-3"><span class="text-orange-500">✓</span> Wyznaczenie geodezyjne działki</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-zinc-700 mt-8 mb-4">Etap 2: Prace ziemne i fundamenty (1-4 miesiące)</h2>
+        <p class="mb-6 text-zinc-600">
+          Fundamenty to najpowszechniejsza część domu – to tutaj określa się trwałość całej budowli. Etap obejmuje wykopaliska, 
+          formowanie dołów, wylanie fundamentów i ich wstępne pracowanie.
+        </p>
+
+        <figure class="my-8 p-4 bg-stone-100 border border-stone-200 rounded-lg">
+          <div class="aspect-video bg-zinc-300 rounded overflow-hidden">
+            <img src="/placeholder.svg?height=400&width=600" alt="Arkusz z checklistą budowy" class="w-full h-full object-cover" />
+          </div>
+          <figcaption class="font-mono text-center text-xs font-bold text-zinc-500 mt-3 uppercase tracking-wide">
+            CHECKLIST: Kontrola jakości na etapie fundamentów – dokument pomocniczy do druku
+          </figcaption>
+        </figure>
+
+        <h2 class="text-2xl font-bold text-zinc-700 mt-8 mb-4">Etap 3: Stan surowy otwarty (3-6 miesięcy)</h2>
+        <p class="mb-6 text-zinc-600">
+          To najtrudniejszy okres finansowo – wznoszą się mury, stawiają się stropy. Koszt robocizny na tym etapie stanowi 
+          30-35% całego budżetu. Rozpoczyna się również montaż stropodachów i pokrywanie dachu.
+        </p>
+
+        <h2 class="text-2xl font-bold text-zinc-700 mt-8 mb-4">Etap 4: Stan surowy zamknięty (6-8 miesięcy)</h2>
+        <p class="mb-6 text-zinc-600">
+          Dom ma już dach, okna są osadzone. Jest to dobry moment, aby zawrzeć ubezpieczenie budowy – do tego momentu 
+          najwyższe ryzyko zniszczeń. Rozpoczynają się prace instalacyjne.
+        </p>
+
+        <h2 class="text-2xl font-bold text-zinc-700 mt-8 mb-4">Etap 5-10: Instalacje, tynki i wykończenie (9-15 miesięcy)</h2>
+        <p class="mb-6 text-zinc-600">
+          Następuje montaż instalacji elektrycznych, wodno-kanalizacyjnych i grzewczych. Tynkowanie ścian, układanie podłóg, 
+          a następnie malowanie i finalne prace wykończeniowe. To etap, gdzie widać rzeczywisty postęp.
+        </p>
+
+        <!-- Related Topics Section -->
+        <section class="mt-16 pt-12 border-t border-stone-300">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-6">Poznaj więcej na temat budowy domu</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <a href="/budowa/koszt-budowy-domu" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">
+              <h3 class="font-semibold text-zinc-700 mb-2">Koszt Budowy Domu - Kompletny Przewodnik</h3>
+              <p class="text-sm text-zinc-600">Kalkulator kosztów i szczegółowy przydział wydatków</p>
+            </a>
+            <a href="/budowa/bledy-przy-budowie" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">
+              <h3 class="font-semibold text-zinc-700 mb-2">10 Najczęstszych Błędów przy Budowie</h3>
+              <p class="text-sm text-zinc-600">Poznaj najczęstsze błędy i jak ich uniknąć</p>
+            </a>
+            <a href="/budowa/system-gospodarczy" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">
+              <h3 class="font-semibold text-zinc-700 mb-2">Budowa Systemem Gospodarczym</h3>
+              <p class="text-sm text-zinc-600">Oszczędzaj na kosztach - buduj systemem gospodarczym</p>
+            </a>
+            <a href="/budowa/koszt-120m2" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">
+              <h3 class="font-semibold text-zinc-700 mb-2">Koszt Budowy Domu 120 m²</h3>
+              <p class="text-sm text-zinc-600">Szczegółowy przydział kosztów dla domu 120 m²</p>
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="lg:col-span-1">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script>
+    // TOC generation and scroll tracking
+    document.addEventListener('DOMContentLoaded', () => {
+      const headings = document.querySelectorAll('article h2, article h3');
+      const tocNav = document.getElementById('tocNav');
+      
+      headings.forEach((heading, index) => {
+        if (!heading.id) heading.id = `heading-${index}`;
+        const link = document.createElement('a');
+        link.href = `#${heading.id}`;
+        link.className = `text-sm block py-1 px-2 rounded transition-colors ${
+          heading.tagName === 'H3' ? 'ml-3 text-zinc-600 hover:text-orange-500' : 'font-medium text-zinc-700 hover:text-orange-500'
+        }`;
+        link.textContent = heading.textContent;
+        tocNav?.appendChild(link);
+      });
+
+      // Progress bar on scroll
+      window.addEventListener('scroll', () => {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (window.scrollY / docHeight) * 100;
+        const progressBar = document.getElementById('progressBar');
+        if (progressBar) progressBar.style.width = scrollPercent + '%';
+      });
+    });
+
+    function calculateSchedule() {
+      const area = parseInt(document.getElementById('calcArea').value) || 120;
+      const foundation = document.getElementById('calcFoundation').value;
+      
+      let baseMonths = 12 + (area / 100) * 4;
+      let multiplier = foundation === 'plytaFundamentowa' ? 1.1 : foundation === 'stopyIzolowane' ? 1.0 : 0.95;
+      let totalMonths = Math.round(baseMonths * multiplier);
+      
+      document.getElementById('durationResult').textContent = (totalMonths - 2) + '-' + totalMonths + ' miesięcy';
+      document.getElementById('scheduleResult').classList.remove('hidden');
+    }
+  </script>
+</BaseLayout>
