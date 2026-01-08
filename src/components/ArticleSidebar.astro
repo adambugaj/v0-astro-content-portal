@@ -5,44 +5,50 @@ const defaultEditors = [
   {
     name: 'Dariusz Nowicki',
     title: 'Redaktor Naczelny',
-    image: '/images/dariusz-nowicki.jpg'
+    href: '/o-redakcji#dariusz-nowicki'
   },
   {
     name: 'Monika Zielińska',
     title: 'Zastępca Redaktora',
-    image: '/images/monika-zielinska.jpg'
+    href: '/o-redakcji#monika-zielinska'
   }
 ];
+
+const relatedArticles = {
+  budowa: [
+    { title: 'Najczęstsze błędy przy budowie', href: '/budowa/bledy-przy-budowie' },
+    { title: 'System gospodarczy budowy', href: '/budowa/system-gospodarczy' },
+    { title: 'Koszt budowy 120m²', href: '/budowa/koszt-120m2' },
+    { title: 'Koszt budowy 140m² z piwnicą', href: '/budowa/koszt-140m2-piwnica' }
+  ],
+  energia: [
+    { title: 'Instalacja fotowoltaiczna', href: '/energia/fotowoltaika' },
+    { title: 'Pomp ciepła - jak działają', href: '/energia/pompy-ciepla' },
+    { title: 'Kolektory słoneczne', href: '/energia/kolektory-sloneczne' }
+  ],
+  wnetrza: [
+    { title: 'Nowe trendy w aranżacji', href: '/wnetrza/trendy-2026' },
+    { title: 'Kolory tego sezonu', href: '/wnetrza/kolory' },
+    { title: 'Meble ergonomiczne', href: '/wnetrza/meble' }
+  ],
+  ogrod: [
+    { title: 'Rośliny do ogrodu', href: '/ogrod/rosliny' },
+    { title: 'Automatyczne podlewanie', href: '/ogrod/podlewanie' },
+    { title: 'Oświetlenie ogrodu', href: '/ogrod/oswietlenie' }
+  ]
+};
+
+// Detect category from URL
+const currentPath = Astro.url.pathname;
+const category = currentPath.split('/')[1];
+const articles = relatedArticles[category] || relatedArticles.budowa;
 
 const displayEditors = editors.length > 0 ? editors : defaultEditors;
 ---
 
 <aside class="space-y-6">
-  <!-- Editors Section -->
-  <div class="bg-white border border-stone-300 rounded-xl p-6 sticky top-20">
-    <h3 class="text-lg font-bold text-zinc-700 mb-4 border-b border-stone-300 pb-3">Redakcja</h3>
-    <div class="space-y-4">
-      {displayEditors.map((editor) => (
-        <div class="flex items-center gap-3">
-          <img 
-            src={editor.image || "/placeholder.svg"}
-            alt={editor.name}
-            class="w-12 h-12 rounded-full object-cover border-2 border-orange-500"
-          />
-          <div>
-            <p class="text-sm font-bold text-zinc-700">{editor.name}</p>
-            <p class="text-xs text-zinc-500">{editor.title}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-    <a href="/o-redakcji" class="block text-center text-sm text-orange-500 hover:text-orange-600 font-semibold mt-4 pt-3 border-t border-stone-300">
-      Poznaj całą redakcję →
-    </a>
-  </div>
-
   <!-- Table of Contents -->
-  <div class="bg-white border border-stone-300 rounded-xl p-6 sticky top-96">
+  <div class="bg-white border border-stone-300 rounded-xl p-6 sticky top-20">
     <h3 class="text-lg font-bold text-zinc-700 mb-4">Spis treści</h3>
     <nav id="toc-nav" class="space-y-2 text-sm">
       <!-- JavaScript will populate this -->
@@ -53,16 +59,40 @@ const displayEditors = editors.length > 0 ? editors : defaultEditors;
   <div class="bg-stone-50 border border-stone-300 rounded-xl p-6">
     <h3 class="text-lg font-bold text-zinc-700 mb-4">Powiązane artykuły</h3>
     <div class="space-y-3">
-      <a href="/budowa/bledy-przy-budowie" class="block text-sm text-zinc-700 hover:text-orange-500 font-medium transition-colors">
-        → Najczęstsze błędy przy budowie
-      </a>
-      <a href="/budowa/system-gospodarczy" class="block text-sm text-zinc-700 hover:text-orange-500 font-medium transition-colors">
-        → System gospodarczy budowy
-      </a>
-      <a href="/budowa/kalkulator-kosztow" class="block text-sm text-zinc-700 hover:text-orange-500 font-medium transition-colors">
-        → Kalkulatory kosztów
-      </a>
+      {articles.map((article) => (
+        <a href={article.href} class="block text-sm text-zinc-700 hover:text-orange-500 font-medium transition-colors">
+          → {article.title}
+        </a>
+      ))}
     </div>
+  </div>
+
+  <!-- Editors Section (Minimalist) -->
+  <div class="bg-white border border-stone-300 rounded-xl p-6">
+    <h3 class="text-lg font-bold text-zinc-700 mb-4 border-b border-stone-300 pb-3">Autorzy</h3>
+    <div class="space-y-3">
+      {displayEditors.map((editor) => (
+        <a href={editor.href} class="flex items-center gap-3 hover:opacity-75 transition-opacity">
+          {editor.name === 'Dariusz Nowicki' && (
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-zinc-600 to-zinc-800 flex items-center justify-center text-white text-xs font-bold">
+              DN
+            </div>
+          )}
+          {editor.name === 'Monika Zielińska' && (
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-xs font-bold">
+              MZ
+            </div>
+          )}
+          <div>
+            <p class="text-sm font-bold text-zinc-700">{editor.name}</p>
+            <p class="text-xs text-zinc-500">{editor.title}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+    <a href="/o-redakcji" class="block text-center text-xs text-orange-500 hover:text-orange-600 font-semibold mt-4 pt-3 border-t border-stone-300">
+      Poznaj całą redakcję →
+    </a>
   </div>
 </aside>
 
