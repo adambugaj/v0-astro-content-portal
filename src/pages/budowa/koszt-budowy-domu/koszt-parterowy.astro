@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+
+const title = 'Koszt budowy domu parterowego';
+const description = 'Wspierający artykuł: parterowy vs piętrowy.';
+const pillarUrl = '/budowa/koszt-budowy-domu/';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="flex gap-8 pt-8">
+    <main class="flex-1 prose">
+      <h1>{title}</h1>
+      <p>Różnice kosztowe między domem parterowym a innymi.</p>
+    </main>
+
+    <aside class="w-64">
+      <ArticleSidebar pillarUrl={pillarUrl} />
+    </aside>
+  </div>
+</BaseLayout>

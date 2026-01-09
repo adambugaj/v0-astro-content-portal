@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = 'Materiały budowlane — Pillar';
+const description = 'Informacje o materiałach i ich cenach.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="prose">
+    <h1>{title}</h1>
+    <p>Poradnik dotyczący wyboru i kosztów materiałów budowlanych.</p>
+    <ul>
+      <li><a href="/budowa/materialy-budowlane/cena-materialow/">Cena materiałów</a></li>
+    </ul>
+  </main>
+</BaseLayout>
