@@ -1,25 +1,4 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const title = 'Budowa — Kategoria';
-const description = 'Artykuły i przewodniki dotyczące budowy domów.';
----
-
-<BaseLayout title={title} description={description}>
-  <main class="prose">
-    <h1>{title}</h1>
-    <p>Przegląd podkategorii i artykułów związanych z budową.</p>
-
-    <ul>
-      <li><a href="/budowa/koszt-budowy-domu/">Koszt budowy domu (Pillar)</a></li>
-      <li><a href="/budowa/technologie-budowy/">Technologie budowy</a></li>
-      <li><a href="/budowa/formalnosci-budowlane/">Formalności budowlane</a></li>
-      <li><a href="/budowa/materialy-budowlane/">Materiały budowlane</a></li>
-      <li><a href="/budowa/etapy-budowy/">Etapy budowy</a></li>
-    </ul>
-  </main>
-</BaseLayout>
----
 import MainLayout from '../../layouts/MainLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -84,9 +63,8 @@ const articles = [
           Skorzystaj z naszych kalkulatorów i narzędzi, aby precyzyjnie oszacować koszty budowy 
           i przygotować się do procesu inwestycyjnego.
         </p>
-        <!-- Updated URL to remove 2026 suffix -->
         <a 
-          href="/budowa/koszt-budowy-domu" 
+          href="/budowa/koszt-budowy-domu/" 
           class="inline-block bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
         >
           Kalkulator Kosztów Budowy
