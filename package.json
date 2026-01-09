@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "postbuild": "node scripts/fix-sitemap.js",
+    "postbuild": "node scripts/fix-sitemap.cjs",
     "preview": "astro preview"
   },
   "dependencies": {

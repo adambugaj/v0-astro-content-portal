@@ -31,9 +31,8 @@ export default defineConfig({
         
         return item;
       },
-      xmlns: {
-        img: 'http://www.google.com/schemas/sitemap-image/1.1'
-      }
+      // If you need image namespace, add images via `serialize` return value.
+      // Removed unsupported `xmlns` key to avoid warnings from @astrojs/sitemap.
     })
   ],
   output: 'static',
