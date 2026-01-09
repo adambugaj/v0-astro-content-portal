@@ -8,9 +8,7 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date(),
+      // Default settings are applied per-item in `serialize` below.
       filter: (page) => {
         return !page.includes('/koszt-budowy-domu-2026') && 
                !page.includes('-2026') &&
@@ -18,21 +16,44 @@ export default defineConfig({
       },
       serialize: (item) => {
         const url = item.url.toLowerCase();
-        
-        if (url === 'https://domjakosci.pl/' || url === 'https://domjakosci.pl') {
-          item.priority = 1.0;
-        } else if (url.includes('/koszt-budowy-domu') || url.includes('/budowa-domu-krok')) {
-          item.priority = 0.95;
-        } else if (url.endsWith('/budowa/') || url.endsWith('/energia/') || url.endsWith('/wnetrza/') || url.endsWith('/ogrod/')) {
-          item.priority = 0.9;
-        } else if (url.includes('/budowa/') || url.includes('/energia/') || url.includes('/wnetrza/') || url.includes('/ogrod/')) {
-          item.priority = 0.8;
+        const siteRoot = 'https://domjakosci.pl/';
+
+        // Default values
+        let changefreq = 'monthly';
+        let priority = 0.7;
+        const categoryRoots = ['/budowa/', '/energia-oze/', '/wnetrza/', '/ogrod/'];
+
+        // Homepage: weekly, highest priority
+        if (url === siteRoot || url === 'https://domjakosci.pl') {
+          changefreq = 'weekly';
+          priority = 1.0;
         }
-        
-        return item;
-      },
-      // If you need image namespace, add images via `serialize` return value.
-      // Removed unsupported `xmlns` key to avoid warnings from @astrojs/sitemap.
+
+        // Category index pages: weekly
+        else if (categoryRoots.some(r => url.endsWith(r))) {
+          changefreq = 'weekly';
+          priority = 0.9;
+        }
+
+        // Pillar pages (main category articles): monthly, slightly higher priority
+        else if (url.includes('/koszt-budowy-domu/') || url.includes('/technologie-budowy/') || url.includes('/formalnosci-budowlane/') || url.includes('/materialy-budowlane/') || url.includes('/etapy-budowy/')) {
+          changefreq = 'monthly';
+          priority = 0.95;
+        }
+
+        // Supporting articles: monthly, standard priority
+        else if (url.includes('/budowa/') || url.includes('/energia/') || url.includes('/wnetrza/') || url.includes('/ogrod/')) {
+          changefreq = 'monthly';
+          priority = 0.8;
+        }
+
+        return {
+          ...item,
+          changefreq,
+          priority,
+          lastmod: item.lastmod || new Date()
+        };
+      }
     })
   ],
   output: 'static',
