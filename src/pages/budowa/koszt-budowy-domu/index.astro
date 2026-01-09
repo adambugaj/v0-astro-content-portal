@@ -133,6 +133,27 @@ const breadcrumbs = [
           </div>
         </section>
 
+        <!-- Checklist Section -->
+        <section id="checklist" class="py-12 mb-12">
+          <h2 class="text-3xl font-bold text-zinc-700 mb-8">Budowlana Checklist 2026</h2>
+          
+          <div class="bg-gradient-to-r from-orange-50 to-stone-50 rounded-xl p-6 mb-6 border border-orange-100">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center">
+                <span class="text-2xl font-bold text-white" id="checklist-progress-text">0%</span>
+              </div>
+              <div class="flex-1">
+                <p class="font-semibold text-zinc-900 mb-2">Postęp przygotowań</p>
+                <div class="w-full bg-stone-300 rounded-full h-2">
+                  <div id="checklist-progress-bar" class="bg-orange-500 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="checklist-instruction-msg" class="bg-blue-50 border border-blue-200 text-blue-700 p-4 rounded-lg mb-6">
+            Zaznacz co już masz gotowe w przygotowaniach do budowy
+          </div>
 
           <div id="checklist-success-msg" class="bg-green-50 border border-green-200 text-green-700 p-4 rounded-lg mb-6 hidden">
             Świetnie! Ukończyłeś wszystkie przygotowania. Jesteś gotowy do rozpoczęcia budowy!
