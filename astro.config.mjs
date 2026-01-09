@@ -23,40 +23,38 @@ export default defineConfig({
         let priority = 0.7;
         const categoryRoots = ['/budowa/', '/energia-oze/', '/wnetrza/', '/ogrod/'];
 
+        // Derive pathname parts to distinguish category index / pillar / supporting pages
+        const pathname = new URL(item.url).pathname;
+        const parts = pathname.split('/').filter(Boolean);
+
         // Homepage: weekly, highest priority
-        if (url === siteRoot || url === 'https://domjakosci.pl') {
+        if (pathname === '/' || url === siteRoot || url === 'https://domjakosci.pl') {
           changefreq = 'weekly';
           priority = 1.0;
         }
 
-        // Category index pages: weekly
-        else if (categoryRoots.some(r => url.endsWith(r))) {
-          changefreq = 'weekly';
-          priority = 0.9;
-        }
-
-        // Specific supporting pages with custom priority (user request)
-        else if (url.includes('/koszt-100m2/') || url.includes('/koszt-fundamentow/') || url.includes('/murowany-vs-szkielet/')) {
-          changefreq = 'monthly';
-          priority = 0.7;
-        }
-
-        // Formal pages (kontakt, o-redakcji, polityka-redakcyjna, wspolpraca)
-        else if (url.endsWith('/kontakt/') || url.endsWith('/o-redakcji/') || url.endsWith('/polityka-redakcyjna/') || url.endsWith('/wspolpraca/')) {
+        // Formal single pages (kontakt, o-redakcji, polityka-redakcyjna, wspolpraca)
+        else if (pathname === '/kontakt/' || pathname === '/o-redakcji/' || pathname === '/polityka-redakcyjna/' || pathname === '/wspolpraca/') {
           changefreq = 'monthly';
           priority = 0.6;
         }
 
-        // Pillar pages (main category articles): monthly, slightly higher priority
-        else if (url.includes('/koszt-budowy-domu/') || url.includes('/technologie-budowy/') || url.includes('/formalnosci-budowlane/') || url.includes('/materialy-budowlane/') || url.includes('/etapy-budowy/')) {
-          changefreq = 'monthly';
-          priority = 0.95;
+        // Category root index pages: weekly, pillar-level priority
+        else if (categoryRoots.some(r => pathname === r)) {
+          changefreq = 'weekly';
+          priority = 0.9;
         }
 
-        // Supporting articles: monthly, standard priority
-        else if (url.includes('/budowa/') || url.includes('/energia/') || url.includes('/wnetrza/') || url.includes('/ogrod/')) {
+        // Pillar pages (index.astro inside a category subfolder) -> depth 2
+        else if (parts.length === 2 && pathname.endsWith('/')) {
           changefreq = 'monthly';
-          priority = 0.8;
+          priority = 0.9;
+        }
+
+        // Supporting articles (all deeper subpages under categories) -> depth >=3
+        else if (parts.length >= 3) {
+          changefreq = 'monthly';
+          priority = 0.7;
         }
 
         return {
