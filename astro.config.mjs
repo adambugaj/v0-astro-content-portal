@@ -35,6 +35,18 @@ export default defineConfig({
           priority = 0.9;
         }
 
+        // Specific supporting pages with custom priority (user request)
+        else if (url.includes('/koszt-100m2/') || url.includes('/koszt-fundamentow/') || url.includes('/murowany-vs-szkielet/')) {
+          changefreq = 'monthly';
+          priority = 0.7;
+        }
+
+        // Formal pages (kontakt, o-redakcji, polityka-redakcyjna, wspolpraca)
+        else if (url.endsWith('/kontakt/') || url.endsWith('/o-redakcji/') || url.endsWith('/polityka-redakcyjna/') || url.endsWith('/wspolpraca/')) {
+          changefreq = 'monthly';
+          priority = 0.6;
+        }
+
         // Pillar pages (main category articles): monthly, slightly higher priority
         else if (url.includes('/koszt-budowy-domu/') || url.includes('/technologie-budowy/') || url.includes('/formalnosci-budowlane/') || url.includes('/materialy-budowlane/') || url.includes('/etapy-budowy/')) {
           changefreq = 'monthly';
