@@ -4,7 +4,7 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import ArticleSidebar from '../../../components/ArticleSidebar.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import BuildCalculator from '../../../components/BuildCalculator.jsx';
+import BuildCalculator from '../../../components/BuildCalculator.astro';
 
 const breadcrumbs = [
   { label: 'Strona główna', href: '/' },
@@ -115,7 +115,7 @@ const breadcrumbs = [
         </header>
 
         <!-- Kalkulator rebuilt as a hydrated React island for faster initial load -->
-        <BuildCalculator client:idle />
+        <BuildCalculator />
 
         <!-- Checklist Section (guided stepper + printable checklist) -->
         <section id="checklist" class="py-12 mb-12">
