@@ -114,8 +114,8 @@ const breadcrumbs = [
           </p>
         </header>
 
-        <!-- Kalkulator rebuilt as a hydrated React island for faster initial load -->
-        <BuildCalculator />
+        <!-- Kalkulator jako Astro Island (client:load) -->
+        <BuildCalculator client:load />
 
         <!-- Checklist Section (guided stepper + printable checklist) -->
         <section id="checklist" class="py-12 mb-12">
@@ -323,7 +323,7 @@ const breadcrumbs = [
     document.addEventListener('DOMContentLoaded', () => {
       const headings = document.querySelectorAll('article h2, article h3');
       const tocNav = document.getElementById('tocNav');
-      
+
       headings.forEach((heading, index) => {
         if (!heading.id) heading.id = `heading-${index}`;
         const link = document.createElement('a');
@@ -343,83 +343,6 @@ const breadcrumbs = [
         if (progressBar) progressBar.style.width = scrollPercent + '%';
       });
 
-      const calcArea = document.getElementById('calc-area');
-      const calcRange = document.getElementById('calc-area-range');
-      const calcGarage = document.getElementById('calc-garage');
-      const calcBtns = document.querySelectorAll('.calc-std-btn');
-      
-      const elTotal = document.getElementById('calc-result-total');
-      const elM2 = document.getElementById('calc-result-m2');
-      const elRaw = document.getElementById('calc-result-raw');
-      const elDev = document.getElementById('calc-result-dev');
-      const elKey = document.getElementById('calc-result-key');
-
-      let state = {
-        area: 120,
-        standard: 'standard',
-        garage: true
-      };
-
-      const RATES = {
-        'economic': 4200,
-        'standard': 5800,
-        'premium': 8500
-      };
-      const GARAGE_COST = 45000;
-
-      function formatCurrency(val) {
-        return new Intl.NumberFormat('pl-PL', {
-          style: 'currency', currency: 'PLN', maximumFractionDigits: 0
-        }).format(val);
-      }
-
-      function updateCalc() {
-        let base = state.area * RATES[state.standard];
-        if (state.garage) base += GARAGE_COST;
-        
-        if(elTotal) elTotal.innerText = formatCurrency(base);
-        if(elM2) elM2.innerText = formatCurrency(Math.round(base / state.area));
-        
-        if(elRaw) elRaw.innerText = formatCurrency(base * 0.35);
-        if(elDev) elDev.innerText = formatCurrency(base * 0.45);
-        if(elKey) elKey.innerText = formatCurrency(base * 0.20);
-      }
-
-      if(calcArea) {
-        calcArea.addEventListener('input', (e) => {
-          state.area = Number(e.target.value);
-          if(calcRange) calcRange.value = state.area;
-          updateCalc();
-        });
-      }
-      if(calcRange) {
-        calcRange.addEventListener('input', (e) => {
-          state.area = Number(e.target.value);
-          if(calcArea) calcArea.value = state.area;
-          updateCalc();
-        });
-      }
-      if(calcGarage) {
-        calcGarage.addEventListener('change', (e) => {
-          state.garage = e.target.checked;
-          updateCalc();
-        });
-      }
-      
-      calcBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          state.standard = btn.getAttribute('data-standard');
-          
-          calcBtns.forEach(b => {
-            b.classList.remove('bg-orange-500', 'text-white', 'border-orange-500', 'shadow-md');
-            b.classList.add('bg-white', 'text-zinc-600', 'border-stone-200');
-          });
-          btn.classList.remove('bg-white', 'text-zinc-600', 'border-stone-200');
-          btn.classList.add('bg-orange-500', 'text-white', 'border-orange-500', 'shadow-md');
-          
-          updateCalc();
-        });
-      });
 
       const checkboxes = document.querySelectorAll('.checklist-checkbox');
       const progressText = document.getElementById('checklist-progress-text');
