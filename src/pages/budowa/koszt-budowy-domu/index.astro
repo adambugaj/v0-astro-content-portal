@@ -25,12 +25,74 @@ const breadcrumbs = [
     <div id="progressBar" class="h-full bg-orange-500 transition-all duration-300" style="width: 0%"></div>
   </div>
 
-  <!-- Added sticky left sidebar with TOC -->
-  <div class="fixed left-0 top-20 hidden lg:block w-48 h-[calc(100vh-80px)] overflow-y-auto border-r border-stone-300 bg-stone-50 p-6">
-    <nav id="tocNav" class="space-y-2">
-      <p class="text-xs font-bold text-zinc-600 mb-4 uppercase">Spis treści</p>
-    </nav>
-  </div>
+  <!-- Structured Data: Article, FAQ, HowTo (calculator action) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu" },
+        "headline": "Koszt Budowy Domu 2026: Kompletny Przewodnik Inwestora",
+        "description": "Sprawdź aktualny koszt budowy domu w 2026 roku. Skorzystaj z kalkulatora budowlanego, checklisty i dowiedz się, jak zaplanować budżet.",
+        "author": { "@type": "Person", "name": "Dariusz Nowicki" },
+        "datePublished": "2026-01-12",
+        "dateModified": "2026-01-12"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Ile kosztuje budowa domu w 2026 roku?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Koszt budowy domu w 2026 roku wynosi średnio od 4200 do 8500 zł za m², w zależności od standardu wykończenia. Dom 120 m² w standardzie kosztuje około 696 000 zł bez garażu."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jakie są główne komponenty kosztu budowy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Koszt budowy dzieli się na trzy główne części: Roboty konstrukcyjne (ok. 35%), Roboty developerskie (ok. 45%) i Wykończenie (ok. 20%)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy można budować bez pozwolenia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Prawo budowlane zwykle wymaga pozwolenia. Budowa bez pozwolenia grozi sankcjami. Sprawdź lokalne przepisy dla wyjątków."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "HowTo",
+        "name": "Oblicz koszt budowy za pomocą kalkulatora",
+        "description": "Krótkie kroki do użycia kalkulatora kosztów budowy: wybierz region, technologię, powierzchnię i opcje dodatkowe.",
+        "step": [
+          { "@type": "HowToStep", "name": "Wprowadź powierzchnię domu (m²)" },
+          { "@type": "HowToStep", "name": "Wybierz region (Warszawa, Kraków, Poznań, mniejsze miasta)" },
+          { "@type": "HowToStep", "name": "Wybierz technologię (murowany, szkieletowy, modułowy)" },
+          { "@type": "HowToStep", "name": "Wybierz opcje dodatkowe (garaż, piwnica, OZE)" },
+          { "@type": "HowToStep", "name": "Odczytaj widełki kosztów i rozkład etapów" }
+        ],
+        "potentialAction": {
+          "@type": "Action",
+          "name": "Oblicz koszty w kalkulatorze",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://domjakosci.pl/budowa/koszt-budowy-domu#kalkulator"
+          }
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Left TOC removed for cleaner, wider layout on category pages -->
   
   <main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
     <Breadcrumbs items={breadcrumbs} />
@@ -51,174 +113,124 @@ const breadcrumbs = [
           </p>
         </header>
 
-        <!-- Complete new content from provided HTML -->
-        <section id="kalkulator" class="py-12 bg-stone-50 rounded-2xl p-8 mb-12 border border-stone-200">
-          <h2 class="text-3xl font-bold text-zinc-700 mb-8 text-center">Szacunkowy Kalkulator Budowy 2026</h2>
-          
-          <div class="bg-white rounded-2xl shadow-xl border border-stone-100 p-6 md:p-8">
-            <div class="grid md:grid-cols-2 gap-8">
-              <!-- Input Controls -->
-              <div class="space-y-6">
-                <div>
-                  <label for="calc-area" class="block text-sm font-medium text-zinc-700 mb-2">
-                    Powierzchnia użytkowa domu (m²)
-                  </label>
-                  <input 
-                    id="calc-area" 
-                    type="number" 
-                    min="35" 
-                    max="500" 
-                    value="120"
-                    class="w-full px-4 py-3 rounded-lg border border-stone-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all text-lg font-semibold text-zinc-900"
-                  />
-                  <input 
-                    id="calc-area-range" 
-                    type="range" 
-                    min="35" 
-                    max="300" 
-                    value="120"
-                    class="w-full mt-3 h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-orange-500"
-                  />
-                </div>
+        <!-- Kalkulator rebuilt as a hydrated React island for faster initial load -->
+        ---
+        import BuildCalculator from '../../../components/BuildCalculator.jsx';
+        ---
 
-                <div>
-                  <span class="block text-sm font-medium text-zinc-700 mb-2">Standard wykończenia</span>
-                  <div class="grid grid-cols-3 gap-2">
-                    <button type="button" data-standard="economic" class="calc-std-btn py-2 px-3 rounded-lg text-sm font-medium transition-all border bg-white text-zinc-600 border-stone-200 hover:bg-stone-50">
-                      Ekonomiczny
-                    </button>
-                    <button type="button" data-standard="standard" class="calc-std-btn py-2 px-3 rounded-lg text-sm font-medium transition-all border bg-orange-500 text-white border-orange-500 shadow-md">
-                      Standard
-                    </button>
-                    <button type="button" data-standard="premium" class="calc-std-btn py-2 px-3 rounded-lg text-sm font-medium transition-all border bg-white text-zinc-600 border-stone-200 hover:bg-stone-50">
-                      Premium
-                    </button>
-                  </div>
-                </div>
+        <BuildCalculator client:idle />
 
-                <label class="flex items-center gap-3 cursor-pointer">
-                  <input id="calc-garage" type="checkbox" checked class="w-5 h-5 rounded border-stone-300 text-orange-500" />
-                  <span class="text-sm font-medium text-zinc-700">Dodaj garaż (+45 000 zł)</span>
-                </label>
-              </div>
-
-              <!-- Results -->
-              <div class="bg-gradient-to-br from-orange-50 to-stone-50 rounded-xl p-6 border border-orange-100">
-                <div class="space-y-4">
-                  <div>
-                    <p class="text-sm text-zinc-600 mb-1">Koszt całkowity</p>
-                    <p id="calc-result-total" class="text-3xl font-bold text-orange-600">695 600 zł</p>
-                  </div>
-                  <div class="border-t border-orange-200 pt-4">
-                    <p class="text-sm text-zinc-600 mb-1">Koszt za m²</p>
-                    <p id="calc-result-m2" class="text-2xl font-bold text-zinc-700">5 797 zł</p>
-                  </div>
-                  <div class="border-t border-orange-200 pt-4 space-y-2">
-                    <div>
-                      <p class="text-xs text-zinc-600">Roboty raw (35%)</p>
-                      <p id="calc-result-raw" class="font-semibold text-zinc-700">243 460 zł</p>
-                    </div>
-                    <div>
-                      <p class="text-xs text-zinc-600">Roboty developerskie (45%)</p>
-                      <p id="calc-result-dev" class="font-semibold text-zinc-700">313 020 zł</p>
-                    </div>
-                    <div>
-                      <p class="text-xs text-zinc-600">Wykończenie (20%)</p>
-                      <p id="calc-result-key" class="font-semibold text-zinc-700">139 120 zł</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Checklist Section -->
+        <!-- Checklist Section (guided stepper + printable checklist) -->
         <section id="checklist" class="py-12 mb-12">
-          <h2 class="text-3xl font-bold text-zinc-700 mb-8">Budowlana Checklist 2026</h2>
-          
-          <div class="bg-gradient-to-r from-orange-50 to-stone-50 rounded-xl p-6 mb-6 border border-orange-100">
-            <div class="flex items-center gap-4">
-              <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center">
-                <span class="text-2xl font-bold text-white" id="checklist-progress-text">0%</span>
+          <h2 class="text-3xl font-bold text-zinc-700 mb-4">Krok po kroku — przewodnik budowy domu</h2>
+
+          <div class="flex items-center gap-4 mb-4">
+            <button id="guidedToggle" class="px-4 py-2 rounded-lg bg-orange-500 text-white">Tryb przewodnika</button>
+            <button id="printChecklist" class="px-4 py-2 rounded-lg border border-stone-300">Pobierz jako PDF</button>
+            <div class="ml-auto flex items-center gap-3">
+              <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+                <span class="text-lg font-bold text-white" id="checklist-progress-text">0%</span>
               </div>
-              <div class="flex-1">
-                <p class="font-semibold text-zinc-900 mb-2">Postęp przygotowań</p>
-                <div class="w-full bg-stone-300 rounded-full h-2">
-                  <div id="checklist-progress-bar" class="bg-orange-500 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
-                </div>
+              <div class="w-40 bg-stone-300 rounded-full h-2">
+                <div id="checklist-progress-bar" class="bg-orange-500 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
               </div>
             </div>
           </div>
 
           <div id="checklist-instruction-msg" class="bg-blue-50 border border-blue-200 text-blue-700 p-4 rounded-lg mb-6">
-            Zaznacz co już masz gotowe w przygotowaniach do budowy
+            Użyj trybu przewodnika, aby przejść krok po kroku lub zaznaczaj elementy ręcznie.
           </div>
 
           <div id="checklist-success-msg" class="bg-green-50 border border-green-200 text-green-700 p-4 rounded-lg mb-6 hidden">
-            Świetnie! Ukończyłeś wszystkie przygotowania. Jesteś gotowy do rozpoczęcia budowy!
+            Świetnie! Ukończyłeś wszystkie kroki. Możesz pobrać checklistę jako PDF.
           </div>
 
-          <div class="space-y-3">
+          <div class="space-y-3" id="checklist-list">
             <div class="checklist-item-container">
               <label class="flex items-start gap-3 cursor-pointer p-4 rounded-lg border border-stone-200 hover:bg-stone-50 transition-colors">
-                <input type="checkbox" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
+                <input type="checkbox" data-step="1" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
                 <span class="flex-1">
-                  <span class="block font-semibold text-zinc-700 checklist-label">Grunt zakupiony i dokumenty przygotowane</span>
-                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Upewnij się, że posiadasz aktualne dokumenty własności i pozwolenia</span>
+                  <span class="block font-semibold text-zinc-700 checklist-label">1. Zakup działki i sprawdzenie własności</span>
+                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Sprawdź plan miejscowy i dostęp do mediów.</span>
                 </span>
               </label>
             </div>
 
             <div class="checklist-item-container">
               <label class="flex items-start gap-3 cursor-pointer p-4 rounded-lg border border-stone-200 hover:bg-stone-50 transition-colors">
-                <input type="checkbox" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
+                <input type="checkbox" data-step="2" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
                 <span class="flex-1">
-                  <span class="block font-semibold text-zinc-700 checklist-label">Projekt architektoniczno-budowlany zatwierdony</span>
-                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Projekt musi być wpisany w rejestr projektów</span>
+                  <span class="block font-semibold text-zinc-700 checklist-label">2. Projekt architektoniczno-budowlany</span>
+                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Zamów projekt, sprawdź koszty adaptacji.</span>
                 </span>
               </label>
             </div>
 
             <div class="checklist-item-container">
               <label class="flex items-start gap-3 cursor-pointer p-4 rounded-lg border border-stone-200 hover:bg-stone-50 transition-colors">
-                <input type="checkbox" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
+                <input type="checkbox" data-step="3" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
                 <span class="flex-1">
-                  <span class="block font-semibold text-zinc-700 checklist-label">Pozwolenie na budowę wydane</span>
-                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Bez tego dokumentu nie możesz rozpocząć prace</span>
+                  <span class="block font-semibold text-zinc-700 checklist-label">3. Pozwolenia i formalności</span>
+                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Wniosek o pozwolenie, uzgodnienia z sieciami.</span>
                 </span>
               </label>
             </div>
 
             <div class="checklist-item-container">
               <label class="flex items-start gap-3 cursor-pointer p-4 rounded-lg border border-stone-200 hover:bg-stone-50 transition-colors">
-                <input type="checkbox" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
+                <input type="checkbox" data-step="4" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
                 <span class="flex-1">
-                  <span class="block font-semibold text-zinc-700 checklist-label">Budżet i finansowanie zatwierdzone</span>
-                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Miej zarezerwowane fundusze na wszystkie etapy</span>
+                  <span class="block font-semibold text-zinc-700 checklist-label">4. Fundamenty</span>
+                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Wykopy, zbrojenie, podstawowe izolacje.</span>
                 </span>
               </label>
             </div>
 
             <div class="checklist-item-container">
               <label class="flex items-start gap-3 cursor-pointer p-4 rounded-lg border border-stone-200 hover:bg-stone-50 transition-colors">
-                <input type="checkbox" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
+                <input type="checkbox" data-step="5" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
                 <span class="flex-1">
-                  <span class="block font-semibold text-zinc-700 checklist-label">Inżynier nadzoru budowy zatrudniony</span>
-                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Wymagany do nadzoru jakości i bezpieczeństwa</span>
+                  <span class="block font-semibold text-zinc-700 checklist-label">5. Ściany i konstrukcja</span>
+                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Wybierz technologię i sprawdź koszty materiałów.</span>
                 </span>
               </label>
             </div>
 
             <div class="checklist-item-container">
               <label class="flex items-start gap-3 cursor-pointer p-4 rounded-lg border border-stone-200 hover:bg-stone-50 transition-colors">
-                <input type="checkbox" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
+                <input type="checkbox" data-step="6" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
                 <span class="flex-1">
-                  <span class="block font-semibold text-zinc-700 checklist-label">Umowy z wykonawcami podpisane</span>
-                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Jasne warunki i harmonogram prac</span>
+                  <span class="block font-semibold text-zinc-700 checklist-label">6. Dach</span>
+                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Wybór pokrycia i wykonawcy, izolacje przeciwwilgociowe.</span>
                 </span>
               </label>
             </div>
+
+            <div class="checklist-item-container">
+              <label class="flex items-start gap-3 cursor-pointer p-4 rounded-lg border border-stone-200 hover:bg-stone-50 transition-colors">
+                <input type="checkbox" data-step="7" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
+                <span class="flex-1">
+                  <span class="block font-semibold text-zinc-700 checklist-label">7. Instalacje (elektryka, wod.-kan., OZE)</span>
+                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Zaplanować trasy, koszty i ewentualne dotacje OZE.</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="checklist-item-container">
+              <label class="flex items-start gap-3 cursor-pointer p-4 rounded-lg border border-stone-200 hover:bg-stone-50 transition-colors">
+                <input type="checkbox" data-step="8" class="checklist-checkbox w-5 h-5 rounded border-stone-300 text-orange-500 mt-1" />
+                <span class="flex-1">
+                  <span class="block font-semibold text-zinc-700 checklist-label">8. Wykończenie</span>
+                  <span class="checklist-tip text-xs text-zinc-500 mt-1 block">Podłogi, stolarka, malowanie — negocjuj pakiety z wykonawcami.</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div id="guided-controls" class="mt-4 hidden items-center gap-3">
+            <button id="prevStep" class="px-4 py-2 rounded-lg border">Poprzedni</button>
+            <button id="nextStep" class="px-4 py-2 rounded-lg bg-orange-500 text-white">Następny</button>
+            <div class="text-sm text-zinc-600 ml-4">Krok <span id="guidedCurrent">1</span> / <span id="guidedTotal">8</span></div>
           </div>
         </section>
 
@@ -417,6 +429,18 @@ const breadcrumbs = [
       const progressBar = document.getElementById('checklist-progress-bar');
       const successMsg = document.getElementById('checklist-success-msg');
       const instructMsg = document.getElementById('checklist-instruction-msg');
+      const guidedToggle = document.getElementById('guidedToggle');
+      const guidedControls = document.getElementById('guided-controls');
+      const prevStep = document.getElementById('prevStep');
+      const nextStep = document.getElementById('nextStep');
+      const guidedCurrent = document.getElementById('guidedCurrent');
+      const guidedTotal = document.getElementById('guidedTotal');
+      const printChecklist = document.getElementById('printChecklist');
+
+      let guidedMode = false;
+      let currentStep = 1;
+      const totalSteps = checkboxes.length;
+      if(guidedTotal) guidedTotal.innerText = totalSteps;
 
       function updateChecklist() {
         const total = checkboxes.length;
@@ -452,6 +476,85 @@ const breadcrumbs = [
           if(instructMsg) instructMsg.classList.remove('hidden');
         }
       }
+
+      // Guided mode: show one step at a time
+      function showGuidedStep(step) {
+        currentStep = Math.max(1, Math.min(step, totalSteps));
+        checkboxes.forEach(cb => {
+          const stepIndex = Number(cb.getAttribute('data-step')) || 0;
+          const container = cb.closest('.checklist-item-container');
+          if(stepIndex === currentStep) {
+            container.style.display = 'block';
+            container.scrollIntoView({behavior: 'smooth', block: 'center'});
+          } else {
+            container.style.display = 'none';
+          }
+        });
+        if(guidedCurrent) guidedCurrent.innerText = currentStep;
+      }
+
+      function enterGuided() {
+        guidedMode = true;
+        guidedControls.classList.remove('hidden');
+        guidedToggle.innerText = 'Wyjdź z trybu przewodnika';
+        showGuidedStep(1);
+      }
+
+      function exitGuided() {
+        guidedMode = false;
+        guidedControls.classList.add('hidden');
+        guidedToggle.innerText = 'Tryb przewodnika';
+        // show all items
+        checkboxes.forEach(cb => cb.closest('.checklist-item-container').style.display = 'block');
+      }
+
+      guidedToggle?.addEventListener('click', () => {
+        if(!guidedMode) enterGuided(); else exitGuided();
+      });
+
+      prevStep?.addEventListener('click', () => {
+        showGuidedStep(currentStep - 1);
+      });
+      nextStep?.addEventListener('click', () => {
+        // if current step checkbox exists, mark it as done when Next
+        const cb = document.querySelector(`.checklist-checkbox[data-step="${currentStep}"]`);
+        if(cb && !cb.checked) { cb.checked = true; cb.dispatchEvent(new Event('change')); }
+        showGuidedStep(currentStep + 1);
+      });
+
+      // Print / Download as PDF (use jsPDF to generate downloadable checklist)
+      async function generateChecklistPDF() {
+        // load jsPDF if needed
+        if (!window.jspdf) {
+          await new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+            s.onload = resolve; s.onerror = reject; document.head.appendChild(s);
+          });
+        }
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+        const title = document.querySelector('article h1')?.innerText || 'Checklist';
+        doc.setFontSize(16);
+        doc.text(title, 40, 50);
+        doc.setFontSize(11);
+        let y = 80;
+        checkboxes.forEach(cb => {
+          const label = cb.closest('.checklist-item-container').querySelector('.checklist-label').innerText.trim();
+          const status = cb.checked ? '✓' : '○';
+          const line = `${status} ${label}`;
+          const split = doc.splitTextToSize(line, 500);
+          doc.text(split, 40, y);
+          y += split.length * 14;
+          if (y > 740) { doc.addPage(); y = 40; }
+        });
+        doc.save('checklist-budowa.pdf');
+      }
+
+      printChecklist?.addEventListener('click', (e) => {
+        e.preventDefault();
+        generateChecklistPDF().catch(() => { window.print(); });
+      });
 
       checkboxes.forEach(cb => {
         cb.addEventListener('change', updateChecklist);
