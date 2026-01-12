@@ -1,21 +1,164 @@
----
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
 import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import BuildCalculator from '../../../components/BuildCalculator.astro';
 
-const title = 'Koszt budowy domu parterowego';
-const description = 'Wspierający artykuł: parterowy vs piętrowy.';
-const pillarUrl = '/budowa/koszt-budowy-domu/';
----
+const title = "Budowa domu parterowego (120 m²) koszt w 2026: Pełna analiza cen";
+const description = "Kompletny kosztorys budowy domu parterowego 120 m² w standardzie deweloperskim na rok 2026. Analiza stawek SSO, SSZ i deweloperskiego.";
+const author = 'Dariusz Nowicki';
 
-<BaseLayout title={title} description={description}>
-  <div class="flex gap-8 pt-8">
-    <main class="flex-1 prose">
-      <h1>{title}</h1>
-      <p>Różnice kosztowe między domem parterowym a innymi.</p>
-    </main>
+const breadcrumbs = [
+	{ label: 'Strona główna', href: '/' },
+	{ label: 'Budowa', href: '/budowa' },
+	{ label: 'Koszt Budowy Domu', href: '/budowa/koszt-budowy-domu' },
+	{ label: 'Budowa domu parterowego' }
+];
+<BaseLayout title={title} description={description} type="article" author={author}>
+	<Header />
 
-    <aside class="w-64">
-      <ArticleSidebar pillarUrl={pillarUrl} />
-    </aside>
-  </div>
+	<main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
+		<Breadcrumbs items={breadcrumbs} />
+
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<article class="lg:col-span-2">
+				<header class="mb-8">
+					<span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-sm font-semibold mb-4">Aktualizacja: Styczeń 2026</span>
+					<h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">Budowa domu parterowego (120 m²) koszt w 2026: Pełna analiza cen</h1>
+					<div class="flex items-center gap-4 mb-6">
+						<div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">DN</div>
+						<div>
+							<p class="font-semibold text-zinc-700">Dariusz Nowicki</p>
+							<p class="text-sm text-zinc-500">generated: 2026-01-12</p>
+						</div>
+					</div>
+					<p class="text-lg text-zinc-600">Kompletny kosztorys budowy domu parterowego 120 m² w standardzie deweloperskim na rok 2026. Analiza stawek SSO, SSZ i deweloperskiego.</p>
+				</header>
+
+				<section class="mb-8">
+					<h2 class="text-2xl font-bold text-zinc-700 mb-3">Wprowadzenie: Parterowy trend w 2026</h2>
+					<p class="text-zinc-600">Domy parterowe cieszą się niesłabnącą popularnością ze względu na ergonomię i brak schodów. W 2026 roku budowa parteru nie jest jednak zawsze tańsza — pokażemy dlaczego.</p>
+				</section>
+
+				<section class="mb-8">
+					<h2 class="text-2xl font-bold text-zinc-700 mb-3">Kalkulator Kosztów Budowy Parterowego 120 m²</h2>
+					<p class="text-zinc-600 mb-4">Wykorzystaj nasz interaktywny kalkulator, aby oszacować widełki kosztów dla Twojego regionu i wybranej technologii.</p>
+					<BuildCalculator client:load />
+				</section>
+
+				<section class="mb-8">
+					<h3 class="text-xl font-bold text-zinc-700 mb-3">I. Koszt za metr kwadratowy (m²) – Podstawa obliczeń 2026</h3>
+					<p class="text-zinc-600 mb-3">Podstawowe ceny za metr kwadratowy powierzchni użytkowej (PU) dla domu parterowego.</p>
+
+					<div class="overflow-x-auto mb-4">
+						<table class="w-full text-sm border-collapse">
+							<thead class="bg-stone-100 text-zinc-600"><tr>
+								<th class="p-2 text-left">Standard wykończenia</th>
+								<th class="p-2 text-left">Cena minimalna / m²</th>
+								<th class="p-2 text-left">Cena maksymalna / m²</th>
+								<th class="p-2 text-left">Uwagi</th>
+							</tr></thead>
+							<tbody>
+								<tr class="border-t"><td class="p-2">SSO (Stan Surowy Otwarty)</td><td class="p-2">2 500 zł/m²</td><td class="p-2">3 500 zł/m²</td><td class="p-2">Fundamenty, ściany, więźba dachowa</td></tr>
+								<tr class="border-t"><td class="p-2">SSZ (Stan Surowy Zamknięty)</td><td class="p-2">3 800 zł/m²</td><td class="p-2">5 500 zł/m²</td><td class="p-2">+ Okna, drzwi</td></tr>
+								<tr class="border-t"><td class="p-2">Deweloperski (SD)</td><td class="p-2 font-semibold">6 500 zł/m²</td><td class="p-2 font-semibold">8 500 zł/m²</td><td class="p-2">Instalacje, tynki, wylewki</td></tr>
+								<tr class="border-t"><td class="p-2">Pod Klucz</td><td class="p-2">8 500 zł/m²</td><td class="p-2">12 000 zł/m²</td><td class="p-2">Wykończenie wnętrz</td></tr>
+							</tbody>
+						</table>
+					</div>
+
+					<p class="text-sm text-zinc-500">Wniosek: Budowa parterowego domu 120 m² w stanie deweloperskim — orientacyjnie 800 000 zł - 1 020 000 zł (bez działki).</p>
+				</section>
+
+				<section class="mb-8">
+					<h3 class="text-xl font-bold text-zinc-700 mb-3">II. Szczegółowy kosztorys dla domu 120 m² (SD)</h3>
+					<p class="text-zinc-600 mb-3">Poniższe kwoty to uśrednione widełki dla domu parterowego 120 m² w standardzie deweloperskim.</p>
+
+					<h4 class="font-semibold mt-4">1. Stan Surowy Otwarty (SSO) – 35% całości</h4>
+					<div class="overflow-x-auto mb-4">
+						<table class="w-full text-sm border-collapse">
+							<thead class="bg-stone-100 text-zinc-600"><tr><th class="p-2">Element</th><th class="p-2">Udział %</th><th class="p-2">Koszt (Widełki 2026)</th><th class="p-2">Notatki</th></tr></thead>
+							<tbody>
+								<tr class="border-t"><td class="p-2">Robocizna fundamenty</td><td class="p-2">4%</td><td class="p-2">30 000 – 45 000 zł</td><td class="p-2">Duża płyta/ławy</td></tr>
+								<tr class="border-t"><td class="p-2">Materiały fundamenty</td><td class="p-2">6%</td><td class="p-2">45 000 – 65 000 zł</td><td class="p-2">Beton, stal, izolacje</td></tr>
+								<tr class="border-t"><td class="p-2">Ściany</td><td class="p-2">10%</td><td class="p-2">80 000 – 120 000 zł</td><td class="p-2">Murowane</td></tr>
+								<tr class="border-t"><td class="p-2">Konstrukcja i pokrycie dachu</td><td class="p-2">15%</td><td class="p-2">115 000 – 190 000 zł</td><td class="p-2">Najdroższy element parteru</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+
+				<section class="mb-8">
+					<h4 class="font-semibold">2. Stan Surowy Zamknięty (SSZ)</h4>
+					<p class="text-zinc-600 mb-3">Okna i drzwi tarasowe oraz drzwi wejściowe — koszty montażu.</p>
+					<ul class="list-disc pl-5 text-zinc-700 mb-4">
+						<li>Okna i drzwi tarasowe: 50 000 – 75 000 zł</li>
+						<li>Drzwi wejściowe i brama garażowa: 15 000 – 25 000 zł</li>
+						<li>Montaż: 10 000 – 20 000 zł</li>
+					</ul>
+				</section>
+
+				<section class="mb-8">
+					<h4 class="font-semibold">3. Roboty Deweloperskie – 55% całości</h4>
+					<div class="overflow-x-auto mb-4">
+						<table class="w-full text-sm border-collapse">
+							<thead class="bg-stone-100 text-zinc-600"><tr><th class="p-2">Element</th><th class="p-2">Koszt (Widełki 2026)</th></tr></thead>
+							<tbody>
+								<tr class="border-t"><td class="p-2">Izolacja i elewacja</td><td class="p-2">100 000 – 160 000 zł</td></tr>
+								<tr class="border-t"><td class="p-2">Instalacje elektryczne</td><td class="p-2">40 000 – 60 000 zł</td></tr>
+								<tr class="border-t"><td class="p-2">Instalacje hydrauliczne i CO</td><td class="p-2">80 000 – 140 000 zł</td></tr>
+								<tr class="border-t"><td class="p-2">Tynki i wylewki</td><td class="p-2">40 000 – 60 000 zł</td></tr>
+								<tr class="border-t"><td class="p-2">Przyłącza</td><td class="p-2">50 000 – 100 000 zł</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+
+				<section class="mb-8">
+					<h3 class="text-xl font-bold text-zinc-700 mb-3">III. Dodatki i opłaty</h3>
+					<ul class="list-disc pl-5 text-zinc-700">
+						<li>Garaż (jednostanowiskowy): 45 000 – 60 000 zł</li>
+						<li>Ogrzewanie pompą ciepła: +20 000 – 35 000 zł</li>
+						<li>Projekt i formalności: 15 000 – 30 000 zł</li>
+						<li>OZE (Fotowoltaika): 20 000 – 35 000 zł</li>
+					</ul>
+				</section>
+
+				<section class="mb-8">
+					<h3 class="text-xl font-bold text-zinc-700 mb-3">Podsumowanie i Strategie Oszczędności</h3>
+					<div class="overflow-x-auto mb-4">
+						<table class="w-full text-sm border-collapse">
+							<thead class="bg-stone-100 text-zinc-600"><tr><th class="p-2">Metoda oszczędności</th><th class="p-2">Oszczędność (Szacunek)</th><th class="p-2">Działanie</th></tr></thead>
+							<tbody>
+								<tr class="border-t"><td class="p-2">Optymalizacja projektu</td><td class="p-2">5% – 10%</td><td class="p-2">Wybór prostej bryły i dachu dwuspadowego</td></tr>
+								<tr class="border-t"><td class="p-2">Rezygnacja z garażu</td><td class="p-2">45 000 zł – 60 000 zł</td><td class="p-2">Budowa wiaty lub garażu wolnostojącego</td></tr>
+								<tr class="border-t"><td class="p-2">Wybór technologii</td><td class="p-2">5% – 15%</td><td class="p-2">Bloczki zamiast ceramiki</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<p class="text-sm text-zinc-500">Zalecenie: maksymalne uproszczenie konstrukcji dachu i minimalizacja obwodu budynku.</p>
+				</section>
+			</article>
+
+			<aside class="lg:col-span-1">
+				<ArticleSidebar />
+			</aside>
+		</div>
+	</main>
+
+	<Footer />
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Article",
+		"headline": "Budowa domu parterowego (120 m²) koszt w 2026: Pełna analiza cen",
+		"description": "Kompletny kosztorys budowy domu parterowego 120 m² w standardzie deweloperskim na rok 2026.",
+		"author": { "@type": "Person", "name": "Dariusz Nowicki" },
+		"datePublished": "2026-01-12",
+		"dateModified": "2026-01-12"
+	}
+	</script>
 </BaseLayout>
+

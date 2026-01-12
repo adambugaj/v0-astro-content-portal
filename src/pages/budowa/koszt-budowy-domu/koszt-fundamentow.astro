@@ -1,94 +1,103 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 
 const title = "Koszt fundamentów 2026 — płyta, ławy, czy śruby fundamentowe?";
 const description = "Ile kosztują fundamenty w 2026 roku? Porównanie rozwiązań: ławy, płyta fundamentowa, śruby. Szacunki i kiedy które wybrać.";
 const author = 'dr inż. Anna Kowalska';
+
+const breadcrumbs = [
+  { label: 'Strona główna', href: '/' },
+  { label: 'Budowa', href: '/budowa' },
+  { label: 'Koszt Budowy Domu', href: '/budowa/koszt-budowy-domu' },
+  { label: 'Koszt fundamentów' }
+];
 ---
 
 <BaseLayout title={title} description={description} type="article" author={author}>
-  <style>
-    .container { max-width: 800px; margin: 0 auto; padding: 20px; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
-    h1 { font-size: 2em; margin-bottom: 10px; }
-    .lead { color: #444; margin-bottom: 20px; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .card { border: 1px solid #e6e6e6; padding: 15px; border-radius: 8px; background: #fff; }
-    .table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-    .table th, .table td { border: 1px solid #ddd; padding: 8px; }
-    .table thead { background: #fafafa; }
-    .note { font-size: 0.95em; color: #666; }
-    @media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } }
-  </style>
+  <Header />
 
-  <article class="container">
-    <nav class="breadcrumbs" style="font-size:0.9em; color:#666; margin-bottom:12px;">
-      <a href="/">Strona główna</a> › <a href="/budowa">Budowa</a> › <a href="/budowa/koszt-budowy-domu">Koszt Budowy Domu</a> › <span>Koszt fundamentów</span>
-    </nav>
+  <main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
 
-    <header>
-      <h1>Koszt fundamentów 2026 — płyta, ławy, czy śruby fundamentowe?</h1>
-      <p class="lead">Fundamenty to podstawa — nie warto oszczędzać kosztem trwałości. Poniżej zebraliśmy aktualne (2026) przedziały cenowe oraz wskazówki wyboru technologii.</p>
-    </header>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <article class="lg:col-span-2">
+        <header class="mb-8">
+          <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-sm font-semibold mb-4">Aktualizacja: Wrzesień 2025</span>
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">Koszt fundamentów 2026 — płyta, ławy, czy śruby fundamentowe?</h1>
+          <p class="text-lg text-zinc-600">Fundamenty to podstawa — nie warto oszczędzać kosztem trwałości. Poniżej zebraliśmy aktualne (2026) przedziały cenowe oraz wskazówki wyboru technologii.</p>
+        </header>
 
-    <section>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Szacunkowe koszty</h3>
-          <table class="table">
-            <thead>
-              <tr><th>Typ fundamentów</th><th>Koszt (netto)</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Ławy fundamentowe</td><td>40 000 – 60 000 zł</td></tr>
-              <tr><td>Płyta fundamentowa</td><td>60 000 – 90 000 zł</td></tr>
-              <tr><td>Śruby fundamentowe (stelaże)</td><td>30 000 – 50 000 zł</td></tr>
-            </tbody>
-          </table>
-          <p class="note">Różnice wynikają z rodzaju gruntu, głębokości posadowienia i zakresu izolacji przeciwwodnej.</p>
-        </div>
+        <section class="mb-8">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="p-5 border rounded-lg bg-white">
+              <h3 class="font-semibold text-zinc-700 mb-3">Szacunkowe koszty</h3>
+              <table class="w-full text-sm border-collapse">
+                <thead class="bg-stone-100 text-zinc-600">
+                  <tr><th class="p-2 text-left">Typ fundamentów</th><th class="p-2 text-left">Koszt (netto)</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t"><td class="p-2">Ławy fundamentowe</td><td class="p-2">40 000 – 60 000 zł</td></tr>
+                  <tr class="border-t"><td class="p-2">Płyta fundamentowa</td><td class="p-2">60 000 – 90 000 zł</td></tr>
+                  <tr class="border-t"><td class="p-2">Śruby fundamentowe (stelaże)</td><td class="p-2">30 000 – 50 000 zł</td></tr>
+                </tbody>
+              </table>
+              <p class="text-sm text-zinc-500 mt-3">Różnice wynikają z rodzaju gruntu, głębokości posadowienia i zakresu izolacji przeciwwodnej.</p>
+            </div>
 
-        <div class="card">
-          <h3>Co wpływa na cenę?</h3>
-          <ul>
-            <li>Warunki gruntowe (poziom wód gruntowych, nośność)</li>
-            <li>Powierzchnia zabudowy i geometria ław</li>
-            <li>Wymagane izolacje i drenaż</li>
-            <li>Konieczność wymiany gruntu i nasypów</li>
+            <div class="p-5 border rounded-lg bg-white">
+              <h3 class="font-semibold text-zinc-700 mb-3">Co wpływa na cenę?</h3>
+              <ul class="list-disc pl-5 text-zinc-700">
+                <li>Warunki gruntowe (poziom wód gruntowych, nośność)</li>
+                <li>Powierzchnia zabudowy i geometria ław</li>
+                <li>Wymagane izolacje i drenaż</li>
+                <li>Konieczność wymiany gruntu i nasypów</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-3">Jak czytać te koszty?</h2>
+          <p class="text-zinc-600 mb-4">Podane przedziały to ceny zawierające roboty ziemne, zbrojenie, szalowanie i betonowanie. Nie obejmują kosztów projektowych ani przyłączy.</p>
+
+          <h3 class="text-xl font-semibold mb-3">Przykład wyceny dla domu 100m²</h3>
+          <p class="text-zinc-600 mb-4">Przy domu o obrysie 70 m² i średniej złożoności ław fundamentowych klasyczne ławy będą tańsze niż płyta, ale przy wysokim poziomie wód gruntowych płyta może okazać się bardziej opłacalna.</p>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <thead class="bg-stone-100 text-zinc-600"><tr><th class="p-2 text-left">Element</th><th class="p-2 text-left">Koszt</th></tr></thead>
+              <tbody>
+                <tr class="border-t"><td class="p-2">Roboty ziemne</td><td class="p-2">8 000 – 15 000 zł</td></tr>
+                <tr class="border-t"><td class="p-2">Beton i zbrojenie</td><td class="p-2">18 000 – 30 000 zł</td></tr>
+                <tr class="border-t"><td class="p-2">Izolacje</td><td class="p-2">5 000 – 10 000 zł</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-3">Rekomendacje</h2>
+          <ul class="list-disc pl-5 text-zinc-700">
+            <li>Na działkach z wysokim poziomem wody rozważ płytę fundamentową.</li>
+            <li>Gdy planujesz podpiwniczenie — zaplanuj koszt wykopu i zabezpieczeń.</li>
+            <li>Porównuj oferty wykonawców według kosztorysu szczegółowego.</li>
           </ul>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section style="margin-top:20px;">
-      <h2>Jak czytać te koszty?</h2>
-      <p>Podane przedziały to ceny zawierające roboty ziemne, zbrojenie, szalowanie i betonowanie. Nie obejmują kosztów projektowych ani przyłączy.</p>
+        <footer class="text-sm text-zinc-500 mt-6">Artykuł ma charakter informacyjny. Ceny orientacyjne na I półrocze 2026.</footer>
+      </article>
 
-      <h3>Przykład wyceny dla domu 100m²</h3>
-      <p>Przy domu o obrysie 70 m² i średniej złożoności ław fundamentowych klasyczne ławy będą tańsze niż płyta, ale przy wysokim poziomie wód gruntowych płyta może okazać się bardziej opłacalna.</p>
+      <aside class="lg:col-span-1">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
 
-      <table class="table">
-        <thead><tr><th>Element</th><th>Koszt</th></tr></thead>
-        <tbody>
-          <tr><td>Roboty ziemne</td><td>8 000 – 15 000 zł</td></tr>
-          <tr><td>Beton i zbrojenie</td><td>18 000 – 30 000 zł</td></tr>
-          <tr><td>Izolacje</td><td>5 000 – 10 000 zł</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section style="margin-top:20px;">
-      <h2>Rekomendacje</h2>
-      <ul>
-        <li>Na działkach z wysokim poziomem wody rozważ płytę fundamentową.</li>
-        <li>Gdy planujesz podpiwniczenie — zaplanuj koszt wykopu i zabezpieczeń.</li>
-        <li>Porównuj oferty wykonawców według kosztorysu szczegółowego.</li>
-      </ul>
-    </section>
-
-    <footer style="margin-top:30px;">
-      <p class="note">Artykuł ma charakter informacyjny. Ceny orientacyjne na I półrocze 2026.</p>
-    </footer>
-  </article>
+  <Footer />
 
   <script type="application/ld+json">
   {
