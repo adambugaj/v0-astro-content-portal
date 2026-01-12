@@ -1,21 +1,160 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
 import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import BuildCalculator from '../../../components/BuildCalculator.astro';
 
-const title = 'Koszt budowy domu z garażem';
-const description = 'Aspekty kosztowe dodania garażu do projektu.';
-const pillarUrl = '/budowa/koszt-budowy-domu/';
+const title = "Koszt budowy domu 150 m² z garażem w bryle w 2026 r.: Szczegółowy kosztorys";
+const description = "Kompletna analiza kosztów budowy domu jednorodzinnego (150 m² + garaż) w standardzie deweloperskim na 2026 rok. Sprawdź, ile kosztuje garaż w bryle.";
+const author = 'Dariusz Nowicki';
+
+const breadcrumbs = [
+  { label: 'Strona główna', href: '/' },
+  { label: 'Budowa', href: '/budowa' },
+  { label: 'Koszt Budowy Domu', href: '/budowa/koszt-budowy-domu' },
+  { label: 'Koszt z garażem' }
+];
+
 ---
 
-<BaseLayout title={title} description={description}>
-  <div class="flex gap-8 pt-8">
-    <main class="flex-1 prose">
-      <h1>{title}</h1>
-      <p>Informacje o kosztach konstrukcji i wykończenia garażu.</p>
-    </main>
+<BaseLayout title={title} description={description} type="article" author={author}>
+  <Header />
 
-    <aside class="w-64">
-      <ArticleSidebar pillarUrl={pillarUrl} />
-    </aside>
-  </div>
+  <main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <article class="lg:col-span-2">
+        <header class="mb-8">
+          <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-sm font-semibold mb-4">Aktualizacja: Styczeń 2026</span>
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">Koszt budowy domu 150 m² z garażem w bryle w 2026 r.: Szczegółowy kosztorys</h1>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">DN</div>
+            <div>
+              <p class="font-semibold text-zinc-700">Dariusz Nowicki</p>
+              <p class="text-sm text-zinc-500">generated: 2026-01-12</p>
+            </div>
+          </div>
+          <p class="text-lg text-zinc-600">Analiza kosztów budowy domu jednorodzinnego z garażem w bryle, z uwzględnieniem wpływu garażu na całkowity koszt inwestycji.</p>
+        </header>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-3">Wprowadzenie: Garaż w bryle – Luksus czy konieczność?</h2>
+          <p class="text-zinc-600">W 2026 roku garaż w bryle stał się powszechny. Poniższa analiza skupia się na kosztach i wpływie garażu na budżet inwestycji.</p>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-3">Kalkulator Kosztów Budowy (150 m² + Garaż)</h2>
+          <p class="text-zinc-600 mb-4">Użyj interaktywnego kalkulatora, by oszacować koszty dla wybranego regionu i technologii.</p>
+          <BuildCalculator client:load />
+        </section>
+
+        <section class="mb-8">
+          <h3 class="text-xl font-bold text-zinc-700 mb-3">I. Koszt za metr kwadratowy (m²) z uwzględnieniem garażu</h3>
+          <p class="text-zinc-600 mb-3">Wpływ garażu na uśredniony koszt m² (przykładowo 175 m² całkowitej powierzchni).</p>
+
+          <div class="overflow-x-auto mb-4">
+            <table class="w-full text-sm border-collapse">
+              <thead class="bg-stone-100 text-zinc-600"><tr><th class="p-2 text-left">Standard wykończenia</th><th class="p-2 text-left">Koszt m² (Dom)</th><th class="p-2 text-left">Koszt m² (Garaż)</th><th class="p-2 text-left">Uśredniony koszt m²</th></tr></thead>
+              <tbody>
+                <tr class="border-t"><td class="p-2">SSO</td><td class="p-2">3 200 zł/m²</td><td class="p-2">2 000 zł/m²</td><td class="p-2">ok. 3 000 zł/m²</td></tr>
+                <tr class="border-t"><td class="p-2">Deweloperski (SD)</td><td class="p-2 font-semibold">7 500 zł/m²</td><td class="p-2 font-semibold">5 000 zł/m²</td><td class="p-2 font-semibold">ok. 7 150 zł/m²</td></tr>
+                <tr class="border-t"><td class="p-2">Pod Klucz</td><td class="p-2">10 000 zł/m²</td><td class="p-2">6 500 zł/m²</td><td class="p-2">ok. 9 550 zł/m²</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-sm text-zinc-500">Szacunek: Budowa domu 150 m² PU + garażu 25 m² w SD: ~1 100 000 zł - 1 350 000 zł (bez działki).</p>
+        </section>
+
+        <section class="mb-8">
+          <h3 class="text-xl font-bold text-zinc-700 mb-3">II. Detaliczna analiza kosztów budowy domu z garażem (175 m² PU)</h3>
+          <p class="text-zinc-600 mb-3">Uśrednione widełki dla typowego projektu murowanego.</p>
+
+          <h4 class="font-semibold mt-4">1. Stan Surowy Otwarty (SSO) – ok. 32% całości</h4>
+          <div class="overflow-x-auto mb-4">
+            <table class="w-full text-sm border-collapse">
+              <thead class="bg-stone-100 text-zinc-600"><tr><th class="p-2">Element</th><th class="p-2">Udział %</th><th class="p-2">Koszt (Widełki 2026)</th><th class="p-2">Uwagi</th></tr></thead>
+              <tbody>
+                <tr class="border-t"><td class="p-2">Roboty ziemne i Fundamenty</td><td class="p-2">7%</td><td class="p-2">75 000 – 110 000 zł</td><td class="p-2">Większa płyta/ławy</td></tr>
+                <tr class="border-t"><td class="p-2">Ściany nośne i działowe</td><td class="p-2">12%</td><td class="p-2">130 000 – 190 000 zł</td><td class="p-2">W tym ściany garażu</td></tr>
+                <tr class="border-t"><td class="p-2">Stropy i schody</td><td class="p-2">7%</td><td class="p-2">70 000 – 105 000 zł</td><td class="p-2"> </td></tr>
+                <tr class="border-t"><td class="p-2">Konstrukcja i pokrycie dachu</td><td class="p-2">6%</td><td class="p-2">65 000 – 100 000 zł</td><td class="p-2">Zależne od kształtu dachu</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="mb-8">
+          <h4 class="font-semibold">2. Stan Surowy Zamknięty (SSZ) – ok. 15% całości</h4>
+          <ul class="list-disc pl-5 text-zinc-700 mb-4">
+            <li>Okna i drzwi tarasowe: 100 000 – 150 000 zł</li>
+            <li>Drzwi wejściowe: 10 000 – 15 000 zł</li>
+            <li class="font-semibold">Brama garażowa: 55 000 – 75 000 zł</li>
+          </ul>
+        </section>
+
+        <section class="mb-8">
+          <h4 class="font-semibold">3. Roboty Deweloperskie – ok. 53% całości</h4>
+          <div class="overflow-x-auto mb-4">
+            <table class="w-full text-sm border-collapse">
+              <thead class="bg-stone-100 text-zinc-600"><tr><th class="p-2">Element</th><th class="p-2">Koszt (Widełki 2026)</th></tr></thead>
+              <tbody>
+                <tr class="border-t"><td class="p-2">Instalacje (CO, wod-kan, wentylacja)</td><td class="p-2">130 000 – 210 000 zł</td></tr>
+                <tr class="border-t"><td class="p-2">Instalacja elektryczna i teletechniczna</td><td class="p-2">55 000 – 80 000 zł</td></tr>
+                <tr class="border-t"><td class="p-2">Ocieplenie i Elewacja</td><td class="p-2">160 000 – 250 000 zł</td></tr>
+                <tr class="border-t"><td class="p-2">Tynki, wylewki i podłogi</td><td class="p-2">110 000 – 160 000 zł</td></tr>
+                <tr class="border-t"><td class="p-2">Wykończenie garażu</td><td class="p-2">60 000 – 90 000 zł</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="mb-8">
+          <h3 class="text-xl font-bold text-zinc-700 mb-3">III. Czynniki Kluczowe dla kosztu garażu w bryle</h3>
+          <ol class="list-decimal pl-5 text-zinc-700">
+            <li>Fundament i ściana wspólna — lepsza izolacja i większa powierzchnia fundamentu.</li>
+            <li>Brama garażowa — koszt dużej bramy dwustanowiskowej z napędem.</li>
+            <li>Izolacja i wentylacja — wymagania specyficzne dla garażu.</li>
+            <li>Podwyższone ubezpieczenie — może wpłynąć na składkę.</li>
+          </ol>
+        </section>
+
+        <section class="mb-8">
+          <h3 class="text-xl font-bold text-zinc-700 mb-3">IV. Strategie Oszczędności</h3>
+          <div class="overflow-x-auto mb-4">
+            <table class="w-full text-sm border-collapse">
+              <thead class="bg-stone-100 text-zinc-600"><tr><th class="p-2">Obszar oszczędności</th><th class="p-2">Działanie</th><th class="p-2">Szacowany zysk</th></tr></thead>
+              <tbody>
+                <tr class="border-t"><td class="p-2">Bryła i dach</td><td class="p-2">Prosta bryła i dach dwuspadowy</td><td class="p-2">5% – 10%</td></tr>
+                <tr class="border-t"><td class="p-2">Garaż</td><td class="p-2">Wiatą lub garażem wolnostojącym</td><td class="p-2">60 000 – 100 000 zł</td></tr>
+                <tr class="border-t"><td class="p-2">Wykończenie elewacji</td><td class="p-2">Tynk strukturalny zamiast klinkieru</td><td class="p-2">15 000 – 25 000 zł</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm text-zinc-500">Zalecenie: optymalizacja dachu i rezygnacja z piwnicy dla największych oszczędności.</p>
+        </section>
+      </article>
+
+      <aside class="lg:col-span-1">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Koszt budowy domu 150 m² z garażem w bryle w 2026 r.: Szczegółowy kosztorys",
+    "description": "Kompletna analiza kosztów budowy domu jednorodzinnego (150 m² + garaż) w standardzie deweloperskim na 2026 rok.",
+    "author": { "@type": "Person", "name": "Dariusz Nowicki" },
+    "datePublished": "2026-01-12",
+    "dateModified": "2026-01-12"
+  }
+  </script>
 </BaseLayout>
