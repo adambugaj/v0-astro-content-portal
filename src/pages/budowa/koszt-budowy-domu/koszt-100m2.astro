@@ -1,248 +1,174 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 
 const title = "Koszt budowy domu 100m² z poddaszem w 2025/2026 r. | Realne Ceny";
-const description = "Ile realnie kosztuje budowa domu 100m2 z poddaszem? Analiza cen 2025/2026: stan surowy i deweloperski. Zobacz kosztorys krok po kroku.";
+const description = "Ile realnie kosztuje budowa domu 100m2 z poddaszem? Analiza cen 2025/2026: stan surowy i deweloperski.";
 const author = 'mgr inż. Marek Nowicki';
+
+const breadcrumbs = [
+  { label: 'Strona główna', href: '/' },
+  { label: 'Budowa', href: '/budowa' },
+  { label: 'Koszt Budowy Domu', href: '/budowa/koszt-budowy-domu' },
+  { label: 'Koszt 100m²' }
+];
 ---
 
 <BaseLayout title={title} description={description} type="article" author={author}>
-  <style>
-  :root { --primary-color: #e5601a; --secondary-color: #f7f7f7; }
-  .container { max-width: 800px; margin: 0 auto; padding: 20px; font-family: sans-serif; }
-  .breadcrumbs { font-size: 0.9em; color: #666; margin-bottom: 20px; }
-  .breadcrumbs a { color: var(--primary-color); text-decoration: none; }
-  h1 { color: #333; margin-top: 0; font-size: 2.2em; }
-  h2, h3, h4 { color: #444; margin-top: 30px; border-bottom: 2px solid #eee; padding-bottom: 5px; }
-  .author-box { display: flex; align-items: center; background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 20px; }
-  .author-img { background: var(--primary-color); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-weight: bold; margin-right: 15px; }
-  .author-name { font-weight: bold; margin: 0; }
-  .author-title, .verification-note { font-size: 0.85em; color: #666; margin: 0; }
-  .summary { background: #f0f8ff; padding: 15px; border-left: 5px solid #a0c0ff; margin-bottom: 30px; font-style: italic; }
-  .callout-box { padding: 20px; border-radius: 8px; margin-bottom: 30px; }
-  .primary { background: #fff3e0; border: 2px solid #ff9800; }
-  .secondary { background: #e0f7fa; border: 2px solid #00bcd4; }
-  .callout-text { font-weight: bold; color: #d65000; margin-top: 0; }
-  .cost-list { list-style: disc; padding-left: 20px; }
-  .cost-breakdown-table, .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-  .cost-breakdown-table th, .cost-breakdown-table td, .comparison-table th, .comparison-table td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-  .cost-breakdown-table thead, .comparison-table thead { background-color: #f2f2f2; }
-  .layer-diagram { display: flex; flex-direction: column; border: 1px solid #ccc; margin: 20px 0; }
-  .layer { padding: 10px; border-bottom: 1px solid #eee; }
-  .layer-1 { background: #607d8b; color: white; }
-  .layer-2 { background: #90caf9; }
-  .layer-3 { background: #ffcc80; }
-  .layer-4 { background: #90caf9; }
-  .layer-5 { background: #ffffff; }
-  .faq-item { border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 4px; }
-  .faq-item h4 { margin-top: 0; border: none; }
-  .premium-hook { background: var(--secondary-color); text-align: center; padding: 20px; border-radius: 8px; margin-top: 40px; border: 1px dashed #ccc; }
-  .cta-button { background: var(--primary-color); color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block; margin-top: 10px; font-weight: bold; }
-  .ugc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; list-style: none; padding-left: 0; }
-  .toc { background: #f9f9ff; border: 1px solid #ddd; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
-  .toc ul { list-style: none; padding-left: 0; }
-  .toc li { margin-bottom: 8px; }
-  .toc a { text-decoration: none; color: var(--primary-color); font-weight: 500; }
-  .toc a:hover { text-decoration: underline; }
-  @media (max-width: 600px) { h1 { font-size: 1.8em; } .ugc-grid { grid-template-columns: 1fr; } }
-  </style>
+  <Header />
 
-  <article class="container">
-  <nav class="breadcrumbs">
-    <a href="/">Strona Główna</a> &gt; <a href="/budowa">Budowa</a> &gt; <a href="/budowa/koszt-budowy-domu">Koszt Budowy Domu</a> &gt; <span>Koszt 100m2 z Poddaszem</span>
-  </nav>
+  <main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
 
-  <header>
-    <h1>Koszt budowy domu 100m² z poddaszem w 2025/2026 r. | Realne Ceny</h1>
-        
-    <div class="author-box">
-      <div class="author-img">MN</div>
-      <div class="author-info">
-        <p class="author-name">mgr inż. Marek Nowicki</p>
-        <p class="author-title">Specjalista ds. Technologii Budowlanych</p>
-        <p class="verification-note">Treść zweryfikowana: 12 stycznia 2026</p>
-      </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <article class="lg:col-span-2">
+        <header class="mb-8">
+          <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-sm font-semibold mb-4">Aktualizacja: Styczeń 2026</span>
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">Koszt budowy domu 100m² z poddaszem w 2025/2026 r. | Realne Ceny</h1>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">MN</div>
+            <div>
+              <p class="font-semibold text-zinc-700">mgr inż. Marek Nowicki</p>
+              <p class="text-sm text-zinc-500">Specjalista ds. Technologii Budowlanych — zweryfikowano: 12 stycznia 2026</p>
+            </div>
+          </div>
+          <p class="text-lg text-zinc-600">Planujesz budowę popularnej "setki" z poddaszem? To jeden z najbardziej ekonomicznych wyborów w 2026 roku. W tym artykule rozbijamy koszty na czynniki pierwsze.</p>
+        </header>
+
+        <section id="answer-first" class="mb-8">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-3">Szybka wycena: Ile kosztuje dom 100m² w 2026?</h2>
+          <div class="rounded-lg p-5 bg-orange-50 border border-orange-100">
+            <p class="font-semibold text-zinc-700 mb-2">SZACUNKOWY KOSZT (100 m² pow. użytkowej + poddasze):</p>
+            <ul class="list-disc pl-5 text-zinc-700">
+              <li>Stan Surowy Zamknięty (SSZ): 470 000 – 590 000 zł</li>
+              <li>Stan Deweloperski: 550 000 – 680 000 zł</li>
+              <li>Pod klucz (średni standard): ok. 750 000 – 950 000 zł</li>
+            </ul>
+            <p class="text-sm text-zinc-500 mt-2">Ceny brutto (8% VAT). Nie obejmują działki i przyłączy. Stan na I kwartał 2026.</p>
+          </div>
+        </section>
+
+        <section id="etapy-kosztowe" class="mb-8">
+          <h3 class="text-xl font-bold text-zinc-700 mb-3">Kosztorys krok po kroku (SSO, SSZ, Deweloperski)</h3>
+          <p class="text-zinc-600 mb-4">Poniższa tabela przedstawia uśrednione koszty dla domu o prostej bryle i dachu dwuspadowym.</p>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <thead class="bg-stone-100">
+                <tr class="text-left text-zinc-600">
+                  <th class="p-3">Etap Budowy</th>
+                  <th class="p-3">Zakres prac</th>
+                  <th class="p-3">Szacowany Koszt</th>
+                  <th class="p-3">Udział %</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t">
+                  <td class="p-3">Stan Zerowy</td>
+                  <td class="p-3">Fundamenty, izolacje, chudziak</td>
+                  <td class="p-3">70 000 – 90 000 zł</td>
+                  <td class="p-3">~15%</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3">Konstrukcja (SSO)</td>
+                  <td class="p-3">Ściany, stropy, więźba dachowa</td>
+                  <td class="p-3">220 000 – 260 000 zł</td>
+                  <td class="p-3">~40%</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3">Zamknięcie (SSZ)</td>
+                  <td class="p-3">Pokrycie dachu, okna, drzwi</td>
+                  <td class="p-3">180 000 – 240 000 zł</td>
+                  <td class="p-3">~35%</td>
+                </tr>
+                <tr class="border-t font-semibold">
+                  <td class="p-3" colspan="2">Razem SSZ</td>
+                  <td class="p-3">ok. 470 - 590 tys. zł</td>
+                  <td class="p-3">100%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="ssz" class="mb-8">
+          <h3 class="text-xl font-bold text-zinc-700 mb-3">Stan Surowy Zamknięty: Ściany i Dach</h3>
+          <p class="text-zinc-600">To tutaj generowane są największe koszty. W domu z poddaszem oszczędzasz na powierzchni dachu, ale płacisz za strop oraz schody wewnętrzne.</p>
+
+          <h4 class="mt-4 font-semibold">Kluczowe wydatki w tym etapie:</h4>
+          <ul class="grid md:grid-cols-2 gap-2 list-disc pl-5 text-zinc-700 mt-2">
+            <li> Dach (ok. 150 m² połaci): Więźba + dachówka ceramiczna — 80-100 tys. zł</li>
+            <li> Okna: 35-50 tys. zł</li>
+            <li> Ocieplenie poddasza: wełna mineralna / piana PUR</li>
+          </ul>
+        </section>
+
+        <section id="kalkulator" class="mb-8">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-3">Porównanie: Dom z poddaszem vs Parterowy</h2>
+          <p class="text-zinc-600 mb-4">Porównanie kosztów dla tej samej powierzchni użytkowej (100 m²).</p>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <thead class="bg-stone-100 text-zinc-600">
+                <tr>
+                  <th class="p-3">Kategoria</th>
+                  <th class="p-3">Dom z Poddaszem</th>
+                  <th class="p-3">Dom Parterowy</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t"><td class="p-3">Fundamenty</td><td class="p-3">Tańsze (mniejszy obrys)</td><td class="p-3">Droższe (duża płyta)</td></tr>
+                <tr class="border-t"><td class="p-3">Dach</td><td class="p-3">Tańszy (mniejsza powierzchnia)</td><td class="p-3">Droższy (rozłożysty)</td></tr>
+                <tr class="border-t"><td class="p-3">Strop</td><td class="p-3">Droższy (nośny)</td><td class="p-3">Tańszy (lekki)</td></tr>
+                <tr class="border-t"><td class="p-3">Schody</td><td class="p-3">Konieczne (15-20 tys. zł)</td><td class="p-3">Brak</td></tr>
+                <tr class="border-t font-semibold"><td class="p-3">Werdykt finansowy</td><td class="p-3">Zazwyczaj tańszy o ok. 10-15%</td><td class="p-3">Droższy w budowie</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="faq" class="mb-8">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">FAQ</h2>
+          <div class="space-y-4">
+            <div class="border rounded-lg overflow-hidden">
+              <div class="p-4 bg-stone-50"><p class="font-semibold">Czy zmieszczę się w 500 tys. zł pod klucz?</p></div>
+              <div class="p-4">W 2026 roku jest to trudne; 500 tys. zł wystarcza często jedynie na stan deweloperski.</div>
+            </div>
+            <div class="border rounded-lg overflow-hidden">
+              <div class="p-4 bg-stone-50"><p class="font-semibold">Ile kosztują okna dachowe?</p></div>
+              <div class="p-4">Okno dachowe 3-szybowe z montażem: 2500 - 3500 zł.</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="mt-8 p-6 border border-dashed rounded-lg bg-stone-50">
+          <p>Chcesz poznać całościowy obraz kosztów dla różnych metraży?</p>
+          <a href="/budowa/koszt-budowy-domu" class="inline-block mt-3 bg-orange-500 text-white px-4 py-2 rounded">Wróć do Głównego Przewodnika 2026</a>
+        </div>
+      </article>
+
+      <aside class="lg:col-span-1">
+        <ArticleSidebar />
+      </aside>
     </div>
+  </main>
 
-    <p class="summary">Planujesz budowę popularnej "setki" z poddaszem? To jeden z najbardziej ekonomicznych wyborów w 2026 roku. W tym artykule rozbijamy koszty na czynniki pierwsze i sprawdzamy, ile musisz przygotować na stan surowy, a ile na deweloperski, odnosząc się do ogólnych trendów z naszego <a href="/budowa/koszt-budowy-domu">Głównego Raportu o Kosztach Budowy</a>.</p>
-  </header>
-
-  <div class="toc">
-    <h2>Spis Treści</h2>
-    <ul>
-      <li><a href="#answer-first">Szybka wycena: Ile kosztuje dom 100m² w 2026?</a></li>
-      <li><a href="#etapy-kosztowe">Kosztorys krok po kroku (SSO, SSZ, Deweloperski)</a></li>
-      <li><a href="#stan-zerowy">Stan Zerowy: Fundamenty dla 100m²</a></li>
-      <li><a href="#ssz">Stan Surowy Zamknięty: Ściany i Dach</a></li>
-      <li><a href="#deweloperski">Wykończenie i Instalacje</a></li>
-      <li><a href="#kalkulator">Porównanie: Z poddaszem vs Parterowy</a></li>
-      <li><a href="#faq">FAQ</a></li>
-    </ul>
-  </div>
-
-  <article>
-    <section id="answer-first">
-      <h2>Szybka wycena: Ile kosztuje dom 100m² w 2026?</h2>
-      <div class="callout-box primary">
-        <p class="callout-text"><strong>SZACUNKOWY KOSZT (100 m² pow. użytkowej + poddasze):</strong></p>
-        <ul class="cost-list">
-          <li><strong>Stan Surowy Zamknięty (SSZ):</strong> 470 000 – 590 000 zł</li>
-          <li><strong>Stan Deweloperski:</strong> 550 000 – 680 000 zł</li>
-          <li><strong>Pod klucz (średni standard):</strong> ok. 750 000 – 950 000 zł</li>
-        </ul>
-        <p class="disclaimer">Ceny brutto (8% VAT). Nie obejmują działki i przyłączy. Stan na I kwartał 2026.</p>
-      </div>
-    </section>
-
-    <section id="etapy-kosztowe">
-      <h3>Kosztorys krok po kroku (SSO, SSZ, Deweloperski)</h3>
-      <p>Poniższa tabela przedstawia uśrednione koszty dla domu o prostej bryle i dachu dwuspadowym (najtańsza opcja).</p>
-
-      <table class="cost-breakdown-table">
-        <thead>
-          <tr>
-            <th>Etap Budowy</th>
-            <th>Zakres prac</th>
-            <th>Szacowany Koszt</th>
-            <th>Udział %</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Stan Zerowy</td>
-            <td>Fundamenty, izolacje, chudziak</td>
-            <td>70 000 – 90 000 zł</td>
-            <td>~15%</td>
-          </tr>
-          <tr>
-            <td>Konstrukcja (SSO)</td>
-            <td>Ściany, stropy, więźba dachowa</td>
-            <td>220 000 – 260 000 zł</td>
-            <td>~40%</td>
-          </tr>
-          <tr>
-            <td>Zamknięcie (SSZ)</td>
-            <td>Pokrycie dachu, okna, drzwi</td>
-            <td>180 000 – 240 000 zł</td>
-            <td>~35%</td>
-          </tr>
-          <tr>
-            <td colspan="2"><strong>Razem SSZ</strong></td>
-            <td><strong>ok. 470 - 590 tys. zł</strong></td>
-            <td><strong>100%</strong></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section id="stan-zerowy">
-      <h3>Stan Zerowy: Fundamenty dla 100m²</h3>
-      <p>Dla domu o powierzchni zabudowy ok. 70-80 m² (bo 100m² użytkowej rozkłada się na parter i poddasze), fundamenty są tańsze niż w domu parterowym. </p>
-      <ul>
-        <li>Koszt ław fundamentowych: ok. 40-50 tys. zł.</li>
-        <li>Koszt płyty fundamentowej: ok. 60-70 tys. zł.</li>
-      </ul>
-      <p>Więcej o wyborze technologii przeczytasz w artykule: <a href="/budowa/koszt-fundamentow">Koszt fundamentów 2026</a>.</p>
-    </section>
-
-    <section id="ssz">
-      <h3>Stan Surowy Zamknięty: Ściany i Dach</h3>
-      <p>To tutaj generowane są największe koszty. W domu z poddaszem oszczędzasz na powierzchni dachu (jest mniejsza niż w parterówce), ale płacisz za strop (np. Teriva lub monolityczny) oraz schody wewnętrzne.</p>
-            
-      <h4>Kluczowe wydatki w tym etapie:</h4>
-      <ul class="ugc-grid">
-        <li><strong>Dach (ok. 150 m² połaci):</strong> Więźba + dachówka ceramiczna to koszt rzędu 80-100 tys. zł z robocizną.</li>
-        <li><strong>Okna:</strong> Zestaw okien pionowych + 4-6 okien dachowych to wydatek ok. 35-50 tys. zł.</li>
-        <li><strong>Ocieplenie poddasza:</strong> Wymaga precyzji. Wełna mineralna (30 cm) lub piana PUR to standard w 2026 roku.</li>
-      </ul>
-    </section>
-
-    <section id="deweloperski">
-      <h3>Stan Deweloperski: Wykończenie i Instalacje</h3>
-      <p>Stan deweloperski oznacza, że dom jest ocieplony, ma wylewki, tynki i działające instalacje. </p>
-      <p><strong>Koszt m² powierzchni użytkowej w standardzie deweloperskim waha się od 5500 zł do 6800 zł.</strong> Wpływ na cenę ma rodzaj ogrzewania (pompa ciepła podnosi koszt startowy o ok. 40 tys. zł, ale obniża rachunki) oraz standard elewacji.</p>
-
-      <div class="layer-diagram">
-        <div class="layer layer-1">Dachówka / Blacha na rąbek</div>
-        <div class="layer layer-2">Łaty i Kontrłaty</div>
-        <div class="layer layer-3">Membrana wysokoparoprzepuszczalna</div>
-        <div class="layer layer-4">Izolacja termiczna (między krokwiami)</div>
-        <div class="layer layer-5">Zabudowa G-K (Poddasze)</div>
-      </div>
-    </section>
-
-    <section id="kalkulator">
-      <h2>Porównanie: Dom z poddaszem vs Parterowy</h2>
-      <p>Wiele osób waha się między tymi dwoma typami. Zobacz porównanie kosztów dla tej samej powierzchni użytkowej (100 m²):</p>
-            
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>Kategoria</th>
-            <th>Dom z Poddaszem</th>
-            <th>Dom Parterowy</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Fundamenty</td>
-            <td>Tańsze (mniejszy obrys)</td>
-            <td>Droższe (duża płyta)</td>
-          </tr>
-          <tr>
-            <td>Dach</td>
-            <td>Tańszy (mniejsza powierzchnia)</td>
-            <td>Droższy (rozłożysty)</td>
-          </tr>
-          <tr>
-            <td>Strop</td>
-            <td>Droższy (nośny)</td>
-            <td>Tańszy (lekki, drewniany)</td>
-          </tr>
-          <tr>
-            <td>Schody</td>
-            <td>Konieczne (ok. 15-20 tys. zł)</td>
-            <td>Brak</td>
-          </tr>
-          <tr>
-            <td><strong>Werdykt finansowy</strong></td>
-            <td><strong>Zazwyczaj tańszy o ok. 10-15%</strong></td>
-            <td><strong>Droższy w budowie</strong></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section id="faq">
-      <h2>FAQ</h2>
-      <div class="faq-item">
-        <h4>Czy zmieszczę się w 500 tys. zł pod klucz?</h4>
-        <p>W 2026 roku jest to niezwykle trudne. 500 tys. zł to budżet pozwalający na doprowadzenie domu 100m² do stanu deweloperskiego (często systemem gospodarczym), ale nie pod klucz.</p>
-      </div>
-      <div class="faq-item">
-        <h4>Ile kosztują okna dachowe?</h4>
-        <p>Dobrej klasy okno dachowe 3-szybowe z kołnierzem to koszt ok. 2500 - 3500 zł za sztukę z montażem.</p>
-      </div>
-    </section>
-
-    <div class="premium-hook">
-      <p>Chcesz poznać całościowy obraz kosztów dla różnych metraży?</p>
-      <a href="/budowa/koszt-budowy-domu" class="cta-button">Wróć do Głównego Przewodnika 2026</a>
-    </div>
-  </article>
-  </article>
+  <Footer />
 
   <script type="application/ld+json">
   {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://domjakosci.pl/budowa/koszt-100m2" },
-  "headline": "Koszt budowy domu 100m² z poddaszem w 2025/2026 r.",
-  "description": "Ile realnie kosztuje budowa domu 100m2 z poddaszem? Sprawdź kosztorys 2026.",
-  "image": "https://domjakosci.pl/images/koszt-100m2-poddasze.jpg",
-  "author": { "@type": "Person", "name": "mgr inż. Marek Nowicki" },
-  "datePublished": "2025-03-01",
-  "dateModified": "2026-01-12"
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://domjakosci.pl/budowa/koszt-100m2" },
+    "headline": "Koszt budowy domu 100m² z poddaszem w 2025/2026 r.",
+    "description": "Ile realnie kosztuje budowa domu 100m2 z poddaszem? Sprawdź kosztorys 2026.",
+    "image": "https://domjakosci.pl/images/koszt-100m2-poddasze.jpg",
+    "author": { "@type": "Person", "name": "mgr inż. Marek Nowicki" },
+    "datePublished": "2025-03-01",
+    "dateModified": "2026-01-12"
   }
   </script>
 </BaseLayout>

@@ -69,15 +69,35 @@
     </div>
   </div>
 
-  <script type="module">
+    <script type="module">
     // Calculator logic (no frameworks)
     const REGIONS = { 'Warszawa': 1.15, 'Kraków': 1.08, 'Poznań': 1.03, 'Mniejsze miasta': 0.92 };
-    const TECH_BASE = { murowany: { min: 4500, max: 7000 }, szkieletowy: { min: 3800, max: 5800 }, 'modułowy': { min: 3200, max: 5200 } };
+    const TECH_BASE = { 
+      murowany: { min: 5200, max: 8000 },
+      szkieletowy: { min: 4600, max: 6800 },
+      'modułowy': { min: 4000, max: 6000 }
+    };
     const STAGES = [ { key: 'raw', label: 'Roboty konstrukcyjne', pct: 0.35 }, { key: 'dev', label: 'Roboty developerskie', pct: 0.45 }, { key: 'finish', label: 'Wykończenie', pct: 0.20 } ];
+    // NOWY KOD (Zwiększone wartości Q1-Q3 2026)
     const QUARTER_DATA = {
-      murowany: { Warszawa: [5200,5400,5600], Kraków:[4900,5100,5300], Poznań:[4700,4900,5050], 'Mniejsze miasta':[4200,4350,4500] },
-      szkieletowy: { Warszawa:[4400,4550,4700], Kraków:[4200,4350,4480], Poznań:[4000,4150,4300], 'Mniejsze miasta':[3600,3750,3880] },
-      'modułowy': { Warszawa:[3800,3950,4100], Kraków:[3600,3750,3880], Poznań:[3450,3580,3700], 'Mniejsze miasta':[3200,3320,3450] }
+    murowany: { 
+      Warszawa: [6100, 6400, 6700],
+      Kraków: [5800, 6100, 6400],
+      Poznań: [5600, 5850, 6100],
+      'Mniejsze miasta': [5200, 5450, 5700]
+    },
+    szkieletowy: { 
+      Warszawa: [5500, 5800, 6100],
+      Kraków: [5200, 5450, 5700],
+      Poznań: [5000, 5250, 5500],
+      'Mniejsze miasta': [4600, 4850, 5100]
+    },
+    'modułowy': { 
+      Warszawa: [4800, 5050, 5300],
+      Kraków: [4600, 4850, 5100],
+      Poznań: [4400, 4650, 4900],
+      'Mniejsze miasta': [4000, 4200, 4400]
+    }
     };
 
     const elArea = document.getElementById('bc-area');
