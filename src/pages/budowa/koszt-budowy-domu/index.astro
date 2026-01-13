@@ -68,6 +68,31 @@ const breadcrumbs = [
               "text": "Prawo budowlane zwykle wymaga pozwolenia. Budowa bez pozwolenia grozi sankcjami. Sprawdź lokalne przepisy dla wyjątków."
             }
           }
+          ,
+          {
+            "@type": "Question",
+            "name": "Czy koszt 1 m² jest nadal aktualny?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ceny zmieniają się dynamicznie — podawane widełki są aktualne na dzień publikacji, ale warto sprawdzić lokalne oferty wykonawców i ceny materiałów przy planowaniu budżetu."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Co najbardziej podnosi koszt budowy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Największy wpływ mają standard wykończenia, skomplikowana bryła, dodatkowe instalacje (OZE) oraz koszt robocizny i transport materiałów."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy system gospodarczy się opłaca?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "System gospodarczy może obniżyć koszty przez samodzielne wykonanie części prac, ale wymaga czasu, wiedzy i ryzyka — opłacalność zależy od Twoich umiejętności i dostępności wykonawców."
+            }
+          }
         ]
       },
       {
@@ -120,6 +145,18 @@ const breadcrumbs = [
 
         <!-- Kalkulator jako Astro Island (client:load) -->
         <BuildCalculator client:load />
+
+        <!-- Scenarios section: Wybierz swój scenariusz budowy domu -->
+        <section id="scenarios" class="py-12 mb-12">
+          <h2 class="text-3xl font-bold text-zinc-700 mb-4">Wybierz swój scenariusz budowy domu</h2>
+          <p class="text-zinc-600 mb-6">Każdy dom to inny budżet. Sprawdź szczegółowe analizy kosztów dla najczęstszych wariantów:</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <a href="/budowa/koszt-budowy-domu/koszt-z-garazem" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">→ Koszt budowy domu z garażem w bryle</a>
+            <a href="/budowa/koszt-budowy-domu/koszt-parterowy" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">→ Koszt budowy domu parterowego</a>
+            <a href="/budowa/koszt-budowy-domu/koszt-100m2" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">→ Koszt budowy domu 100 m²</a>
+            <a href="/budowa/koszt-budowy-domu/koszt-fundamentow" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">→ Koszt fundamentów domu jednorodzinnego</a>
+          </div>
+        </section>
 
         <!-- Checklist Section (guided stepper + printable checklist) -->
         <section id="checklist" class="py-12 mb-12">
@@ -283,6 +320,48 @@ const breadcrumbs = [
               <div class="max-h-0 overflow-hidden opacity-0 transition-all duration-300">
                 <div class="p-6 bg-white border-t border-stone-200">
                   <p class="text-zinc-600">Prawo budowlane wymaga pozwolenia na budowę dla domów jednorodzinnych. Budowa bez pozwolenia grozi karami finansowymi i nakazem rozbiórki. Istnieją wyjątki dla małych garaży i obiektów gospodarczych - sprawdź przepisy dla Twojej gminy.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="border border-stone-200 rounded-lg overflow-hidden">
+              <button type="button" class="faq-toggle w-full text-left p-6 bg-stone-50 hover:bg-stone-100 transition-colors flex items-center justify-between" aria-expanded="false">
+                <span class="font-semibold text-zinc-700">Czy koszt 1 m² jest nadal aktualny?</span>
+                <svg class="icon-transform w-5 h-5 text-zinc-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </button>
+              <div class="max-h-0 overflow-hidden opacity-0 transition-all duration-300">
+                <div class="p-6 bg-white border-t border-stone-200">
+                  <p class="text-zinc-600">Ceny zmieniają się dynamicznie — podawane widełki są aktualne na dzień publikacji, ale warto sprawdzić lokalne oferty wykonawców i ceny materiałów przy planowaniu budżetu.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="border border-stone-200 rounded-lg overflow-hidden">
+              <button type="button" class="faq-toggle w-full text-left p-6 bg-stone-50 hover:bg-stone-100 transition-colors flex items-center justify-between" aria-expanded="false">
+                <span class="font-semibold text-zinc-700">Co najbardziej podnosi koszt budowy?</span>
+                <svg class="icon-transform w-5 h-5 text-zinc-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </button>
+              <div class="max-h-0 overflow-hidden opacity-0 transition-all duration-300">
+                <div class="p-6 bg-white border-t border-stone-200">
+                  <p class="text-zinc-600">Największy wpływ mają standard wykończenia, skomplikowana bryła, dodatkowe instalacje (OZE) oraz koszt robocizny i transport materiałów.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="border border-stone-200 rounded-lg overflow-hidden">
+              <button type="button" class="faq-toggle w-full text-left p-6 bg-stone-50 hover:bg-stone-100 transition-colors flex items-center justify-between" aria-expanded="false">
+                <span class="font-semibold text-zinc-700">Czy system gospodarczy się opłaca?</span>
+                <svg class="icon-transform w-5 h-5 text-zinc-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </button>
+              <div class="max-h-0 overflow-hidden opacity-0 transition-all duration-300">
+                <div class="p-6 bg-white border-t border-stone-200">
+                  <p class="text-zinc-600">System gospodarczy może obniżyć koszty przez samodzielne wykonanie części prac, ale wymaga czasu, wiedzy i ryzyka — opłacalność zależy od Twoich umiejętności i dostępności wykonawców.</p>
                 </div>
               </div>
             </div>
