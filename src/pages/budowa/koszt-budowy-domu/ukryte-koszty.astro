@@ -1,0 +1,232 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Ukryte koszty budowy domu 2026 – czego nie powie Ci kosztorys?";
+const description = "Poznaj ukryte koszty budowy domu, które mogą zwiększyć budżet o 20%. Od przyłączy po zmiany w projekcie – sprawdź, ile rezerwy musisz przygotować.";
+const author = 'mgr inż. Marek Nowicki';
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Ukryte koszty' }
+];
+---
+
+<BaseLayout title={title} description={description} type="article" author={author}>
+  <Header />
+
+  <main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <article class="lg:col-span-2">
+        <header class="mb-8">
+          <span class="inline-block py-1 px-3 rounded-full bg-red-100 text-red-600 text-sm font-semibold mb-4">Raport: Pułapki Budżetowe</span>
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">Ukryte koszty budowy domu – wydatki, które zaskakują inwestorów</h1>
+          
+          <blockquote class="border-l-4 border-orange-500 pl-4 py-2 bg-stone-50 text-sm text-zinc-600 mb-6 italic text-balance">
+            Dane aktualizowane na podstawie realnych realizacji z IV kwartału 2025 r. Analiza uwzględnia wzrost cen usług geodezyjnych oraz opłat urzędowych w 2026 r.
+          </blockquote>
+
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">MN</div>
+            <div>
+              <p class="font-semibold text-zinc-700">{author}</p>
+              <p class="text-sm text-zinc-500">Kierownik budowy / Konsultant kosztowy</p>
+            </div>
+          </div>
+        </header>
+
+        <nav class="bg-stone-50 p-6 rounded-xl mb-8 border border-stone-200 text-balance">
+          <p class="font-bold text-zinc-700 mb-3 text-lg">W tym artykule:</p>
+          <ul class="space-y-2 text-orange-600 underline">
+            <li><a href="#answer-first">Ile naprawdę kosztują „niespodzianki”?</a></li>
+            <li><a href="#segmentacja">Dla kogo ten poradnik? (Intencje)</a></li>
+            <li><a href="#nie-ma-w-kosztorysie">Koszty, których nie ma w kosztorysie</a></li>
+            <li><a href="#dokumentacja">Dokumentacja i formalności</a></li>
+            <li><a href="#przylacza">Przyłącza i infrastruktura</a></li>
+            <li><a href="#zmiany">Zmiany w trakcie budowy</a></li>
+            <li><a href="#rezerwa">Rezerwa budżetowa – ile powinna wynosić?</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <section id="answer-first" class="mb-10 text-balance">
+          <div class="rounded-lg p-6 bg-orange-50 border-l-4 border-orange-500">
+            <h2 class="text-xl font-bold text-zinc-700 mb-2 text-balance">Szybka odpowiedź: Ile doliczyć do budżetu?</h2>
+            <p class="text-zinc-700 leading-relaxed">
+              W 2026 roku tzw. ukryte koszty budowy stanowią średnio <strong>15% – 25%</strong> całkowitej wartości inwestycji. Jeśli Twój kosztorys deweloperski opiewa na 600 000 zł, powinieneś posiadać dodatkowe <strong>90 000 – 150 000 zł</strong> na wydatki „okołobudowlane”, takie jak przyłącza, ogrodzenie, nadzór oraz zmiany projektowe.
+            </p>
+          </div>
+        </section>
+
+        <section id="segmentacja" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Dla kogo ukryte koszty są najgroźniejsze?</h2>
+          <div class="grid md:grid-cols-2 gap-4 text-sm text-balance">
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">🏦 Kredytobiorcy</p>
+              <p>Największe ryzyko. Brak ujęcia ukrytych kosztów w operacie może oznaczać konieczność finansowania ich z drogich kredytów gotówkowych.</p>
+            </div>
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">👷 Budujący systemem gospodarczym</p>
+              <p>Ryzykują błędy w zamówieniach materiałów i koszty poprawek, które często przewyższają oszczędności na robociźnie.</p>
+            </div>
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">🌳 Właściciele działek poza miastem</p>
+              <p>Mogą zostać zaskoczeni kosztem dociągnięcia mediów (nawet 50-80 tys. zł), jeśli sieć jest oddalona o kilkadziesiąt metrów.</p>
+            </div>
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">⏱️ Inwestorzy pod presją czasu</p>
+              <p>Koszty „ekspresowych” terminów u podwykonawców w 2026 r. to dopłaty rzędu 20-30% do standardowych stawek.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="my-10 p-8 bg-zinc-50 rounded-xl flex flex-col items-center justify-center border border-zinc-200">
+            <svg class="w-24 h-24 text-red-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <p class="text-sm font-semibold text-zinc-500 italic text-center">Grafika: Struktura wydatków ukrytych (Urzędy vs Logistyka vs Zmiany)</p>
+        </div>
+
+        <section id="nie-ma-w-kosztorysie" class="mb-10 text-balance">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Koszty, których nie ma w kosztorysie</h2>
+          <p class="text-zinc-600 mb-4">Standardowe kosztorysy skupiają się na ścianach i dachu. Zapominają o:</p>
+          <ul class="list-disc pl-5 text-zinc-700 space-y-2">
+            <li><strong>Zaplecze budowy:</strong> Kontener na narzędzia, wynajem toalety (TOI-TOI), ogrodzenie tymczasowe (ok. 5-8 tys. zł na start).</li>
+            <li><strong>Zarządzanie odpadami:</strong> Kontenery na gruz i wywóz śmieci pobudowlanych. W 2026 r. opłaty środowiskowe wzrosły o ok. 15%.</li>
+            <li><strong>Kierownik budowy:</strong> Jego rola to nie tylko podpis, ale nadzór. Koszt: 4 000 – 10 000 zł za całą inwestycję.</li>
+          </ul>
+        </section>
+
+        <section id="dokumentacja" class="mb-10 text-balance">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Dokumentacja i formalności</h2>
+          <p class="text-zinc-600 mb-4">Biurokracja kosztuje czas i pieniądze. Zanim wbijesz łopatę, wydasz:</p>
+          <div class="bg-zinc-50 p-4 border rounded-lg">
+            <ul class="space-y-2 text-sm">
+                <li class="flex justify-between border-b pb-1"><span>Mapa do celów projektowych:</span> <strong>1 200 – 1 800 zł</strong></li>
+                <li class="flex justify-between border-b pb-1"><span>Badania geotechniczne gruntu:</span> <strong>1 500 – 2 500 zł</strong></li>
+                <li class="flex justify-between border-b pb-1"><span>Adaptacja projektu gotowego:</span> <strong>4 000 – 8 000 zł</strong></li>
+                <li class="flex justify-between font-bold"><span>SUMA STARTOWA:</span> <span>ok. 12 000 zł+</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="przylacza" class="mb-10 text-balance">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Przyłącza i infrastruktura</h2>
+          <p class="text-zinc-600 mb-4">To tutaj budżety pękają najczęściej. W 2026 r. ceny materiałów instalacyjnych stabilizują się, ale koszty robocizny w miastach pozostają wysokie.</p>
+          <ul class="space-y-4 text-zinc-700">
+            <li class="p-4 border-l-4 border-blue-400 bg-blue-50">
+                <strong>Woda i kanalizacja:</strong> Jeśli nie ma ich w drodze, studnia głębinowa i szambo (lub oczyszczalnia) to koszt <strong>25 000 – 40 000 zł</strong>.
+            </li>
+            <li class="p-4 border-l-4 border-yellow-400 bg-yellow-50">
+                <strong>Prąd (Złącze ZK):</strong> Opłata przyłączeniowa jest stała, ale wykonanie wewnętrznej linii zasilającej (WLZ) może kosztować kilka tysięcy złotych.
+            </li>
+          </ul>
+        </section>
+
+        <section id="zmiany" class="mb-10 text-balance">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Zmiany w trakcie budowy</h2>
+          <p class="text-zinc-600">„Skoro już robimy, to zróbmy to lepiej”. To zdanie generuje największe ukryte koszty. Przesunięcie ścianki działowej, dodanie gniazdek czy zmiana standardu okien na energooszczędne to często decyzje podejmowane pod wpływem impulsu na budowie. Każda taka zmiana to ok. 2-5 tys. zł dopłaty dla ekipy.</p>
+          <p class="mt-4 text-sm italic">Wskazówka: Przeczytaj o tym, jak <a href="/budowa/koszt-budowy-domu/koszt-pod-klucz/" class="text-orange-600 underline">wykończenie pod klucz</a> może pomóc zamknąć budżet w ryzach.</p>
+        </section>
+
+        <section id="rezerwa" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Rezerwa budżetowa – ile powinna wynosić?</h2>
+          <p class="text-zinc-600 mb-6 text-balance">Nasz zespół ekspertów zaleca następujące marginesy bezpieczeństwa dla inwestycji w 2026 roku:</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+            <div class="p-4 bg-stone-100 rounded-lg">
+                <p class="text-xs uppercase text-zinc-500">Bezpiecznie</p>
+                <p class="text-2xl font-bold text-zinc-800">20%</p>
+                <p class="text-xs">Zalecane dla kredytobiorców</p>
+            </div>
+            <div class="p-4 bg-stone-100 rounded-lg">
+                <p class="text-xs uppercase text-zinc-500">Ryzykownie</p>
+                <p class="text-2xl font-bold text-zinc-800">10%</p>
+                <p class="text-xs">Tylko przy stałej cenie za całość</p>
+            </div>
+            <div class="p-4 bg-stone-100 rounded-lg">
+                <p class="text-xs uppercase text-zinc-500">Inwestorsko</p>
+                <p class="text-2xl font-bold text-zinc-800">15%</p>
+                <p class="text-xs">Dla domów pod wynajem</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="mt-10 p-6 bg-white border-2 border-orange-200 rounded-xl shadow-sm">
+            <p class="font-semibold text-zinc-800">Chcesz uniknąć finansowych niespodzianek?</p>
+            <p class="text-sm text-zinc-600 mb-4 text-balance">Zobacz nasz główny kalkulator kosztów, który uwzględnia większość pozycji „ukrytych”:</p>
+            <a href="/budowa/koszt-budowy-domu/" class="inline-block bg-orange-500 text-white px-6 py-2 rounded-lg font-bold hover:bg-orange-600 transition-colors">
+                Pełny Przewodnik Kosztów 2026
+            </a>
+        </div>
+
+        <section id="faq" class="my-12">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">FAQ – Ukryte koszty</h2>
+          <div class="space-y-4">
+            {[ 
+              {q: "Jaki jest najczęściej pomijany koszt w budżecie?", a: "Zagospodarowanie terenu i ogrodzenie. Inwestorzy skupiają się na budynku, zapominając, że utwardzenie podjazdu i ogrodzenie to wydatek rzędu 40-70 tys. zł."},
+              {q: "Czy ceny materiałów w 2026 r. są stabilne?", a: "Stawki za materiały bazowe (beton, ceramika) są przewidywalne, ale logistyka i transport podrożały o ok. 10% ze względu na opłaty drogowe."},
+              {q: "Ile kosztuje geodeta w całym procesie?", a: "Łącznie ok. 3 000 – 5 000 zł (mapa do celów projektowych, tyczenie budynku, inwentaryzacja powykonawcza)."},
+              {q: "Czy warto dopłacić za nadzór inwestorski?", a: "Tak. Dobry nadzór wykryje błędy ekip na etapie, gdy ich naprawa kosztuje grosze. Późniejsze poprawki to najdroższy koszt ukryty."},
+              {q: "O ile droższa jest budowa na trudnym gruncie?", a: "Wymiana gruntu lub palowanie może podnieść koszt fundamentów o 30 000 – 100 000 zł. To absolutnie kluczowy koszt do sprawdzenia przed zakupem działki."}
+            ].map((item) => (
+              <div class="border rounded-lg overflow-hidden">
+                <div class="p-4 bg-stone-50 font-semibold text-zinc-700">{item.q}</div>
+                <div class="p-4 text-zinc-600 text-balance">{item.a}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </article>
+
+      <aside class="lg:col-span-1">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" is:inline>
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/ukryte-koszty/" },
+      "headline": "Ukryte koszty budowy domu – jak nie przekroczyć budżetu w 2026 r.?",
+      "description": "Lista wydatków, które zaskakują na budowie. Dowiedz się, ile kosztują formalności, przyłącza i zmiany w projekcie.",
+      "image": "https://domjakosci.pl/images/ukryte-koszty-budowy-2026.jpg",
+      "author": { "@type": "Person", "name": "Marek Nowicki" },
+      "datePublished": "2026-01-10",
+      "dateModified": "2026-01-13"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Jaki jest najczęściej pomijany koszt w budżecie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zagospodarowanie terenu i ogrodzenie. Inwestorzy skupiają się na budynku, zapominając, że utwardzenie podjazdu i ogrodzenie to wydatek rzędu 40-70 tys. zł."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ile kosztuje geodeta w całym procesie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Łącznie ok. 3 000 – 5 000 zł obejmujące mapę, tyczenie oraz inwentaryzację powykonawczą."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+</BaseLayout>

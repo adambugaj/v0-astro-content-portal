@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Dom parterowy czy piętrowy – który jest tańszy w budowie w 2026 roku?";
+const description = "Porównanie kosztów budowy domu parterowego i piętrowego w 2026 r. Analiza fundamentów, dachu i stropów. Sprawdź, co opłaca się bardziej przy danej działce.";
+const author = 'mgr inż. Marek Nowicki';
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Parterowy vs piętrowy' }
+];
+---
+
+<BaseLayout title={title} description={description} type="article" author={author}>
+  <Header />
+
+  <main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <article class="lg:col-span-2">
+        <header class="mb-8">
+          <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-sm font-semibold mb-4">Analiza Trendów: 2026</span>
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">{title}</h1>
+          
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">MN</div>
+            <div>
+              <p class="font-semibold text-zinc-700">{author}</p>
+              <p class="text-sm text-zinc-500">Ekspert ds. kosztorysowania — aktualizacja: 13 stycznia 2026</p>
+            </div>
+          </div>
+        </header>
+
+        <nav class="bg-stone-50 p-6 rounded-xl mb-8 border border-stone-200">
+          <p class="font-bold text-zinc-700 mb-3 text-lg">W tym artykule:</p>
+          <ul class="space-y-2 text-orange-600 underline text-balance">
+            <li><a href="#answer-first">Szybka odpowiedź: Co jest tańsze?</a></li>
+            <li><a href="#roznice-konstrukcyjne">Różnice konstrukcyjne wpływające na koszt</a></li>
+            <li><a href="#koszt-parterowy">Koszt budowy domu parterowego</a></li>
+            <li><a href="#koszt-pietrowy">Koszt budowy domu piętrowego</a></li>
+            <li><a href="#fundamenty-dach-stropy">Fundamenty, dach, stropy – największe różnice</a></li>
+            <li><a href="#eksploatacja">Koszty eksploatacji w długim terminie</a></li>
+            <li><a href="#kiedy-nie-sie-oplaca">Kiedy parterowy się nie opłaca?</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <section id="answer-first" class="mb-10">
+          <div class="rounded-lg p-6 bg-orange-50 border-l-4 border-orange-500">
+            <h2 class="text-xl font-bold text-zinc-700 mb-2">Szybka odpowiedź: Parterowy czy piętrowy?</h2>
+            <p class="text-zinc-700 leading-relaxed">
+              W 2026 roku, przy zachowaniu tego samego metrażu (np. 120 m²), <strong>dom piętrowy jest zazwyczaj o 10-15% tańszy w budowie</strong> niż dom parterowy. Wynika to z mniejszej powierzchni fundamentów oraz dachu, które są najdroższymi elementami stanu surowego. Dom parterowy wygrywa jedynie przy bardzo małych metrażach (do 80-90 m²) lub w systemie gospodarczym.
+            </p>
+          </div>
+        </section>
+
+        <section id="roznice-konstrukcyjne" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Różnice konstrukcyjne wpływające na koszt</h2>
+          <p class="text-zinc-600 mb-4">
+            Główna różnica wynika z <strong>rozłożenia powierzchni</strong>. Dom parterowy wymaga dwa razy większego wykopu i dachu niż dom piętrowy o tej samej powierzchni użytkowej. Z kolei dom piętrowy generuje koszty związane ze stropem o wysokiej nośności, schodami oraz droższymi pracami na wysokościach (rusztowania).
+          </p>
+        </section>
+
+        <section id="koszt-parterowy" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Koszt budowy domu parterowego</h2>
+          <p class="text-zinc-600 mb-4">W 2026 roku średni koszt budowy domu parterowego 120 m² w standardzie deweloperskim to <strong>780 000 – 950 000 zł</strong>. Największym obciążeniem jest tu rozłożysta bryła.</p>
+          <div class="bg-zinc-50 p-4 border-l-4 border-zinc-400 italic text-sm mb-4">
+            "W przypadku parterówki każda próba powiększenia salonu o 10 m² wiąże się z automatycznym zwiększeniem kosztu fundamentów i połaci dachu dokładnie o tę samą wartość."
+          </div>
+        </section>
+
+        <section id="koszt-pietrowy" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Koszt budowy domu piętrowego</h2>
+          <p class="text-zinc-600 mb-4">Budowa domu piętrowego (lub z poddaszem użytkowym) o powierzchni 120 m² to koszt rzędu <strong>690 000 – 820 000 zł</strong>. Oszczędności na dachu i fundamentach pokrywają z nawiązką koszt schodów i stropu betonowego.</p>
+        </section>
+
+        <section id="fundamenty-dach-stropy" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Fundamenty, dach, stropy – gdzie są największe różnice</h2>
+          <div class="overflow-x-auto mb-6 text-balance">
+            <table class="w-full text-sm border-collapse border border-zinc-200">
+              <thead class="bg-stone-100 text-zinc-700">
+                <tr>
+                  <th class="p-3 border border-zinc-200">Element</th>
+                  <th class="p-3 border border-zinc-200">Dom Parterowy (120 m²)</th>
+                  <th class="p-3 border border-zinc-200">Dom Piętrowy (120 m²)</th>
+                </tr>
+              </thead>
+              <tbody class="text-zinc-600">
+                <tr class="border-t">
+                  <td class="p-3 font-semibold">Fundamenty</td>
+                  <td class="p-3">Wysoki koszt (ok. 100-130 tys. zł)</td>
+                  <td class="p-3">Niski koszt (ok. 60-80 tys. zł)</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold">Dach</td>
+                  <td class="p-3">Bardzo drogi (duża powierzchnia)</td>
+                  <td class="p-3">Tańszy (mniejsza powierzchnia)</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold">Strop</td>
+                  <td class="p-3">Często lekki, tańszy (drewniany)</td>
+                  <td class="p-3">Drogi, gęstożebrowy lub lany</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold">Schody</td>
+                  <td class="p-3">0 zł (brak)</td>
+                  <td class="p-3">15 - 35 tys. zł (z wykończeniem)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm text-zinc-500 italic">Sprawdź szczegółowy <a href="/budowa/koszt-budowy-domu/koszt-fundamentow/" class="text-orange-600 underline">koszt fundamentów</a> w zależności od rodzaju gruntu.</p>
+        </section>
+
+        <section id="eksploatacja" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Koszty eksploatacji w długim terminie</h2>
+          <p class="text-zinc-600">
+            Dom piętrowy jest naturalnie <strong>cieplejszy</strong> (ciepło ucieka do góry, dogrzewając sypialnie na piętrze). Dom parterowy ma większą powierzchnię przegród zewnętrznych (ścian i dachu), przez które ucieka energia, co w 2026 roku przy rosnących cenach energii ma kluczowe znaczenie dla rachunków za pompę ciepła.
+          </p>
+        </section>
+
+        <section id="kiedy-nie-sie-oplaca" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Kiedy parterowy się nie opłaca?</h2>
+          <ul class="list-disc pl-5 text-zinc-700 space-y-3">
+            <li><strong>Mała działka:</strong> Dom parterowy zajmie większość terenu, nie zostawiając miejsca na ogród.</li>
+            <li><strong>Pochyły teren:</strong> Koszt wyrównania terenu pod dużą powierzchnię parterówki jest drastycznie wyższy niż pod zwartą bryłę piętra.</li>
+            <li><strong>Wysoki poziom wód gruntowych:</strong> Duża powierzchnia fundamentów zwiększa ryzyko i koszty hydroizolacji (zobacz porównanie: <a href="/budowa/koszt-budowy-domu/bez-piwnicy-vs-z-piwnica/" class="text-orange-600 underline">dom bez piwnicy vs z piwnicą</a>).</li>
+          </ul>
+        </section>
+
+        <section id="quiz" class="mb-10 p-6 bg-zinc-100 rounded-2xl border-2 border-dashed border-zinc-300">
+          <h3 class="text-xl font-bold text-zinc-700 mb-4 text-center">Decyzja: Parter czy Piętro?</h3>
+          <div class="space-y-3">
+            <p class="text-zinc-600"><strong>1. Masz działkę mniejszą niż 800m²?</strong> (TAK = wybierz Piętrowy)</p>
+            <p class="text-zinc-600"><strong>2. Budujesz dla rodziny 2+2?</strong> (TAK = Piętrowy daje lepszy podział stref)</p>
+            <p class="text-zinc-600"><strong>3. Planujesz budowę w standardzie pasywnym?</strong> (TAK = Piętrowy jest łatwiejszy do izolacji)</p>
+          </div>
+        </section>
+
+        <section id="faq" class="mb-10 text-balance">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">FAQ</h2>
+          <div class="space-y-4">
+            {[ 
+              {q: "Czy dom z poddaszem jest tańszy od domu z pełnym piętrem?", a: "Zazwyczaj tak, ze względu na mniejszą powierzchnię ścian zewnętrznych i elewacji, jednak koszt wykończenia skosów może tę różnicę zniwelować."},
+              {q: "Czy w domu parterowym można zrezygnować ze stropu betonowego?", a: "Tak, to jedna z największych oszczędności w parterówkach. Można zastosować wiązary dachowe, które pełnią rolę konstrukcji dachu i sufitu podwieszanego."},
+              {q: "O ile droższy jest dach w domu parterowym?", a: "Dla tej samej powierzchni użytkowej domu, dach w parterówce jest zazwyczaj o 80-100% większy, co generuje koszt o ok. 40-70 tys. zł wyższy."},
+              {q: "Który dom buduje się szybciej?", a: "Dom parterowy. Brak konieczności lania stropu betonowego i czekania na jego związanie oraz brak schodów przyspiesza prace o ok. 3-4 tygodnie."},
+              {q: "Czy dom piętrowy wymaga droższych fundamentów?", a: "Wymaga fundamentów o wyższej nośności (większe obciążenie punktowe), ale ich powierzchnia jest znacznie mniejsza, więc sumarycznie są tańsze."}
+            ].map((item) => (
+              <div class="border rounded-lg overflow-hidden">
+                <div class="p-4 bg-stone-50 font-semibold text-zinc-700">{item.q}</div>
+                <div class="p-4 text-zinc-600">{item.a}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div class="mt-8 p-6 border border-dashed rounded-lg bg-stone-50">
+          <p>Potrzebujesz pełnej analizy kosztów budowy na 2026 rok?</p>
+          <a href="/budowa/koszt-budowy-domu" class="inline-block mt-3 bg-orange-500 text-white px-4 py-2 rounded font-semibold hover:bg-orange-600 transition-colors">Wróć do Głównego Przewodnika 2026</a>
+        </div>
+      </article>
+
+      <aside class="lg:col-span-1">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/parterowy-vs-pietrowy/" },
+    "headline": "Dom parterowy czy piętrowy – koszty budowy 2026",
+    "description": "Szczegółowe porównanie kosztów budowy domu parterowego i piętrowego. Dowiedz się, dlaczego dom piętrowy jest zazwyczaj tańszy o 10-15%.",
+    "image": "https://domjakosci.pl/images/parterowy-vs-pietrowy-2026.jpg",
+    "author": { "@type": "Person", "name": "Marek Nowicki" },
+    "datePublished": "2025-12-01",
+    "dateModified": "2026-01-13"
+  }
+  </script>
+</BaseLayout>

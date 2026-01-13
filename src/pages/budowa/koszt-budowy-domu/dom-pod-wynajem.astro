@@ -1,0 +1,491 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Koszt budowy domu pod wynajem – ile trzeba zainwestować w 2026 roku?";
+const description = "Analiza kosztów budowy domu inwestycyjnego pod wynajem w 2026 r. Sprawdź, jak optymalizować standard, ile kosztuje m² i czy taka inwestycja się opłaca.";
+const author = 'mgr inż. Marek Nowicki';
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Dom pod wynajem' }
+];
+---
+
+<BaseLayout title={title} description={description} type="article" author={author}>
+  <Header />
+
+  <main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <article class="lg:col-span-2">
+        <header class="mb-8">
+          <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-semibold mb-4">Inwestycja & ROI</span>
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">{title}</h1>
+          
+          <blockquote class="border-l-4 border-orange-500 pl-4 py-2 bg-stone-50 text-sm text-zinc-600 mb-6 italic text-balance">
+            Dane aktualizowane na podstawie stawek materiałów i robocizny z IV kwartału 2025 r. Przewidywane koszty na rok 2026 uwzględniają aktualną inflację budowlaną.
+          </blockquote>
+
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">MN</div>
+            <div>
+              <p class="font-semibold text-zinc-700">{author}</p>
+              <p class="text-sm text-zinc-500">Ekspert ds. kosztorysowania i inwestycji deweloperskich</p>
+            </div>
+          </div>
+        </header>
+
+        <nav class="bg-stone-50 p-6 rounded-xl mb-8 border border-stone-200 text-balance">
+          <p class="font-bold text-zinc-700 mb-3 text-lg">Przewodnik inwestora:</p>
+          <ul class="space-y-2 text-orange-600 underline">
+            <li><a href="#answer-first">Ile kosztuje dom pod wynajem w 2026?</a></li>
+            <li><a href="#segmentacja">Dla kogo dom pod wynajem? (Segmentacja)</a></li>
+            <li><a href="#roznice">Dom pod wynajem vs „dla siebie”</a></li>
+            <li><a href="#standard">Minimalny standard wykończenia</a></li>
+            <li><a href="#koszt-m2">Koszt budowy m² i uproszczenia</a></li>
+            <li><a href="#bledy">Najczęstsze błędy inwestorów</a></li>
+            <li><a href="#kalkulacja">Szybka kalkulacja opłacalności</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <section id="answer-first" class="mb-10">
+          <div class="rounded-lg p-6 bg-orange-50 border-l-4 border-orange-500">
+            <h2 class="text-xl font-bold text-zinc-700 mb-2">Szybka odpowiedź: Koszt inwestycji</h2>
+            <p class="text-zinc-700 leading-relaxed text-balance">
+              Budowa domu pod wynajem w 2026 roku jest o <strong>15-20% tańsza</strong> niż budowa domu dla siebie, dzięki rezygnacji z drogiej personalizacji. Realny koszt budowy domu 100-120 m² w standardzie "pod klucz inwestorski" to <strong>8 500 – 9 200 zł/m²</strong>. W regionach podmiejskich koszt ten można obniżyć do 7 800 zł/m² przy zastosowaniu prostej bryły i systemu gospodarczego.
+            </p>
+          </div>
+        </section>
+
+        <section id="segmentacja" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Dla kogo dom pod wynajem? (Szybkie rekomendacje)</h2>
+          <div class="grid md:grid-cols-2 gap-4 text-sm">
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">👨‍👩‍👧 Inwestor prywatny (Pasywny)</p>
+              <p>Dom 70-100 m² (typ "stodoła"), wysoki standard wykończenia (odporność), lokalizacja turystyczna lub przedmieścia.</p>
+            </div>
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">🏢 Mikro-deweloper (Aktywny)</p>
+              <p>Bliźniaki lub szeregowce, optymalizacja kosztów SSO, powtarzalność projektów, standard deweloperski.</p>
+            </div>
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">🧓 Senior / Zabezpieczenie kapitału</p>
+              <p>Dom parterowy (brak schodów), niskie koszty utrzymania (fotowoltaika), łatwa obsługa techniczna.</p>
+            </div>
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">🌿 Działka rolna / Rekreacyjna</p>
+              <p>Domy mobilne lub szkieletowe do 70 m², szybki czas realizacji, wynajem krótkoterminowy.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="my-10 p-8 bg-zinc-50 rounded-xl flex flex-col items-center justify-center border border-zinc-200">
+            <svg class="w-24 h-24 text-orange-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+            <p class="text-sm font-semibold text-zinc-500 italic">Grafika: Schemat optymalizacji kosztów domu inwestycyjnego (Stodoła vs Piętrowy)</p>
+        </div>
+
+        <section id="roznice" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Czym różni się dom pod wynajem od „dla siebie”</h2>
+          <p class="text-zinc-600 mb-4">Główną różnicą jest <strong>brak emocji</strong> w procesie decyzyjnym. Dom pod wynajem to produkt finansowy.</p>
+          <ul class="space-y-3 text-zinc-700">
+            <li class="flex gap-2">✅ <strong>Trwałość ponad design:</strong> Wybierasz materiały odporne na zużycie (gres zamiast drewna), a nie te, które aktualnie są w modzie.</li>
+            <li class="flex gap-2">✅ <strong>Ujednolicenie:</strong> Standardowe rozmiary okien, drzwi i mebli (IKEA-friendly), co obniża koszt serwisu.</li>
+            <li class="flex gap-2">✅ <strong>Brak zbędnych instalacji:</strong> Rezygnacja z inteligentnego domu (smart home) na rzecz prostych i niezawodnych termostatów.</li>
+          </ul>
+        </section>
+
+        <section id="standard" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Minimalny standard wykończenia</h2>
+          <p class="text-zinc-600 mb-4 text-balance">W 2026 roku najemcy oczekują standardu "eko-premium". To oznacza niskie rachunki przy nowoczesnym wyglądzie.</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse border border-zinc-200">
+              <thead class="bg-stone-100 text-zinc-700">
+                <tr>
+                  <th class="p-3 border border-zinc-200">Element</th>
+                  <th class="p-3 border border-zinc-200">Standard „Inwestorski”</th>
+                  <th class="p-3 border border-zinc-200">Dlaczego?</th>
+                </tr>
+              </thead>
+              <tbody class="text-zinc-600">
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-balance text-zinc-800">Podłogi</td>
+                  <td class="p-3 text-balance">Panele winylowe lub gres</td>
+                  <td class="p-3 text-balance">Wodoodporność i łatwa wymiana uszkodzonego elementu.</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-zinc-800">Ogrzewanie</td>
+                  <td class="p-3 text-balance">Pompa ciepła + podłogówka</td>
+                  <td class="p-3 text-balance">Najniższe koszty eksploatacji (atut przy najmie).</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-zinc-800">Ściany</td>
+                  <td class="p-3 text-balance">Farby ceramiczne / zmywalne</td>
+                  <td class="p-3 text-balance">Pozwalają na mycie bez konieczności malowania co rok.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="koszt-m2" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Koszt budowy m² przy inwestycji</h2>
+          <p class="text-zinc-600 mb-4">
+            Średni koszt m² w 2026 roku dla domu inwestycyjnego to <strong>6 200 zł (SSO) + 2 500 zł (wykończenie)</strong>. 
+            <strong>Porównanie regionalne:</strong> W aglomeracjach (Warszawa, Wrocław) koszty robocizny podnoszą cenę o ok. 15-20%. Na terenach wiejskich i mniejszych miastach dom parterowy o prostej konstrukcji (bez stropu betonowego) opłaca się najbardziej ze względu na łatwość znalezienia lokalnych ekip.
+          </p>
+          <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+            <p class="font-bold text-blue-700 mb-1">Strategia oszczędności:</p>
+            <p class="text-sm text-blue-900">Uproszczenie dachu do wersji dwuspadowej oraz rezygnacja z garażu na rzecz wiaty pozwala zaoszczędzić nawet 80 000 zł przy domu 120 m².</p>
+          </div>
+        </section>
+
+        <section id="bledy" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Najczęstsze błędy inwestorów</h2>
+          <ol class="list-decimal pl-5 text-zinc-700 space-y-3">
+            <li><strong>Przeinwestowanie:</strong> Stosowanie drogich rozwiązań (np. okna przesuwne HS zamiast standardowych), które nie podnoszą czynszu najmu.</li>
+            <li><strong>Brak pomieszczeń gospodarczych:</strong> Najemcy potrzebują miejsca na rowery, odkurzacz czy kosiarkę. Brak schowka obniża wartość oferty.</li>
+            <li><strong>Skomplikowana bryła:</strong> Każdy uskok w ścianie to mostek termiczny i droższa robocizna.</li>
+          </ol>
+        </section>
+
+        <section id="kalkulacja" class="mb-10">
+            <h2 class="text-2xl font-bold text-zinc-700 mb-4">Czy to się opłaca – szybka kalkulacja</h2>
+            <div class="p-6 bg-zinc-700 text-white rounded-xl text-balance">
+                <p class="text-sm mb-2 opacity-80">Przykład: Dom 100 m² (Inwestycja: 900 000 zł z działką)</p>
+                <ul class="space-y-2 font-mono">
+                    <li>+ Szacowany czynsz: 5 500 zł / m-c</li>
+                    <li>- Podatki i serwis: 500 zł / m-c</li>
+                    <li>= Zysk roczny: 60 000 zł</li>
+                    <li class="border-t pt-2 mt-2 text-xl font-bold text-orange-400">ROI: ok. 6.6% rocznie</li>
+                </ul>
+                <p class="mt-4 text-xs">Dla porównania: Lokata bankowa 2026: ok. 4-5%.</p>
+            </div>
+        </section>
+
+        <div class="mt-10 p-6 bg-white border-2 border-orange-200 rounded-xl shadow-sm">
+            <p class="font-semibold text-zinc-800">Planujesz budowę w 2026?</p>
+            <p class="text-sm text-zinc-600 mb-4 text-balance">Sprawdź pełny przewodnik kosztowy z interaktywnym kalkulatorem dla każdego metrażu:</p>
+            <a href="/budowa/koszt-budowy-domu/" class="inline-block bg-orange-500 text-white px-6 py-2 rounded-lg font-bold hover:bg-orange-600 transition-colors">
+                Koszt budowy domu 2026 – pełna analiza
+            </a>
+        </div>
+
+        <section id="faq" class="my-12">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">FAQ – dom pod wynajem</h2>
+          <div class="space-y-4">
+            {[ 
+              {q: "Czy dom parterowy jest lepszy pod wynajem?", a: "Tak, domy parterowe są bardziej uniwersalne — przyciągają zarówno rodziny z dziećmi, jak i seniorów, a brak schodów to mniejszy koszt wykończenia."},
+              {q: "Jakie ogrzewanie wybrać dla domu na wynajem?", a: "W 2026 r. najlepszym wyborem jest pompa ciepła z instalacją PV. Pozwala to zaoferować najemcy 'dom bez rachunków', co znacząco podnosi atrakcyjność oferty."},
+              {q: "Ile wynosi okres zwrotu inwestycji w dom?", a: "Średnio od 12 do 18 lat, w zależności od lokalizacji i wzrostu wartości samej nieruchomości w czasie."},
+              {q: "Czy wykańczać dom meblami przed wynajmem?", a: "Najlepiej wykończyć tylko kuchnię i łazienki oraz szafy w zabudowie. Pokoje warto zostawić puste lub doposażyć pod konkretnego klienta."},
+              {q: "Czy dom w systemie gospodarczym pod wynajem to dobry pomysł?", a: "Tak, o ile masz zaufane ekipy. Niższy koszt wejścia drastycznie poprawia wskaźnik ROI."}
+            ].map((item) => (
+              <div class="border rounded-lg overflow-hidden">
+                <div class="p-4 bg-stone-50 font-semibold text-zinc-700">{item.q}</div>
+                <div class="p-4 text-zinc-600 text-balance">{item.a}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </article>
+
+      <aside class="lg:col-span-1">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" is:inline>
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/dom-pod-wynajem/" },
+      "headline": "Koszt budowy domu pod wynajem – analiza inwestycji 2026",
+      "description": "Ile kosztuje budowa domu pod wynajem w 2026 r.? Poznaj standardy inwestorskie, koszty m2 i realny zwrot z inwestycji (ROI).",
+      "image": "https://domjakosci.pl/images/dom-pod-wynajem-koszty-2026.jpg",
+      "author": { "@type": "Person", "name": "Marek Nowicki" },
+      "datePublished": "2025-12-15",
+      "dateModified": "2026-01-13"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Czy dom parterowy jest lepszy pod wynajem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, domy parterowe są bardziej uniwersalne — przyciągają zarówno rodziny z dziećmi, jak i seniorów, a brak schodów to mniejszy koszt wykończenia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jakie ogrzewanie wybrać dla domu na wynajem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "W 2026 r. najlepszym wyborem jest pompa ciepła z instalacją PV. Pozwala to zaoferować najemcy 'dom bez rachunków', co znacząco podnosi atrakcyjność oferty."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+</BaseLayout>---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Koszt budowy domu pod wynajem – ile trzeba zainwestować w 2026 roku?";
+const description = "Analiza kosztów budowy domu inwestycyjnego pod wynajem w 2026 r. Sprawdź, jak optymalizować standard, ile kosztuje m² i czy taka inwestycja się opłaca.";
+const author = 'mgr inż. Marek Nowicki';
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Dom pod wynajem' }
+];
+---
+
+<BaseLayout title={title} description={description} type="article" author={author}>
+  <Header />
+
+  <main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <article class="lg:col-span-2">
+        <header class="mb-8">
+          <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-semibold mb-4">Inwestycja & ROI</span>
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">{title}</h1>
+          
+          <blockquote class="border-l-4 border-orange-500 pl-4 py-2 bg-stone-50 text-sm text-zinc-600 mb-6 italic text-balance">
+            Dane aktualizowane na podstawie stawek materiałów i robocizny z IV kwartału 2025 r. Przewidywane koszty na rok 2026 uwzględniają aktualną inflację budowlaną.
+          </blockquote>
+
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">MN</div>
+            <div>
+              <p class="font-semibold text-zinc-700">{author}</p>
+              <p class="text-sm text-zinc-500">Ekspert ds. kosztorysowania i inwestycji deweloperskich</p>
+            </div>
+          </div>
+        </header>
+
+        <nav class="bg-stone-50 p-6 rounded-xl mb-8 border border-stone-200 text-balance">
+          <p class="font-bold text-zinc-700 mb-3 text-lg">Przewodnik inwestora:</p>
+          <ul class="space-y-2 text-orange-600 underline">
+            <li><a href="#answer-first">Ile kosztuje dom pod wynajem w 2026?</a></li>
+            <li><a href="#segmentacja">Dla kogo dom pod wynajem? (Segmentacja)</a></li>
+            <li><a href="#roznice">Dom pod wynajem vs „dla siebie”</a></li>
+            <li><a href="#standard">Minimalny standard wykończenia</a></li>
+            <li><a href="#koszt-m2">Koszt budowy m² i uproszczenia</a></li>
+            <li><a href="#bledy">Najczęstsze błędy inwestorów</a></li>
+            <li><a href="#kalkulacja">Szybka kalkulacja opłacalności</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <section id="answer-first" class="mb-10">
+          <div class="rounded-lg p-6 bg-orange-50 border-l-4 border-orange-500">
+            <h2 class="text-xl font-bold text-zinc-700 mb-2">Szybka odpowiedź: Koszt inwestycji</h2>
+            <p class="text-zinc-700 leading-relaxed text-balance">
+              Budowa domu pod wynajem w 2026 roku jest o <strong>15-20% tańsza</strong> niż budowa domu dla siebie, dzięki rezygnacji z drogiej personalizacji. Realny koszt budowy domu 100-120 m² w standardzie "pod klucz inwestorski" to <strong>8 500 – 9 200 zł/m²</strong>. W regionach podmiejskich koszt ten można obniżyć do 7 800 zł/m² przy zastosowaniu prostej bryły i systemu gospodarczego.
+            </p>
+          </div>
+        </section>
+
+        <section id="segmentacja" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Dla kogo dom pod wynajem? (Szybkie rekomendacje)</h2>
+          <div class="grid md:grid-cols-2 gap-4 text-sm">
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">👨‍👩‍👧 Inwestor prywatny (Pasywny)</p>
+              <p>Dom 70-100 m² (typ "stodoła"), wysoki standard wykończenia (odporność), lokalizacja turystyczna lub przedmieścia.</p>
+            </div>
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">🏢 Mikro-deweloper (Aktywny)</p>
+              <p>Bliźniaki lub szeregowce, optymalizacja kosztów SSO, powtarzalność projektów, standard deweloperski.</p>
+            </div>
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">🧓 Senior / Zabezpieczenie kapitału</p>
+              <p>Dom parterowy (brak schodów), niskie koszty utrzymania (fotowoltaika), łatwa obsługa techniczna.</p>
+            </div>
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">🌿 Działka rolna / Rekreacyjna</p>
+              <p>Domy mobilne lub szkieletowe do 70 m², szybki czas realizacji, wynajem krótkoterminowy.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="my-10 p-8 bg-zinc-50 rounded-xl flex flex-col items-center justify-center border border-zinc-200">
+            <svg class="w-24 h-24 text-orange-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+            <p class="text-sm font-semibold text-zinc-500 italic">Grafika: Schemat optymalizacji kosztów domu inwestycyjnego (Stodoła vs Piętrowy)</p>
+        </div>
+
+        <section id="roznice" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Czym różni się dom pod wynajem od „dla siebie”</h2>
+          <p class="text-zinc-600 mb-4">Główną różnicą jest <strong>brak emocji</strong> w procesie decyzyjnym. Dom pod wynajem to produkt finansowy.</p>
+          <ul class="space-y-3 text-zinc-700">
+            <li class="flex gap-2">✅ <strong>Trwałość ponad design:</strong> Wybierasz materiały odporne na zużycie (gres zamiast drewna), a nie te, które aktualnie są w modzie.</li>
+            <li class="flex gap-2">✅ <strong>Ujednolicenie:</strong> Standardowe rozmiary okien, drzwi i mebli (IKEA-friendly), co obniża koszt serwisu.</li>
+            <li class="flex gap-2">✅ <strong>Brak zbędnych instalacji:</strong> Rezygnacja z inteligentnego domu (smart home) na rzecz prostych i niezawodnych termostatów.</li>
+          </ul>
+        </section>
+
+        <section id="standard" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Minimalny standard wykończenia</h2>
+          <p class="text-zinc-600 mb-4 text-balance">W 2026 roku najemcy oczekują standardu "eko-premium". To oznacza niskie rachunki przy nowoczesnym wyglądzie.</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse border border-zinc-200">
+              <thead class="bg-stone-100 text-zinc-700">
+                <tr>
+                  <th class="p-3 border border-zinc-200">Element</th>
+                  <th class="p-3 border border-zinc-200">Standard „Inwestorski”</th>
+                  <th class="p-3 border border-zinc-200">Dlaczego?</th>
+                </tr>
+              </thead>
+              <tbody class="text-zinc-600">
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-balance text-zinc-800">Podłogi</td>
+                  <td class="p-3 text-balance">Panele winylowe lub gres</td>
+                  <td class="p-3 text-balance">Wodoodporność i łatwa wymiana uszkodzonego elementu.</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-zinc-800">Ogrzewanie</td>
+                  <td class="p-3 text-balance">Pompa ciepła + podłogówka</td>
+                  <td class="p-3 text-balance">Najniższe koszty eksploatacji (atut przy najmie).</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-zinc-800">Ściany</td>
+                  <td class="p-3 text-balance">Farby ceramiczne / zmywalne</td>
+                  <td class="p-3 text-balance">Pozwalają na mycie bez konieczności malowania co rok.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="koszt-m2" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Koszt budowy m² przy inwestycji</h2>
+          <p class="text-zinc-600 mb-4">
+            Średni koszt m² w 2026 roku dla domu inwestycyjnego to <strong>6 200 zł (SSO) + 2 500 zł (wykończenie)</strong>. 
+            <strong>Porównanie regionalne:</strong> W aglomeracjach (Warszawa, Wrocław) koszty robocizny podnoszą cenę o ok. 15-20%. Na terenach wiejskich i mniejszych miastach dom parterowy o prostej konstrukcji (bez stropu betonowego) opłaca się najbardziej ze względu na łatwość znalezienia lokalnych ekip.
+          </p>
+          <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+            <p class="font-bold text-blue-700 mb-1">Strategia oszczędności:</p>
+            <p class="text-sm text-blue-900">Uproszczenie dachu do wersji dwuspadowej oraz rezygnacja z garażu na rzecz wiaty pozwala zaoszczędzić nawet 80 000 zł przy domu 120 m².</p>
+          </div>
+        </section>
+
+        <section id="bledy" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Najczęstsze błędy inwestorów</h2>
+          <ol class="list-decimal pl-5 text-zinc-700 space-y-3">
+            <li><strong>Przeinwestowanie:</strong> Stosowanie drogich rozwiązań (np. okna przesuwne HS zamiast standardowych), które nie podnoszą czynszu najmu.</li>
+            <li><strong>Brak pomieszczeń gospodarczych:</strong> Najemcy potrzebują miejsca na rowery, odkurzacz czy kosiarkę. Brak schowka obniża wartość oferty.</li>
+            <li><strong>Skomplikowana bryła:</strong> Każdy uskok w ścianie to mostek termiczny i droższa robocizna.</li>
+          </ol>
+        </section>
+
+        <section id="kalkulacja" class="mb-10">
+            <h2 class="text-2xl font-bold text-zinc-700 mb-4">Czy to się opłaca – szybka kalkulacja</h2>
+            <div class="p-6 bg-zinc-700 text-white rounded-xl text-balance">
+                <p class="text-sm mb-2 opacity-80">Przykład: Dom 100 m² (Inwestycja: 900 000 zł z działką)</p>
+                <ul class="space-y-2 font-mono">
+                    <li>+ Szacowany czynsz: 5 500 zł / m-c</li>
+                    <li>- Podatki i serwis: 500 zł / m-c</li>
+                    <li>= Zysk roczny: 60 000 zł</li>
+                    <li class="border-t pt-2 mt-2 text-xl font-bold text-orange-400">ROI: ok. 6.6% rocznie</li>
+                </ul>
+                <p class="mt-4 text-xs">Dla porównania: Lokata bankowa 2026: ok. 4-5%.</p>
+            </div>
+        </section>
+
+        <div class="mt-10 p-6 bg-white border-2 border-orange-200 rounded-xl shadow-sm">
+            <p class="font-semibold text-zinc-800">Planujesz budowę w 2026?</p>
+            <p class="text-sm text-zinc-600 mb-4 text-balance">Sprawdź pełny przewodnik kosztowy z interaktywnym kalkulatorem dla każdego metrażu:</p>
+            <a href="/budowa/koszt-budowy-domu/" class="inline-block bg-orange-500 text-white px-6 py-2 rounded-lg font-bold hover:bg-orange-600 transition-colors">
+                Koszt budowy domu 2026 – pełna analiza
+            </a>
+        </div>
+
+        <section id="faq" class="my-12">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">FAQ – dom pod wynajem</h2>
+          <div class="space-y-4">
+            {[ 
+              {q: "Czy dom parterowy jest lepszy pod wynajem?", a: "Tak, domy parterowe są bardziej uniwersalne — przyciągają zarówno rodziny z dziećmi, jak i seniorów, a brak schodów to mniejszy koszt wykończenia."},
+              {q: "Jakie ogrzewanie wybrać dla domu na wynajem?", a: "W 2026 r. najlepszym wyborem jest pompa ciepła z instalacją PV. Pozwala to zaoferować najemcy 'dom bez rachunków', co znacząco podnosi atrakcyjność oferty."},
+              {q: "Ile wynosi okres zwrotu inwestycji w dom?", a: "Średnio od 12 do 18 lat, w zależności od lokalizacji i wzrostu wartości samej nieruchomości w czasie."},
+              {q: "Czy wykańczać dom meblami przed wynajmem?", a: "Najlepiej wykończyć tylko kuchnię i łazienki oraz szafy w zabudowie. Pokoje warto zostawić puste lub doposażyć pod konkretnego klienta."},
+              {q: "Czy dom w systemie gospodarczym pod wynajem to dobry pomysł?", a: "Tak, o ile masz zaufane ekipy. Niższy koszt wejścia drastycznie poprawia wskaźnik ROI."}
+            ].map((item) => (
+              <div class="border rounded-lg overflow-hidden">
+                <div class="p-4 bg-stone-50 font-semibold text-zinc-700">{item.q}</div>
+                <div class="p-4 text-zinc-600 text-balance">{item.a}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </article>
+
+      <aside class="lg:col-span-1">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" is:inline>
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/dom-pod-wynajem/" },
+      "headline": "Koszt budowy domu pod wynajem – analiza inwestycji 2026",
+      "description": "Ile kosztuje budowa domu pod wynajem w 2026 r.? Poznaj standardy inwestorskie, koszty m2 i realny zwrot z inwestycji (ROI).",
+      "image": "https://domjakosci.pl/images/dom-pod-wynajem-koszty-2026.jpg",
+      "author": { "@type": "Person", "name": "Marek Nowicki" },
+      "datePublished": "2025-12-15",
+      "dateModified": "2026-01-13"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Czy dom parterowy jest lepszy pod wynajem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, domy parterowe są bardziej uniwersalne — przyciągają zarówno rodziny z dziećmi, jak i seniorów, a brak schodów to mniejszy koszt wykończenia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jakie ogrzewanie wybrać dla domu na wynajem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "W 2026 r. najlepszym wyborem jest pompa ciepła z instalacją PV. Pozwala to zaoferować najemcy 'dom bez rachunków', co znacząco podnosi atrakcyjność oferty."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+</BaseLayout>
