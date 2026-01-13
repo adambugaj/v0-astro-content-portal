@@ -74,6 +74,43 @@ const categories = [
     ]
   }
 ];
+// Generate dynamic links per category (server-side)
+async function loadLinksFor(href) {
+  try {
+    const folder = href.replace(/^\//, '').replace(/\/$/, '');
+    if (!folder) return [];
+    const pattern = `/src/pages/${folder}/**/*.astro`;
+    const pages = await Astro.glob(pattern);
+    const links = [];
+    for (const p of pages) {
+      if (/index\.astro$/i.test(p.file)) continue;
+      const hrefOut = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || `/${folder}`;
+      let title = p.frontmatter?.title || p.file.split(/[\\\/]/).pop().replace(/\.astro$/i,'').replace(/-/g,' ');
+      try {
+        let fp = p.file.replace(/\\/g, '/');
+        if (!fp.startsWith('/')) fp = '/' + fp;
+        const mod = await import('file://' + fp);
+        const crumbs = mod?.breadcrumbs;
+        if (Array.isArray(crumbs) && crumbs[3] && crumbs[3].label) title = crumbs[3].label;
+      } catch (e) {
+        // ignore
+      }
+      links.push({ title, href: hrefOut });
+      if (links.length >= 4) break;
+    }
+    return links;
+  } catch (err) {
+    return [];
+  }
+}
+
+// Preload autoLinks for categories
+for (const cat of categories) {
+  // only for local site categories (href starting with /)
+  cat.autoLinks = await loadLinksFor(cat.href);
+}
+
+import { scenariosTitle } from '../data/koszt-budowy-domu-breadcrumbs.js';
 ---
 
 <div class="space-y-12">
@@ -109,15 +146,23 @@ const categories = [
         </div>
       </div>
 
-      <!-- Added SEO link cluster with frequently searched terms -->
+      <!-- Auto-generated internal links (fallback to seoCluster) -->
       <div class="bg-stone-100 rounded-lg p-4">
         <p class="text-xs font-bold text-zinc-600 mb-3 uppercase">Najczęściej wyszukiwane:</p>
         <ul class="space-y-2">
-          {category.seoCluster.map((term) => (
-            <li>
-              <span class="text-sm text-zinc-600">→ {term}</span>
-            </li>
-          ))}
+          {category.autoLinks && category.autoLinks.length > 0 ? (
+            category.autoLinks.map(link => (
+              <li>
+                <a href={link.href} class="text-sm text-zinc-600 hover:text-orange-500 hover:underline">→ {link.title}</a>
+              </li>
+            ))
+          ) : (
+            category.seoCluster.map((term) => (
+              <li>
+                <span class="text-sm text-zinc-600">→ {term}</span>
+              </li>
+            ))
+          )}
         </ul>
       </div>
     </div>

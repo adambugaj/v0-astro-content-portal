@@ -1,4 +1,32 @@
 ---
+// Dynamically collect pillar subpages for SEO footer links
+const pillarPages = await Astro.glob('/src/pages/budowa/koszt-budowy-domu/*.astro');
+
+function humanizeFileName(fn) {
+  return fn
+    .replace(/\.astro$/i, '')
+    .replace(/index$/i, '')
+    .replace(/[-_]+/g, ' ')
+    .trim()
+    .replace(/\b\w/g, c => c.toUpperCase());
+}
+
+const pillarLinks = [];
+for (const p of pillarPages) {
+  if (/index\.astro$/i.test(p.file)) continue;
+  const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/budowa/koszt-budowy-domu';
+  let title = p.frontmatter?.title || humanizeFileName(p.file.split(/[\\\/]/).pop());
+  try {
+    let fp = p.file.replace(/\\/g, '/');
+    if (!fp.startsWith('/')) fp = '/' + fp;
+    const mod = await import('file://' + fp);
+    const crumbs = mod?.breadcrumbs;
+    if (Array.isArray(crumbs) && crumbs[3] && crumbs[3].label) title = crumbs[3].label;
+  } catch (e) {
+    // ignore and use fallback
+  }
+  pillarLinks.push({ title, href });
+}
 ---
 
 <footer class="bg-zinc-800 text-zinc-300 mt-20">
@@ -9,12 +37,27 @@
         <p class="text-sm">Ekspertka wiedza o budowie, energii odnawialnej i ogrodach.</p>
       </div>
       <div>
-        <h4 class="text-white font-semibold mb-4">Kategorie</h4>
+        <h4 class="text-white font-semibold mb-4">Budowa domu jako kategoria:</h4>
         <ul class="space-y-2 text-sm">
-          <li><a href="/budowa" class="hover:text-orange-500 transition-colors">Budowa</a></li>
-          <li><a href="/energia-oze" class="hover:text-orange-500 transition-colors">Energia / OZE</a></li>
-          <li><a href="/ogrod" class="hover:text-orange-500 transition-colors">Ogród</a></li>
+          <li><a href="/budowa/koszt-budowy-domu" class="hover:text-orange-500 transition-colors">Koszt budowy domu</a></li>
+          <li><a href="/budowa/technologie-budowy" class="hover:text-orange-500 transition-colors">Technologie budowy</a></li>
+          <li><a href="/budowa/materialy-budowlane" class="hover:text-orange-500 transition-colors">Materiały budowlane</a></li>
+          <li><a href="/wspolpraca" class="hover:text-orange-500 transition-colors">Współpraca</a></li>
         </ul>
+
+        <!-- Pillar subpages (auto-generated) -->
+        {pillarLinks.length > 0 && (
+          <div class="mt-4 text-sm">
+            <p class="text-xs text-zinc-400 uppercase mb-2">Powiązane podstrony:</p>
+            <ul class="space-y-1">
+              {pillarLinks.map(link => (
+                <li>
+                  <a href={link.href} class="text-sm text-zinc-300 hover:text-orange-500 hover:underline">→ {link.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
       <div>
         <h4 class="text-white font-semibold mb-4">Narzędzia</h4>

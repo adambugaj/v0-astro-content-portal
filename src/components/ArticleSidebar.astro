@@ -34,7 +34,7 @@ let articles = [];
 if (category === 'budowa') {
   // Dynamically load supporting pages for the budowa/koszt-budowy-domu pillar
   const pages = await Astro.glob('/src/pages/budowa/koszt-budowy-domu/*.astro');
-  // Build articles list, preferring `breadcrumbs[3].label` exported from each page module
+  // Build articles list, preferring `breadcrumbs[0].label` exported from each page module
   articles = [];
   for (const p of pages) {
     if (/index\.astro$/i.test(p.file)) continue;
@@ -48,8 +48,8 @@ if (category === 'budowa') {
       const fileUrl = 'file://' + fp;
       const mod = await import(fileUrl);
       const crumbs = mod?.breadcrumbs;
-      if (Array.isArray(crumbs) && crumbs[3] && crumbs[3].label) {
-        title = crumbs[3].label;
+      if (Array.isArray(crumbs) && crumbs[0] && crumbs[0].label) {
+        title = crumbs[0].label;
       }
     } catch (err) {
       // swallow errors and keep fallback title

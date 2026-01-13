@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CategoryGrid from '../components/CategoryGrid.astro';
 import ArticleCard from '../components/ArticleCard.astro';
+import { scenariosTitle } from '../data/koszt-budowy-domu-breadcrumbs.js';
 
 const latestArticles = [
   {
@@ -90,10 +91,10 @@ const featuredCalculators = [
     <section class="bg-gradient-to-br from-stone-100 to-white py-16 px-4">
       <div class="max-w-7xl mx-auto text-center">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-zinc-700 mb-6">
-          Twoje źródło wiedzy o <span class="text-orange-500">budowie</span> i <span class="text-orange-500">wnętrzach</span>
+          Budowa i wykończenie domu –  <span class="text-orange-500">koszty, technologie i praktyczne poradniki</span>
         </h1>
         <p class="text-lg md:text-xl text-zinc-600 max-w-3xl mx-auto mb-8">
-          Profesjonalne porady, szczegółowe poradniki i praktyczne kalkulatory dla właścicieli domów, inwestorów i entuzjastów aranżacji wnętrz.
+          DomJakości.pl to ekspercki portal o budowie domu w Polsce. Analizujemy koszty budowy, technologie, materiały oraz realne scenariusze inwestycyjne – bez marketingu, na podstawie aktualnych danych rynkowych
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/budowa" class="inline-block bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
@@ -113,6 +114,13 @@ const featuredCalculators = [
           Odkryj nasze kategorie
         </h2>
         <CategoryGrid />
+
+        <!-- Shortcut to pillar scenarios (dynamic title) -->
+        <div class="mt-8 text-center">
+          <a href="/budowa/koszt-budowy-domu#scenarios" class="inline-block text-orange-600 font-semibold hover:text-orange-700">
+            {scenariosTitle} →
+          </a>
+        </div>
         
         <!-- New Section: Why Trust Us -->
         <div class="mt-20 pt-12 border-t border-stone-300">
