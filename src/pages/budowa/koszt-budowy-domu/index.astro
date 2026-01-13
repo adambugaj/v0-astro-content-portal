@@ -5,6 +5,14 @@ import Footer from '../../../components/Footer.astro';
 import ArticleSidebar from '../../../components/ArticleSidebar.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import BuildCalculator from '../../../components/BuildCalculator.astro';
+// Load supporting pages dynamically for scenarios
+const scenarioPages = await Astro.glob('/src/pages/budowa/koszt-budowy-domu/*.astro');
+const scenarios = scenarioPages
+  .filter(p => !/index\.astro$/i.test(p.file))
+  .map(p => ({
+    title: p.frontmatter?.title || p.file.split('/').pop().replace('.astro','').replace(/-/g,' '),
+    href: p.file.replace('/src/pages','').replace(/index\.astro$/i,'').replace(/\.astro$/i,'') || '/'
+  }));
 
 const breadcrumbs = [
   { label: 'Strona główna', href: '/' },
@@ -146,15 +154,23 @@ const breadcrumbs = [
         <!-- Kalkulator jako Astro Island (client:load) -->
         <BuildCalculator client:load />
 
-        <!-- Scenarios section: Wybierz swój scenariusz budowy domu -->
+        <!-- Scenarios section: Wybierz swój scenariusz budowy domu (dynamic) -->
         <section id="scenarios" class="py-12 mb-12">
           <h2 class="text-3xl font-bold text-zinc-700 mb-4">Wybierz swój scenariusz budowy domu</h2>
           <p class="text-zinc-600 mb-6">Każdy dom to inny budżet. Sprawdź szczegółowe analizy kosztów dla najczęstszych wariantów:</p>
           <div class="grid md:grid-cols-2 gap-4">
-            <a href="/budowa/koszt-budowy-domu/koszt-z-garazem" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">→ Koszt budowy domu z garażem w bryle</a>
-            <a href="/budowa/koszt-budowy-domu/koszt-parterowy" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">→ Koszt budowy domu parterowego</a>
-            <a href="/budowa/koszt-budowy-domu/koszt-100m2" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">→ Koszt budowy domu 100 m²</a>
-            <a href="/budowa/koszt-budowy-domu/koszt-fundamentow" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">→ Koszt fundamentów domu jednorodzinnego</a>
+            {scenarios.length > 0 ? (
+              scenarios.map(s => (
+                <a href={s.href} class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">→ {s.title}</a>
+              ))
+            ) : (
+              <>
+                <a href="/budowa/koszt-budowy-domu/koszt-z-garazem" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">→ Koszt budowy domu z garażem w bryle</a>
+                <a href="/budowa/koszt-budowy-domu/koszt-parterowy" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">→ Koszt budowy domu parterowego</a>
+                <a href="/budowa/koszt-budowy-domu/koszt-100m2" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">→ Koszt budowy domu 100 m²</a>
+                <a href="/budowa/koszt-budowy-domu/koszt-fundamentow" class="p-4 border border-stone-300 rounded-lg hover:border-orange-500 hover:shadow-md transition-all">→ Koszt fundamentów domu jednorodzinnego</a>
+              </>
+            )}
           </div>
         </section>
 

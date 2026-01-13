@@ -14,34 +14,54 @@ const defaultEditors = [
   }
 ];
 
-const relatedArticles = {
-    budowa: [
-    { title: 'Koszt budowy domu z garażem', href: '/budowa/koszt-budowy-domu/koszt-z-garazem' },
-    { title: 'Budowa domu parterowego', href: '/budowa/koszt-budowy-domu/koszt-parterowy' },
-    { title: 'Koszt budowy 100m²', href: '/budowa/koszt-budowy-domu/koszt-100m2' },
-    { title: 'Koszt fundamentów', href: '/budowa/koszt-budowy-domu/koszt-fundamentow' }
-  ],
-  energia: [
-    { title: 'Instalacja fotowoltaiczna', href: '/energia/fotowoltaika' },
-    { title: 'Pomp ciepła - jak działają', href: '/energia/pompy-ciepla' },
-    { title: 'Kolektory słoneczne', href: '/energia/kolektory-sloneczne' }
-  ],
-  wnetrza: [
-    { title: 'Nowe trendy w aranżacji', href: '/wnetrza/trendy-2026' },
-    { title: 'Kolory tego sezonu', href: '/wnetrza/kolory' },
-    { title: 'Meble ergonomiczne', href: '/wnetrza/meble' }
-  ],
-  ogrod: [
-    { title: 'Rośliny do ogrodu', href: '/ogrod/rosliny' },
-    { title: 'Automatyczne podlewanie', href: '/ogrod/podlewanie' },
-    { title: 'Oświetlenie ogrodu', href: '/ogrod/oswietlenie' }
-  ]
-};
-
 // Detect category from URL
 const currentPath = Astro.url.pathname;
 const category = currentPath.split('/')[1];
-const articles = relatedArticles[category] || relatedArticles.budowa;
+
+// Helper: humanize filename -> Title
+function humanizeFileName(fn) {
+  return fn
+    .replace(/\.astro$/i, '')
+    .replace(/index$/i, '')
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b(koszt|budowy|domu)\b/gi, '')
+    .trim()
+    .replace(/\b\w/g, c => c.toUpperCase());
+}
+
+let articles = [];
+
+if (category === 'budowa') {
+  // Dynamically load supporting pages for the budowa/koszt-budowy-domu pillar
+  const pages = await Astro.glob('/src/pages/budowa/koszt-budowy-domu/*.astro');
+  articles = pages
+    .filter(p => !/index\.astro$/i.test(p.file))
+    .map(p => ({
+      title: p.frontmatter?.title || humanizeFileName(p.file.split('/').pop()),
+      href: p.file.replace('/src/pages', '').replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/'
+    }))
+    .slice(0, 10); // limit to reasonable number
+} else {
+  // Fallback static lists for other categories
+  const relatedArticles = {
+    energia: [
+      { title: 'Instalacja fotowoltaiczna', href: '/energia/fotowoltaika' },
+      { title: 'Pomp ciepła - jak działają', href: '/energia/pompy-ciepla' },
+      { title: 'Kolektory słoneczne', href: '/energia/kolektory-sloneczne' }
+    ],
+    wnetrza: [
+      { title: 'Nowe trendy w aranżacji', href: '/wnetrza/trendy-2026' },
+      { title: 'Kolory tego sezonu', href: '/wnetrza/kolory' },
+      { title: 'Meble ergonomiczne', href: '/wnetrza/meble' }
+    ],
+    ogrod: [
+      { title: 'Rośliny do ogrodu', href: '/ogrod/rosliny' },
+      { title: 'Automatyczne podlewanie', href: '/ogrod/podlewanie' },
+      { title: 'Oświetlenie ogrodu', href: '/ogrod/oswietlenie' }
+    ]
+  };
+  articles = relatedArticles[category] || [];
+}
 
 const displayEditors = editors.length > 0 ? editors : defaultEditors;
 ---
