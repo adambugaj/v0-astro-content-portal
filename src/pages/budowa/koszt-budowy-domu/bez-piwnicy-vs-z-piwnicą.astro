@@ -9,11 +9,10 @@ const title = "Koszt budowy domu bez piwnicy vs z piwnicą w 2026 r. | Czy warto
 const description = "Sprawdź, ile kosztuje piwnica w domu w 2026 roku. Analiza kosztów (100-200 tys. zł), tabela porównawcza oraz odpowiedź na pytanie: czy warto budować piwnicę?";
 const author = 'mgr inż. Marek Nowicki';
 
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
 const breadcrumbs = [
-  { label: 'Strona główna', href: '/' },
-  { label: 'Budowa', href: '/budowa' },
-  { label: 'Koszt Budowy Domu', href: '/budowa/koszt-budowy-domu' },
-  { label: 'bez piwnicy vs z piwnicą' }
+  ...pillarBreadcrumbs,
+  { label: 'Bez piwnicy vs z piwnicą' }
 ];
 ---
 

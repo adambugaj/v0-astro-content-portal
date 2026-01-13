@@ -1,10 +1,16 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import { breadcrumbs as pillarBreadcrumbs } from './index.astro';
 
 const title = 'System gospodarczy — oszczędności';
 const description = 'Artykuł wspierający o systemie gospodarczym przy budowie.';
 const pillarUrl = '/budowa/koszt-budowy-domu/';
+
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'System gospodarczy' }
+];
 ---
 
 <BaseLayout title={title} description={description}>

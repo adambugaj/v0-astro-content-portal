@@ -9,10 +9,9 @@ const title = "Koszt budowy domu 100m² z poddaszem w 2025/2026 r. | Realne Ceny
 const description = "Ile realnie kosztuje budowa domu 100m2 z poddaszem? Analiza cen 2025/2026: stan surowy i deweloperski.";
 const author = 'mgr inż. Marek Nowicki';
 
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
 const breadcrumbs = [
-  { label: 'Strona główna', href: '/' },
-  { label: 'Budowa', href: '/budowa' },
-  { label: 'Koszt Budowy Domu', href: '/budowa/koszt-budowy-domu' },
+  ...pillarBreadcrumbs,
   { label: 'Koszt 100m²' }
 ];
 ---

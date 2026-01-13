@@ -34,13 +34,30 @@ let articles = [];
 if (category === 'budowa') {
   // Dynamically load supporting pages for the budowa/koszt-budowy-domu pillar
   const pages = await Astro.glob('/src/pages/budowa/koszt-budowy-domu/*.astro');
-  articles = pages
-    .filter(p => !/index\.astro$/i.test(p.file))
-    .map(p => ({
-      title: p.frontmatter?.title || humanizeFileName(p.file.split('/').pop()),
-      href: p.file.replace('/src/pages', '').replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/'
-    }))
-    .slice(0, 10); // limit to reasonable number
+  // Build articles list, preferring `breadcrumbs[3].label` exported from each page module
+  articles = [];
+  for (const p of pages) {
+    if (/index\.astro$/i.test(p.file)) continue;
+    const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/';
+    let title = p.frontmatter?.title || humanizeFileName(p.file.split('/').pop());
+
+    // Try to import the page module to read its exported `breadcrumbs` variable
+    try {
+      let fp = p.file.replace(/\\/g, '/');
+      if (!fp.startsWith('/')) fp = '/' + fp;
+      const fileUrl = 'file://' + fp;
+      const mod = await import(fileUrl);
+      const crumbs = mod?.breadcrumbs;
+      if (Array.isArray(crumbs) && crumbs[3] && crumbs[3].label) {
+        title = crumbs[3].label;
+      }
+    } catch (err) {
+      // swallow errors and keep fallback title
+    }
+
+    articles.push({ title, href });
+  }
+  articles = articles.slice(0, 10);
 } else {
   // Fallback static lists for other categories
   const relatedArticles = {

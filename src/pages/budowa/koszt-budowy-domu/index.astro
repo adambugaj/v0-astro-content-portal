@@ -4,21 +4,29 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import ArticleSidebar from '../../../components/ArticleSidebar.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
 import BuildCalculator from '../../../components/BuildCalculator.astro';
 // Load supporting pages dynamically for scenarios
 const scenarioPages = await Astro.glob('/src/pages/budowa/koszt-budowy-domu/*.astro');
-const scenarios = scenarioPages
-  .filter(p => !/index\.astro$/i.test(p.file))
-  .map(p => ({
-    title: p.frontmatter?.title || p.file.split('/').pop().replace('.astro','').replace(/-/g,' '),
-    href: p.file.replace('/src/pages','').replace(/index\.astro$/i,'').replace(/\.astro$/i,'') || '/'
-  }));
+let scenarios = [];
+for (const p of scenarioPages) {
+  if (/index\.astro$/i.test(p.file)) continue;
+  const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/';
+  let title = p.frontmatter?.title || p.file.split('/').pop().replace('.astro','').replace(/-/g,' ');
+  try {
+    let fp = p.file.replace(/\\/g, '/');
+    if (!fp.startsWith('/')) fp = '/' + fp;
+    const mod = await import('file://' + fp);
+    const crumbs = mod?.breadcrumbs;
+    if (Array.isArray(crumbs) && crumbs[3] && crumbs[3].label) title = crumbs[3].label;
+  } catch (err) {
+    // ignore and keep fallback title
+  }
+  scenarios.push({ title, href });
+}
 
-const breadcrumbs = [
-  { label: 'Strona główna', href: '/' },
-  { label: 'Budowa', href: '/budowa' },
-  { label: 'Koszt Budowy Domu' }
-];
+// Use canonical breadcrumbs from data module
+const breadcrumbs = pillarBreadcrumbs;
 ---
 
 <BaseLayout 

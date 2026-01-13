@@ -10,11 +10,10 @@ const title = "Budowa domu parterowego (120 m²) koszt w 2026: Pełna analiza ce
 const description = "Kompletny kosztorys budowy domu parterowego 120 m² w standardzie deweloperskim na rok 2026. Analiza stawek SSO, SSZ i deweloperskiego.";
 const author = 'Dariusz Nowicki';
 
+import { breadcrumbs as pillarBreadcrumbs } from './index.astro';
 const breadcrumbs = [
-	{ label: 'Strona główna', href: '/' },
-	{ label: 'Budowa', href: '/budowa' },
-	{ label: 'Koszt Budowy Domu', href: '/budowa/koszt-budowy-domu' },
-	{ label: 'Budowa domu parterowego' }
+  ...pillarBreadcrumbs,
+  { label: 'Budowa domu parterowego' }
 ];
 ---
 <BaseLayout title={title} description={description} type="article" author={author}>

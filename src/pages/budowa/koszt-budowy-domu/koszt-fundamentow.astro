@@ -9,10 +9,9 @@ const title = "Koszt fundamentów 2026 — płyta, ławy, czy śruby fundamentow
 const description = "Ile kosztują fundamenty w 2026 roku? Porównanie rozwiązań: ławy, płyta fundamentowa, śruby. Szacunki i kiedy które wybrać.";
 const author = 'dr inż. Anna Kowalska';
 
+import { breadcrumbs as pillarBreadcrumbs } from './index.astro';
 const breadcrumbs = [
-  { label: 'Strona główna', href: '/' },
-  { label: 'Budowa', href: '/budowa' },
-  { label: 'Koszt Budowy Domu', href: '/budowa/koszt-budowy-domu' },
+  ...pillarBreadcrumbs,
   { label: 'Koszt fundamentów' }
 ];
 ---

@@ -10,10 +10,9 @@ const title = "Koszt budowy domu 150 m² z garażem w bryle w 2026 r.: Szczegó�
 const description = "Kompletna analiza kosztów budowy domu jednorodzinnego (150 m² + garaż) w standardzie deweloperskim na 2026 rok. Sprawdź, ile kosztuje garaż w bryle.";
 const author = 'Dariusz Nowicki';
 
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
 const breadcrumbs = [
-  { label: 'Strona główna', href: '/' },
-  { label: 'Budowa', href: '/budowa' },
-  { label: 'Koszt Budowy Domu', href: '/budowa/koszt-budowy-domu' },
+  ...pillarBreadcrumbs,
   { label: 'Koszt z garażem' }
 ];
 
