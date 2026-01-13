@@ -5,6 +5,28 @@ import Footer from '../components/Footer.astro';
 import CategoryGrid from '../components/CategoryGrid.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import { scenariosTitle } from '../data/koszt-budowy-domu-breadcrumbs.js';
+import { pillarMeta } from '../data/koszt-budowy-domu-breadcrumbs.js';
+
+// Load pillar scenarios to render on the homepage
+const scenarioPages = await Astro.glob('/src/pages/budowa/koszt-budowy-domu/*.astro');
+const homepageScenarios = [];
+for (const p of scenarioPages) {
+  if (/index\.astro$/i.test(p.file)) continue;
+  const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/budowa/koszt-budowy-domu';
+  let title = p.frontmatter?.title || p.file.split(/[\\\/]/).pop().replace(/\.astro$/i,'').replace(/-/g,' ');
+  let desc = p.frontmatter?.description || '';
+  try {
+    let fp = p.file.replace(/\\/g, '/');
+    if (!fp.startsWith('/')) fp = '/' + fp;
+    const mod = await import('file://' + fp);
+    const crumbs = mod?.breadcrumbs;
+    if (Array.isArray(crumbs) && crumbs[3] && crumbs[3].label) title = crumbs[3].label;
+    if (mod?.description) desc = mod.description;
+  } catch (e) {
+    // ignore
+  }
+  homepageScenarios.push({ title, href, description: desc, image: pillarMeta.image });
+}
 
 const latestArticles = [
   {
@@ -115,12 +137,21 @@ const featuredCalculators = [
         </h2>
         <CategoryGrid />
 
-        <!-- Shortcut to pillar scenarios (dynamic title) -->
-        <div class="mt-8 text-center">
-          <a href="/budowa/koszt-budowy-domu#scenarios" class="inline-block text-orange-600 font-semibold hover:text-orange-700">
-            {scenariosTitle} →
-          </a>
-        </div>
+        <!-- Scenarios preview (pulled from pillar supporting pages) -->
+        <section class="mt-8">
+          <h2 class="text-2xl font-bold text-zinc-700 text-center mb-6">{scenariosTitle}</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {homepageScenarios.slice(0,3).map(s => (
+              <a href={s.href} class="block bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow">
+                <img src={s.image} alt={s.title} class="w-full h-36 object-cover" />
+                <div class="p-4">
+                  <h3 class="font-bold text-lg text-zinc-800 mb-2">{s.title}</h3>
+                  {s.description ? <p class="text-sm text-zinc-600 line-clamp-3">{s.description}</p> : <p class="text-sm text-zinc-600">Dowiedz się więcej o wariancie budowy.</p>}
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
         
         <!-- New Section: Why Trust Us -->
         <div class="mt-20 pt-12 border-t border-stone-300">

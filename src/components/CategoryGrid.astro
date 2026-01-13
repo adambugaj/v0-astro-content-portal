@@ -22,6 +22,17 @@ const categories = [
 // Pobieramy WSZYSTKIE strony raz na górze
 const allPages = await Astro.glob('../pages/**/*.astro');
 
+function humanizeFileName(fn) {
+  return fn
+    .replace(/\.astro$/i, '')
+    .replace(/index$/i, '')
+    .replace(/[-_]+/g, ' ')
+    .trim()
+    .replace(/\b\w/g, c => c.toUpperCase());
+}
+
+import { pillarMeta } from '../data/koszt-budowy-domu-breadcrumbs.js';
+
 // Funkcja pomocnicza do filtrowania linków
 const getAutoLinks = (categoryHref) => {
   const folder = categoryHref.replace(/^\//, '').replace(/\/$/, '');
@@ -45,7 +56,7 @@ const getAutoLinks = (categoryHref) => {
       const href = page.url || page.file.replace(/.*\/pages/, '').replace(/\.astro$/, '').replace(/\/index$/, '');
       
       return { 
-        title: title || "Czytaj więcej", 
+        title: title || humanizeFileName(page.file.split(/[\\\/]/).pop()),
         href: href 
       };
     })
@@ -62,6 +73,19 @@ const categoriesWithLinks = categories.map(cat => ({
 <div class="space-y-12">
   {categoriesWithLinks.map((category) => (
     <div class="border-l-4 border-orange-500 pl-6">
+      {category.title === 'Budowa' && (
+        <div class="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
+          <a href={pillarMeta.href} class="md:col-span-1 block rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow bg-white">
+            <img src={pillarMeta.image} alt={pillarMeta.title} class="w-full h-40 object-cover" />
+          </a>
+          <div class="md:col-span-2 bg-white rounded-lg p-6 shadow-sm">
+            <a href={pillarMeta.href} class="text-sm text-orange-500 font-semibold">Budowa</a>
+            <h3 class="text-2xl font-bold text-zinc-800 mt-2 mb-3"><a href={pillarMeta.href} class="hover:text-orange-500">{pillarMeta.title}</a></h3>
+            <p class="text-zinc-600 mb-4">{pillarMeta.description}</p>
+            <a href={pillarMeta.href} class="inline-block bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">Przejdź do przewodnika</a>
+          </div>
+        </div>
+      )}
       <a href={category.href} class="group block mb-6">
         <div class="text-4xl mb-3">{category.icon}</div>
         <h2 class="text-2xl font-bold text-zinc-700 mb-3 group-hover:text-orange-500 transition-colors">
