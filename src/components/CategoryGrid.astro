@@ -22,19 +22,19 @@ const categories = [
 // Pobieramy WSZYSTKIE strony raz na górze
 const allPages = await Astro.glob('../pages/**/*.astro');
 
-function humanizeFileName(fn) {
-  return fn
+function humanizeFileName(fn: string) {
+  const s = String(fn || '')
     .replace(/\.astro$/i, '')
     .replace(/index$/i, '')
     .replace(/[-_]+/g, ' ')
-    .trim()
-    .replace(/\b\w/g, c => c.toUpperCase());
+    .trim();
+  return s.replace(/\b\w/g, (c: string) => c.toUpperCase());
 }
 
 import { pillarMeta } from '../data/koszt-budowy-domu-breadcrumbs.js';
 
 // Funkcja pomocnicza do filtrowania linków
-const getAutoLinks = (categoryHref) => {
+const getAutoLinks = (categoryHref: string) => {
   const folder = categoryHref.replace(/^\//, '').replace(/\/$/, '');
   if (!folder) return [];
 
@@ -45,19 +45,18 @@ const getAutoLinks = (categoryHref) => {
       return isInternal && isNotIndex;
     })
     .map(page => {
-      // Próba pobrania tytułu z breadcrumbs (jeśli istnieją w frontmatter) lub tytułu głównego
-      let title = page.frontmatter?.title;
-      
-      // Jeśli masz breadcrumbs w frontmatter jako tablicę:
-      if (page.frontmatter?.breadcrumbs?.[3]?.label) {
-        title = page.frontmatter.breadcrumbs[3].label;
+      // Try to read frontmatter safely
+      let title = ((page as any).frontmatter?.title);
+
+      if ((page as any).frontmatter?.breadcrumbs?.[3]?.label) {
+        title = (page as any).frontmatter.breadcrumbs[3].label;
       }
 
-      const href = page.url || page.file.replace(/.*\/pages/, '').replace(/\.astro$/, '').replace(/\/index$/, '');
-      
-      return { 
-        title: title || humanizeFileName(page.file.split(/[\\\/]/).pop()),
-        href: href 
+      const href = (page as any).url || String((page as any).file).replace(/.*\/pages/, '').replace(/\.astro$/, '').replace(/\/index$/, '');
+
+      return {
+        title: title || humanizeFileName(String((page as any).file.split(/[\\\/]/).pop())),
+        href: href
       };
     })
     .slice(0, 4);

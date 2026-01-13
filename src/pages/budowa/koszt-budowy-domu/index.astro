@@ -12,7 +12,7 @@ let scenarios = [];
 for (const p of scenarioPages) {
   if (/index\.astro$/i.test(p.file)) continue;
   const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/';
-  let title = p.frontmatter?.title || p.file.split('/').pop().replace('.astro','').replace(/-/g,' ');
+  let title = ((p as any).frontmatter?.title) || String((p as any).file.split(/[\\\/]/).pop()).replace(/\.astro$/i,'').replace(/-/g,' ');
   try {
     let fp = p.file.replace(/\\/g, '/');
     if (!fp.startsWith('/')) fp = '/' + fp;
@@ -457,90 +457,95 @@ const breadcrumbs = pillarBreadcrumbs;
 
       const checkboxes = document.querySelectorAll('.checklist-checkbox');
       const progressText = document.getElementById('checklist-progress-text');
-      const progressBar = document.getElementById('checklist-progress-bar');
-      const successMsg = document.getElementById('checklist-success-msg');
-      const instructMsg = document.getElementById('checklist-instruction-msg');
-      const guidedToggle = document.getElementById('guidedToggle');
-      const guidedControls = document.getElementById('guided-controls');
-      const prevStep = document.getElementById('prevStep');
-      const nextStep = document.getElementById('nextStep');
-      const guidedCurrent = document.getElementById('guidedCurrent');
-      const guidedTotal = document.getElementById('guidedTotal');
-      const printChecklist = document.getElementById('printChecklist');
+      const progressBar = document.getElementById('checklist-progress-bar') as HTMLElement | null;
+      const successMsg = document.getElementById('checklist-success-msg') as HTMLElement | null;
+      const instructMsg = document.getElementById('checklist-instruction-msg') as HTMLElement | null;
+      const guidedToggle = document.getElementById('guidedToggle') as HTMLElement | null;
+      const guidedControls = document.getElementById('guided-controls') as HTMLElement | null;
+      const prevStep = document.getElementById('prevStep') as HTMLElement | null;
+      const nextStep = document.getElementById('nextStep') as HTMLElement | null;
+      const guidedCurrent = document.getElementById('guidedCurrent') as HTMLElement | null;
+      const guidedTotal = document.getElementById('guidedTotal') as HTMLElement | null;
+      const printChecklist = document.getElementById('printChecklist') as HTMLElement | null;
 
       let guidedMode = false;
       let currentStep = 1;
       const totalSteps = checkboxes.length;
-      if(guidedTotal) guidedTotal.innerText = totalSteps;
+      if (guidedTotal) guidedTotal.innerText = String(totalSteps);
 
       function updateChecklist() {
         const total = checkboxes.length;
         let checked = 0;
-        
+
         checkboxes.forEach(cb => {
-          const label = cb.closest('.checklist-item-container').querySelector('.checklist-label');
-          const tip = cb.closest('.checklist-item-container').querySelector('.checklist-tip');
-          
-          if(cb.checked) {
+          const input = cb as HTMLInputElement;
+          const container = input.closest('.checklist-item-container') as HTMLElement | null;
+          const label = container?.querySelector('.checklist-label') as HTMLElement | null;
+          const tip = container?.querySelector('.checklist-tip') as HTMLElement | null;
+
+          if (input.checked) {
             checked++;
-            label.classList.add('text-stone-400', 'line-through');
-            label.classList.remove('text-zinc-700');
-            if(tip) tip.style.display = 'none';
+            if (label) { label.classList.add('text-stone-400', 'line-through'); label.classList.remove('text-zinc-700'); }
+            if (tip) tip.style.display = 'none';
           } else {
-            label.classList.remove('text-stone-400', 'line-through');
-            label.classList.add('text-zinc-700');
-            if(tip) tip.style.display = 'block';
+            if (label) { label.classList.remove('text-stone-400', 'line-through'); label.classList.add('text-zinc-700'); }
+            if (tip) tip.style.display = 'block';
           }
         });
 
-        const percent = Math.round((checked / total) * 100);
-        if(progressText) progressText.innerText = percent + '%';
-        if(progressBar) progressBar.style.width = percent + '%';
+        const percent = Math.round((checked / Math.max(1, total)) * 100);
+        if (progressText) progressText.innerText = percent + '%';
+        if (progressBar) (progressBar.style as CSSStyleDeclaration).width = percent + '%';
 
-        if(checked === total) {
-          if(successMsg) successMsg.classList.remove('hidden');
-          if(successMsg) successMsg.classList.add('block');
-          if(instructMsg) instructMsg.classList.add('hidden');
+        if (checked === total) {
+          if (successMsg) { successMsg.classList.remove('hidden'); successMsg.classList.add('block'); }
+          if (instructMsg) instructMsg.classList.add('hidden');
         } else {
-          if(successMsg) successMsg.classList.add('hidden');
-          if(successMsg) successMsg.classList.remove('block');
-          if(instructMsg) instructMsg.classList.remove('hidden');
+          if (successMsg) { successMsg.classList.add('hidden'); successMsg.classList.remove('block'); }
+          if (instructMsg) instructMsg.classList.remove('hidden');
         }
       }
 
       // Guided mode: show one step at a time
-      function showGuidedStep(step) {
+      function showGuidedStep(step: number) {
         currentStep = Math.max(1, Math.min(step, totalSteps));
         checkboxes.forEach(cb => {
-          const stepIndex = Number(cb.getAttribute('data-step')) || 0;
-          const container = cb.closest('.checklist-item-container');
-          if(stepIndex === currentStep) {
-            container.style.display = 'block';
-            container.scrollIntoView({behavior: 'smooth', block: 'center'});
-          } else {
-            container.style.display = 'none';
+          const input = cb as HTMLInputElement;
+          const stepIndex = Number(input.getAttribute('data-step')) || 0;
+          const container = input.closest('.checklist-item-container') as HTMLElement | null;
+          if (container) {
+            if (stepIndex === currentStep) {
+              container.style.display = 'block';
+              container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+              container.style.display = 'none';
+            }
           }
         });
-        if(guidedCurrent) guidedCurrent.innerText = currentStep;
+        if (guidedCurrent) guidedCurrent.innerText = String(currentStep);
       }
 
       function enterGuided() {
         guidedMode = true;
-        guidedControls.classList.remove('hidden');
-        guidedToggle.innerText = 'Wyjdź z trybu przewodnika';
+        if (guidedControls) guidedControls.classList.remove('hidden');
+        if (guidedToggle) guidedToggle.innerText = 'Wyjdź z trybu przewodnika';
         showGuidedStep(1);
       }
 
       function exitGuided() {
         guidedMode = false;
-        guidedControls.classList.add('hidden');
-        guidedToggle.innerText = 'Tryb przewodnika';
+        if (guidedControls) guidedControls.classList.add('hidden');
+        if (guidedToggle) guidedToggle.innerText = 'Tryb przewodnika';
         // show all items
-        checkboxes.forEach(cb => cb.closest('.checklist-item-container').style.display = 'block');
+        checkboxes.forEach(cb => {
+          const input = cb as HTMLInputElement;
+          const container = input.closest('.checklist-item-container') as HTMLElement | null;
+          if (container) container.style.display = 'block';
+        });
       }
 
       guidedToggle?.addEventListener('click', () => {
-        if(!guidedMode) enterGuided(); else exitGuided();
+        if (!guidedMode) enterGuided(); else exitGuided();
       });
 
       prevStep?.addEventListener('click', () => {
@@ -548,31 +553,34 @@ const breadcrumbs = pillarBreadcrumbs;
       });
       nextStep?.addEventListener('click', () => {
         // if current step checkbox exists, mark it as done when Next
-        const cb = document.querySelector(`.checklist-checkbox[data-step="${currentStep}"]`);
-        if(cb && !cb.checked) { cb.checked = true; cb.dispatchEvent(new Event('change')); }
+        const cb = document.querySelector(`.checklist-checkbox[data-step="${currentStep}"]`) as HTMLInputElement | null;
+        if (cb && !cb.checked) { cb.checked = true; cb.dispatchEvent(new Event('change')); }
         showGuidedStep(currentStep + 1);
       });
 
       // Print / Download as PDF (use jsPDF to generate downloadable checklist)
       async function generateChecklistPDF() {
         // load jsPDF if needed
-        if (!window.jspdf) {
+        if (!(window as any).jspdf) {
           await new Promise((resolve, reject) => {
             const s = document.createElement('script');
             s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
             s.onload = resolve; s.onerror = reject; document.head.appendChild(s);
           });
         }
-        const { jsPDF } = window.jspdf;
+        const { jsPDF } = (window as any).jspdf || (window as any).jspdf;
         const doc = new jsPDF({ unit: 'pt', format: 'a4' });
-        const title = document.querySelector('article h1')?.innerText || 'Checklist';
+        const title = (document.querySelector('article h1') as HTMLElement | null)?.innerText || 'Checklist';
         doc.setFontSize(16);
         doc.text(title, 40, 50);
         doc.setFontSize(11);
         let y = 80;
         checkboxes.forEach(cb => {
-          const label = cb.closest('.checklist-item-container').querySelector('.checklist-label').innerText.trim();
-          const status = cb.checked ? '✓' : '○';
+          const input = cb as HTMLInputElement;
+          const container = input.closest('.checklist-item-container') as HTMLElement | null;
+          const labelEl = container?.querySelector('.checklist-label') as HTMLElement | null;
+          const label = labelEl?.innerText.trim() || '';
+          const status = input.checked ? '✓' : '○';
           const line = `${status} ${label}`;
           const split = doc.splitTextToSize(line, 500);
           doc.text(split, 40, y);
@@ -588,31 +596,30 @@ const breadcrumbs = pillarBreadcrumbs;
       });
 
       checkboxes.forEach(cb => {
-        cb.addEventListener('change', updateChecklist);
+        (cb as HTMLElement).addEventListener('change', updateChecklist as EventListener);
       });
 
       const faqToggles = document.querySelectorAll('.faq-toggle');
       
       faqToggles.forEach(toggle => {
-        toggle.addEventListener('click', function() {
-          const expanded = this.getAttribute('aria-expanded') === 'true';
-          const content = this.nextElementSibling;
-          const icon = this.querySelector('.icon-transform');
+        toggle.addEventListener('click', (e) => {
+          const el = e.currentTarget as HTMLElement;
+          const expanded = el.getAttribute('aria-expanded') === 'true';
+          const content = el.nextElementSibling as HTMLElement | null;
+          const icon = el.querySelector('.icon-transform') as HTMLElement | null;
 
-          this.setAttribute('aria-expanded', !expanded);
-          if(!expanded) {
-             content.classList.remove('max-h-0', 'opacity-0');
-             content.classList.add('max-h-48', 'opacity-100');
-             icon.classList.add('rotate-180');
+          el.setAttribute('aria-expanded', String(!expanded));
+          if (!expanded) {
+            if (content) { content.classList.remove('max-h-0', 'opacity-0'); content.classList.add('max-h-48', 'opacity-100'); }
+            if (icon) icon.classList.add('rotate-180');
           } else {
-             content.classList.add('max-h-0', 'opacity-0');
-             content.classList.remove('max-h-48', 'opacity-100');
-             icon.classList.remove('rotate-180');
+            if (content) { content.classList.add('max-h-0', 'opacity-0'); content.classList.remove('max-h-48', 'opacity-100'); }
+            if (icon) icon.classList.remove('rotate-180');
           }
         });
       });
 
-      updateCalc();
+      if ((window as any).updateCalc) (window as any).updateCalc();
       updateChecklist();
     });
   </script>

@@ -2,20 +2,20 @@
 // Dynamically collect pillar subpages for SEO footer links
 const pillarPages = await Astro.glob('/src/pages/budowa/koszt-budowy-domu/*.astro');
 
-function humanizeFileName(fn) {
-  return fn
+function humanizeFileName(fn: string) {
+  const s = String(fn || '')
     .replace(/\.astro$/i, '')
     .replace(/index$/i, '')
     .replace(/[-_]+/g, ' ')
-    .trim()
-    .replace(/\b\w/g, c => c.toUpperCase());
+    .trim();
+  return s.replace(/\b\w/g, (c: string) => c.toUpperCase());
 }
 
 const pillarLinks = [];
-for (const p of pillarPages) {
+  for (const p of pillarPages) {
   if (/index\.astro$/i.test(p.file)) continue;
   const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/budowa/koszt-budowy-domu';
-  let title = p.frontmatter?.title || humanizeFileName(p.file.split(/[\\\/]/).pop());
+  let title = ((p as any).frontmatter?.title) || humanizeFileName(String((p as any).file.split(/[\\\/]/).pop()));
   try {
     let fp = p.file.replace(/\\/g, '/');
     if (!fp.startsWith('/')) fp = '/' + fp;

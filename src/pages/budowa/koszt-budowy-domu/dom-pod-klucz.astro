@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Koszt budowy domu pod klucz w 2026 roku – ile zapłacisz realnie?";
+const description = "Ile kosztuje wykończenie domu pod klucz w 2026 r.? Sprawdź realne widełki cenowe (ok. 10 000 zł/m²), porównanie standardów oraz 3 strategie oszczędności.";
+const author = 'mgr inż. Marek Nowicki';
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Dom pod klucz' }
+];
+---
+
+<BaseLayout title={title} description={description} type="article" author={author}>
+  <Header />
+
+  <main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <article class="lg:col-span-2">
+        <header class="mb-8">
+          <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-sm font-semibold mb-4">Aktualizacja: Styczeń 2026</span>
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">{title}</h1>
+          
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">MN</div>
+            <div>
+              <p class="font-semibold text-zinc-700">{author}</p>
+              <p class="text-sm text-zinc-500">Ekspert ds. kosztorysowania — zweryfikowano: 13 stycznia 2026</p>
+            </div>
+          </div>
+        </header>
+
+        <nav class="bg-stone-50 p-6 rounded-xl mb-8 border border-stone-200">
+          <p class="font-bold text-zinc-700 mb-3 text-lg">W tym artykule:</p>
+          <ul class="space-y-2 text-orange-600 underline">
+            <li><a href="#answer-first">Ile kosztuje dom pod klucz w 2026?</a></li>
+            <li><a href="#definicja">Co oznacza „dom pod klucz” w praktyce</a></li>
+            <li><a href="#widełki">Widełki cenowe 2026</a></li>
+            <li><a href="#porownanie">Stan deweloperski vs pod klucz</a></li>
+            <li><a href="#czynniki">Co najbardziej podnosi koszty?</a></li>
+            <li><a href="#kiedy-sie-oplaca">Kiedy dom pod klucz się opłaca?</a></li>
+            <li><a href="#strategie">3 realne strategie oszczędności</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <section id="answer-first" class="mb-10">
+          <div class="rounded-lg p-6 bg-orange-50 border-l-4 border-orange-500">
+            <h2 class="text-xl font-bold text-zinc-700 mb-2">Szybka odpowiedź: Koszt wykończenia 2026</h2>
+            <p class="text-zinc-700 leading-relaxed">
+              W 2026 roku uśredniony koszt budowy domu do standardu „pod klucz” wynosi ok. <strong>10 000 zł/m²</strong> powierzchni użytkowej[cite: 1]. Dla popularnego metrażu 150 m² oznacza to całkowitą inwestycję na poziomie <strong>1 400 000 – 1 600 000 zł</strong>[cite: 1]. Sam etap przejścia ze stanu deweloperskiego do zamieszkania to obecnie wydatek rzędu 2 500 – 4 000 zł/m².
+            </p>
+          </div>
+        </section>
+
+        <section id="definicja" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Co oznacza „dom pod klucz” w praktyce</h2>
+          <p class="text-zinc-600 mb-4">
+            Standard „pod klucz” nie ma jednej definicji prawnej, ale w 2026 roku przyjmuje się, że budynek jest w pełni gotowy do wprowadzenia mebli i mieszkańców. Obejmuje on:
+          </p>
+          <ul class="list-disc pl-5 text-zinc-700 space-y-2">
+            <li>Wykończenie podłóg (panele, gres, parkiet).</li>
+            <li>Malowanie ścian oraz montaż glazury w łazienkach i kuchni.</li>
+            <li>Montaż drzwi wewnętrznych oraz armatury sanitarnej (tzw. biały montaż).</li>
+            <li>Montaż osprzętu elektrycznego (gniazdka, podstawowe oświetlenie).</li>
+          </ul>
+        </section>
+
+        <section id="widełki" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Koszt budowy domu pod klucz – widełki cenowe 2026</h2>
+          <p class="text-zinc-600 mb-4">Ceny zależą od wybranego standardu materiałów. Poniższe kwoty obejmują całość inwestycji (od wbicia pierwszej łopaty do gotowych wnętrz)[cite: 1]:</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse border border-zinc-200">
+              <thead class="bg-stone-100 text-zinc-700">
+                <tr>
+                  <th class="p-3 border border-zinc-200">Standard</th>
+                  <th class="p-3 border border-zinc-200">Koszt m² (Całość)</th>
+                  <th class="p-3 border border-zinc-200">Dom 150 m² (Suma)</th>
+                </tr>
+              </thead>
+              <tbody class="text-zinc-600 text-center">
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-left">Ekonomiczny</td>
+                  <td class="p-3">8 500 – 9 200 zł</td>
+                  <td class="p-3">ok. 1,32 mln zł</td>
+                </tr>
+                <tr class="border-t bg-orange-50/30">
+                  <td class="p-3 font-semibold text-left">Średni (Optymalny)</td>
+                  <td class="p-3">9 800 – 10 500 zł</td>
+                  <td class="p-3">ok. 1,50 mln zł</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-left">Premium</td>
+                  <td class="p-3">13 000+ zł</td>
+                  <td class="p-3">1,95 mln zł+</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="porownanie" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Porównanie: stan deweloperski vs pod klucz</h2>
+          <p class="text-zinc-600 mb-4">Wielu inwestorów zatrzymuje się na etapie deweloperskim, nie zdając sobie sprawy z ogromu kosztów wykończeniowych[cite: 1].</p>
+          <ul class="grid md:grid-cols-2 gap-4">
+            <li class="bg-zinc-50 p-4 rounded border">
+              <p class="font-bold mb-1">Stan Deweloperski (SD)</p>
+              <p class="text-sm">Koszt: ok. <strong>7 500 zł/m²</strong>[cite: 1]. Masz tynki, wylewki i instalacje, ale dom jest "surowy" w środku[cite: 1].</p>
+            </li>
+            <li class="bg-orange-50 p-4 rounded border border-orange-200">
+              <p class="font-bold mb-1 text-orange-700">Pod Klucz</p>
+              <p class="text-sm text-zinc-800">Koszt: ok. <strong>10 000 zł/m²</strong>[cite: 1]. Dom gotowy do wstawienia łóżka i ekspresu do kawy.</p>
+            </li>
+          </ul>
+        </section>
+
+        <section id="czynniki" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Co najbardziej podnosi koszt „pod klucz”</h2>
+          <ul class="space-y-4 text-zinc-600">
+            <li><strong>Personalizacja wnętrz:</strong> Zmiany w projektach instalacji pod konkretne ustawienie mebli w 2026 roku są kosztowne ze względu na ceny robocizny elektryków.</li>
+            <li><strong>Stolarka otworowa:</strong> Ukryte ościeżnice czy drzwi o niestandardowej wysokości mogą podnieść koszt etapu o 40-50%.</li>
+            <li><strong>Łazienki:</strong> Wykończenie łazienki to obecnie najdroższy "metr" w całym domu — ceny glazury i armatury premium rosną szybciej niż fundamenty.</li>
+          </ul>
+        </section>
+
+        <section id="kiedy-sie-oplaca" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Kiedy dom pod klucz się opłaca</h2>
+          <p class="text-zinc-600 mb-4">Wybór firmy wykończeniowej „pod klucz” jest szczególnie korzystny, gdy:</p>
+          <div class="grid md:grid-cols-3 gap-4 text-center">
+            <div class="p-4 border rounded shadow-sm bg-stone-50"><p class="font-semibold">Brak czasu</p><p class="text-xs mt-2 text-zinc-500 text-balance">Nie musisz koordynować 5 różnych ekip (hydraulik, płytkarz, malarz).</p></div>
+            <div class="p-4 border rounded shadow-sm bg-stone-50"><p class="font-semibold">VAT 8%</p><p class="text-xs mt-2 text-zinc-500 text-balance">Kupując usługę z materiałem, płacisz 8% VAT zamiast 23% w markecie.</p></div>
+            <div class="p-4 border rounded shadow-sm bg-stone-50"><p class="font-semibold">Gwarancja</p><p class="text-xs mt-2 text-zinc-500 text-balance">Jedna firma odpowiada za całość wykończenia i ewentualne usterki.</p></div>
+          </div>
+        </section>
+
+        <section id="strategie" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Czy da się zejść z kosztów – 3 realne strategie</h2>
+          <div class="space-y-6 text-zinc-700">
+            <div class="flex gap-4">
+              <div class="w-12 h-12 shrink-0 bg-orange-100 text-orange-600 flex items-center justify-center rounded-full font-bold">1</div>
+              <div>
+                <p class="font-bold">Model Mieszany (System Gospodarczy)</p>
+                <p class="text-sm">Wykonaj proste prace (malowanie, układanie paneli) samodzielnie. Oszczędność na robociźnie może sięgnąć 15-20 tys. zł. Dowiedz się więcej o <a href="/budowa/koszt-budowy-domu/system-gospodarczy/" class="text-orange-600 underline">systemie gospodarczym</a>.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-12 h-12 shrink-0 bg-orange-100 text-orange-600 flex items-center justify-center rounded-full font-bold">2</div>
+              <div>
+                <p class="font-bold">Optymalizacja Bryły</p>
+                <p class="text-sm">Mniej skomplikowany układ ścian to mniej metrów bieżących listew i narożników. Wybierz projekt <a href="/budowa/koszt-budowy-domu/dom-parterowy/" class="text-orange-600 underline">domu parterowego</a> o prostej bryle, aby obniżyć koszty wykończenia sufitów i dachu[cite: 1].</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-12 h-12 shrink-0 bg-orange-100 text-orange-600 flex items-center justify-center rounded-full font-bold">3</div>
+              <div>
+                <p class="font-bold">Wybór materiałów "Standard"</p>
+                <p class="text-sm">Różnica między gresem za 80 zł/m² a tym za 250 zł/m² jest wizualna, ale technicznie oba spełniają swoją funkcję przez dekady.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="quiz" class="mb-10 p-6 bg-zinc-100 rounded-2xl border-2 border-dashed border-zinc-300">
+          <h3 class="text-xl font-bold text-zinc-700 mb-4 text-center">Sprawdź: Czy stać Cię na standard pod klucz?</h3>
+          <div class="space-y-3">
+            <p class="text-zinc-600"><strong>1. Czy masz zarezerwowane min. 3 000 zł na każdy m² domu ponad stan deweloperski?</strong></p>
+            <p class="text-zinc-600"><strong>2. Czy masz zapewnione finansowanie na kuchnię i łazienki (ok. 80-120 tys. zł)?</strong></p>
+            <p class="text-zinc-600"><strong>3. Czy chcesz uniknąć samodzielnego nadzorowania ekip przez 6 miesięcy?</strong></p>
+            <p class="mt-4 text-sm italic text-zinc-500 text-balance">Jeśli odpowiedziałeś 3x TAK, opcja wykończenia przez jedną firmę jest dla Ciebie idealna.</p>
+          </div>
+        </section>
+
+        <section id="faq" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">FAQ – dom pod klucz</h2>
+          <div class="space-y-4">
+            {[ 
+              {q: "Czy kuchnia wlicza się w dom pod klucz?", a: "Zazwyczaj tak — standard pod klucz u dewelopera lub firmy budowlanej często obejmuje zabudowę kuchenną (bez AGD), choć warto to precyzyjnie sprawdzić w umowie."},
+              {q: "Ile trwa wykończenie domu 150m2 pod klucz?", a: "Średnio od 4 do 6 miesięcy, zależnie od dostępności materiałów i ekip specjalistycznych."},
+              {q: "Czy kredyt hipoteczny pokrywa wykończenie?", a: "Tak, większość banków pozwala na sfinansowanie elementów trwale związanych z nieruchomością (podłogi, łazienki, kuchnia pod wymiar) z kredytu."},
+              {q: "Czy cena 10 000 zł/m2 obejmuje ogród?", a: "Nie, zazwyczaj standard pod klucz kończy się na progu domu. Zagospodarowanie terenu i ogrodzenie to dodatkowy budżet[cite: 1]."},
+              {q: "Czy wykończenie pod klucz jest droższe niż samodzielne?", a: "Cenowo usługa jest o ok. 10-15% droższa (marża firmy), ale oszczędzasz na czasie i preferencyjnym Vacie 8% na materiały z montażem."}
+            ].map((item) => (
+              <div class="border rounded-lg overflow-hidden">
+                <div class="p-4 bg-stone-50 font-semibold text-zinc-700">{item.q}</div>
+                <div class="p-4 text-zinc-600">{item.a}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div class="mt-8 p-6 border border-dashed rounded-lg bg-stone-50">
+          <p>Potrzebujesz pełnej analizy kosztów na 2026 rok?</p>
+          <a href="/budowa/koszt-budowy-domu" class="inline-block mt-3 bg-orange-500 text-white px-4 py-2 rounded font-semibold hover:bg-orange-600 transition-colors text-balance">Wróć do Głównego Przewodnika 2026</a>
+        </div>
+      </article>
+
+      <aside class="lg:col-span-1">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/dom-pod-klucz/" },
+    "headline": "Koszt budowy domu pod klucz w 2026 roku – ile zapłacisz realnie?",
+    "description": "Analiza kosztów wykończenia domu pod klucz w 2026 roku. Sprawdź aktualne ceny za m2 i sprawdzone sposoby na oszczędności.",
+    "image": "https://domjakosci.pl/images/dom-pod-klucz-2026.jpg",
+    "author": { "@type": "Person", "name": "Marek Nowicki" },
+    "datePublished": "2025-11-20",
+    "dateModified": "2026-01-13"
+  }
+  </script>
+</BaseLayout>

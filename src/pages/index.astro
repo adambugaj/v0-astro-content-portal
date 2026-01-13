@@ -13,8 +13,8 @@ const homepageScenarios = [];
 for (const p of scenarioPages) {
   if (/index\.astro$/i.test(p.file)) continue;
   const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/budowa/koszt-budowy-domu';
-  let title = p.frontmatter?.title || p.file.split(/[\\\/]/).pop().replace(/\.astro$/i,'').replace(/-/g,' ');
-  let desc = p.frontmatter?.description || '';
+  let title = ((p as any).frontmatter?.title) || String((p as any).file.split(/[\\\/]/).pop()).replace(/\.astro$/i,'').replace(/-/g,' ');
+  let desc = ((p as any).frontmatter?.description) || '';
   try {
     let fp = p.file.replace(/\\/g, '/');
     if (!fp.startsWith('/')) fp = '/' + fp;

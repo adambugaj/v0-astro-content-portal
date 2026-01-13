@@ -19,14 +19,14 @@ const currentPath = Astro.url.pathname;
 const category = currentPath.split('/')[1];
 
 // Helper: humanize filename -> Title
-function humanizeFileName(fn) {
-  return fn
+function humanizeFileName(fn: string) {
+  const s = String(fn || '')
     .replace(/\.astro$/i, '')
     .replace(/index$/i, '')
     .replace(/[-_]+/g, ' ')
     .replace(/\b(koszt|budowy|domu)\b/gi, '')
-    .trim()
-    .replace(/\b\w/g, c => c.toUpperCase());
+    .trim();
+  return s.replace(/\b\w/g, (c: string) => c.toUpperCase());
 }
 
 let articles = [];
@@ -39,7 +39,7 @@ if (category === 'budowa') {
   for (const p of pages) {
     if (/index\.astro$/i.test(p.file)) continue;
     const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/';
-    let title = p.frontmatter?.title || humanizeFileName(p.file.split('/').pop());
+    let title = ((p as any).frontmatter?.title) || humanizeFileName(String((p as any).file.split(/[\\\/]/).pop()));
 
     // Try to import the page module to read its exported `breadcrumbs` variable
     try {
@@ -58,7 +58,7 @@ if (category === 'budowa') {
     articles.push({ title, href });
   }
   articles = articles.slice(0, 10);
-} else {
+  } else {
   // Fallback static lists for other categories
   const relatedArticles = {
     energia: [
@@ -77,7 +77,7 @@ if (category === 'budowa') {
       { title: 'Oświetlenie ogrodu', href: '/ogrod/oswietlenie' }
     ]
   };
-  articles = relatedArticles[category] || [];
+  articles = (relatedArticles as any)[category] || [];
 }
 
 const displayEditors = editors.length > 0 ? editors : defaultEditors;
@@ -101,7 +101,7 @@ const displayEditors = editors.length > 0 ? editors : defaultEditors;
           → Główny przewodnik: Koszt Budowy Domu
         </a>
       )}
-      {articles.map((article) => (
+      {articles.map((article: any) => (
         <a href={article.href} class="block text-sm text-zinc-700 hover:text-orange-500 font-medium transition-colors">
           → {article.title}
         </a>
@@ -113,7 +113,7 @@ const displayEditors = editors.length > 0 ? editors : defaultEditors;
   <div class="bg-white border border-stone-300 rounded-xl p-6">
     <h3 class="text-lg font-bold text-zinc-700 mb-4 border-b border-stone-300 pb-3">Redaktorzy</h3>
     <div class="space-y-3">
-      {displayEditors.map((editor) => (
+      {displayEditors.map((editor: any) => (
         <a href={editor.href} class="flex items-center gap-3 hover:opacity-75 transition-opacity">
           {editor.name === 'Dariusz Nowicki' && (
             <div class="w-10 h-10 rounded-full bg-gradient-to-br from-zinc-600 to-zinc-800 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
