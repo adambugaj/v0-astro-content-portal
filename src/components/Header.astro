@@ -2,13 +2,46 @@
 import MainNav from './MainNav.astro';
 ---
 
-<header class="bg-white border-b border-stone-300 sticky top-0 z-50 relative left-1/2 -translate-x-1/2 w-screen">
+<header id="site-header" class="w-full bg-white border-b border-stone-300 sticky top-0 z-50 shadow-sm transform transition-transform duration-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
-      <a href="/" class="text-2xl font-bold text-zinc-700">
-        Portal<span class="text-orange-500">Budowlany</span>
+      <a href="/" class="flex items-center gap-3">
+        <span class="sr-only">Portal Budowlany</span>
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="flex-shrink-0">
+          <rect width="24" height="24" rx="6" fill="#f97316" />
+          <path d="M6 14L10 9l4 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span id="site-logo-text" class="text-2xl font-bold text-zinc-700 leading-none">Portal<span class="text-orange-500">Budowlany</span></span>
       </a>
       <MainNav />
     </div>
   </div>
+
+  <script>
+    // Hide header on scroll down, show on scroll up (simple, performant)
+    (function(){
+      const header = document.getElementById('site-header');
+      if(!header) return;
+      let lastY = window.scrollY;
+      let ticking = false;
+      function onScroll(){
+        const current = window.scrollY;
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            if (current > lastY && current > 60) {
+              // scrolling down
+              header.style.transform = 'translateY(-100%)';
+            } else {
+              // scrolling up
+              header.style.transform = 'translateY(0)';
+            }
+            lastY = current;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
 </header>
