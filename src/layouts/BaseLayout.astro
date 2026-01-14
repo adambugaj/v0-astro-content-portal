@@ -14,6 +14,9 @@ const siteName = "Dom Jakości";
 const pathSegments = (Astro.url.pathname || '').split('/').filter(Boolean);
 const centered = pathSegments.length > 1;
 ---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
 <!doctype html>
 <html lang="pl">
   <head>
@@ -73,6 +76,9 @@ const centered = pathSegments.length > 1;
     })} />
   </head>
   <body class="min-h-screen bg-white">
+    <!-- Full-width header rendered from layout so it always spans viewport -->
+    <Header />
+
     <!-- Center only for deeper category/article pages; keep homepage and top-level category pages full width -->
     {centered ? (
       <div class="max-w-7xl mx-auto px-4">
@@ -81,6 +87,9 @@ const centered = pathSegments.length > 1;
     ) : (
       <slot />
     )}
+
+    <!-- Full-width footer rendered from layout -->
+    <Footer />
 
     <script>
       // Ensure every article page shows a sidebar. If no sidebar present on page, fetch a lightweight fallback
