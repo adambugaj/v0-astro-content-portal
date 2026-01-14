@@ -13,7 +13,7 @@ const siteName = "Dom Jakości";
 // Decide when to center content: only for deeper subpages (e.g. /category/article)
 const pathSegments = (Astro.url.pathname || '').split('/').filter(Boolean);
 const centered = pathSegments.length > 1;
-
+---
 <!doctype html>
 <html lang="pl">
   <head>
