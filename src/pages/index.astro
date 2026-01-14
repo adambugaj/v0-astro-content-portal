@@ -9,16 +9,21 @@ import { pillarMeta } from '../data/koszt-budowy-domu-breadcrumbs.js';
 const scenarioModules = import.meta.glob('/src/pages/budowa/koszt-budowy-domu/*.astro', { eager: true }) as Record<string, any>;
 
 const homepageScenarios = Object.keys(scenarioModules)
-  .filter(p => !/index\.astro$/i.test(p))
+  .filter(p => p.toLowerCase().includes('index.astro') === false) // Bezpieczny filtr tekstowy zamiast Regex
   .map(p => {
     const mod = scenarioModules[p];
-    const href = (p.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/budowa/koszt-budowy-domu';
+    // Generowanie href w sposób tekstowy
+    const pathParts = p.split('/');
+    const fileName = pathParts[pathParts.length - 1].replace('.astro', '');
+    const href = `/budowa/koszt-budowy-domu/${fileName}`;
     
-    let title = (mod?.frontmatter?.title) || String(p.split(/[\\\/]/).pop()).replace(/\.astro$/i,'').replace(/-/g,' ');
+    let title = (mod?.frontmatter?.title) || fileName.replace(/-/g, ' ');
     let desc = (mod?.frontmatter?.description) || '';
     
     const crumbs = mod?.breadcrumbs;
-    if (Array.isArray(crumbs) && crumbs[3] && crumbs[3].label) title = crumbs[3].label;
+    if (Array.isArray(crumbs) && crumbs[3] && crumbs[3].label) {
+      title = crumbs[3].label;
+    }
     
     return { title, href, description: desc, image: pillarMeta.image };
   });
