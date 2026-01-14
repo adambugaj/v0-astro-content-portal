@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Finansowanie budowy domu w 2026 – kredyt, transze i realne koszty";
+const description = "Jak sfinansować budowę domu w 2026 roku? Przewodnik po kredytach hipotecznych, wypłatach transz i ukrytych kosztach bankowych. Sprawdź, jak zaplanować budżet.";
+const author = 'mgr inż. Marek Nowicki';
+const lastUpdated = "2026-01-14";
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Finansowanie budowy', url: '/budowa/koszt-budowy-domu/finansowanie-budowy-domu/' }
+];
+---
+
+<BaseLayout title={title} description={description} type="article" author={author}>
+
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
+      <article class="lg:flex-1">
+        <header class="mb-8">
+          <div class="flex items-center gap-2 mb-4 text-xs font-semibold uppercase tracking-wider text-blue-700 bg-blue-50 w-fit px-3 py-1 rounded-full border border-blue-200">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            Analiza finansowa 2026 • Konsultowana z doradcą kredytowym
+          </div>
+
+          <div class="bg-zinc-100 p-4 rounded-lg mb-6 border-l-4 border-zinc-400">
+            <p class="text-sm text-zinc-700">
+              Ten artykuł jest częścią głównego przewodnika: 
+              <a href="/budowa/koszt-budowy-domu/" class="text-orange-600 font-bold underline ml-1">→ Koszt budowy domu w 2026 roku (Całkowity koszt inwestycji)</a>
+            </p>
+          </div>
+
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">{title}</h1>
+          
+          <div class="flex items-center gap-4 text-sm text-zinc-500 mb-6 pb-6 border-b border-zinc-100">
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-zinc-700">{author}</span>
+            </div>
+            <span>•</span>
+            <time datetime={lastUpdated}>Aktualizacja: 14 stycznia 2026</time>
+          </div>
+
+          <blockquote class="border-l-4 border-orange-500 pl-4 py-2 bg-stone-50 text-sm text-zinc-600 mb-6 italic text-balance">
+            Budowa domu w 2026 roku to proces nierozerwalnie związany z precyzyjnym cash-flow. Zrozumienie mechanizmu transz i kosztów okołokredytowych pozwala zaoszczędzić nawet do 15% wartości całej inwestycji.
+          </blockquote>
+        </header>
+
+        <section id="jak-dziala-kredyt" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Jak działa kredyt na budowę domu krok po kroku</h2>
+          <p class="text-zinc-600 mb-6">
+            Kredyt budowlany to produkt specyficzny – bank nie wypłaca całej kwoty „do ręki”. Proces ten jest ściśle monitorowany i podzielony na kluczowe etapy:
+          </p>
+          <div class="grid gap-4">
+            {[
+              { s: "1", t: "Wkład własny", d: "W 2026 r. banki wymagają min. 20% wkładu. Działka budowlana zazwyczaj w całości pokrywa ten wymóg." },
+              { s: "2", t: "Analiza kosztorysu", d: "Bank weryfikuje, czy kwota o którą wnioskujesz, pozwoli na uzyskanie pozwolenia na użytkowanie. Ceny muszą być rynkowe." },
+              { s: "3", t: "Uruchomienie kredytu", d: "Po podpisaniu umowy otrzymujesz pierwszą transzę na start prac lub refinansowanie kosztów już poniesionych." }
+            ].map((step) => (
+              <div class="flex gap-4 p-4 bg-stone-50 rounded-xl border border-stone-200">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-800 text-white flex items-center justify-center font-bold text-sm">{step.s}</span>
+                <div>
+                  <h3 class="font-bold text-zinc-800 text-sm">{step.t}</h3>
+                  <p class="text-xs text-zinc-600">{step.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="transze-kredytu" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Transze kredytu a harmonogram budowy</h2>
+          <p class="text-zinc-600 mb-4">
+            Wypłata środków odbywa się po zakończeniu konkretnego etapu prac (np. stan zero, SSO). Kluczowym dokumentem jest dziennik budowy oraz inspekcja z banku.
+          </p>
+          <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100 mb-6">
+            <h3 class="font-bold text-blue-900 mb-2 underline">Zasada naczyń połączonych</h3>
+            <p class="text-sm text-blue-800 leading-relaxed">
+              Jeśli <a href="/budowa/koszt-budowy-domu/ile-trwa-budowa-domu/" class="font-bold underline text-blue-700">czas budowy domu</a> się wydłuża, ryzykujesz tzw. prowizję za gotowość lub konieczność aneksowania umowy. Bank oczekuje postępów zgodnych z harmonogramem, by zwolnić kolejną transzę.
+            </p>
+          </div>
+        </section>
+
+        <section id="koszty-dodatkowe" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Koszty dodatkowe: odsetki, prowizje, opóźnienia</h2>
+          <p class="text-zinc-600 mb-6 italic">Poza marżą i WIRON/WIBOR, inwestor musi uwzględnić opłaty, które w skali budowy mogą wynieść od 10 do 30 tys. zł:</p>
+          
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="p-4 border border-zinc-200 rounded-xl">
+              <p class="font-bold text-zinc-800 mb-1">Karencja w spłacie</p>
+              <p class="text-xs text-zinc-500">Podczas budowy płacisz tylko odsetki od wypłaconej kwoty. Kapitał zaczynasz spłacać dopiero po zakończeniu inwestycji.</p>
+            </div>
+            <div class="p-4 border border-zinc-200 rounded-xl">
+              <p class="font-bold text-zinc-800 mb-1">Inspekcje (200-500 zł)</p>
+              <p class="text-xs text-zinc-500">Płatne przy każdej prośbie o uruchomienie kolejnej transzy. Bank musi potwierdzić postęp prac.</p>
+            </div>
+          </div>
+
+          <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded-r-xl mb-6">
+            <p class="text-sm text-red-800 font-bold">Uwaga na ukryte koszty:</p>
+            <p class="text-xs text-red-700">Więcej o pominiętych wydatkach przeczytasz w sekcji: <a href="/budowa/koszt-budowy-domu/ukryte-koszty/" class="underline font-bold">Ukryte koszty budowy domu</a>.</p>
+          </div>
+        </section>
+
+        <section id="gotowka-vs-kredyt" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Budowa za gotówkę vs kredyt – porównanie</h2>
+          <div class="overflow-x-auto shadow-sm rounded-xl border border-zinc-200">
+            <table class="w-full text-sm text-left">
+              <thead class="bg-zinc-50 text-zinc-700 border-b">
+                <tr>
+                  <th class="p-4 font-bold">Cecha</th>
+                  <th class="p-4 font-bold">Gotówka</th>
+                  <th class="p-4 font-bold">Kredyt Hipoteczny</th>
+                </tr>
+              </thead>
+              <tbody class="text-zinc-600">
+                <tr class="border-b">
+                  <td class="p-4 font-medium italic text-zinc-800">Szybkość budowy</td>
+                  <td class="p-4">Zależna od bieżących wpływów</td>
+                  <td class="p-4 text-green-600 font-semibold">Ciągłość prac (transze)</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="p-4">Formalności bankowe</td>
+                  <td class="p-4 text-green-600">Brak</td>
+                  <td class="p-4 text-red-500">Inspekcje, wyceny, ubezpieczenia</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="p-4">Koszt całkowity</td>
+                  <td class="p-4 font-bold">Realna cena materiałów</td>
+                  <td class="p-4">Cena materiałów + odsetki</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="jak-sie-przygotowac" class="mb-12 bg-orange-600 text-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="text-2xl font-bold mb-4 italic text-white">Jak przygotować się finansowo do budowy</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-orange-700/50 p-4 rounded-xl border border-white/20">
+                        <p class="font-bold mb-1 underline text-orange-200 uppercase tracking-tighter text-xs">Strategia 1: Bufor bezpieczeństwa</p>
+                        <p class="text-sm text-orange-50">Zawsze miej odłożone min. 10% wartości kredytu na „pomiędzy transzami”. Banki często wypłacają środki z dołu, za zrealizowane już prace.</p>
+                    </div>
+                    <div class="bg-orange-700/50 p-4 rounded-xl border border-white/20">
+                        <p class="font-bold mb-1 underline text-orange-200 uppercase tracking-tighter text-xs">Strategia 2: Zielone Kredyty</p>
+                        <p class="text-sm text-orange-50">W 2026 r. domy o zapotrzebowaniu na energię (EP) poniżej 40 kWh/m² mogą liczyć na obniżkę marży o ok. 0,5%.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-16 p-8 bg-zinc-900 text-white rounded-3xl relative overflow-hidden">
+            <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-24 h-24 rounded-full bg-orange-500 flex-shrink-0 flex items-center justify-center text-3xl font-bold">MN</div>
+                <div>
+                    <p class="text-orange-500 font-bold uppercase tracking-widest text-xs mb-1">Ekspert Analiz Finansowych</p>
+                    <h3 class="text-xl font-bold mb-3">{author}</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-4 text-balance">
+                        Inżynier budownictwa i analityk kosztów. Od lat pomaga inwestorom łączyć techniczne aspekty budowy z wymaganiami bankowymi. Autor narzędzi do estymacji kosztów całkowitych inwestycji uwzględniających inflację budowlaną i koszty pieniądza w czasie.
+                    </p>
+                    <div class="flex gap-4">
+                        <span class="text-xs bg-white/10 px-2 py-1 rounded">Specjalizacja: Optymalizacja kosztów budowy</span>
+                        <span class="text-xs bg-white/10 px-2 py-1 rounded">Doradztwo techniczno-finansowe</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-12 pt-8 border-t border-zinc-200">
+          <h2 class="text-lg font-bold text-zinc-700 mb-4">Zobacz również:</h2>
+          <ul class="space-y-2 text-orange-600 text-sm underline font-medium">
+            <li><a href="/budowa/koszt-budowy-domu/">→ Główny przewodnik: Koszt budowy domu 2026</a></li>
+            <li><a href="/budowa/koszt-budowy-domu/ukryte-koszty/">→ Na co uważać: Ukryte koszty budowy</a></li>
+            <li><a href="/budowa/koszt-budowy-domu/ile-trwa-budowa-domu/">→ Ile trwa budowa i jak wpływa na koszt kredytu?</a></li>
+          </ul>
+        </footer>
+      </article>
+
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
+
+  <script type="application/ld+json" is:inline>
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/finansowanie-budowy-domu/" },
+      "headline": "Finansowanie budowy domu w 2026 – kredyt, transze i realne koszty",
+      "description": "Przewodnik po finansowaniu budowy domu. Kredyt hipoteczny, wypłaty transz oraz analiza kosztów dodatkowych w 2026 roku.",
+      "author": { 
+        "@type": "Person", 
+        "name": "Marek Nowicki",
+        "jobTitle": "Inżynier Budownictwa / Analityk Kosztów"
+      },
+      "datePublished": "2026-01-14",
+      "dateModified": "2026-01-14"
+    }
+  ]
+  </script>
+</BaseLayout>

@@ -1,0 +1,255 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Koszt materiałów budowlanych w 2026 roku – co najbardziej podnosi cenę domu";
+const description = "Sprawdź aktualne ceny materiałów budowlanych w 2026 r. Dowiedz się, co generuje największe koszty i jak kupować materiały taniej bez utraty jakości.";
+const author = 'mgr inż. Marek Nowicki';
+const lastUpdated = "2026-01-14";
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Koszt materiałów', url: '/budowa/koszt-budowy-domu/koszt-materialow-budowlanych/' }
+];
+
+const faqItems = [
+  {
+    q: "O ile droższe są materiały budowlane w 2026 w porównaniu do ubiegłego roku?",
+    a: "Średni wzrost cen koszyka materiałów budowlanych na początku 2026 roku szacuje się na ok. 5-7% r/r, przy czym największe skoki odnotowano w kategorii chemii budowlanej i izolacji termicznych."
+  },
+  {
+    q: "Czy lepiej kupować materiały samemu, czy zdać się na wykonawcę?",
+    a: "Wykonawcy często posiadają rabaty rzędu 10-25% w hurtowniach partnerskich. Warto porównać ofertę wykonawcy z cenami detalicznymi, pamiętając, że przy zakupie z usługą często obowiązuje niższa stawka VAT (8% zamiast 23% dla osób fizycznych)."
+  },
+  {
+    q: "Na jakich materiałach absolutnie nie wolno oszczędzać?",
+    a: "Nigdy nie oszczędzaj na elementach konstrukcyjnych (beton, stal) oraz izolacjach (przeciwwilgociowa i termiczna). Wymiana nieszczelnej hydroizolacji fundamentów jest kilkukrotnie droższa niż koszt najlepszych materiałów na etapie budowy."
+  }
+];
+---
+
+<BaseLayout title={title} description={description} type="article" author={author}>
+
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
+      <article class="lg:flex-1">
+        <header class="mb-8">
+          <div class="flex items-center gap-2 mb-4 text-xs font-semibold uppercase tracking-wider text-green-700 bg-green-50 w-fit px-3 py-1 rounded-full border border-green-200">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            Monitoring cen rynkowych: Styczeń 2026
+          </div>
+
+          <div class="bg-zinc-100 p-4 rounded-lg mb-6 border-l-4 border-zinc-400">
+            <p class="text-sm text-zinc-700">
+              Ten artykuł jest częścią głównego przewodnika: 
+              <a href="/budowa/koszt-budowy-domu/" class="text-orange-600 font-bold underline ml-1">→ Koszt budowy domu w 2026 roku</a>
+            </p>
+          </div>
+
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">{title}</h1>
+          
+          <div class="flex items-center gap-4 text-sm text-zinc-500 mb-6 pb-6 border-b border-zinc-100">
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-zinc-700">{author}</span>
+            </div>
+            <span>•</span>
+            <time datetime={lastUpdated}>Aktualizacja: 14 stycznia 2026</time>
+          </div>
+
+          <blockquote class="border-l-4 border-orange-500 pl-4 py-2 bg-stone-50 text-sm text-zinc-600 mb-6 italic text-balance">
+            Materiały budowlane odpowiadają za ok. 50-60% całkowitego budżetu inwestycji. W 2026 roku kluczem do oszczędności nie jest wybór najtańszych produktów, ale logistyka zakupów i optymalizacja strat materiałowych.
+          </blockquote>
+        </header>
+
+        <section id="najwieksze-koszty" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Jakie materiały generują największe koszty</h2>
+          <p class="text-zinc-600 mb-6">
+            Analizując strukturę wydatków dla typowego domu jednorodzinnego, trzy grupy produktowe dominują w kosztorysie:
+          </p>
+          <div class="grid md:grid-cols-3 gap-4 mb-8">
+            <div class="p-4 bg-zinc-50 border border-zinc-200 rounded-xl">
+              <span class="text-2xl mb-2 block">🏗️</span>
+              <h3 class="font-bold text-zinc-800 text-sm mb-2">Konstrukcja (35%)</h3>
+              <p class="text-xs text-zinc-600">Beton, stal zbrojeniowa, ceramika lub beton komórkowy. To fundament kosztorysu.</p>
+            </div>
+            <div class="p-4 bg-zinc-50 border border-zinc-200 rounded-xl">
+              <span class="text-2xl mb-2 block">🪟</span>
+              <h3 class="font-bold text-zinc-800 text-sm mb-2">Stolarka i Izolacja (25%)</h3>
+              <p class="text-xs text-zinc-600">Okna 3-szybowe, systemy ociepleń (styropian/wełna). Kluczowe dla <a href="/budowa/koszt-budowy-domu/dom-energooszczedny/" class="text-orange-600 underline font-bold">domu energooszczędnego</a>.</p>
+            </div>
+            <div class="p-4 bg-zinc-50 border border-zinc-200 rounded-xl">
+              <span class="text-2xl mb-2 block">🪵</span>
+              <h3 class="font-bold text-zinc-800 text-sm mb-2">Dach (20%)</h3>
+              <p class="text-xs text-zinc-600">Więźba, pokrycie (dachówka/blacha) oraz systemy rynnowe.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="zestawienie-cen-2026" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Ceny materiałów budowlanych 2026 – zestawienie</h2>
+          <div class="overflow-x-auto shadow-sm rounded-xl border border-zinc-200">
+            <table class="w-full text-sm text-left">
+              <thead class="bg-zinc-50 text-zinc-700 border-b">
+                <tr>
+                  <th class="p-4 font-bold">Materiał</th>
+                  <th class="p-4 font-bold">Jednostka</th>
+                  <th class="p-4 font-bold">Cena śr. (brutto)</th>
+                  <th class="p-4 font-bold">Trend</th>
+                </tr>
+              </thead>
+              <tbody class="text-zinc-600">
+                <tr class="border-b">
+                  <td class="p-4 font-medium italic">Beton B25 (C20/25)</td>
+                  <td class="p-4">m³</td>
+                  <td class="p-4">420 – 480 zł</td>
+                  <td class="p-4 text-orange-600">↗ Stabilny wzrost</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="p-4 font-medium italic">Stal zbrojeniowa (fi 12)</td>
+                  <td class="p-4">tona</td>
+                  <td class="p-4">3 800 – 4 400 zł</td>
+                  <td class="p-4 text-blue-600">↔ Stabilizacja</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="p-4 font-medium italic">Styropian grafitowy (031)</td>
+                  <td class="p-4">m³</td>
+                  <td class="p-4">280 – 340 zł</td>
+                  <td class="p-4 text-orange-600">↗ Sezonowy wzrost</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="p-4 font-medium italic">Pustak ceramiczny 25 cm</td>
+                  <td class="p-4">szt.</td>
+                  <td class="p-4">9,50 – 12,50 zł</td>
+                  <td class="p-4 text-orange-600">↗ Wysoki</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-zinc-500 mt-4 italic">Pamiętaj, że <a href="/budowa/koszt-budowy-domu/koszt-fundamentow/" class="underline font-bold text-orange-600">koszt fundamentów</a> zależy bezpośrednio od aktualnych cen betonu i stali w Twoim regionie.</p>
+        </section>
+
+        <section id="gdzie-nie-oszczedzac" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Gdzie nie warto oszczędzać na materiałach</h2>
+          <p class="text-zinc-600 mb-4">
+            Pozorna oszczędność 5-10 tys. zł na etapie surowym może skutkować kosztami napraw rzędu 50 tys. zł po kilku latach. Eksperci wskazują na trzy krytyczne obszary:
+          </p>
+          <ul class="space-y-3 bg-blue-50 p-6 rounded-2xl border border-blue-100">
+            <li class="flex gap-3 text-sm text-blue-900 font-medium">
+              <span class="text-blue-500 font-bold text-lg">01.</span> Hydroizolacje – fundamenty i tarasy to miejsca, gdzie najtańsza papa lub folia zawsze zawodzi w perspektywie dekady.
+            </li>
+            <li class="flex gap-3 text-sm text-blue-900 font-medium">
+              <span class="text-blue-500 font-bold text-lg">02.</span> Stal zbrojeniowa – musi posiadać atesty i certyfikaty zgodności z polskimi normami oraz projektem konstrukcyjnym.
+            </li>
+            <li class="flex gap-3 text-sm text-blue-900 font-medium">
+              <span class="text-blue-500 font-bold text-lg">03.</span> Chemia budowlana – tanie kleje do styropianu lub tynki o niskiej paroprzepuszczalności to prosta droga do degradacji elewacji.
+            </li>
+          </ul>
+        </section>
+
+        <section id="tanie-materialy-vs-naprawy" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Tanie materiały vs koszty napraw w przyszłości</h2>
+          <div class="p-6 border-2 border-dashed border-zinc-200 rounded-2xl">
+            <p class="text-zinc-600 text-sm leading-relaxed mb-4">
+              W 2026 r. obserwujemy trend "fałszywych oszczędności". Przykładowo: wybór okien o gorszym współczynniku przenikania ciepła obniża koszt zakupu o 15%, ale zwiększa wydatki na ogrzewanie o 20% rocznie.
+            </p>
+            <p class="text-zinc-800 font-bold text-sm italic">„Budowanie z najtańszych materiałów to zaciąganie wysokooprocentowanego kredytu u własnego domu, który spłacasz w rachunkach i naprawach.”</p>
+          </div>
+        </section>
+
+        <section id="jak-kupowac-taniej" class="mb-12 bg-orange-600 text-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
+            <div class="relative z-10">
+              <h2 class="text-2xl font-bold mb-4 italic text-white">Jak kupować materiały taniej (hurtownie, terminy)</h2>
+              <div class="grid md:grid-cols-2 gap-6">
+                  <div class="space-y-4 text-sm">
+                      <p class="flex items-start gap-2"><strong class="bg-orange-800 px-2 py-0.5 rounded flex-shrink-0">Zasada 1</strong> <span>Kupuj zimą (grudzień-luty) na zapas – hurtownie czyszczą magazyny i oferują ceny sprzed sezonowych podwyżek.</span></p>
+                      <p class="flex items-start gap-2"><strong class="bg-orange-800 px-2 py-0.5 rounded flex-shrink-0">Zasada 2</strong> <span>Negocjuj „koszyk zakupowy” w jednej hurtowni zamiast kupować każdą rzecz osobno.</span></p>
+                  </div>
+                  <div class="space-y-4 text-sm">
+                      <p class="flex items-start gap-2"><strong class="bg-orange-800 px-2 py-0.5 rounded flex-shrink-0">Zasada 3</strong> <span>Pytaj o materiały z transportem HDS w cenie – logistyka to często 10% wartości zamówienia.</span></p>
+                      <p class="flex items-start gap-2"><strong class="bg-orange-800 px-2 py-0.5 rounded flex-shrink-0">Zasada 4</strong> <span>Korzystaj z konta firmowego wykonawcy – profesjonaliści mają stałe rabaty branżowe niedostępne dla klientów indywidualnych.</span></p>
+                  </div>
+              </div>
+            </div>
+        </section>
+
+        <section id="faq" class="my-12">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-6">FAQ – Najczęstsze pytania o materiały budowlane</h2>
+          <div class="space-y-4">
+            {faqItems.map((item) => (
+              <div class="border rounded-lg overflow-hidden border-zinc-200 shadow-sm">
+                <div class="p-4 bg-stone-50 font-bold text-zinc-700 text-sm">{item.q}</div>
+                <div class="p-4 text-zinc-600 text-sm leading-relaxed border-t border-zinc-100">{item.a}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section class="mt-16 p-8 bg-zinc-900 text-white rounded-3xl flex flex-col md:flex-row gap-8 items-center border border-zinc-800">
+            <div class="w-24 h-24 rounded-full bg-orange-500 flex-shrink-0 flex items-center justify-center text-3xl font-bold">MN</div>
+            <div>
+                <p class="text-orange-500 font-bold uppercase tracking-widest text-xs mb-1">Ekspert ds. kosztorysowania i materiałów</p>
+                <h3 class="text-xl font-bold mb-3">{author}</h3>
+                <p class="text-zinc-400 text-sm leading-relaxed">
+                    Inżynier z 15-letnim doświadczeniem w optymalizacji kosztów inwestycji. Specjalizuje się w audytach kosztorysów materiałowych oraz wdrażaniu nowoczesnych technologii budowlanych redukujących koszty eksploatacji.
+                </p>
+            </div>
+        </section>
+
+        <footer class="mt-12 pt-8 border-t border-zinc-200">
+          <h2 class="text-lg font-bold text-zinc-700 mb-4">Zobacz również:</h2>
+          <ul class="space-y-2 text-orange-600 text-sm underline font-medium">
+            <li><a href="/budowa/koszt-budowy-domu/">→ Główny przewodnik: Koszt budowy domu 2026</a></li>
+            <li><a href="/budowa/koszt-budowy-domu/koszt-fundamentow/">→ Szczegółowy kosztorys fundamentów</a></li>
+            <li><a href="/budowa/koszt-budowy-domu/dom-energooszczedny/">→ Jakie materiały wybrać do domu energooszczędnego?</a></li>
+          </ul>
+        </footer>
+      </article>
+
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
+
+  <script type="application/ld+json" is:inline define:vars={{ title, description, author, faqItems }}>
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "author": {
+      "@type": "Person",
+      "name": author,
+      "jobTitle": "Inżynier Budownictwa"
+    },
+    "datePublished": "2026-01-14",
+    "dateModified": "2026-01-14",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Dom Jakości",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://domjakosci.pl/logo.png"
+      }
+    },
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": faqItems.map(item => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a
+        }
+      }))
+    }
+  }
+  </script>
+</BaseLayout>

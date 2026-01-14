@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Ile trwa budowa domu w 2026 roku i jak czas wpływa na koszt inwestycji";
+const description = "Sprawdź realny harmonogram budowy domu w 2026 r. Dowiedz się, jak opóźnienia zwiększają koszty i ile trwa budowa z generalnym wykonawcą vs systemem gospodarczym.";
+const author = 'mgr inż. Marek Nowicki';
+const lastUpdated = "2026-01-14";
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Czas budowy a koszty', url: '/budowa/koszt-budowy-domu/ile-trwa-budowa-domu/' }
+];
+---
+
+<BaseLayout title={title} description={description} type="article" author={author}>
+  <Header />
+
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
+      <article class="lg:flex-1">
+        <header class="mb-8">
+          <div class="flex items-center gap-2 mb-4 text-xs font-semibold uppercase tracking-wider text-amber-700 bg-amber-50 w-fit px-3 py-1 rounded-full border border-amber-200">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+            </span>
+            Analiza harmonogramu • Standardy wykonawcze 2026
+          </div>
+
+          <div class="bg-zinc-100 p-4 rounded-lg mb-6 border-l-4 border-zinc-400">
+            <p class="text-sm text-zinc-700">
+              Ten artykuł jest częścią głównego przewodnika: 
+              <a href="/budowa/koszt-budowy-domu/" class="text-orange-600 font-bold underline ml-1">→ Koszt budowy domu w 2026 roku</a>
+            </p>
+          </div>
+
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">{title}</h1>
+          
+          <div class="flex items-center gap-4 text-sm text-zinc-500 mb-6 pb-6 border-b border-zinc-100">
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-zinc-700">{author}</span>
+            </div>
+            <span>•</span>
+            <time datetime={lastUpdated}>Aktualizacja: 14 stycznia 2026</time>
+          </div>
+
+          <blockquote class="border-l-4 border-orange-500 pl-4 py-2 bg-stone-50 text-sm text-zinc-600 mb-6 italic text-balance">
+            W budownictwie czas to dosłownie pieniądz. Każdy miesiąc zwłoki w 2026 roku generuje dodatkowe koszty stałe, odsetki od transz kredytowych oraz ryzyko wzrostu cen materiałów wykończeniowych.
+          </blockquote>
+        </header>
+
+        <section id="harmonogram-2026" class="mb-12">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Etapy budowy domu – realny harmonogram</h2>
+          <p class="text-zinc-600 mb-6">
+            Przyjmując dom o pow. 120-150 m², standardowy cykl budowy w technologii murowanej zamyka się w **12-24 miesiącach**. Oto jak rozkładają się poszczególne fazy:
+          </p>
+          
+          <div class="space-y-4">
+            {[
+              { f: "Faza 1: Stan Zero", t: "2-4 tygodnie", d: "Wykopy, fundamenty, izolacje przeciwwilgociowe i chudy beton." },
+              { f: "Faza 2: Stan Surowy Otwarty", t: "3-5 miesięcy", d: "Ściany nośne, stropy, więźba dachowa i pokrycie dachu." },
+              { f: "Faza 3: Stan Surowy Zamknięty", t: "1-2 miesiące", d: "Montaż okien, drzwi zewnętrznych i bramy garażowej." },
+              { f: "Faza 4: Prace instalacyjne i tynki", t: "4-6 miesięcy", d: "Elektryka, wod-kan, ogrzewanie podłogowe, tynki wewnętrzne i wylewki." }
+            ].map((step) => (
+              <div class="flex items-start gap-4 p-4 border border-zinc-200 rounded-xl bg-zinc-50/50">
+                <div class="bg-orange-500 text-white font-bold px-2 py-1 rounded text-xs min-w-[100px] text-center">{step.t}</div>
+                <div>
+                  <h3 class="font-bold text-zinc-800 text-sm">{step.f}</h3>
+                  <p class="text-xs text-zinc-600 leading-relaxed">{step.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="systemy-wykonawcze" class="mb-12">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-6">System gospodarczy vs Generalny Wykonawca</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="p-6 bg-white border border-zinc-200 rounded-2xl shadow-sm">
+              <h3 class="text-lg font-bold text-zinc-800 mb-3">System Gospodarczy</h3>
+              <p class="text-sm text-zinc-600 mb-4">Budowa trwa zazwyczaj <strong>od 2 do 4 lat</strong>. Inwestor sam szuka ekip i koordynuje dostawy.</p>
+              <ul class="text-xs space-y-2 text-zinc-500 italic">
+                <li>• Przerwy między ekipami: 1-3 miesiące</li>
+                <li>• Ryzyko błędów koordynacyjnych: Wysokie</li>
+                <li>• Link: <a href="/budowa/koszt-budowy-domu/system-gospodarczy/" class="text-orange-600 underline">Koszt systemu gospodarczego</a></li>
+              </ul>
+            </div>
+            <div class="p-6 bg-zinc-900 text-white rounded-2xl shadow-sm">
+              <h3 class="text-lg font-bold mb-3">Generalny Wykonawca</h3>
+              <p class="text-sm text-zinc-300 mb-4">Budowa trwa <strong>od 8 do 12 miesięcy</strong>. Jedna firma odpowiada za cały proces do stanu deweloperskiego.</p>
+              <ul class="text-xs space-y-2 text-zinc-400 italic">
+                <li>• Ciągłość prac: Zachowana</li>
+                <li>• Gwarancja: Jeden podmiot odpowiedzialny</li>
+                <li>• Link: <a href="/budowa/koszt-budowy-domu/dom-pod-klucz/" class="text-orange-400 underline italic">Scenariusz: Dom pod klucz</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="koszt-opoznien" class="mb-12">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Jak opóźnienia zwiększają koszt budowy</h2>
+          <div class="bg-red-50 p-6 rounded-2xl border border-red-100">
+            <p class="text-zinc-700 mb-4 leading-relaxed">
+              W 2026 roku miesięczne opóźnienie na etapie wykończeniowym generuje realne straty finansowe:
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-center gap-3 text-sm text-zinc-700">
+                <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                <strong>Koszty alternatywne:</strong> Najem mieszkania (4 000 - 6 000 zł/m-c).
+              </li>
+              <li class="flex items-center gap-3 text-sm text-zinc-700">
+                <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                <strong>Odsetki bankowe:</strong> Obsługa transz kredytu bez możliwości spłaty kapitału.
+              </li>
+              <li class="flex items-center gap-3 text-sm text-zinc-700">
+                <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                <strong>Wzrost cen:</strong> Inflacja usług budowlanych (prognozowana na 5-8% r/r).
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="skracanie-czasu" class="mb-12 bg-orange-600 text-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="text-2xl font-bold mb-4 italic text-white">Jak skrócić czas budowy bez utraty jakości?</h2>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-orange-700/50 p-4 rounded-xl">
+                        <p class="font-bold text-sm mb-1 uppercase tracking-tighter text-orange-200">1. Prefabrykacja</p>
+                        <p class="text-xs text-orange-50 italic">Wybierz wiązary dachowe zamiast więźby tradycyjnej – oszczędność 2 tygodni.</p>
+                    </div>
+                    <div class="bg-orange-700/50 p-4 rounded-xl">
+                        <p class="font-bold text-sm mb-1 uppercase tracking-tighter text-orange-200">2. Tynki Maszynowe</p>
+                        <p class="text-xs text-orange-50 italic">Zastosowanie tynków gipsowych maszynowych skraca prace o 50% względem ręcznych.</p>
+                    </div>
+                    <div class="bg-orange-700/50 p-4 rounded-xl">
+                        <p class="font-bold text-sm mb-1 uppercase tracking-tighter text-orange-200">3. Osuszacze</p>
+                        <p class="text-xs text-orange-50 italic">Wynajem osuszaczy przemysłowych pozwala wejść z podłogami 3 tygodnie wcześniej.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-16 p-8 bg-zinc-900 text-white rounded-3xl relative overflow-hidden">
+            <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-24 h-24 rounded-full bg-orange-500 flex-shrink-0 flex items-center justify-center text-3xl font-bold">MN</div>
+                <div>
+                    <p class="text-orange-500 font-bold uppercase tracking-widest text-xs mb-1">Ekspert ds. Zarządzania Budową</p>
+                    <h3 class="text-xl font-bold mb-3">{author}</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-4 text-balance">
+                        Inżynier budownictwa z bogatym doświadczeniem w optymalizacji procesów inwestycyjnych. Specjalizuje się w tworzeniu harmonogramów krytycznych, które pozwalają inwestorom unikać kosztownych przestojów na budowie.
+                    </p>
+                    <div class="flex gap-4">
+                        <span class="text-xs bg-white/10 px-2 py-1 rounded">Project Management Professional (PMP)</span>
+                        <span class="text-xs bg-white/10 px-2 py-1 rounded">Audytor Procesów Budowlanych</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-12 pt-8 border-t border-zinc-200">
+          <h2 class="text-lg font-bold text-zinc-700 mb-4">Zobacz również:</h2>
+          <ul class="space-y-2 text-orange-600 text-sm underline font-medium">
+            <li><a href="/budowa/koszt-budowy-domu/">→ Główny przewodnik: Koszt budowy domu 2026</a></li>
+            <li><a href="/budowa/koszt-budowy-domu/system-gospodarczy/">→ Ile zaoszczędzisz systemem gospodarczym?</a></li>
+            <li><a href="/budowa/koszt-budowy-domu/dom-pod-klucz/">→ Standard pod klucz: Cena i czas realizacji</a></li>
+          </ul>
+        </footer>
+      </article>
+
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
+
+  <script type="application/ld+json" is:inline>
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/ile-trwa-budowa-domu/" },
+      "headline": "Ile trwa budowa domu w 2026 roku i jak czas wpływa na koszt inwestycji",
+      "description": "Analiza czasu budowy domu jednorodzinnego. Harmonogram etapowy i wpływ opóźnień na budżet inwestora.",
+      "author": { 
+        "@type": "Person", 
+        "name": "Marek Nowicki",
+        "jobTitle": "Inżynier Budownictwa"
+      },
+      "datePublished": "2026-01-14",
+      "dateModified": "2026-01-14"
+    }
+  ]
+  </script>
+</BaseLayout>
