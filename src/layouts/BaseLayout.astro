@@ -10,7 +10,9 @@ const {
 
 const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
 const siteName = "Dom Jakości";
----
+// Decide when to center content: only for deeper subpages (e.g. /category/article)
+const pathSegments = (Astro.url.pathname || '').split('/').filter(Boolean);
+const centered = pathSegments.length > 1;
 
 <!doctype html>
 <html lang="pl">
@@ -71,10 +73,14 @@ const siteName = "Dom Jakości";
     })} />
   </head>
   <body class="min-h-screen bg-white">
-    <!-- Global centered container so all pages and new subpages are horizontally centered -->
-    <div class="max-w-7xl mx-auto px-4">
+    <!-- Center only for deeper category/article pages; keep homepage and top-level category pages full width -->
+    {centered ? (
+      <div class="max-w-7xl mx-auto px-4">
+        <slot />
+      </div>
+    ) : (
       <slot />
-    </div>
+    )}
 
     <script>
       // Ensure every article page shows a sidebar. If no sidebar present on page, fetch a lightweight fallback
