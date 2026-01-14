@@ -1,17 +1,35 @@
 ---
+// Load supporting pages for the Koszt budowy domu submenu
+const scenarioModules = import.meta.glob('/src/pages/budowa/koszt-budowy-domu/*.astro', { eager: true }) as Record<string, any>;
+const supportingPages = Object.keys(scenarioModules)
+  .filter(p => !/index\.astro$/i.test(p))
+  .map(p => {
+    const mod = scenarioModules[p];
+    const fileName = p.split(/[\\\/]/).pop() || '';
+    let title = (mod?.frontmatter?.title) || fileName.replace(/\.astro$/i,'').replace(/-/g,' ');
+    const crumbs = mod?.breadcrumbs;
+    if (Array.isArray(crumbs) && crumbs.length) {
+      const last = crumbs[crumbs.length - 1];
+      if (last && last.label) title = last.label;
+    }
+    const href = (p.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/';
+    return { title, href };
+  });
 ---
-
 <nav class="hidden md:flex items-center gap-8">
   <div class="relative group">
     <a href="/budowa" class="text-sm font-medium text-zinc-700 hover:text-orange-500 transition-colors inline-flex items-center gap-2">
       Budowa
       <svg class="w-3 h-3 text-zinc-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.25 8.29a.75.75 0 01-.02-1.08z" clip-rule="evenodd"/></svg>
     </a>
-    <div class="absolute left-0 mt-2 w-56 bg-white border rounded-md shadow-md opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transform scale-95 group-hover:scale-100 group-focus-within:scale-100 transition-all duration-150 pointer-events-none group-hover:pointer-events-auto">
+    <div class="absolute left-0 mt-1 w-64 bg-white border rounded-md shadow-md invisible group-hover:visible opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-150">
       <ul class="p-3 text-sm">
         <li><a href="/budowa" class="block py-2 px-2 hover:bg-stone-50">Przegląd: Budowa</a></li>
-        <li><a href="/budowa/koszt-budowy-domu" class="block py-2 px-2 hover:bg-stone-50">Koszt budowy domu</a></li>
-        <li><a href="/budowa/etapy-budowy" class="block py-2 px-2 hover:bg-stone-50">Etapy budowy</a></li>
+        <li class="font-semibold border-t border-stone-100 mt-2 pt-2"><a href="/budowa/koszt-budowy-domu" class="block py-2 px-2 hover:bg-stone-50">Koszt budowy domu</a></li>
+        {supportingPages.map(p => (
+          <li><a href={p.href} class="block py-2 px-2 hover:bg-stone-50">{p.title}</a></li>
+        ))}
+        <li class="border-t border-stone-100 mt-2 pt-2"><a href="/budowa/etapy-budowy" class="block py-2 px-2 hover:bg-stone-50">Etapy budowy</a></li>
         <li><a href="/budowa/materialy-budowlane" class="block py-2 px-2 hover:bg-stone-50">Materiały budowlane</a></li>
         <li><a href="/budowa/technologie-budowy" class="block py-2 px-2 hover:bg-stone-50">Technologie budowy</a></li>
       </ul>

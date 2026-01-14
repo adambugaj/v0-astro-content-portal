@@ -71,6 +71,15 @@ const categoriesWithLinks = categories.map(cat => ({
   ...cat,
   autoLinks: getAutoLinks(cat.href)
 }));
+
+// Build list of supporting pages for the Koszt Budowy Domu pillar
+const budowaSupporting = allPages
+  .filter(page => page.file.includes('/src/pages/budowa/koszt-budowy-domu/') && !/index\.astro$/i.test(page.file))
+  .map(page => {
+    const finalTitle = page.breadcrumbLabel || page.title || humanizeFileName(page.file.split('/').pop() || '');
+    const finalHref = page.url || page.file.replace('/src/pages', '').replace('.astro', '').replace(/\/index$/,'');
+    return { title: finalTitle, href: finalHref };
+  });
 ---
 
 <div class="space-y-12">
@@ -118,8 +127,8 @@ const categoriesWithLinks = categories.map(cat => ({
       <div class="bg-stone-50 rounded-lg p-5 border border-stone-200">
         <p class="text-xs font-bold text-zinc-500 mb-3 uppercase tracking-wider">Najczęściej wyszukiwane:</p>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {category.autoLinks && category.autoLinks.length > 0 ? (
-            category.autoLinks.map(link => (
+          {category.title === 'Budowa' ? (
+            budowaSupporting.map(link => (
               <li>
                 <a href={link.href} class="text-sm text-zinc-600 hover:text-orange-500 flex items-center gap-2">
                   <span class="text-orange-400">→</span> {link.title}
@@ -127,11 +136,21 @@ const categoriesWithLinks = categories.map(cat => ({
               </li>
             ))
           ) : (
-            category.seoCluster.map((term) => (
-              <li class="flex items-center gap-2 text-sm text-zinc-500">
-                <span class="text-stone-300">→</span> {term}
-              </li>
-            ))
+            category.autoLinks && category.autoLinks.length > 0 ? (
+              category.autoLinks.map(link => (
+                <li>
+                  <a href={link.href} class="text-sm text-zinc-600 hover:text-orange-500 flex items-center gap-2">
+                    <span class="text-orange-400">→</span> {link.title}
+                  </a>
+                </li>
+              ))
+            ) : (
+              category.seoCluster.map((term) => (
+                <li class="flex items-center gap-2 text-sm text-zinc-500">
+                  <span class="text-stone-300">→</span> {term}
+                </li>
+              ))
+            )
           )}
         </ul>
       </div>
