@@ -1,4 +1,3 @@
----
 const { 
   title = "Ekspercki Portal o Budowie Domów, Kosztach, Energetyce i Inwestowaniu w Nieruchomości", 
   description = "Portal ekspercki o budowie domów, kosztach realizacji, energii odnawialnej i inwestowaniu w nieruchomości – z praktycznymi kalkulatorami i poradnikami krok po kroku.",
@@ -71,6 +70,50 @@ const siteName = "Dom Jakości";
     })} />
   </head>
   <body class="min-h-screen bg-white">
-    <slot />
+    <!-- Global centered container so all pages and new subpages are horizontally centered -->
+    <div class="max-w-7xl mx-auto px-4">
+      <slot />
+    </div>
+
+    <script>
+      // Ensure every article page shows a sidebar. If no sidebar present on page, fetch a lightweight fallback
+      // sidebar HTML (static) and insert it on large viewports. This avoids server edits for every article file.
+      document.addEventListener('DOMContentLoaded', () => {
+        if (!document.querySelector('article')) return;
+        // don't inject if an aside with class 'article-sidebar' exists
+        if (document.querySelector('aside.article-sidebar')) return;
+
+        // Only inject on wide screens (desktop)
+        if (window.innerWidth < 1024) return;
+
+        fetch('/sidebar.html').then(r => r.text()).then(html => {
+          try {
+            const container = document.createElement('div');
+            container.innerHTML = html;
+            const aside = container.querySelector('aside');
+            if (aside) {
+              aside.classList.add('article-sidebar');
+              aside.style.marginTop = '1rem';
+              // place after the article element
+              const article = document.querySelector('article');
+              if (article && article.parentElement) {
+                // If page already uses a grid with sidebar, append; otherwise create a two-column layout
+                const parent = article.parentElement;
+                const wrapper = document.createElement('div');
+                wrapper.className = 'grid grid-cols-1 lg:grid-cols-3 gap-8 items-start';
+                // move current article into wrapper
+                parent.replaceChild(wrapper, article);
+                article.classList.add('lg:col-span-2');
+                wrapper.appendChild(article);
+                wrapper.appendChild(aside);
+              }
+            }
+          } catch (err) {
+            // fail silently
+            console.warn('Sidebar inject failed', err);
+          }
+        }).catch(() => {});
+      });
+    </script>
   </body>
 </html>
