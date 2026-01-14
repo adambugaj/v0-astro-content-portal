@@ -15,6 +15,7 @@ export const breadcrumbs = [
 ---
 
 <BaseLayout title={title} description={description} type="article" author={author}>
+  <Header />
 
   <main class="max-w-7xl mx-auto px-4 py-12">
     <Breadcrumbs items={breadcrumbs} />
@@ -35,170 +36,138 @@ export const breadcrumbs = [
           <blockquote class="border-l-4 border-orange-500 pl-4 py-2 bg-stone-50 text-sm text-zinc-600 mb-6 italic text-balance">
             Analiza różnic kosztowych między etapami budowy. Uwzględniono aktualne ceny stolarki otworowej oraz koszty instalacji wewnętrznych prognozowane na 2026 rok.
           </blockquote>
-
-          <div class="flex items-center gap-4 mb-6">
-            <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">MN</div>
-            <div>
-              <p class="font-semibold text-zinc-700">{author}</p>
-              <p class="text-sm text-zinc-500">Specjalista ds. kosztorysowania inwestycji budowlanych</p>
-            </div>
-          </div>
         </header>
 
-        <section class="mb-10">
-          <h2 class="text-xl font-bold text-zinc-700 mb-4">Dla kogo dany etap budowy? (Szybkie rekomendacje)</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="p-4 bg-white border border-zinc-200 rounded-xl shadow-sm">
-              <p class="font-bold text-zinc-800 mb-2">🏗️ Stan Surowy (SSO/SSZ)</p>
-              <ul class="text-sm text-zinc-600 space-y-2">
-                <li>• <strong>Inwestorzy z ograniczoną gotówką</strong> – budowa etapami bez dużego kredytu.</li>
-                <li>• <strong>System gospodarczy</strong> – planujesz prace instalacyjne wykonać samodzielnie.</li>
-                <li>• <strong>Przerwa zimowa</strong> – chcesz zabezpieczyć budynek przed mrozem.</li>
-              </ul>
+        <section class="mb-12 bg-zinc-50 p-6 rounded-2xl border border-zinc-200">
+            <h2 class="text-center text-lg font-bold text-zinc-700 mb-8 uppercase tracking-wider">Ewolucja budowy: Od fundamentów do tynków</h2>
+            <div class="max-w-3xl mx-auto">
+                <svg viewBox="0 0 600 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+                    <path d="M140 60 H230 M370 60 H460" stroke="#d4d4d8" stroke-width="4" stroke-dasharray="8 4" />
+                    <circle cx="70" cy="60" r="50" fill="#f4f4f5" stroke="#f97316" stroke-width="3" />
+                    <text x="70" y="65" text-anchor="middle" fill="#71717a" font-weight="bold" font-size="14">SSO</text>
+                    
+                    <circle cx="300" cy="60" r="50" fill="#f4f4f5" stroke="#f97316" stroke-width="3" />
+                    <text x="300" y="65" text-anchor="middle" fill="#71717a" font-weight="bold" font-size="14">SSZ</text>
+                    
+                    <circle cx="530" cy="60" r="50" fill="#f97316" />
+                    <text x="530" y="65" text-anchor="middle" fill="white" font-weight="bold" font-size="14">SD</text>
+                    
+                    <text x="70" y="115" text-anchor="middle" fill="#3f3f46" font-size="10">Konstrukcja i Dach</text>
+                    <text x="300" y="115" text-anchor="middle" fill="#3f3f46" font-size="10">Okna i Drzwi</text>
+                    <text x="530" y="115" text-anchor="middle" fill="#3f3f46" font-size="10">Instalacje i Tynki</text>
+                </svg>
             </div>
-            <div class="p-4 bg-white border border-zinc-200 rounded-xl shadow-sm">
-              <p class="font-bold text-zinc-800 mb-2">🏠 Stan Deweloperski</p>
-              <ul class="text-sm text-zinc-600 space-y-2">
-                <li>• <strong>Kredytobiorcy</strong> – banki wymagają dojścia do tego etapu w określonym czasie.</li>
-                <li>• <strong>Zabiegani inwestorzy</strong> – chcesz szybko przejść do „wykończeniówki”.</li>
-                <li>• <strong>Gwarancja jakości</strong> – instalacje pod tynkiem wykonuje jedna firma.</li>
-              </ul>
-            </div>
-          </div>
         </section>
-
-        <nav class="bg-stone-50 p-6 rounded-xl mb-8 border border-stone-200 text-balance text-sm">
-          <p class="font-bold text-zinc-700 mb-3 text-lg">W tym artykule:</p>
-          <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 text-orange-600 underline">
-            <li><a href="#definicja-ss">Co to jest stan surowy?</a></li>
-            <li><a href="#deweloperski-lista">Co obejmuje stan deweloperski?</a></li>
-            <li><a href="#tabela-porownawcza">Różnice kosztów: Tabela 2026</a></li>
-            <li><a href="#kiedy-sso">Kiedy warto zakończyć na SSO?</a></li>
-            <li><a href="#bledy">Najczęstsze błędy inwestorów</a></li>
-            <li><a href="#faq">FAQ</a></li>
-          </ul>
-        </nav>
 
         <section id="definicja-ss" class="mb-10">
-          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Co dokładnie oznacza stan surowy (otwarty i zamknięty)</h2>
-          <p class="text-zinc-600 mb-4 text-balance">
-            Stan surowy to "szkielet" Twojego domu. Granica między stanem otwartym a zamkniętym jest kluczowa dla bezpieczeństwa materiałów przechowywanych na budowie.
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Co dokładnie oznacza stan surowy?</h2>
+          <p class="text-zinc-600 mb-6">
+            Różnica między stanem otwartym a zamkniętym to najczęściej <strong>ok. 10-15% całkowitego budżetu</strong>, ale to właśnie ten moment decyduje o komforcie termicznym budynku.
           </p>
-          
-          <div class="grid md:grid-cols-2 gap-6 mb-6">
-            <div class="bg-zinc-50 p-5 rounded-lg border border-zinc-200">
-              <h3 class="font-bold text-zinc-800 mb-2">Stan Surowy Otwarty (SSO)</h3>
-              <p class="text-sm text-zinc-600">Fundamenty, ściany nośne i działowe, stropy oraz konstrukcja dachu (więźba) z pokryciem wstępnym lub docelowym. Brak okien i drzwi.</p>
-            </div>
-            <div class="bg-zinc-50 p-5 rounded-lg border border-zinc-200">
-              <h3 class="font-bold text-zinc-800 mb-2">Stan Surowy Zamknięty (SSZ)</h3>
-              <p class="text-sm text-zinc-600">Budynek posiada zamontowane okna, drzwi zewnętrzne oraz bramę garażową. Dom jest chroniony przed czynnikami atmosferycznymi i kradzieżą.</p>
-            </div>
+          <div class="grid md:grid-cols-2 gap-4">
+              <div class="border-l-4 border-zinc-300 pl-4">
+                  <h3 class="font-bold text-zinc-800 uppercase text-xs tracking-widest mb-2">Stan Surowy Otwarty (SSO)</h3>
+                  <p class="text-sm text-zinc-600 leading-relaxed">Fundamenty, ściany, strop i więźba z pokryciem. Budynek "oddycha", ale nie jest chroniony przed kradzieżą i mrozem.</p>
+              </div>
+              <div class="border-l-4 border-orange-500 pl-4">
+                  <h3 class="font-bold text-orange-600 uppercase text-xs tracking-widest mb-2">Stan Surowy Zamknięty (SSZ)</h3>
+                  <p class="text-sm text-zinc-600 leading-relaxed">Dodanie stolarki (okna, drzwi, brama). Dom można już ubezpieczyć i ogrzewać wewnątrz podczas prac zimowych.</p>
+              </div>
           </div>
-        </section>
-
-        <section id="deweloperski-lista" class="mb-10">
-          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Co obejmuje stan deweloperski – lista kosztów</h2>
-          <p class="text-zinc-600 mb-6">Pamiętaj, że w Polsce nie istnieje jedna prawna definicja "stanu deweloperskiego". Zawsze sprawdzaj zakres prac w umowie. Standardowo w 2026 roku obejmuje on:</p>
-
-          <div class="bg-white border border-zinc-200 rounded-2xl p-6 shadow-sm mb-6">
-            <ul class="space-y-4">
-              {[
-                "Instalacje wewnętrzne: wod-kan, elektryczna, grzewcza",
-                "Tynki wewnętrzne (maszynowe lub gipsowe)",
-                "Wylewki podłogowe (posadzki) z izolacją",
-                "Elewacja (ocieplenie styropianem/wełną + tynk)",
-                "Poddasze: ocieplenie wełną i zabudowa GK",
-                "Przyłącza mediów do budynku"
-              ].map(item => (
-                <li class="flex items-center gap-3 text-zinc-700">
-                  <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <p class="text-zinc-600">Jeśli interesuje Cię co dalej, zobacz nasz poradnik o <a href="/dom-pod-klucz/" class="text-orange-600 underline">wykańczaniu domu pod klucz</a>.</p>
         </section>
 
         <section id="tabela-porownawcza" class="mb-10">
-          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Różnice kosztów: SSO vs SSZ vs deweloperski</h2>
-          <p class="text-zinc-600 mb-4">Uśrednione koszty budowy domu o powierzchni 120-130 m² w 2026 r.</p>
-          
-          <div class="overflow-x-auto shadow-sm rounded-xl">
-            <table class="w-full text-sm border-collapse bg-white">
-              <thead class="bg-zinc-800 text-white">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Koszt m² w 2026 r. – Zestawienie etapów</h2>
+          <div class="overflow-x-auto shadow-sm rounded-xl border border-zinc-200">
+            <table class="w-full text-sm text-left">
+              <thead class="bg-zinc-50 text-zinc-700 border-b">
                 <tr>
-                  <th class="p-4 text-left border border-zinc-700">Etap</th>
-                  <th class="p-4 text-left border border-zinc-700">% Całości</th>
-                  <th class="p-4 text-left border border-zinc-700">Szacunkowa Cena (zł)</th>
+                  <th class="p-4 font-bold">Kategoria prac</th>
+                  <th class="p-4 font-bold">Stan Surowy (SSZ)</th>
+                  <th class="p-4 font-bold">Stan Deweloperski (SD)</th>
                 </tr>
               </thead>
               <tbody class="text-zinc-600">
                 <tr class="border-b">
-                  <td class="p-4 font-bold text-zinc-800">Stan Surowy Otwarty</td>
-                  <td class="p-4">35 - 40%</td>
-                  <td class="p-4">280 000 - 340 000</td>
+                  <td class="p-4 font-medium italic text-zinc-800">Cena za m² (średnia)</td>
+                  <td class="p-4">3 100 – 3 600 zł</td>
+                  <td class="p-4">5 800 – 6 700 zł</td>
                 </tr>
                 <tr class="border-b">
-                  <td class="p-4 font-bold text-zinc-800">Stan Surowy Zamknięty</td>
-                  <td class="p-4">45 - 50%</td>
-                  <td class="p-4">360 000 - 420 000</td>
+                  <td class="p-4">Instalacje wewnętrzne</td>
+                  <td class="p-4 text-red-500">Brak</td>
+                  <td class="p-4 text-green-600">Pełny zakres</td>
                 </tr>
-                <tr class="border-b bg-orange-50">
-                  <td class="p-4 font-bold text-zinc-800 italic">Stan Deweloperski</td>
-                  <td class="p-4 italic">100% (baza)</td>
-                  <td class="p-4 font-bold text-orange-700 italic">750 000 - 880 000</td>
+                <tr class="border-b">
+                  <td class="p-4">Elewacja i ocieplenie</td>
+                  <td class="p-4 text-red-500">Brak</td>
+                  <td class="p-4 text-green-600">Gotowa</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p class="text-xs mt-2 text-zinc-500 italic">Dane oparte na analizie <a href="/budowa/koszt-budowy-domu/koszt-100m2/" class="text-zinc-500 underline">kosztów domu 100m2</a> powiększonego o współczynnik metrażu.</p>
         </section>
 
-        <section id="kiedy-sso" class="mb-10">
-          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Kiedy warto zakończyć budowę na stanie surowym</h2>
-          <p class="text-zinc-600 mb-4">Wielu inwestorów decyduje się na "zimowanie" budowy na etapie SSO lub SSZ. Ma to sens w dwóch przypadkach:</p>
-          <ol class="list-decimal pl-5 space-y-3 text-zinc-700">
-            <li><strong>Zalecenia technologiczne:</strong> Pozwolenie budynkowi na "osiadanie" przez kilka miesięcy (sezonowanie) zmniejsza ryzyko pękania tynków w przyszłości.</li>
-            <li><strong>Optymalizacja cen:</strong> Kupno okien i drzwi zimą (wyprzedaże roczników) może przynieść 5-10% oszczędności względem szczytu sezonu.</li>
-          </ol>
+        <section class="mb-12 bg-orange-600 text-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="text-2xl font-bold mb-4 italic">Decyzja w 30 sekund: Co wybrać?</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-orange-700/50 p-4 rounded-xl border border-white/20">
+                        <p class="font-bold mb-1">👉 SSO / SSZ</p>
+                        <p class="text-xs text-orange-100 italic">Jeśli masz ograniczony budżet i chcesz budować etapami przez 3-4 lata.</p>
+                    </div>
+                    <div class="bg-orange-700/50 p-4 rounded-xl border border-white/20">
+                        <p class="font-bold mb-1">👉 Deweloperski</p>
+                        <p class="text-xs text-orange-100 italic">Jeśli bierzesz kredyt i bank wymaga szybkich postępów prac.</p>
+                    </div>
+                    <div class="bg-orange-700/50 p-4 rounded-xl border border-white/20">
+                        <p class="font-bold mb-1">👉 SSZ + Własne ekipy</p>
+                        <p class="text-xs text-orange-100 italic">Jeśli budujesz systemem gospodarczym i znasz fachowców od instalacji.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute right-[-20px] bottom-[-20px] opacity-10">
+                <svg width="150" height="150" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+            </div>
         </section>
 
-        <section id="bledy" class="mb-10">
-          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Najczęstsze błędy inwestorów</h2>
-          <div class="bg-red-50 p-6 rounded-xl border border-red-100">
-            <ul class="space-y-4">
-              <li class="flex gap-3">
-                <span class="text-red-600 font-bold">❌</span>
-                <p class="text-sm text-zinc-700"><strong>Zbyt długa przerwa w SSO:</strong> Brak okien i ogrzewania przez kilka lat może prowadzić do zawilgocenia ścian i problemów z grzybem.</p>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-red-600 font-bold">❌</span>
-                <p class="text-sm text-zinc-700"><strong>Montaż instalacji przed SSZ:</strong> Kable miedziane to częsty łup złodziei na nieogrodzonych i niepozamykanych budowach.</p>
-              </li>
-            </ul>
-          </div>
+        <section class="mb-12 border-y py-10 border-zinc-200">
+            <h2 class="text-xl font-bold text-zinc-700 mb-6 uppercase tracking-wider">Powiązane scenariusze kosztowe:</h2>
+            <div class="grid gap-4">
+                <a href="/budowa/koszt-budowy-domu/system-gospodarczy/" class="group p-4 bg-zinc-50 rounded-xl hover:bg-zinc-100 transition-all flex justify-between items-center border border-zinc-200">
+                    <div>
+                        <p class="font-bold text-zinc-800">Scenariusz A: System Gospodarczy</p>
+                        <p class="text-xs text-zinc-500 italic">Największe oszczędności przy SSZ, ale wyższe ryzyko błędów.</p>
+                    </div>
+                    <span class="text-orange-500 transform group-hover:translate-x-2 transition-transform">→</span>
+                </a>
+                <a href="/budowa/koszt-budowy-domu/dom-pod-klucz/" class="group p-4 bg-zinc-50 rounded-xl hover:bg-zinc-100 transition-all flex justify-between items-center border border-zinc-200">
+                    <div>
+                        <p class="font-bold text-zinc-800">Scenariusz B: Dom Pod Klucz</p>
+                        <p class="text-xs text-zinc-500 italic">Pełny koszt wejścia – od stanu deweloperskiego do mebli.</p>
+                    </div>
+                    <span class="text-orange-500 transform group-hover:translate-x-2 transition-transform">→</span>
+                </a>
+                <a href="/budowa/koszt-budowy-domu/koszt-robocizny/" class="group p-4 bg-zinc-50 rounded-xl hover:bg-zinc-100 transition-all flex justify-between items-center border border-zinc-200">
+                    <div>
+                        <p class="font-bold text-zinc-800">Klucz do budżetu: Koszt robocizny</p>
+                        <p class="text-xs text-zinc-500 italic">Jak stawki ekip w 2026 r. wpływają na finalny stan deweloperski.</p>
+                    </div>
+                    <span class="text-orange-500 transform group-hover:translate-x-2 transition-transform">→</span>
+                </a>
+            </div>
         </section>
-
-        <div class="mt-10 p-8 bg-zinc-800 text-white rounded-2xl shadow-xl">
-            <p class="text-xl font-bold mb-2">Chcesz wiedzieć ile zapłacisz za robociznę?</p>
-            <p class="text-zinc-300 mb-6">Przejdź do naszego szczegółowego zestawienia stawek ekip budowlanych na rok 2026.</p>
-            <a href="/budowa/koszt-budowy-domu/koszt-robocizny/" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 text-center">
-                Sprawdź Koszt Robocizny 2026
-            </a>
-        </div>
 
         <section id="faq" class="my-12">
-          <h2 class="text-2xl font-bold text-zinc-700 mb-4">FAQ</h2>
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">FAQ – Najczęstsze pytania o etapy budowy</h2>
           <div class="space-y-4">
             {[ 
-              {q: "Co jest tańsze: kupno domu w stanie deweloperskim czy budowa SSO?", a: "Budowa SSO jest tańsza jednostkowo, ale to dopiero połowa drogi. Kupno gotowego stanu deweloperskiego oszczędza czas, ale zazwyczaj kosztuje 15-20% więcej niż samodzielna budowa."},
-              {q: "Czy stan surowy zamknięty obejmuje instalacje?", a: "Standardowo nie. SSZ kończy się na 'skorupie' z oknami i drzwiami. Instalacje elektryczne i wod-kan to pierwszy krok etapu deweloperskiego."},
-              {q: "Ile czasu trwa przejście z SSZ do stanu deweloperskiego?", a: "W 2026 roku przy dobrej koordynacji ekip zajmuje to średnio od 3 do 5 miesięcy."},
-              {q: "Czy można mieszkać w domu w stanie deweloperskim?", a: "Nie. Stan deweloperski nie posiada podłóg (paneli/płytek), białego montażu ani wykończonych ścian. Wymaga on etapu 'pod klucz'."}
+              {q: "Co jest tańsze: kupno domu w stanie deweloperskim czy budowa SSO?", a: "Budowa SSO jest tańsza jednostkowo, ale to dopiero połowa drogi do zamieszkania. Kupno gotowego stanu deweloperskiego zazwyczaj kosztuje 15-20% więcej niż samodzielna budowa ze względu na marżę firmy."},
+              {q: "Czy stan surowy zamknięty obejmuje instalacje?", a: "Standardowo nie. SSZ kończy się na szczelnym zamknięciu budynku (okna, drzwi). Instalacje elektryczne i wod-kan to początek etapu deweloperskiego."},
+              {q: "Ile czasu zajmuje przejście z SSZ do stanu deweloperskiego?", a: "W 2026 r. przy dobrej koordynacji ekip (hydraulik, elektryk, tynkarz, posadzkarz) zajmuje to od 3 do 5 miesięcy."},
+              {q: "Czy można mieszkać w domu w stanie deweloperskim?", a: "Nie. Stan deweloperski to baza – bez podłóg, łazienek (białego montażu) i pomalowanych ścian. Wymaga wykończenia 'pod klucz'."}
             ].map((item) => (
-              <div class="border rounded-lg overflow-hidden">
+              <div class="border rounded-lg overflow-hidden border-zinc-200">
                 <div class="p-4 bg-stone-50 font-semibold text-zinc-700 text-sm">{item.q}</div>
                 <div class="p-4 text-zinc-600 text-sm leading-relaxed">{item.a}</div>
               </div>
@@ -207,11 +176,10 @@ export const breadcrumbs = [
         </section>
 
         <footer class="mt-12 pt-8 border-t border-zinc-200">
-          <h2 class="text-lg font-bold text-zinc-700 mb-4 text-balance">Zobacz również:</h2>
+          <h2 class="text-lg font-bold text-zinc-700 mb-4">Zobacz również:</h2>
           <ul class="space-y-2 text-orange-600 text-sm underline font-medium">
             <li><a href="/budowa/koszt-budowy-domu/">→ Główny przewodnik: Koszt budowy domu 2026</a></li>
             <li><a href="/budowa/koszt-budowy-domu/koszt-100m2/">→ Ile kosztuje budowa domu 100m2?</a></li>
-            <li><a href="/budowa/koszt-budowy-domu/system-gospodarczy/">→ Budowa systemem gospodarczym - oszczędności</a></li>
           </ul>
         </footer>
       </article>
@@ -245,7 +213,31 @@ export const breadcrumbs = [
           "name": "Co jest tańsze: kupno domu w stanie deweloperskim czy budowa SSO?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Budowa SSO jest tańsza jednostkowo, ale to dopiero połowa drogi do zamieszkania."
+            "text": "Budowa SSO jest tańsza jednostkowo, ale to dopiero połowa drogi do zamieszkania. Kupno gotowego stanu deweloperskiego zazwyczaj kosztuje 15-20% więcej niż samodzielna budowa ze względu na marżę firmy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy stan surowy zamknięty obejmuje instalacje?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standardowo nie. SSZ kończy się na szczelnym zamknięciu budynku (okna, drzwi). Instalacje elektryczne i wod-kan to początek etapu deweloperskiego."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ile czasu zajmuje przejście z SSZ do stanu deweloperskiego?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "W 2026 r. przy dobrej koordynacji ekip zajmuje to od 3 do 5 miesięcy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy można mieszkać w domu w stanie deweloperskim?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nie. Stan deweloperski to baza – bez podłóg, łazienek i pomalowanych ścian. Wymaga wykończenia pod klucz."
           }
         }
       ]
