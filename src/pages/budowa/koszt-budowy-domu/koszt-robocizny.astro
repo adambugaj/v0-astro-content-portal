@@ -1,0 +1,258 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Koszt robocizny przy budowie domu w 2026 roku – aktualne stawki ekip";
+const description = "Ile zapłacisz ekipom budowlanym w 2026 r.? Sprawdź aktualny cennik robocizny za m2: od fundamentów po dach i instalacje. Porównanie stawek.";
+const author = 'mgr inż. Marek Nowicki';
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Koszt robocizny' }
+];
+---
+
+<BaseLayout title={title} description={description} type="article" author={author}>
+  <Header />
+
+  <main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <article class="lg:col-span-2">
+        <header class="mb-8">
+          <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-sm font-semibold mb-4">Raport Płacowy: 2026</span>
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">{title}</h1>
+          
+          <blockquote class="border-l-4 border-orange-500 pl-4 py-2 bg-stone-50 text-sm text-zinc-600 mb-6 italic text-balance">
+            Dane aktualizowane na podstawie stawek rynkowych i kontraktów z IV kwartału 2025 r. Uwzględniono prognozowany wzrost płacy minimalnej oraz składek ZUS w 2026 r.
+          </blockquote>
+
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">MN</div>
+            <div>
+              <p class="font-semibold text-zinc-700">{author}</p>
+              <p class="text-sm text-zinc-500">Specjalista ds. kosztorysowania i zarządzania projektami</p>
+            </div>
+          </div>
+        </header>
+
+        <nav class="bg-stone-50 p-6 rounded-xl mb-8 border border-stone-200 text-balance">
+          <p class="font-bold text-zinc-700 mb-3 text-lg">Analiza stawek robocizny:</p>
+          <ul class="space-y-2 text-orange-600 underline">
+            <li><a href="#answer-first">Ile stanowi robocizna w budżecie domu?</a></li>
+            <li><a href="#segmentacja">Dla kogo system gospodarczy, a dla kogo GW?</a></li>
+            <li><a href="#co-wchodzi">Co wchodzi w koszt robocizny</a></li>
+            <li><a href="#tabela-stawek">Stawki ekip 2026 – Tabela</a></li>
+            <li><a href="#gospodarczy-vs-gw">System gospodarczy vs Generalny Wykonawca</a></li>
+            <li><a href="#najdrozsze-etapy">Gdzie robocizna jest najdroższa?</a></li>
+            <li><a href="#jak-obnizyc">Jak obniżyć koszty bez ryzyka</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <section id="answer-first" class="mb-10 text-balance">
+          <div class="rounded-lg p-6 bg-orange-50 border-l-4 border-orange-500">
+            <h2 class="text-xl font-bold text-zinc-700 mb-2">Szybka odpowiedź: Koszt robocizny 2026</h2>
+            <p class="text-zinc-700 leading-relaxed">
+              W 2026 roku koszt robocizny stanowi od <strong>40% do 50%</strong> całkowitego kosztu budowy domu w standardzie deweloperskim. Średnia stawka za robociznę przy budowie domu 150 m² wynosi obecnie <strong>3 200 – 4 500 zł/m²</strong> powierzchni użytkowej. Największy wzrost stawek (o ok. 12% r/r) odnotowano w branży instalacyjnej i wykończeniowej.
+            </p>
+          </div>
+        </section>
+
+        <section id="segmentacja" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Dla kogo dany model współpracy?</h2>
+          <div class="grid md:grid-cols-2 gap-4 text-sm text-balance">
+            <div class="p-4 border rounded-lg bg-white shadow-sm border-l-4 border-blue-500">
+              <p class="font-bold mb-2">🏗️ Inwestor „Zrób to Sam”</p>
+              <p>System gospodarczy. Oszczędzasz ok. 20% na robociźnie, ale poświęcasz ok. 800-1000 godzin na zarządzanie i proste prace.</p>
+            </div>
+            <div class="p-4 border rounded-lg bg-white shadow-sm border-l-4 border-orange-500">
+              <p class="font-bold mb-2">💼 Zabiegany Profesjonalista</p>
+              <p>Generalny Wykonawca (GW). Płacisz marżę (10-15%), ale masz gwarancję ceny, terminu i jedną osobę do kontaktu.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="co-wchodzi" class="mb-10 text-balance">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Co wchodzi w koszt robocizny przy budowie domu</h2>
+          <p class="text-zinc-600 mb-4">Koszt robocizny to nie tylko wynagrodzenie murarza. Pamiętaj o pozycjach, które często są <a href="/budowa/koszt-budowy-domu/ukryte-koszty/" class="text-orange-600 underline">ukrytymi kosztami</a>:</p>
+          <ul class="space-y-3 text-zinc-700">
+            <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong>Nadzór i koordynacja:</strong> Wynagrodzenie kierownika budowy i czas poświęcony na logistykę.</span>
+            </li>
+            <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong>Prace przygotowawcze:</strong> Geodezja, ogrodzenie tymczasowe, zaplecze socjalne dla ekip.</span>
+            </li>
+            <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span><strong>Montaż i logistyka:</strong> Często zapominany koszt rozładunku materiałów i wynajmu sprzętu (np. dźwigu).</span>
+            </li>
+          </ul>
+        </section>
+
+        <section id="tabela-stawek" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Stawki ekip budowlanych 2026 – tabela</h2>
+          <p class="text-zinc-600 mb-4 text-balance">Poniżej uśrednione stawki netto za robociznę (bez materiału) dla najpopularniejszych etapów budowy.</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse border border-zinc-200">
+              <thead class="bg-stone-100 text-zinc-700 text-balance text-left">
+                <tr>
+                  <th class="p-3 border border-zinc-200">Rodzaj prac</th>
+                  <th class="p-3 border border-zinc-200">Jednostka</th>
+                  <th class="p-3 border border-zinc-200">Cena (2026)</th>
+                </tr>
+              </thead>
+              <tbody class="text-zinc-600">
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-zinc-800">Murowanie ścian (ceramika/gazobeton)</td>
+                  <td class="p-3">m²</td>
+                  <td class="p-3">75 – 110 zł</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-zinc-800">Wykonanie więźby dachowej</td>
+                  <td class="p-3">m² dachu</td>
+                  <td class="p-3">90 – 140 zł</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-zinc-800">Tynki maszynowe (gipsowe)</td>
+                  <td class="p-3">m²</td>
+                  <td class="p-3">45 – 65 zł</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-zinc-800">Instalacja elektryczna (punkt)</td>
+                  <td class="p-3">szt.</td>
+                  <td class="p-3">120 – 180 zł</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-zinc-800">Montaż pompy ciepła (robocizna)</td>
+                  <td class="p-3">kpl.</td>
+                  <td class="p-3">8 000 – 15 000 zł</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs mt-2 italic text-zinc-500">W miastach takich jak Warszawa, Kraków czy Wrocław, stawki są o ok. 20-30% wyższe od średniej krajowej.</p>
+        </section>
+
+        <section id="gospodarczy-vs-gw" class="mb-10 text-balance">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Robocizna: system gospodarczy vs generalny wykonawca</h2>
+          <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-200 flex flex-col md:flex-row gap-6 items-center">
+            <svg class="w-32 h-32 text-orange-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+            <div>
+                <p class="text-zinc-600 mb-3">Wybór modelu ma kluczowy wpływ na to, jak wydasz swoje pieniądze. Dowiedz się więcej o zaletach <a href="/budowa/koszt-budowy-domu/system-gospodarczy/" class="text-orange-600 underline font-semibold">systemu gospodarczego</a> i o tym, czy naprawdę oszczędzasz.</p>
+                <p class="text-sm text-zinc-500">Generalny wykonawca narzuca marżę, ale w 2026 r. daje realną ochronę przed wzrostem cen robocizny w trakcie budowy.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="najdrozsze-etapy" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Gdzie robocizna jest najdroższa?</h2>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="p-4 bg-white border rounded shadow-sm">
+                <p class="font-bold text-lg text-zinc-800">1. Dach</p>
+                <p class="text-sm text-zinc-600">Prace na wysokości i skomplikowana geometria dachu to ok. 15% budżetu robocizny.</p>
+            </div>
+            <div class="p-4 bg-white border rounded shadow-sm">
+                <p class="font-bold text-lg text-zinc-800">2. Fundamenty</p>
+                <p class="text-sm text-zinc-600">Ciężkie prace ziemne i zbrojenie wymagają specjalistycznego sprzętu i ekip.</p>
+            </div>
+            <div class="p-4 bg-white border rounded shadow-sm">
+                <p class="font-bold text-lg text-zinc-800">3. Instalacje</p>
+                <p class="text-sm text-zinc-600">Uprawnienia i precyzja montażu OZE kosztują najwięcej w przeliczeniu na godzinę pracy.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="jak-obnizyc" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Jak obniżyć koszt robocizny bez ryzyka</h2>
+          <div class="bg-zinc-800 text-white p-6 rounded-xl">
+            <ul class="space-y-4">
+                <li><span class="text-orange-400 font-bold">●</span> <strong>Terminy:</strong> Rezerwuj ekipy z rocznym wyprzedzeniem. „Ekspres” kosztuje +20%.</li>
+                <li><span class="text-orange-400 font-bold">●</span> <strong>Logistyka:</strong> Zapewnij prąd, wodę i dojazd. Ekipa, która stoi, bo nie ma dostępu, wystawi rachunek za „przestój”.</li>
+                <li><span class="text-orange-400 font-bold">●</span> <strong>Prosta bryła:</strong> Mniej narożników to mniej cięcia materiału i szybsza praca murarza.</li>
+            </ul>
+          </div>
+        </section>
+
+        <div class="mt-10 p-6 bg-white border-2 border-orange-200 rounded-xl shadow-sm text-center">
+            <p class="font-semibold text-zinc-800">Planujesz budowę w 2026?</p>
+            <p class="text-sm text-zinc-600 mb-4 text-balance">Poznaj pełną strukturę kosztów budowy i dowiedz się, jak mądrze rozdzielić budżet między materiały i ekipy:</p>
+            <a href="/budowa/koszt-budowy-domu/" class="inline-block bg-orange-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-600 transition-colors">
+                Przejdź do Głównego Przewodnika 2026
+            </a>
+        </div>
+
+        <section id="faq" class="my-12">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">FAQ</h2>
+          <div class="space-y-4">
+            {[ 
+              {q: "Czy stawki robocizny w 2026 r. wzrosną?", a: "Tak, przewiduje się wzrost o ok. 8-12% r/r, napędzany presją płacową i deficytem specjalistów w branży instalacyjnej."},
+              {q: "Ile kosztuje robocizna za dom 100m2?", a: "W 2026 r. musisz przygotować się na wydatek rzędu 320 000 – 450 000 zł za samą robociznę do stanu deweloperskiego."},
+              {q: "Czy ekipa z innego regionu jest tańsza?", a: "Często tak, ale koszt dojazdów i zakwaterowania (delegacja) zazwyczaj niweluje te oszczędności przy mniejszych domach."},
+              {q: "Czy płacić ekipie zaliczki?", a: "Nigdy bez pisemnej umowy. W 2026 r. standardem jest rozliczanie etapowe po zakończeniu konkretnego elementu budowy."},
+              {q: "Ile kosztuje robocizna przy tynkach w 2026?", a: "Stawka za tynki maszynowe to obecnie od 45 do 65 zł za m2, zależnie od rodzaju tynku (gipsowy vs cementowo-wapienny) i lokalizacji."}
+            ].map((item) => (
+              <div class="border rounded-lg overflow-hidden">
+                <div class="p-4 bg-stone-50 font-semibold text-zinc-700">{item.q}</div>
+                <div class="p-4 text-zinc-600 text-balance">{item.a}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </article>
+
+      <aside class="lg:col-span-1">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" is:inline>
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-robocizny/" },
+      "headline": "Koszt robocizny przy budowie domu w 2026 roku – raport płacowy",
+      "description": "Szczegółowa analiza stawek ekip budowlanych w 2026 roku. Sprawdź, ile kosztuje robocizna za m2 dachu, ścian i instalacji.",
+      "image": "https://domjakosci.pl/images/koszt-robocizny-2026.jpg",
+      "author": { "@type": "Person", "name": "Marek Nowicki" },
+      "datePublished": "2026-01-12",
+      "dateModified": "2026-01-13"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Czy stawki robocizny w 2026 r. wzrosną?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, przewiduje się wzrost o ok. 8-12% r/r, napędzany presją płacową i deficytem specjalistów."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ile kosztuje robocizna za dom 100m2?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "W 2026 r. musisz przygotować się na wydatek rzędu 320 000 – 450 000 zł za samą robociznę do stanu deweloperskiego."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+</BaseLayout>
