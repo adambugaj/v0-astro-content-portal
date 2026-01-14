@@ -6,15 +6,15 @@ import MainNav from './MainNav.astro';
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <a href="/" class="flex items-center gap-3">
-        <span class="sr-only">Portal Budowlany</span>
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="flex-shrink-0">
-          <rect width="24" height="24" rx="6" fill="#f97316" />
-          <path d="M6 14L10 9l4 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
+        <img src="/favicon.svg" alt="Portal Budowlany" class="w-9 h-9 flex-shrink-0" />
         <span id="site-logo-text" class="text-2xl font-bold text-zinc-700 leading-none">Portal<span class="text-orange-500">Budowlany</span></span>
       </a>
       <MainNav />
     </div>
+  </div>
+  <!-- Global reading progress (minimal, full-width under topbar) -->
+  <div class="w-full bg-stone-200">
+    <div id="globalProgressBar" class="h-1 bg-orange-500 transition-all duration-150" style="width:0%"></div>
   </div>
 
   <script>
@@ -42,6 +42,21 @@ import MainNav from './MainNav.astro';
         }
       }
       window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
+    // Global reading progress bar update
+    (function(){
+      const bar = document.getElementById('globalProgressBar');
+      if (!bar) return;
+      function update() {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = docHeight > 0 ? Math.round((window.scrollY / docHeight) * 100) : 0;
+        bar.style.width = percent + '%';
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      // initial
+      update();
     })();
   </script>
 </header>

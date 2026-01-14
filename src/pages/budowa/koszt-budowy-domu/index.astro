@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
 import ArticleSidebar from '../../../components/ArticleSidebar.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { breadcrumbs as pillarBreadcrumbs, scenariosTitle } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
@@ -36,10 +34,7 @@ const breadcrumbs = pillarBreadcrumbs;
   author="Dariusz Nowicki"
 >
   
-  <!-- Added progress bar under header -->
-  <div class="sticky top-16 z-40 h-1 bg-stone-200">
-    <div id="progressBar" class="h-full bg-orange-500 transition-all duration-300" style="width: 0%"></div>
-  </div>
+  <!-- Global progress bar moved to Header.astro -->
 
   <!-- Structured Data: Article, FAQ, HowTo (calculator action) -->
   <script type="application/ld+json">
@@ -445,13 +440,7 @@ const breadcrumbs = pillarBreadcrumbs;
         tocNav?.appendChild(link);
       });
 
-      // Progress bar on scroll
-      window.addEventListener('scroll', () => {
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = (window.scrollY / docHeight) * 100;
-        const progressBar = document.getElementById('progressBar');
-        if (progressBar) progressBar.style.width = scrollPercent + '%';
-      });
+      // Reading progress is handled globally in Header.astro
 
 
       const checkboxes = document.querySelectorAll('.checklist-checkbox');
