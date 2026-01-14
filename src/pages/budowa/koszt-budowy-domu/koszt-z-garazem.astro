@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
 import ArticleSidebar from '../../../components/ArticleSidebar.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import BuildCalculator from '../../../components/BuildCalculator.astro';
@@ -13,7 +11,7 @@ const author = 'Dariusz Nowicki';
 import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
 export const breadcrumbs = [
   ...pillarBreadcrumbs,
-  { label: 'Koszt z garazem' }
+  { label: 'Koszt z garażem', url: '/budowa/koszt-budowy-domu/koszt-z-garazem/' }
 ];
 
 ---

@@ -78,6 +78,8 @@ import Footer from '../components/Footer.astro';
   <body class="min-h-screen bg-white">
     <!-- Full-width header rendered from layout so it always spans viewport -->
     <Header />
+    <!-- Spacer to offset fixed header so page content (breadcrumbs) is visible -->
+    <div class="h-16" aria-hidden="true"></div>
 
     <!-- Center only for deeper category/article pages; keep homepage and top-level category pages full width -->
     {centered ? (

@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
 import ArticleSidebar from '../../../components/ArticleSidebar.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 
@@ -12,7 +10,7 @@ const author = 'mgr inż. Marek Nowicki';
 import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
 export const breadcrumbs = [
   ...pillarBreadcrumbs,
-  { label: 'Parterowy vs pietrowy' }
+  { label: 'Parterowy vs piętrowy', url: '/budowa/koszt-budowy-domu/parterowy-vs-pietrowy/' }
 ];
 ---
 

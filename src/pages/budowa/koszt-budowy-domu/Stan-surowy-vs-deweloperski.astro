@@ -1,0 +1,255 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Stan surowy czy deweloperski – który etap budowy domu bardziej się opłaca?";
+const description = "Na jakim etapie zakończyć budowę w 2026 roku? Porównujemy koszty i zakres prac: stan surowy otwarty, zamknięty oraz deweloperski. Sprawdź, co wybrać.";
+const author = 'mgr inż. Marek Nowicki';
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Stan surowy vs deweloperski', url: '/budowa/koszt-budowy-domu/stan-surowy-vs-deweloperski/' }
+];
+---
+
+<BaseLayout title={title} description={description} type="article" author={author}>
+
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
+      <article class="lg:flex-1">
+        <header class="mb-8">
+          <div class="bg-zinc-100 p-4 rounded-lg mb-6 border-l-4 border-zinc-400">
+            <p class="text-sm text-zinc-700">
+              Ten artykuł jest częścią głównego przewodnika: 
+              <a href="/budowa/koszt-budowy-domu/" class="text-orange-600 font-bold underline ml-1">→ Koszt budowy domu w 2026 roku</a>
+            </p>
+          </div>
+
+          <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-semibold mb-4">Etapy Inwestycji: 2026</span>
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">{title}</h1>
+          
+          <blockquote class="border-l-4 border-orange-500 pl-4 py-2 bg-stone-50 text-sm text-zinc-600 mb-6 italic text-balance">
+            Analiza różnic kosztowych między etapami budowy. Uwzględniono aktualne ceny stolarki otworowej oraz koszty instalacji wewnętrznych prognozowane na 2026 rok.
+          </blockquote>
+
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">MN</div>
+            <div>
+              <p class="font-semibold text-zinc-700">{author}</p>
+              <p class="text-sm text-zinc-500">Specjalista ds. kosztorysowania inwestycji budowlanych</p>
+            </div>
+          </div>
+        </header>
+
+        <section class="mb-10">
+          <h2 class="text-xl font-bold text-zinc-700 mb-4">Dla kogo dany etap budowy? (Szybkie rekomendacje)</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 bg-white border border-zinc-200 rounded-xl shadow-sm">
+              <p class="font-bold text-zinc-800 mb-2">🏗️ Stan Surowy (SSO/SSZ)</p>
+              <ul class="text-sm text-zinc-600 space-y-2">
+                <li>• <strong>Inwestorzy z ograniczoną gotówką</strong> – budowa etapami bez dużego kredytu.</li>
+                <li>• <strong>System gospodarczy</strong> – planujesz prace instalacyjne wykonać samodzielnie.</li>
+                <li>• <strong>Przerwa zimowa</strong> – chcesz zabezpieczyć budynek przed mrozem.</li>
+              </ul>
+            </div>
+            <div class="p-4 bg-white border border-zinc-200 rounded-xl shadow-sm">
+              <p class="font-bold text-zinc-800 mb-2">🏠 Stan Deweloperski</p>
+              <ul class="text-sm text-zinc-600 space-y-2">
+                <li>• <strong>Kredytobiorcy</strong> – banki wymagają dojścia do tego etapu w określonym czasie.</li>
+                <li>• <strong>Zabiegani inwestorzy</strong> – chcesz szybko przejść do „wykończeniówki”.</li>
+                <li>• <strong>Gwarancja jakości</strong> – instalacje pod tynkiem wykonuje jedna firma.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <nav class="bg-stone-50 p-6 rounded-xl mb-8 border border-stone-200 text-balance text-sm">
+          <p class="font-bold text-zinc-700 mb-3 text-lg">W tym artykule:</p>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 text-orange-600 underline">
+            <li><a href="#definicja-ss">Co to jest stan surowy?</a></li>
+            <li><a href="#deweloperski-lista">Co obejmuje stan deweloperski?</a></li>
+            <li><a href="#tabela-porownawcza">Różnice kosztów: Tabela 2026</a></li>
+            <li><a href="#kiedy-sso">Kiedy warto zakończyć na SSO?</a></li>
+            <li><a href="#bledy">Najczęstsze błędy inwestorów</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <section id="definicja-ss" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Co dokładnie oznacza stan surowy (otwarty i zamknięty)</h2>
+          <p class="text-zinc-600 mb-4 text-balance">
+            Stan surowy to "szkielet" Twojego domu. Granica między stanem otwartym a zamkniętym jest kluczowa dla bezpieczeństwa materiałów przechowywanych na budowie.
+          </p>
+          
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-zinc-50 p-5 rounded-lg border border-zinc-200">
+              <h3 class="font-bold text-zinc-800 mb-2">Stan Surowy Otwarty (SSO)</h3>
+              <p class="text-sm text-zinc-600">Fundamenty, ściany nośne i działowe, stropy oraz konstrukcja dachu (więźba) z pokryciem wstępnym lub docelowym. Brak okien i drzwi.</p>
+            </div>
+            <div class="bg-zinc-50 p-5 rounded-lg border border-zinc-200">
+              <h3 class="font-bold text-zinc-800 mb-2">Stan Surowy Zamknięty (SSZ)</h3>
+              <p class="text-sm text-zinc-600">Budynek posiada zamontowane okna, drzwi zewnętrzne oraz bramę garażową. Dom jest chroniony przed czynnikami atmosferycznymi i kradzieżą.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="deweloperski-lista" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Co obejmuje stan deweloperski – lista kosztów</h2>
+          <p class="text-zinc-600 mb-6">Pamiętaj, że w Polsce nie istnieje jedna prawna definicja "stanu deweloperskiego". Zawsze sprawdzaj zakres prac w umowie. Standardowo w 2026 roku obejmuje on:</p>
+
+          <div class="bg-white border border-zinc-200 rounded-2xl p-6 shadow-sm mb-6">
+            <ul class="space-y-4">
+              {[
+                "Instalacje wewnętrzne: wod-kan, elektryczna, grzewcza",
+                "Tynki wewnętrzne (maszynowe lub gipsowe)",
+                "Wylewki podłogowe (posadzki) z izolacją",
+                "Elewacja (ocieplenie styropianem/wełną + tynk)",
+                "Poddasze: ocieplenie wełną i zabudowa GK",
+                "Przyłącza mediów do budynku"
+              ].map(item => (
+                <li class="flex items-center gap-3 text-zinc-700">
+                  <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <p class="text-zinc-600">Jeśli interesuje Cię co dalej, zobacz nasz poradnik o <a href="/dom-pod-klucz/" class="text-orange-600 underline">wykańczaniu domu pod klucz</a>.</p>
+        </section>
+
+        <section id="tabela-porownawcza" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Różnice kosztów: SSO vs SSZ vs deweloperski</h2>
+          <p class="text-zinc-600 mb-4">Uśrednione koszty budowy domu o powierzchni 120-130 m² w 2026 r.</p>
+          
+          <div class="overflow-x-auto shadow-sm rounded-xl">
+            <table class="w-full text-sm border-collapse bg-white">
+              <thead class="bg-zinc-800 text-white">
+                <tr>
+                  <th class="p-4 text-left border border-zinc-700">Etap</th>
+                  <th class="p-4 text-left border border-zinc-700">% Całości</th>
+                  <th class="p-4 text-left border border-zinc-700">Szacunkowa Cena (zł)</th>
+                </tr>
+              </thead>
+              <tbody class="text-zinc-600">
+                <tr class="border-b">
+                  <td class="p-4 font-bold text-zinc-800">Stan Surowy Otwarty</td>
+                  <td class="p-4">35 - 40%</td>
+                  <td class="p-4">280 000 - 340 000</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="p-4 font-bold text-zinc-800">Stan Surowy Zamknięty</td>
+                  <td class="p-4">45 - 50%</td>
+                  <td class="p-4">360 000 - 420 000</td>
+                </tr>
+                <tr class="border-b bg-orange-50">
+                  <td class="p-4 font-bold text-zinc-800 italic">Stan Deweloperski</td>
+                  <td class="p-4 italic">100% (baza)</td>
+                  <td class="p-4 font-bold text-orange-700 italic">750 000 - 880 000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs mt-2 text-zinc-500 italic">Dane oparte na analizie <a href="/budowa/koszt-budowy-domu/koszt-100m2/" class="text-zinc-500 underline">kosztów domu 100m2</a> powiększonego o współczynnik metrażu.</p>
+        </section>
+
+        <section id="kiedy-sso" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Kiedy warto zakończyć budowę na stanie surowym</h2>
+          <p class="text-zinc-600 mb-4">Wielu inwestorów decyduje się na "zimowanie" budowy na etapie SSO lub SSZ. Ma to sens w dwóch przypadkach:</p>
+          <ol class="list-decimal pl-5 space-y-3 text-zinc-700">
+            <li><strong>Zalecenia technologiczne:</strong> Pozwolenie budynkowi na "osiadanie" przez kilka miesięcy (sezonowanie) zmniejsza ryzyko pękania tynków w przyszłości.</li>
+            <li><strong>Optymalizacja cen:</strong> Kupno okien i drzwi zimą (wyprzedaże roczników) może przynieść 5-10% oszczędności względem szczytu sezonu.</li>
+          </ol>
+        </section>
+
+        <section id="bledy" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4 text-balance">Najczęstsze błędy inwestorów</h2>
+          <div class="bg-red-50 p-6 rounded-xl border border-red-100">
+            <ul class="space-y-4">
+              <li class="flex gap-3">
+                <span class="text-red-600 font-bold">❌</span>
+                <p class="text-sm text-zinc-700"><strong>Zbyt długa przerwa w SSO:</strong> Brak okien i ogrzewania przez kilka lat może prowadzić do zawilgocenia ścian i problemów z grzybem.</p>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-red-600 font-bold">❌</span>
+                <p class="text-sm text-zinc-700"><strong>Montaż instalacji przed SSZ:</strong> Kable miedziane to częsty łup złodziei na nieogrodzonych i niepozamykanych budowach.</p>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <div class="mt-10 p-8 bg-zinc-800 text-white rounded-2xl shadow-xl">
+            <p class="text-xl font-bold mb-2">Chcesz wiedzieć ile zapłacisz za robociznę?</p>
+            <p class="text-zinc-300 mb-6">Przejdź do naszego szczegółowego zestawienia stawek ekip budowlanych na rok 2026.</p>
+            <a href="/budowa/koszt-budowy-domu/koszt-robocizny/" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 text-center">
+                Sprawdź Koszt Robocizny 2026
+            </a>
+        </div>
+
+        <section id="faq" class="my-12">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">FAQ</h2>
+          <div class="space-y-4">
+            {[ 
+              {q: "Co jest tańsze: kupno domu w stanie deweloperskim czy budowa SSO?", a: "Budowa SSO jest tańsza jednostkowo, ale to dopiero połowa drogi. Kupno gotowego stanu deweloperskiego oszczędza czas, ale zazwyczaj kosztuje 15-20% więcej niż samodzielna budowa."},
+              {q: "Czy stan surowy zamknięty obejmuje instalacje?", a: "Standardowo nie. SSZ kończy się na 'skorupie' z oknami i drzwiami. Instalacje elektryczne i wod-kan to pierwszy krok etapu deweloperskiego."},
+              {q: "Ile czasu trwa przejście z SSZ do stanu deweloperskiego?", a: "W 2026 roku przy dobrej koordynacji ekip zajmuje to średnio od 3 do 5 miesięcy."},
+              {q: "Czy można mieszkać w domu w stanie deweloperskim?", a: "Nie. Stan deweloperski nie posiada podłóg (paneli/płytek), białego montażu ani wykończonych ścian. Wymaga on etapu 'pod klucz'."}
+            ].map((item) => (
+              <div class="border rounded-lg overflow-hidden">
+                <div class="p-4 bg-stone-50 font-semibold text-zinc-700 text-sm">{item.q}</div>
+                <div class="p-4 text-zinc-600 text-sm leading-relaxed">{item.a}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <footer class="mt-12 pt-8 border-t border-zinc-200">
+          <h2 class="text-lg font-bold text-zinc-700 mb-4 text-balance">Zobacz również:</h2>
+          <ul class="space-y-2 text-orange-600 text-sm underline font-medium">
+            <li><a href="/budowa/koszt-budowy-domu/">→ Główny przewodnik: Koszt budowy domu 2026</a></li>
+            <li><a href="/budowa/koszt-budowy-domu/koszt-100m2/">→ Ile kosztuje budowa domu 100m2?</a></li>
+            <li><a href="/budowa/koszt-budowy-domu/system-gospodarczy/">→ Budowa systemem gospodarczym - oszczędności</a></li>
+          </ul>
+        </footer>
+      </article>
+
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script type="application/ld+json" is:inline>
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/stan-surowy-vs-deweloperski/" },
+      "headline": "Stan surowy czy deweloperski – który etap budowy domu bardziej się opłaca?",
+      "description": "Porównanie kosztów i zakresu prac stanu surowego oraz deweloperskiego w 2026 roku. Analiza dla inwestorów.",
+      "author": { "@type": "Person", "name": "Marek Nowicki" },
+      "datePublished": "2026-01-14",
+      "dateModified": "2026-01-14"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Co jest tańsze: kupno domu w stanie deweloperskim czy budowa SSO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Budowa SSO jest tańsza jednostkowo, ale to dopiero połowa drogi do zamieszkania."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+</BaseLayout>
