@@ -43,8 +43,9 @@ let articles = [];
       let title = (p.module?.frontmatter?.title) || humanizeFileName(String(p.file.split(/[\\\/]/).pop()));
       try {
         const crumbs = p.module?.breadcrumbs;
-        if (Array.isArray(crumbs) && crumbs[0] && crumbs[0].label) {
-          title = crumbs[0].label;
+        if (Array.isArray(crumbs) && crumbs.length) {
+          const last = crumbs[crumbs.length - 1];
+          if (last && last.label) title = last.label;
         }
       } catch (err) {
         // swallow errors and keep fallback title

@@ -1,5 +1,6 @@
 ---
-// src/components/CategoryGrid.astro
+// Importy na samej górze
+import { pillarMeta } from '../data/koszt-budowy-domu-breadcrumbs.js';
 
 const categories = [
   {
@@ -15,55 +16,57 @@ const categories = [
       { label: 'Materiały budowlane', href: '/budowa/materialy-budowlane/' }
     ],
     seoCluster: ['Koszt budowy domu 100 m²', 'Koszt budowy domu systemem gospodarczym', 'Koszt budowy domu pod klucz', 'Budowa domu bez pozwolenia']
-  },
-  // ... reszta kategorii (Dom, Energia, Ogród) pozostaje bez zmian
+  }
+  // Dodaj resztę kategorii tutaj...
 ];
 
-// Pobieramy WSZYSTKIE strony raz na górze (import.meta.glob eager)
-const modules = import.meta.glob('/src/pages/**/*.astro', { eager: true }) as Record<string, any>;
-const allPages = Object.keys(modules).map(p => ({ file: p, frontmatter: modules[p]?.frontmatter, url: modules[p]?.url }));
+// 1. Bezpieczne pobieranie modułów
+const modules = import.meta.glob('/src/pages/**/*.astro', { eager: true });
 
+// 2. Funkcja pomocnicza - upewnij się, że nie używasz w niej "i" jako zmiennej globalnej
 function humanizeFileName(fn: string) {
-  const s = String(fn || '')
+  if (!fn) return '';
+  return fn
     .replace(/\.astro$/i, '')
     .replace(/index$/i, '')
     .replace(/[-_]+/g, ' ')
-    .trim();
-  return s.replace(/\b\w/g, (c: string) => c.toUpperCase());
+    .trim()
+    .replace(/\b\w/g, (char) => char.toUpperCase()); // Zmieniono 'c' na 'char' dla jasności
 }
 
-import { pillarMeta } from '../data/koszt-budowy-domu-breadcrumbs.js';
+// 3. Przetwarzanie stron
+const allPages = Object.keys(modules).map(p => {
+  const mod = modules[p] as any;
+  return {
+    file: p,
+    title: mod?.frontmatter?.title,
+    breadcrumbLabel: mod?.frontmatter?.breadcrumbs?.[3]?.label,
+    url: mod?.url
+  };
+});
 
-// Funkcja pomocnicza do filtrowania linków
 const getAutoLinks = (categoryHref: string) => {
   const folder = categoryHref.replace(/^\//, '').replace(/\/$/, '');
   if (!folder) return [];
 
   return allPages
     .filter(page => {
-      const isInternal = page.file.includes(`/src/pages/${folder}/`);
+      const isInFolder = page.file.includes(`/src/pages/${folder}/`);
       const isNotIndex = !page.file.endsWith('index.astro');
-      return isInternal && isNotIndex;
+      return isInFolder && isNotIndex;
     })
     .map(page => {
-      // Try to read frontmatter safely
-      let title = ((page as any).frontmatter?.title);
+      // Logika wyboru tytułu
+      const finalTitle = page.breadcrumbLabel || page.title || humanizeFileName(page.file.split('/').pop() || '');
+      
+      // Logika wyboru URL
+      const finalHref = page.url || page.file.replace('/src/pages', '').replace('.astro', '').replace(/\/index$/, '');
 
-      if ((page as any).frontmatter?.breadcrumbs?.[3]?.label) {
-        title = (page as any).frontmatter.breadcrumbs[3].label;
-      }
-
-      const href = (page as any).url || String((page as any).file).replace(/.*\/pages/, '').replace(/\.astro$/, '').replace(/\/index$/, '');
-
-      return {
-        title: title || humanizeFileName(String((page as any).file.split(/[\\\/]/).pop())),
-        href: href
-      };
+      return { title: finalTitle, href: finalHref };
     })
     .slice(0, 4);
 };
 
-// Mapujemy kategorie dodając linki
 const categoriesWithLinks = categories.map(cat => ({
   ...cat,
   autoLinks: getAutoLinks(cat.href)
@@ -76,16 +79,21 @@ const categoriesWithLinks = categories.map(cat => ({
       {category.title === 'Budowa' && (
         <div class="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
           <a href={pillarMeta.href} class="md:col-span-1 block rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow bg-white">
-            <img src={pillarMeta.image} alt={pillarMeta.title} class="w-full h-40 object-cover" />
+            <img src={pillarMeta.image} alt={pillarMeta.title} class="w-full h-56 object-cover object-center" />
           </a>
           <div class="md:col-span-2 bg-white rounded-lg p-6 shadow-sm">
             <a href={pillarMeta.href} class="text-sm text-orange-500 font-semibold">Budowa</a>
-            <h3 class="text-2xl font-bold text-zinc-800 mt-2 mb-3"><a href={pillarMeta.href} class="hover:text-orange-500">{pillarMeta.title}</a></h3>
+            <h3 class="text-2xl font-bold text-zinc-800 mt-2 mb-3">
+               <a href={pillarMeta.href} class="hover:text-orange-500">{pillarMeta.title}</a>
+            </h3>
             <p class="text-zinc-600 mb-4">{pillarMeta.description}</p>
-            <a href={pillarMeta.href} class="inline-block bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">Przejdź do przewodnika</a>
+            <a href={pillarMeta.href} class="inline-block bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">
+               Przejdź do przewodnika
+            </a>
           </div>
         </div>
       )}
+
       <a href={category.href} class="group block mb-6">
         <div class="text-4xl mb-3">{category.icon}</div>
         <h2 class="text-2xl font-bold text-zinc-700 mb-3 group-hover:text-orange-500 transition-colors">
@@ -98,30 +106,30 @@ const categoriesWithLinks = categories.map(cat => ({
 
       <div class="mb-6">
         <p class="text-xs font-bold text-zinc-600 mb-3 uppercase">Podlinkowane tematy:</p>
-        <div class="flex flex-wrap gap-2">
+        <div class="flex flex-wrap gap-4">
           {category.deepLinks.map((link) => (
-            <a href={link.href} class="text-sm text-orange-500 hover:text-orange-600 hover:underline transition-colors">
+            <a href={link.href} class="text-sm text-orange-500 hover:text-orange-600 hover:underline transition-colors font-medium">
               {link.label}
             </a>
           ))}
         </div>
       </div>
 
-      <div class="bg-stone-100 rounded-lg p-4">
-        <p class="text-xs font-bold text-zinc-600 mb-3 uppercase">Najczęściej wyszukiwane:</p>
-        <ul class="space-y-2">
+      <div class="bg-stone-50 rounded-lg p-5 border border-stone-200">
+        <p class="text-xs font-bold text-zinc-500 mb-3 uppercase tracking-wider">Najczęściej wyszukiwane:</p>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
           {category.autoLinks && category.autoLinks.length > 0 ? (
             category.autoLinks.map(link => (
               <li>
-                <a href={link.href} class="text-sm text-zinc-600 hover:text-orange-500 hover:underline">
-                  → {link.title}
+                <a href={link.href} class="text-sm text-zinc-600 hover:text-orange-500 flex items-center gap-2">
+                  <span class="text-orange-400">→</span> {link.title}
                 </a>
               </li>
             ))
           ) : (
             category.seoCluster.map((term) => (
-              <li>
-                <span class="text-sm text-zinc-600">→ {term}</span>
+              <li class="flex items-center gap-2 text-sm text-zinc-500">
+                <span class="text-stone-300">→</span> {term}
               </li>
             ))
           )}

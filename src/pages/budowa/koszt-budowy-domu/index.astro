@@ -8,10 +8,13 @@ import BuildCalculator from '../../../components/BuildCalculator.astro';
 const scenarioModules = import.meta.glob('/src/pages/budowa/koszt-budowy-domu/*.astro', { eager: true }) as Record<string, any>;
 let scenarios = Object.keys(scenarioModules).filter(p => !/index\.astro$/i.test(p)).map(p => {
   const mod = scenarioModules[p];
-  const href = (p.replace(/.*[\\\/]/, '/').replace(/index\.astro$/i, '').replace(/\.astro$/i, '')) || '/';
+  const href = (p.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/';
   let title = (mod?.frontmatter?.title) || String(p.split(/[\\\/]/).pop()).replace(/\.astro$/i,'').replace(/-/g,' ');
   const crumbs = mod?.breadcrumbs;
-  if (Array.isArray(crumbs) && crumbs[0] && crumbs[0].label) title = crumbs[0].label;
+  if (Array.isArray(crumbs) && crumbs.length) {
+    const last = crumbs[crumbs.length - 1];
+    if (last && last.label) title = last.label;
+  }
   return { title, href };
 });
 
