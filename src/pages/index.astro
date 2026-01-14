@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import CategoryGrid from '../components/CategoryGrid.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import { scenariosTitle } from '../data/koszt-budowy-domu-breadcrumbs.js';
@@ -71,8 +69,6 @@ const featuredCalculators = [
   title="Portal Budowlany - Ekspertka wiedza o budowie, wnętrzach i ogrodzie"
   description="Profesjonalny portal dla właścicieli domów i inwestorów. Artykuły, poradniki i kalkulatory dotyczące budowy, aranżacji wnętrz i ogrodnictwa."
 >
-  <Header />
-  
   <main>
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-stone-100 to-white py-16 px-4">
@@ -213,5 +209,6 @@ const featuredCalculators = [
     </section>
   </main>
 
-  <Footer />
+</BaseLayout>
+  </main>
 </BaseLayout>

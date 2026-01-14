@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 
 const editors = [
   {
@@ -42,8 +40,6 @@ const teamMembers = [
   title="Redakcja i Eksperci - domjakosci.pl"
   description="Poznaj zespół ekspertów domjakosci.pl. Inżynierowie, architekci i rzeczoznawcy budowlani z wieloletnim doświadczeniem."
 >
-  <Header />
-  
   <main class="min-h-screen bg-white">
     <section class="py-16 pt-20">
       <div class="container mx-auto px-4 max-w-6xl">
@@ -141,5 +137,5 @@ const teamMembers = [
     </section>
   </main>
 
-  <Footer />
+</BaseLayout>
 </BaseLayout>
