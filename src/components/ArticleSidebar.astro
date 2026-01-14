@@ -31,32 +31,26 @@ function humanizeFileName(fn: string) {
 
 let articles = [];
 
-if (category === 'budowa') {
-  // Dynamically load supporting pages for the budowa/koszt-budowy-domu pillar
-  const pages = await Astro.glob('/src/pages/budowa/koszt-budowy-domu/*.astro');
+  if (category === 'budowa') {
+  // Dynamically load supporting pages for the budowa/koszt-budowy-domu pillar (import.meta.glob eager)
+  const pageModules = import.meta.glob('/src/pages/budowa/koszt-budowy-domu/*.astro', { eager: true }) as Record<string, any>;
+  const pages = Object.keys(pageModules).map(p => ({ file: p, module: pageModules[p] }));
   // Build articles list, preferring `breadcrumbs[0].label` exported from each page module
   articles = [];
-  for (const p of pages) {
-    if (/index\.astro$/i.test(p.file)) continue;
-    const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/';
-    let title = ((p as any).frontmatter?.title) || humanizeFileName(String((p as any).file.split(/[\\\/]/).pop()));
-
-    // Try to import the page module to read its exported `breadcrumbs` variable
-    try {
-      let fp = p.file.replace(/\\/g, '/');
-      if (!fp.startsWith('/')) fp = '/' + fp;
-      const fileUrl = 'file://' + fp;
-      const mod = await import(fileUrl);
-      const crumbs = mod?.breadcrumbs;
-      if (Array.isArray(crumbs) && crumbs[0] && crumbs[0].label) {
-        title = crumbs[0].label;
+    for (const p of pages) {
+      if (/index\.astro$/i.test(p.file)) continue;
+      const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/';
+      let title = (p.module?.frontmatter?.title) || humanizeFileName(String(p.file.split(/[\\\/]/).pop()));
+      try {
+        const crumbs = p.module?.breadcrumbs;
+        if (Array.isArray(crumbs) && crumbs[0] && crumbs[0].label) {
+          title = crumbs[0].label;
+        }
+      } catch (err) {
+        // swallow errors and keep fallback title
       }
-    } catch (err) {
-      // swallow errors and keep fallback title
+      articles.push({ title, href });
     }
-
-    articles.push({ title, href });
-  }
   articles = articles.slice(0, 10);
   } else {
   // Fallback static lists for other categories

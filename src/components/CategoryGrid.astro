@@ -19,8 +19,9 @@ const categories = [
   // ... reszta kategorii (Dom, Energia, Ogród) pozostaje bez zmian
 ];
 
-// Pobieramy WSZYSTKIE strony raz na górze
-const allPages = await Astro.glob('../pages/**/*.astro');
+// Pobieramy WSZYSTKIE strony raz na górze (import.meta.glob eager)
+const modules = import.meta.glob('/src/pages/**/*.astro', { eager: true }) as Record<string, any>;
+const allPages = Object.keys(modules).map(p => ({ file: p, frontmatter: modules[p]?.frontmatter, url: modules[p]?.url }));
 
 function humanizeFileName(fn: string) {
   const s = String(fn || '')

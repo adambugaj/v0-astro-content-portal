@@ -4,24 +4,16 @@ import ArticleSidebar from '../../../components/ArticleSidebar.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { breadcrumbs as pillarBreadcrumbs, scenariosTitle } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
 import BuildCalculator from '../../../components/BuildCalculator.astro';
-// Load supporting pages dynamically for scenarios
-const scenarioPages = await Astro.glob('/src/pages/budowa/koszt-budowy-domu/*.astro');
-let scenarios = [];
-for (const p of scenarioPages) {
-  if (/index\.astro$/i.test(p.file)) continue;
-  const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/';
-  let title = ((p as any).frontmatter?.title) || String((p as any).file.split(/[\\\/]/).pop()).replace(/\.astro$/i,'').replace(/-/g,' ');
-  try {
-    let fp = p.file.replace(/\\/g, '/');
-    if (!fp.startsWith('/')) fp = '/' + fp;
-    const mod = await import('file://' + fp);
-    const crumbs = mod?.breadcrumbs;
-    if (Array.isArray(crumbs) && crumbs[0] && crumbs[0].label) title = crumbs[0].label;
-  } catch (err) {
-    // ignore and keep fallback title
-  }
-  scenarios.push({ title, href });
-}
+// Load supporting pages dynamically for scenarios (use import.meta.glob eager)
+const scenarioModules = import.meta.glob('/src/pages/budowa/koszt-budowy-domu/*.astro', { eager: true }) as Record<string, any>;
+let scenarios = Object.keys(scenarioModules).filter(p => !/index\.astro$/i.test(p)).map(p => {
+  const mod = scenarioModules[p];
+  const href = (p.replace(/.*[\\\/]/, '/').replace(/index\.astro$/i, '').replace(/\.astro$/i, '')) || '/';
+  let title = (mod?.frontmatter?.title) || String(p.split(/[\\\/]/).pop()).replace(/\.astro$/i,'').replace(/-/g,' ');
+  const crumbs = mod?.breadcrumbs;
+  if (Array.isArray(crumbs) && crumbs[0] && crumbs[0].label) title = crumbs[0].label;
+  return { title, href };
+});
 
 // Use canonical breadcrumbs from data module
 const breadcrumbs = pillarBreadcrumbs;

@@ -5,25 +5,18 @@ import ArticleCard from '../components/ArticleCard.astro';
 import { scenariosTitle } from '../data/koszt-budowy-domu-breadcrumbs.js';
 import { pillarMeta } from '../data/koszt-budowy-domu-breadcrumbs.js';
 
-// Load pillar scenarios to render on the homepage
-const scenarioPages = await Astro.glob('/src/pages/budowa/koszt-budowy-domu/*.astro');
-const homepageScenarios = [];
-for (const p of scenarioPages) {
-  if (/index\.astro$/i.test(p.file)) continue;
-  const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/budowa/koszt-budowy-domu';
-  let title = ((p as any).frontmatter?.title) || String((p as any).file.split(/[\\\/]/).pop()).replace(/\.astro$/i,'').replace(/-/g,' ');
-  let desc = ((p as any).frontmatter?.description) || '';
-  try {
-    let fp = p.file.replace(/\\/g, '/');
-    if (!fp.startsWith('/')) fp = '/' + fp;
-    const mod = await import('file://' + fp);
-    const crumbs = mod?.breadcrumbs;
-    if (Array.isArray(crumbs) && crumbs[3] && crumbs[3].label) title = crumbs[3].label;
-    if (mod?.description) desc = mod.description;
-  } catch (e) {
-    // ignore
-  }
-  homepageScenarios.push({ title, href, description: desc, image: pillarMeta.image });
+// Load pillar scenarios to render on the homepage (use import.meta.glob eager)
+const scenarioModules = import.meta.glob('/src/pages/budowa/koszt-budowy-domu/*.astro', { eager: true }) as Record<string, any>;
+const homepageScenarios = Object.keys(scenarioModules).filter(p => !/index\.astro$/i.test(p)).map(p => {
+  const mod = scenarioModules[p];
+  const href = (p.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/budowa/koszt-budowy-domu';
+  let title = (mod?.frontmatter?.title) || String(p.split(/[\\\/]/).pop()).replace(/\.astro$/i,'').replace(/-/g,' ');
+  let desc = (mod?.frontmatter?.description) || '';
+  const crumbs = mod?.breadcrumbs;
+  if (Array.isArray(crumbs) && crumbs[3] && crumbs[3].label) title = crumbs[3].label;
+  if (mod?.description) desc = mod.description;
+  return { title, href, description: desc, image: pillarMeta.image };
+});
 }
 
 const latestArticles = [

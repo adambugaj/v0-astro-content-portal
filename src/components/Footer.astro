@@ -1,6 +1,7 @@
 ---
-// Dynamically collect pillar subpages for SEO footer links
-const pillarPages = await Astro.glob('/src/pages/budowa/koszt-budowy-domu/*.astro');
+// Dynamically collect pillar subpages for SEO footer links (use import.meta.glob eager)
+const pillarModules = import.meta.glob('/src/pages/budowa/koszt-budowy-domu/*.astro', { eager: true }) as Record<string, any>;
+const pillarPages = Object.keys(pillarModules).map(p => ({ file: p, module: pillarModules[p] }));
 
 function humanizeFileName(fn: string) {
   const s = String(fn || '')
@@ -13,20 +14,17 @@ function humanizeFileName(fn: string) {
 
 const pillarLinks = [];
   for (const p of pillarPages) {
-  if (/index\.astro$/i.test(p.file)) continue;
-  const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/budowa/koszt-budowy-domu';
-  let title = ((p as any).frontmatter?.title) || humanizeFileName(String((p as any).file.split(/[\\\/]/).pop()));
-  try {
-    let fp = p.file.replace(/\\/g, '/');
-    if (!fp.startsWith('/')) fp = '/' + fp;
-    const mod = await import('file://' + fp);
-    const crumbs = mod?.breadcrumbs;
-    if (Array.isArray(crumbs) && crumbs[3] && crumbs[3].label) title = crumbs[3].label;
-  } catch (e) {
-    // ignore and use fallback
+    if (/index\.astro$/i.test(p.file)) continue;
+    const href = (p.file.replace(/.*[\\\/]src[\\\/]pages/, '')).replace(/index\.astro$/i, '').replace(/\.astro$/i, '') || '/budowa/koszt-budowy-domu';
+    let title = (p.module?.frontmatter?.title) || humanizeFileName(String(p.file.split(/[\\\/]/).pop()));
+    try {
+      const crumbs = p.module?.breadcrumbs;
+      if (Array.isArray(crumbs) && crumbs[3] && crumbs[3].label) title = crumbs[3].label;
+    } catch (e) {
+      // ignore and use fallback
+    }
+    pillarLinks.push({ title, href });
   }
-  pillarLinks.push({ title, href });
-}
 ---
 
 <footer class="bg-zinc-800 text-zinc-300 mt-20 w-full">
