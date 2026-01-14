@@ -1,0 +1,230 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Koszt budowy domu energooszczędnego w 2026 roku – ile drożej na start?";
+const description = "Czy dom energooszczędny w 2026 r. się opłaca? Analiza kosztów dodatkowych (izolacja, rekuperacja, pompy ciepła) oraz czas zwrotu inwestycji.";
+const author = 'mgr inż. Marek Nowicki';
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Dom energooszczedny', url: '/budowa/koszt-budowy-domu/dom-energooszczedny/' }
+];
+---
+
+<BaseLayout title={title} description={description} type="article" author={author}>
+  
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
+      <article class="lg:flex-1">
+        <header class="mb-8">
+          <span class="inline-block py-1 px-3 rounded-full bg-green-100 text-green-600 text-sm font-semibold mb-4">Budownictwo Jutra: 2026</span>
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">{title}</h1>
+          
+          <blockquote class="border-l-4 border-orange-500 pl-4 py-2 bg-stone-50 text-sm text-zinc-600 mb-6 italic text-balance">
+            Dane aktualizowane na podstawie stawek materiałów i robocizny z IV kwartału 2025 r. Analiza uwzględnia wymogi techniczne WT 2021 oraz standardy budownictwa niskoemisyjnego obowiązujące w 2026 r.
+          </blockquote>
+
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">MN</div>
+            <div>
+              <p class="font-semibold text-zinc-700">{author}</p>
+              <p class="text-sm text-zinc-500">Specjalista ds. Efektywności Energetycznej i OZE</p>
+            </div>
+          </div>
+        </header>
+
+        <nav class="bg-stone-50 p-6 rounded-xl mb-8 border border-stone-200 text-balance">
+          <p class="font-bold text-zinc-700 mb-3 text-lg">W tym artykule:</p>
+          <ul class="space-y-2 text-orange-600 underline">
+            <li><a href="#answer-first">Ile naprawdę dopłacasz do energooszczędności?</a></li>
+            <li><a href="#segmentacja">Dla kogo dom energooszczędny? (Rekomendacje)</a></li>
+            <li><a href="#definicja">Czym jest dom energooszczędny (fakty)</a></li>
+            <li><a href="#roznice">Różnice kosztowe względem standardu</a></li>
+            <li><a href="#najdrozsze-elementy">Najdroższe elementy (okna, izolacja, rekuperacja)</a></li>
+            <li><a href="#czy-sie-zwraca">Czy wyższy koszt się zwraca? (Analiza ROI)</a></li>
+            <li><a href="#dotacje">Dotacje i ulgi w 2026 roku</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <section id="answer-first" class="mb-10 text-balance">
+          <div class="rounded-lg p-6 bg-orange-50 border-l-4 border-orange-500">
+            <h2 class="text-xl font-bold text-zinc-700 mb-2">Szybka odpowiedź: Koszt 2026</h2>
+            <p class="text-zinc-700 leading-relaxed">
+              Budowa domu energooszczędnego (standard NF40 lub lepszy) w 2026 roku jest droższa o <strong>12% – 18%</strong> względem minimalnych wymogów prawnych (WT 2021). W przeliczeniu na m², zapłacisz średnio <strong>od 8 200 do 9 500 zł</strong> w standardzie deweloperskim. Inwestycja ta zwraca się w formie niższych rachunków zazwyczaj po <strong>8-10 latach</strong> eksploatacji.
+            </p>
+          </div>
+        </section>
+
+        <section id="segmentacja" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Dla kogo dom energooszczędny? (Szybkie rekomendacje)</h2>
+          <div class="grid md:grid-cols-2 gap-4 text-sm text-balance">
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">👨‍👩‍👧 Rodzina 2+2</p>
+              <p>Wybierz standard energooszczędny, jeśli planujesz mieszkać w domu min. 15 lat. Stabilne koszty utrzymania to bezpieczeństwo budżetu domowego.</p>
+            </div>
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">🧓 Seniorzy / Mały metraż</p>
+              <p>Parterowy dom z rekuperacją to brak schodów i czyste powietrze bez wietrzenia (ważne przy problemach z alergią/smogiem).</p>
+            </div>
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">🏢 Inwestorzy pod wynajem</p>
+              <p>W 2026 r. certyfikat energetyczny klasy A+ pozwala na uzyskanie wyższego czynszu (najemca płaci grosze za media).</p>
+            </div>
+            <div class="p-4 border rounded-lg bg-white shadow-sm">
+              <p class="font-bold mb-2">🌿 Eko-entuzjaści</p>
+              <p>Budowa bezemisyjna z magazynem energii — maksymalna niezależność od cen prądu i gazu.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="my-10 p-8 bg-zinc-50 rounded-xl flex flex-col items-center justify-center border border-zinc-200">
+            <svg class="w-24 h-24 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+            <p class="text-sm font-semibold text-zinc-500 italic text-center">Grafika: Schemat przepływu energii w domu pasywnym (Zyski słoneczne vs Rekuperacja)</p>
+        </div>
+
+        <section id="definicja" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Czym jest dom energooszczędny (fakty, nie marketing)</h2>
+          <p class="text-zinc-600 mb-4">
+            W 2026 roku dom energooszczędny to budynek, którego zapotrzebowanie na energię pierwotną (EP) wynosi poniżej <strong>40 kWh/(m²·rok)</strong>. Dla porównania, standardowy dom budowany zgodnie z przepisami WT 2021 dopuszcza EP do 70 kWh. Kluczem jest szczelność budynku i odzysk ciepła, a nie tylko gruba warstwa styropianu.
+          </p>
+          <p class="text-sm italic text-zinc-500">Uwaga: W miastach, ze względu na efekt wysp ciepła, domy te wymagają również pasywnego chłodzenia (np. gruntowe wymienniki ciepła).</p>
+        </section>
+
+        <section id="roznice" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Różnice kosztowe względem standardowego domu</h2>
+          <div class="overflow-x-auto text-balance">
+            <table class="w-full text-sm border-collapse border border-zinc-200">
+              <thead class="bg-stone-100 text-zinc-700">
+                <tr>
+                  <th class="p-3 border border-zinc-200">Element</th>
+                  <th class="p-3 border border-zinc-200">Standard WT 2021</th>
+                  <th class="p-3 border border-zinc-200">Dom Energooszczędny (2026)</th>
+                </tr>
+              </thead>
+              <tbody class="text-zinc-600 text-center">
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-left text-zinc-800">Wentylacja</td>
+                  <td class="p-3">Grawitacyjna (0 zł)</td>
+                  <td class="p-3">Rekuperacja (25-35 tys. zł)</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-left text-zinc-800">Okna (montaż)</td>
+                  <td class="p-3">Standardowy pianka</td>
+                  <td class="p-3">Ciepły montaż warstwowy (+40%)</td>
+                </tr>
+                <tr class="border-t">
+                  <td class="p-3 font-semibold text-left text-zinc-800">Źródło ciepła</td>
+                  <td class="p-3">Gaz/Pompa ciepła</td>
+                  <td class="p-3">Pompa ciepła + Fotowoltaika</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="najdrozsze-elementy" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Najdroższe elementy (okna, izolacja, wentylacja)</h2>
+          <ul class="space-y-4 text-zinc-700">
+            <li><strong>Izolacja fundamentów i dachu:</strong> W standardzie energooszczędnym stosuje się XPS o grubości 20cm+ pod płytą fundamentową. Koszt rośnie o ok. 15 tys. zł.</li>
+            <li><strong>Okna o Uw &lt; 0,8 W/(m²K):</strong> Pakiety 3-szybowe z ramami o wysokiej izolacyjności to wydatek o 30-50% wyższy niż standardowe okna PCV.</li>
+            <li><strong>Szczelność powietrzna (Blower Door Test):</strong> Uzyskanie wysokiej szczelności wymaga specjalnych taśm i folii oraz precyzji wykonawczej, co podnosi koszty robocizny.</li>
+          </ul>
+        </section>
+
+        <section id="czy-sie-zwraca" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Czy wyższy koszt się zwraca? (Analiza ROI)</h2>
+          <p class="text-zinc-600 mb-4">Przy obecnych cenach energii w 2026 r., oszczędności na ogrzewaniu domu 120 m² wynoszą ok. 4 000 – 6 000 zł rocznie. Biorąc pod uwagę koszt dodatkowy inwestycji (ok. 50 000 zł po odliczeniu dotacji), prosty czas zwrotu wynosi <strong>ok. 9 lat</strong>. Dodatkowo, dom taki ma wyższą wartość rynkową przy ewentualnej sprzedaży.</p>
+          <p class="text-sm font-semibold text-zinc-800 underline">Sprawdź również: <a href="/budowa/koszt-budowy-domu/dom-pod-klucz/" class="text-orange-600">Koszt wykończenia pod klucz</a></p>
+        </section>
+
+        <section id="dotacje" class="mb-10">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">Dotacje i ulgi w 2026 roku</h2>
+          <p class="text-zinc-600 mb-4">W 2026 roku programy wsparcia ewoluowały w stronę premiowania najniższej emisji:</p>
+          <ul class="list-disc pl-5 text-zinc-700 space-y-2">
+            <li><strong>Mój Prąd 8.0:</strong> Dotacje do mikroinstalacji PV zintegrowanych z magazynami energii.</li>
+            <li><strong>Ulga Termomodernizacyjna:</strong> Możliwość odliczenia od podatku wydatków na rekuperację i pompy ciepła (do 53 000 zł).</li>
+            <li><strong>Kredyt Ekologiczny:</strong> Preferencyjne oprocentowanie dla budynków o EP &lt; 40.</li>
+          </ul>
+        </section>
+
+        <div class="mt-10 p-6 bg-white border-2 border-orange-200 rounded-xl shadow-sm">
+            <p class="font-semibold text-zinc-800 text-balance">Planujesz budowę energooszczędną w 2026?</p>
+            <p class="text-sm text-zinc-600 mb-4">Sprawdź nasz pełny kosztorys dla różnych technologii (murowany vs szkieletowy):</p>
+            <a href="/budowa/koszt-budowy-domu/" class="inline-block bg-orange-500 text-white px-6 py-2 rounded-lg font-bold hover:bg-orange-600 transition-colors">
+                Koszt budowy domu 2026 – Pełna Analiza
+            </a>
+        </div>
+
+        <section id="faq" class="my-12">
+          <h2 class="text-2xl font-bold text-zinc-700 mb-4">FAQ</h2>
+          <div class="space-y-4">
+            {[ 
+              {q: "Czy rekuperacja jest obowiązkowa w 2026 r.?", a: "Prawnie nie, ale praktycznie jest niezbędna, aby spełnić rygorystyczne normy zapotrzebowania na energię pierwotną w domach energooszczędnych."},
+              {q: "O ile droższy jest ciepły montaż okien?", a: "Koszt materiałów i robocizny przy ciepłym montażu jest o ok. 2-3 tys. zł wyższy dla całego domu, ale eliminuje mostki termiczne i ryzyko grzyba."},
+              {q: "Czy dom energooszczędny musi być drogi w budowie?", a: "Nie, jeśli wybierzesz prostą bryłę (typ stodoła). Skomplikowany dach i wykusze to najwięksi wrogowie energooszczędności i Twojego portfela."},
+              {q: "Ile kosztuje pompa ciepła z montażem w 2026?", a: "Średni koszt powietrznej pompy ciepła z montażem to obecnie 35 000 – 50 000 zł, zależnie od mocy i marki."},
+              {q: "Czy fotowoltaika jest konieczna?", a: "W 2026 r. przy systemach net-billing i dynamicznych cenach energii, PV w połączeniu z pompą ciepła jest jedynym sposobem na realne obniżenie kosztów eksploatacji."}
+            ].map((item) => (
+              <div class="border rounded-lg overflow-hidden">
+                <div class="p-4 bg-stone-50 font-semibold text-zinc-700">{item.q}</div>
+                <div class="p-4 text-zinc-600 text-balance">{item.a}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </article>
+
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <ArticleSidebar />
+      </aside>
+    </div>
+  </main>
+
+  
+
+  <script type="application/ld+json" is:inline>
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/dom-energooszczedny/" },
+      "headline": "Koszt budowy domu energooszczędnego w 2026 roku – analiza opłacalności",
+      "description": "Sprawdź realne koszty budowy domu energooszczędnego w 2026 roku. Ile kosztuje rekuperacja, pompy ciepła i ciepły montaż?",
+      "image": "https://domjakosci.pl/images/dom-energooszczedny-koszty-2026.jpg",
+      "author": { "@type": "Person", "name": "Marek Nowicki" },
+      "datePublished": "2026-01-05",
+      "dateModified": "2026-01-13"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Czy rekuperacja jest obowiązkowa w 2026 r.?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prawnie nie, ale praktycznie jest niezbędna, aby spełnić rygorystyczne normy zapotrzebowania na energię pierwotną w domach energooszczędnych."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ile kosztuje pompa ciepła z montażem w 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Średni koszt powietrznej pompy ciepła z montażem to obecnie 35 000 – 50 000 zł, zależnie od mocy i marki."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+</BaseLayout>
