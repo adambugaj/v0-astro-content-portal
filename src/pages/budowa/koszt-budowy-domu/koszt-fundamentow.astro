@@ -22,8 +22,8 @@ export const breadcrumbs = [
   <main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
     <Breadcrumbs items={breadcrumbs} />
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <article class="lg:col-span-2">
+    <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
+      <article class="lg:flex-1">
         <header class="mb-8">
           <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-sm font-semibold mb-4">Aktualizacja: Wrzesień 2025</span>
           <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">Koszt fundamentów 2026 — płyta, ławy, czy śruby fundamentowe?</h1>
@@ -90,7 +90,7 @@ export const breadcrumbs = [
         <footer class="text-sm text-zinc-500 mt-6">Artykuł ma charakter informacyjny. Ceny orientacyjne na I półrocze 2026.</footer>
       </article>
 
-      <aside class="lg:col-span-1">
+      <aside class="w-full lg:w-80 flex-shrink-0">
         <ArticleSidebar />
       </aside>
     </div>

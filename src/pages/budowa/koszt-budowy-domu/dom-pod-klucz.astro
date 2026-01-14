@@ -22,8 +22,8 @@ export const breadcrumbs = [
   <main class="lg:ml-48 max-w-7xl mx-auto px-4 py-12">
     <Breadcrumbs items={breadcrumbs} />
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <article class="lg:col-span-2">
+    <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
+      <article class="lg:flex-1">
         <header class="mb-8">
           <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-sm font-semibold mb-4">Aktualizacja: Styczeń 2026</span>
           <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">{title}</h1>
@@ -201,7 +201,7 @@ export const breadcrumbs = [
         </div>
       </article>
 
-      <aside class="lg:col-span-1">
+      <aside class="w-full lg:w-80 flex-shrink-0">
         <ArticleSidebar />
       </aside>
     </div>
