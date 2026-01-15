@@ -12,6 +12,37 @@ export const breadcrumbs = [
   ...pillarBreadcrumbs,
   { label: 'stan surowy vs deweloperski', url: '/budowa/koszt-budowy-domu/stan-surowy-vs-deweloperski/' }
 ];
+export const frontmatter = {
+  type: "supporting",
+  supportingType: "comparison",
+  supportingRole: "decision",
+
+  pillarSlug: "koszt-budowy-domu",
+  slug: "stan-surowy-vs-deweloperski",
+
+  priority: 3,
+  silo: "Budowa",
+  category: "Koszt budowy domu",
+
+  searchIntent: ["informational", "commercial"],
+
+  relatedSupporting: [
+    "koszt-100m2",
+    "koszt-system-gospodarczy",
+    "koszt-parterowy"
+  ],
+
+  schemaType: ["Article", "FAQPage"],
+
+  contentSignals: {
+    hasTable: true,
+    hasComparison: true,
+    hasFAQ: true,
+    hasCTA: true
+  },
+
+  updatedAt: "2026-01-13"
+};
 ---
 
 <BaseLayout title={title} description={description} type="article" author={author}>
