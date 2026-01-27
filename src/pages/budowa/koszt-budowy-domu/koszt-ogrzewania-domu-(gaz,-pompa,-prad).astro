@@ -1,0 +1,512 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Koszt ogrzewania domu (gaz, pompa, prąd) w 2026 roku – kompleksowa analiza";
+const description = "Poznaj aktualne koszty ogrzewania domu w 2026 roku! Analizujemy ceny gazu ziemnego i LPG, pomp ciepła (powietrznych, gruntowych) oraz ogrzewania elektrycznego. Sprawdź, co jest najtańsze i najbardziej efektywne dla Twojego domu, uwzględniając różne scenariusze izolacji i dostępności paliw.";
+const canonical = "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-ogrzewania-domu-(gaz,-pompa,-prad)/";
+const author = 'mgr inż. Marek Nowicki';
+const contextNote = "Analiza kosztów ogrzewania w 2026 roku opiera się na najnowszych danych rynkowych i prognozach energetycznych, uwzględniając dynamikę cen paliw oraz zmiany w regulacjach taryfowych dla gospodarstw domowych. Dzięki temu przedstawione informacje są maksymalnie zbliżone do rzeczywistych wydatków, z którymi mierzą się właściciele domów.";
+const badgeText = "Raport Rynkowy 2026";
+const badgeClass = "bg-blue-100 text-blue-700";
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Koszt ogrzewania domu (gaz, pompa, prąd)', url: 'https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-ogrzewania-domu-(gaz,-pompa,-prad)/' }
+];
+
+const faqItems = [
+  {
+    question: "Czy pompa ciepła jest nadal najtańszą opcją ogrzewania w 2026 roku?",
+    answer: "Tak, w 2026 roku pompa ciepła, zwłaszcza w połączeniu z instalacją fotowoltaiczną i wykorzystaniem taryf dynamicznych, często okazuje się najtańszą opcją ogrzewania domu. Roczne koszty eksploatacji dla dobrze izolowanego domu o powierzchni 100 m² mogą wynosić od 2500 do 3500 zł w zależności od rodzaju pompy (powietrzna/gruntowa) i efektywności energetycznej budynku."
+  },
+  {
+    question: "Jak dynamiczne taryfy prądu wpływają na koszty ogrzewania pompą ciepła?",
+    answer: "Dynamiczne taryfy prądu, dostępne dla odbiorców z licznikami zdalnego odczytu, pozwalają na znaczne obniżenie kosztów eksploatacji pomp ciepła. Umożliwiają one ładowanie zasobników ciepłej wody lub akumulację ciepła w podłogówce w godzinach z najniższymi cenami energii, które mogą być nawet o 40% niższe niż w szczycie. Jest to szczególnie korzystne dla użytkowników z rozbudowanymi systemami sterowania."
+  },
+  {
+    question: "Jaki jest wpływ współczynnika COP na efektywność pompy ciepła?",
+    answer: "Współczynnik COP (Coefficient of Performance) określa stosunek uzyskanej energii cieplnej do zużytej energii elektrycznej. Im wyższy COP, tym pompa ciepła jest bardziej efektywna. Współczesne pompy ciepła osiągają COP na poziomie 3,5-5, co oznacza, że z 1 kWh prądu produkują 3,5 do 5 kWh ciepła. Wyższy COP bezpośrednio przekłada się na niższe rachunki za prąd i szybszy zwrot z inwestycji."
+  },
+  {
+    question: "Czym różni się gaz ziemny od gazu LPG w kontekście ogrzewania domu?",
+    answer: "Gaz ziemny jest dostarczany rurociągami i charakteryzuje się stałą kalorycznością oraz brakiem konieczności magazynowania. Gaz LPG (propan) jest magazynowany w specjalnych zbiornikach na posesji i jest alternatywą tam, gdzie brak sieci gazowej. Chociaż kaloryczność LPG jest wyższa niż gazu ziemnego, jego ceny bywają bardziej zmienne, a instalacja wymaga dodatkowej przestrzeni na zbiornik i regularnych dostaw. Koszty ogrzewania LPG dla domu 100 m² mogą oscylować wokół 4000-5000 zł rocznie."
+  },
+  {
+    question: "Czy system hybrydowy (np. gaz + pompa ciepła) to opłacalna strategia na przyszłość?",
+    answer: "Systemy hybrydowe, łączące np. pompę ciepła z kotłem gazowym, stanowią coraz bardziej opłacalne rozwiązanie na przyszłość. Pozwalają one na optymalne wykorzystanie obu źródeł ciepła w zależności od warunków zewnętrznych i cen energii. W okresach niższych temperatur kocioł gazowy wspomaga pompę, zapewniając stabilność i niższe zużycie prądu. Takie rozwiązanie zwiększa bezpieczeństwo energetyczne domu i odporność na wahania cen pojedynczych paliw, oferując do 20% większą elastyczność w zarządzaniu kosztami."
+  },
+  {
+    question: "Jakie dotacje i ulgi podatkowe wspierają modernizację ogrzewania w 2026 roku?",
+    answer: "W 2026 roku nadal dostępne są programy wsparcia, takie jak 'Czyste Powietrze', 'Moje Ciepło' czy 'Ulga Termomodernizacyjna'. Program 'Czyste Powietrze' oferuje dotacje na wymianę starych kotłów na pompy ciepła lub kotły gazowe, a także na termomodernizację. 'Moje Ciepło' skupia się na dofinansowaniu zakupu i montażu pomp ciepła w nowych budynkach. Ulga termomodernizacyjna pozwala odliczyć od podstawy opodatkowania wydatki poniesione na materiały budowlane i usługi związane z termomodernizacją, do kwoty 53 000 zł."
+  }
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "image": "https://domjakosci.pl/images/ogrzewanie-domu-gaz-pompa-prad.webp",
+      "datePublished": "2026-01-27T12:00:00+01:00",
+      "dateModified": "2026-01-27T12:00:00+01:00",
+      "author": {
+        "@type": "Person",
+        "name": author
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DomJakości.pl",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://domjakosci.pl/logo.webp"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": canonical
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqItems.map(item => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.answer
+        }
+      }))
+    }
+  ]
+};
+---
+<BaseLayout title={title} description={description} canonical={canonical} type="article">
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+    <div class="flex flex-col lg:flex-row lg:gap-16">
+      <article class="lg:flex-1">
+
+        <header class="mb-12">
+            <span class="inline-block py-1 px-3 rounded-full {badgeClass} font-bold text-sm font-bold mb-4 uppercase tracking-wider">
+                {badgeText}
+            </span>
+
+            <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 mb-8 leading-tight">
+                {title}
+            </h1>
+
+            <div class="flex flex-col gap-y-8 border-b pb-10 border-zinc-100">
+                
+                <div class="flex flex-wrap items-center gap-x-10 gap-y-3">
+                    <div class="flex items-center gap-2.5 group">
+                        <div class="p-2 rounded-lg bg-zinc-50 group-hover:bg-blue-50 transition-colors">
+                            <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <path d="M16 2v4M8 2v4M3 10h18"></path>
+                            </svg>
+                        </div>
+                        <time datetime="2026-01-27T12:00:00+01:00" class="text-sm font-bold text-zinc-500 tracking-tight">
+                            27 stycznia 2026
+                        </time>
+                    </div>
+
+                    <div class="flex items-center gap-2.5 group">
+                        <div class="p-2 rounded-lg bg-zinc-50 group-hover:bg-blue-50 transition-colors">
+                            <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-bold text-zinc-500 tracking-tight">ok. 7 min</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 bg-zinc-50/50 p-3 rounded-2xl w-fit pr-6">
+                    <div class="relative">
+                        <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shadow-md border-2 border-white">
+                            MN
+                        </div>
+                        <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 border-2 border-white rounded-full flex items-center justify-center">
+                            <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-extrabold text-zinc-900 text-base leading-none">mgr inż. Marek Nowicki</p>
+                        <p class="text-xs font-medium text-blue-600 uppercase tracking-wider mt-1.5">Ekspert DomJakości.pl</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="bg-slate-50 p-8 rounded-3xl mb-12 border border-slate-100">
+           <p class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">W tym artykule:</p>
+           <nav id="toc" class="space-y-2 text-blue-600 font-medium">
+             <a href="#wplyw-czynnikow-na-koszt-ogrzewania" class="hover:underline block">Wpływ czynników na koszt ogrzewania w 2026 roku</a>
+             <a href="#koszty-ogrzewania-gazem" class="hover:underline block ml-4">Koszty ogrzewania gazem w 2026 roku: stabilność i wygoda</a>
+             <a href="#gaz-ziemny" class="hover:underline block ml-8">Gaz ziemny</a>
+             <a href="#gaz-plynny-lpg" class="hover:underline block ml-8">Gaz płynny (LPG) ze zbiornika</a>
+             <a href="#pompa-ciepla-lider-efektywnosci" class="hover:underline block ml-4">Pompa ciepła w 2026 roku: lider efektywności?</a>
+             <a href="#powietrzna-pompa-ciepla" class="hover:underline block ml-8">Powietrzna pompa ciepła</a>
+             <a href="#gruntowa-pompa-ciepla" class="hover:underline block ml-8">Gruntowa pompa ciepła</a>
+             <a href="#dynamiczne-taryfy-i-fotowoltaika" class="hover:underline block ml-8">Dynamiczne taryfy i fotowoltaika – klucz do oszczędności</a>
+             <a href="#ogrzewanie-elektryczne" class="hover:underline block ml-4">Ogrzewanie elektryczne w 2026 roku: kiedy się opłaca?</a>
+             <a href="#grzejniki-elektryczne-i-ogrzewanie-podlogowe" class="hover:underline block ml-8">Grzejniki elektryczne i ogrzewanie podłogowe</a>
+             <a href="#koszty-eksploatacji-prad" class="hover:underline block ml-8">Koszty eksploatacji</a>
+             <a href="#porownanie-kosztow-ogrzewania" class="hover:underline block ml-4">Porównanie kosztów ogrzewania w 2026 roku – tabela i analiza scenariuszy</a>
+             <a href="#inwestycja-poczatkowa-a-koszty-eksploatacji" class="hover:underline block ml-4">Inwestycja początkowa a koszty eksploatacji: długoterminowa perspektywa</a>
+             <a href="#jak-wybrac-najlepsze-ogrzewanie" class="hover:underline block ml-4">Jak wybrać najlepsze ogrzewanie dla Twojego domu w 2026 roku?</a>
+             <a href="#interaktywne-narzedzia" class="hover:underline block ml-4">Interaktywne narzędzia: kalkulator i ankieta wyboru systemu ogrzewania</a>
+           </nav>
+        </div>
+
+        <div class="article-content">
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">W 2026 roku, wybór najtańszego i najbardziej efektywnego sposobu ogrzewania domu to strategiczna decyzja, na którą wpływają dynamiczne ceny paliw i energii. Z analizy wynika, że pompy ciepła, szczególnie te współpracujące z fotowoltaiką oraz wykorzystujące taryfy dynamiczne, oferują najniższe roczne koszty eksploatacji. Ogrzewanie gazowe (ziemne i LPG) pozostaje komfortową i stabilną opcją, natomiast ogrzewanie wyłącznie elektryczne, bez wsparcia odnawialnych źródeł, jest zazwyczaj najdroższe w bieżącej eksploatacji.</p>
+
+          <div class="bg-gradient-to-r from-zinc-50 to-slate-100 p-8 rounded-3xl border border-zinc-200 my-10 shadow-sm">
+            <h3 class="text-2xl font-bold text-zinc-800 mb-4">Kluczowe wnioski na 2026 rok:</h3>
+            <ul class="list-disc pl-5 text-lg text-zinc-700 space-y-2">
+              <li><strong>Pompy ciepła</strong> utrzymują pozycję lidera pod względem niskich kosztów eksploatacji, zwłaszcza w połączeniu z fotowoltaiką i taryfami dynamicznymi.</li>
+              <li><strong>Gaz ziemny i LPG</strong> to nadal wygodne i stabilne źródła ciepła, choć z wyższymi rocznymi kosztami niż pompy ciepła w domach energooszczędnych.</li>
+              <li><strong>Ogrzewanie elektryczne bezpośrednie</strong> jest najdroższą opcją, rekomendowaną jedynie jako uzupełnienie lub w bardzo dobrze izolowanych domach o niskim zapotrzebowaniu na energię.</li>
+              <li><strong>Termomodernizacja</strong> to inwestycja, która znacząco obniża zapotrzebowanie na energię, czyniąc każdy system grzewczy bardziej ekonomicznym.</li>
+            </ul>
+          </div>
+
+          <h2 id="wplyw-czynnikow-na-koszt-ogrzewania" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Wpływ czynników na koszt ogrzewania w 2026 roku</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Koszty ogrzewania domu w 2026 roku są wypadkową wielu zmiennych. Najważniejsze z nich to: stopień izolacji budynku, jego powierzchnia, a także liczba domowników i ich preferencje temperaturowe. Nowe domy energooszczędne, spełniające normy WT 2021, charakteryzują się znacznie niższym zapotrzebowaniem na ciepło, co bezpośrednio przekłada się na niższe rachunki. Równie istotne są wahania cen paliw oraz energii elektrycznej, które są pod wpływem globalnych rynków i lokalnych regulacji.</p>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Zapotrzebowanie na ciepło wyrażane w kWh/m²·rok jest kluczowym parametrem. Dla nowego, dobrze izolowanego domu może ono wynosić zaledwie 30-50 kWh/m²·rok, podczas gdy dla starych, nieocieplonych budynków przekraczać 150 kWh/m²·rok. Różnica ta drastycznie wpływa na roczne koszty, niezależnie od wybranego źródła ciepła.</p>
+
+          <h2 id="koszty-ogrzewania-gazem" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Koszty ogrzewania gazem w 2026 roku: stabilność i wygoda</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Ogrzewanie gazem, zarówno ziemnym, jak i płynnym (LPG), wciąż cieszy się popularnością dzięki swojej bezobsługowości i wysokiemu komfortowi użytkowania. W 2026 roku ceny gazu wykazują pewną stabilność, co czyni tę opcję przewidywalną, choć w niektórych scenariuszach droższą od pomp ciepła.</p>
+
+          <h3 id="gaz-ziemny" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Gaz ziemny</h3>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Dla domów z dostępem do sieci gazowej, gaz ziemny pozostaje atrakcyjnym rozwiązaniem. Nowoczesne kotły kondensacyjne osiągają sprawność powyżej 100% (w odniesieniu do wartości opałowej), co minimalizuje straty energii. Roczne koszty ogrzewania gazem ziemnym dla nowego domu o powierzchni 100 m² z zapotrzebowaniem 10 000 kWh/rok kształtują się na poziomie około 3950-4500 zł, uwzględniając aktualne taryfy i opłaty dystrybucyjne. Dla starszych, ocieplonych domów, koszty te mogą wzrosnąć do 5500-6500 zł rocznie.</p>
+
+          <h3 id="gaz-plynny-lpg" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Gaz płynny (LPG) ze zbiornika</h3>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">W miejscach, gdzie brak jest dostępu do sieci gazowej, alternatywą jest ogrzewanie gazem płynnym (LPG) ze zbiornika naziemnego lub podziemnego. System ten jest również w pełni automatyczny i efektywny, jednak wymaga inwestycji w zbiornik i regularnych dostaw paliwa. Koszty ogrzewania LPG dla nowego domu 100 m² to około 3000-3500 zł rocznie, zaś dla starszego, ocieplonego domu mogą sięgnąć 4700-5000 zł. Cena LPG jest bardziej podatna na wahania rynkowe niż gazu ziemnego.</p>
+          <div class="bg-orange-50 border-l-4 border-orange-400 p-6 my-8 italic text-zinc-800 rounded-r-xl">
+            <p class="text-lg"><strong>Expert Tip:</strong> Regularne przeglądy instalacji gazowej i kotła kondensacyjnego są kluczowe dla utrzymania wysokiej sprawności systemu oraz bezpieczeństwa. Zaniedbania mogą prowadzić do wzrostu zużycia paliwa o 5-10% i zwiększenia ryzyka awarii.</p>
+          </div>
+
+          <h2 id="pompa-ciepla-lider-efektywnosci" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Pompa ciepła w 2026 roku: lider efektywności?</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Pompy ciepła to technologia, która w 2026 roku zyskuje na znaczeniu, stając się często najbardziej ekonomicznym źródłem ciepła, zwłaszcza w nowych i dobrze zaizolowanych budynkach. Ich wysoka efektywność energetyczna, wyrażona współczynnikiem COP, oraz możliwość współpracy z fotowoltaiką, znacząco obniżają koszty eksploatacji.</p>
+
+          <h3 id="powietrzna-pompa-ciepla" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Powietrzna pompa ciepła</h3>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Powietrzne pompy ciepła są najczęściej wybieranym typem ze względu na niższe koszty początkowe i prostotę montażu. Pobierają ciepło z powietrza zewnętrznego, co sprawia, że ich efektywność może spadać w bardzo niskich temperaturach. Jednak nowoczesne modele utrzymują wysoką sprawność nawet przy -20°C. Roczne koszty ogrzewania dla nowego domu 100 m² wynoszą około 3000-3500 zł. Dla starszych, ocieplonych domów, mogą wzrosnąć do 4800-5500 zł.</p>
+
+          <h3 id="gruntowa-pompa-ciepla" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Gruntowa pompa ciepła</h3>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Gruntowe pompy ciepła charakteryzują się najwyższą stabilnością działania i efektywnością, ponieważ temperatura gruntu na głębokości jest stała. Wymagają jednak większej inwestycji początkowej związanej z wykonaniem odwiertów lub kolektora poziomego. Ich roczne koszty eksploatacji są najniższe – dla nowego domu 100 m² to około 2400-2800 zł. To sprawia, że są najbardziej oszczędną opcją w długoterminowej perspektywie.</p>
+
+          <h3 id="dynamiczne-taryfy-i-fotowoltaika" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Dynamiczne taryfy i fotowoltaika – klucz do oszczędności</h3>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">W 2026 roku, klucz do minimalizacji kosztów ogrzewania pompą ciepła leży w synergii z instalacją fotowoltaiczną i wykorzystaniu dynamicznych taryf energii elektrycznej. Dynamiczne ceny prądu, dostępne dla prosumentów z licznikami zdalnego odczytu, pozwalają na 'magazynowanie' ciepła (np. w buforze wody czy podłodze) w godzinach najniższych cen. Dzięki temu można obniżyć rachunki za prąd nawet o 30-50% w skali roku, co czyni pompę ciepła niemal bezkosztową w eksploatacji dla domów z nadwyżką produkcji z PV.</p>
+
+          <h2 id="ogrzewanie-elektryczne" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Ogrzewanie elektryczne w 2026 roku: kiedy się opłaca?</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Bezpośrednie ogrzewanie elektryczne, wykorzystujące grzejniki, maty grzewcze czy elektryczne ogrzewanie podłogowe, jest najprostsze w instalacji i nie wymaga komina ani przyłącza gazowego. Niestety, ze względu na obecne ceny prądu, w 2026 roku jest to zazwyczaj najdroższa forma ogrzewania bieżącego, o ile nie jest wspierana przez dużą instalację fotowoltaiczną.</p>
+
+          <h3 id="grzejniki-elektryczne-i-ogrzewanie-podlogowe" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Grzejniki elektryczne i ogrzewanie podłogowe</h3>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Grzejniki elektryczne oraz elektryczne ogrzewanie podłogowe są łatwe w montażu i oferują precyzyjną kontrolę temperatury w poszczególnych pomieszczeniach. Ich sprawność jest bliska 100%, co oznacza, że cała energia elektryczna zamieniana jest na ciepło. Niestety, wysoka cena za 1 kWh prądu sprawia, że koszty eksploatacji są wysokie.</p>
+
+          <h3 id="koszty-eksploatacji-prad" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Koszty eksploatacji</h3>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Dla domu o zapotrzebowaniu na ciepło 10 000 kWh rocznie, przy średniej cenie prądu około 0,80-0,90 zł/kWh (po uwzględnieniu opłat stałych i dystrybucyjnych w taryfie G11), roczny koszt ogrzewania elektrycznego może wynieść od 8000 do 9000 zł. W przypadku starszych, mniej izolowanych domów, koszty te mogą drastycznie wzrosnąć, przekraczając nawet 15 000 zł rocznie. Z tego powodu ogrzewanie elektryczne jest rekomendowane głównie dla domów pasywnych lub jako system uzupełniający.</p>
+
+          <h2 id="porownanie-kosztow-ogrzewania" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Porównanie kosztów ogrzewania w 2026 roku – tabela i analiza scenariuszy</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Poniższa tabela przedstawia orientacyjne roczne koszty ogrzewania dla różnych typów domów i źródeł ciepła w 2026 roku. Dane oparto na uśrednionych cenach paliw i energii, oraz typowym zapotrzebowaniu na ciepło dla danego standardu budynku (Qco – centralne ogrzewanie, Qcwu – ciepła woda użytkowa).</p>
+
+          <table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-md my-10">
+            <thead class="bg-zinc-800 text-white">
+              <tr>
+                <th class="p-4 border-b border-zinc-100">Rodzaj domu / pow. / liczba osób</th>
+                <th class="p-4 border-b border-zinc-100">Q razem [kWh/rok]</th>
+                <th class="p-4 border-b border-zinc-100">PC gruntowa [zł/rok]</th>
+                <th class="p-4 border-b border-zinc-100">LPG (propan) [zł/rok]</th>
+                <th class="p-4 border-b border-zinc-100">PC powietrzna [zł/rok]</th>
+                <th class="p-4 border-b border-zinc-100">Gaz ziemny [zł/rok]</th>
+                <th class="p-4 border-b border-zinc-100">Prąd (grzejniki) [zł/rok]</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="p-4 border-b border-zinc-100"><strong>2 os., NOWY 100 m²</strong></td>
+                <td class="p-4 border-b border-zinc-100">9 367,7</td>
+                <td class="p-4 border-b border-zinc-100">2 435 zł</td>
+                <td class="p-4 border-b border-zinc-100">3 020 zł</td>
+                <td class="p-4 border-b border-zinc-100">3 045 zł</td>
+                <td class="p-4 border-b border-zinc-100">3 950 zł</td>
+                <td class="p-4 border-b border-zinc-100">8 430 zł</td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="p-4 border-b border-zinc-100"><strong>4 os., NOWY 100 m²</strong></td>
+                <td class="p-4 border-b border-zinc-100">10 735,4</td>
+                <td class="p-4 border-b border-zinc-100">2 791 zł</td>
+                <td class="p-4 border-b border-zinc-100">3 463 zł</td>
+                <td class="p-4 border-b border-zinc-100">3 489 zł</td>
+                <td class="p-4 border-b border-zinc-100">4 527 zł</td>
+                <td class="p-4 border-b border-zinc-100">9 660 zł</td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="p-4 border-b border-zinc-100"><strong>2 os., stary 100 m² – OCIEPLONY</strong></td>
+                <td class="p-4 border-b border-zinc-100">13 367,7</td>
+                <td class="p-4 border-b border-zinc-100">3 479 zł</td>
+                <td class="p-4 border-b border-zinc-100">4 321 zł</td>
+                <td class="p-4 border-b border-zinc-100">4 354 zł</td>
+                <td class="p-4 border-b border-zinc-100">5 657 zł</td>
+                <td class="p-4 border-b border-zinc-100">12 030 zł</td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="p-4 border-b border-zinc-100"><strong>4 os., stary 100 m² – OCIEPLONY</strong></td>
+                <td class="p-4 border-b border-zinc-100">14 735,4</td>
+                <td class="p-4 border-b border-zinc-100">3 835 zł</td>
+                <td class="p-4 border-b border-zinc-100">4 764 zł</td>
+                <td class="p-4 border-b border-zinc-100">4 803 zł</td>
+                <td class="p-4 border-b border-zinc-100">6 227 zł</td>
+                <td class="p-4 border-b border-zinc-100">13 260 zł</td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="p-4 border-b border-zinc-100"><strong>4 os., stary 100 m² – NIEOCIEPLONY</strong></td>
+                <td class="p-4 border-b border-zinc-100">21 235,4</td>
+                <td class="p-4 border-b border-zinc-100">5 521 zł</td>
+                <td class="p-4 border-b border-zinc-100">6 855 zł</td>
+                <td class="p-4 border-b border-zinc-100">6 902 zł</td>
+                <td class="p-4 border-b border-zinc-100">8 958 zł</td>
+                <td class="p-4 border-b border-zinc-100">19 110 zł</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6"><strong>Uwaga:</strong> Podane koszty ogrzewania prądem (grzejniki) są wyliczone przy założeniu średniej ceny 0,85 zł/kWh. W przypadku domów z instalacją fotowoltaiczną i taryfami dynamicznymi, rzeczywiste koszty prądu dla pomp ciepła mogą być niższe.</p>
+          
+          <h2 id="inwestycja-poczatkowa-a-koszty-eksploatacji" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Inwestycja początkowa a koszty eksploatacji: długoterminowa perspektywa</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Wybierając system ogrzewania, kluczowe jest rozważenie nie tylko rocznych kosztów eksploatacji, ale również początkowej inwestycji. Kocioł gazowy to zazwyczaj koszt 8 000 – 15 000 zł, plus przyłącze. Instalacja pompy ciepła, w zależności od typu (powietrzna czy gruntowa), to wydatek rzędu 25 000 – 60 000 zł (bez fotowoltaiki). Ogrzewanie elektryczne bezpośrednie jest najtańsze w montażu, często poniżej 10 000 zł. Jednak niższe koszty początkowe ogrzewania elektrycznego szybko są niwelowane przez wysokie rachunki za prąd, co sprawia, że w dłuższej perspektywie staje się to najdroższa opcja. Pompy ciepła, mimo wyższej inwestycji, zwracają się dzięki niskim kosztom eksploatacji, zwłaszcza z dofinansowaniem.</p>
+
+          <h2 id="jak-wybrac-najlepsze-ogrzewanie" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Jak wybrać najlepsze ogrzewanie dla Twojego domu w 2026 roku?</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Wybór optymalnego systemu ogrzewania zależy od indywidualnych uwarunkowań. Warto wziąć pod uwagę:</p>
+          <ul class="list-disc pl-5 text-lg text-zinc-600 leading-relaxed mb-6 space-y-2">
+            <li><strong>Lokalizacja i dostępność:</strong> Czy masz dostęp do sieci gazowej? Czy posesja pozwala na montaż zbiornika LPG lub kolektorów gruntowych?</li>
+            <li><strong>Budżet początkowy:</strong> Ile możesz zainwestować na start? Pamiętaj o dostępnych dotacjach.</li>
+            <li><strong>Standard energetyczny budynku:</strong> Jak dobrze izolowany jest Twój dom? Im lepsza izolacja, tym niższe zapotrzebowanie na ciepło i tym bardziej opłacalne stają się pompy ciepła.</li>
+            <li><strong>Preferencje ekologiczne:</strong> Czy zależy Ci na niskiej emisji CO2 i lokalnych zanieczyszczeń? Pompy ciepła są najbardziej ekologiczne.</li>
+            <li><strong>Wygoda obsługi:</strong> Czy wolisz system bezobsługowy, czy akceptujesz konieczność uzupełniania paliwa?</li>
+          </ul>
+
+          <div class="bg-red-50 border border-red-100 p-6 my-6 rounded-2xl text-red-900 text-sm">
+            <strong class="block mb-2">Ważne:</strong> Przed podjęciem decyzji zawsze warto skonsultować się z audytorem energetycznym lub specjalistą ds. systemów grzewczych. Pomoże to dopasować rozwiązanie do specyfiki Twojego budynku i oszacować rzeczywiste koszty w perspektywie długoterminowej.
+          </div>
+
+          <h2 id="interaktywne-narzedzia" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Interaktywne narzędzia: kalkulator i ankieta wyboru systemu ogrzewania</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">Aby ułatwić Ci podjęcie decyzji, przygotowaliśmy dwa narzędzia, które pomogą oszacować koszty i wybrać najbardziej odpowiedni system ogrzewania dla Twojego domu.</p>
+
+          <div class="bg-gradient-to-r from-teal-50 to-blue-50 p-8 rounded-3xl border border-teal-100 my-10 shadow-sm">
+            <h3 class="text-2xl font-bold text-zinc-800 mb-6">Kalkulator orientacyjnych kosztów ogrzewania 2026</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">Wpisz dane swojego domu, aby uzyskać szacunkowe roczne koszty ogrzewania dla różnych systemów.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div>
+                    <label for="area" class="block text-zinc-700 font-semibold mb-2">Powierzchnia domu (m²):</label>
+                    <input type="number" id="area" value="100" class="w-full p-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" min="1">
+                </div>
+                <div>
+                    <label for="demand" class="block text-zinc-700 font-semibold mb-2">Zapotrzebowanie na ciepło (kWh/m²·rok):</label>
+                    <input type="number" id="demand" value="100" class="w-full p-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" min="10">
+                </div>
+                <div>
+                    <label for="priceGas" class="block text-zinc-700 font-semibold mb-2">Cena Gazu Ziemnego (zł/kWh, ok. 0.38-0.45):</label>
+                    <input type="number" id="priceGas" value="0.40" step="0.01" class="w-full p-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="priceLPG" class="block text-zinc-700 font-semibold mb-2">Cena LPG (zł/kWh, ok. 0.40-0.48):</label>
+                    <input type="number" id="priceLPG" value="0.44" step="0.01" class="w-full p-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="priceElec" class="block text-zinc-700 font-semibold mb-2">Cena Prądu (zł/kWh, ok. 0.80-0.90):</label>
+                    <input type="number" id="priceElec" value="0.85" step="0.01" class="w-full p-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="cop" class="block text-zinc-700 font-semibold mb-2">COP Pompy Ciepła (współczynnik efektywności, ok. 3.5-4.5):</label>
+                    <input type="number" id="cop" value="4.0" step="0.1" class="w-full p-3 border border-zinc-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+            </div>
+            <button id="calculateBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-md">Oblicz koszty</button>
+
+            <div id="results" class="mt-8 bg-white p-6 rounded-2xl border border-blue-50 text-zinc-800 hidden">
+                <h4 class="text-xl font-bold mb-4">Szacunkowe roczne koszty ogrzewania:</h4>
+                <ul class="space-y-2 text-lg">
+                    <li><strong>Gaz ziemny:</strong> <span id="resGas" class="font-bold text-blue-600"></span> zł</li>
+                    <li><strong>LPG (propan):</strong> <span id="resLPG" class="font-bold text-blue-600"></span> zł</li>
+                    <li><strong>Pompa ciepła:</strong> <span id="resPC" class="font-bold text-blue-600"></span> zł</li>
+                    <li><strong>Ogrzewanie elektryczne:</strong> <span id="resElec" class="font-bold text-blue-600"></span> zł</li>
+                </ul>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-3xl border border-purple-100 my-10 shadow-sm">
+            <h3 class="text-2xl font-bold text-zinc-800 mb-6">Ankieta wyboru systemu ogrzewania</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">Odpowiedz na kilka pytań, aby otrzymać spersonalizowaną rekomendację.</p>
+            <div class="space-y-6">
+                <div>
+                    <p class="text-lg text-zinc-700 font-semibold mb-3">1. Czy masz dostęp do sieci gazowej?</p>
+                    <label class="inline-flex items-center mr-4">
+                        <input type="radio" name="q1" value="yes" class="form-radio text-blue-600 h-5 w-5">
+                        <span class="ml-2 text-zinc-600">Tak</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q1" value="no" class="form-radio text-blue-600 h-5 w-5">
+                        <span class="ml-2 text-zinc-600">Nie</span>
+                    </label>
+                </div>
+                <div>
+                    <p class="text-lg text-zinc-700 font-semibold mb-3">2. Jaki jest Twój budżet na inwestycję początkową?</p>
+                    <label class="inline-flex items-center mr-4">
+                        <input type="radio" name="q2" value="low" class="form-radio text-blue-600 h-5 w-5">
+                        <span class="ml-2 text-zinc-600">Niski (&lt;15 000 zł)</span>
+                    </label>
+                    <label class="inline-flex items-center mr-4">
+                        <input type="radio" name="q2" value="medium" class="form-radio text-blue-600 h-5 w-5">
+                        <span class="ml-2 text-zinc-600">Średni (15 000 - 35 000 zł)</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q2" value="high" class="form-radio text-blue-600 h-5 w-5">
+                        <span class="ml-2 text-zinc-600">Wysoki (&gt;35 000 zł)</span>
+                    </label>
+                </div>
+                <div>
+                    <p class="text-lg text-zinc-700 font-semibold mb-3">3. Czy zależy Ci na ekologii i niskiej emisji?</p>
+                    <label class="inline-flex items-center mr-4">
+                        <input type="radio" name="q3" value="very" class="form-radio text-blue-600 h-5 w-5">
+                        <span class="ml-2 text-zinc-600">Bardzo</span>
+                    </label>
+                    <label class="inline-flex items-center mr-4">
+                        <input type="radio" name="q3" value="moderate" class="form-radio text-blue-600 h-5 w-5">
+                        <span class="ml-2 text-zinc-600">Umiarkowanie</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q3" value="less" class="form-radio text-blue-600 h-5 w-5">
+                        <span class="ml-2 text-zinc-600">Mniej</span>
+                    </label>
+                </div>
+                <div>
+                    <p class="text-lg text-zinc-700 font-semibold mb-3">4. Jak ważna jest dla Ciebie bezobsługowość systemu?</p>
+                    <label class="inline-flex items-center mr-4">
+                        <input type="radio" name="q4" value="key" class="form-radio text-blue-600 h-5 w-5">
+                        <span class="ml-2 text-zinc-600">Kluczowa</span>
+                    </label>
+                    <label class="inline-flex items-center mr-4">
+                        <input type="radio" name="q4" value="important" class="form-radio text-blue-600 h-5 w-5">
+                        <span class="ml-2 text-zinc-600">Ważna</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q4" value="less_important" class="form-radio text-blue-600 h-5 w-5">
+                        <span class="ml-2 text-zinc-600">Mniej ważna</span>
+                    </label>
+                </div>
+            </div>
+            <button id="recommendBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-md mt-8">Uzyskaj rekomendację</button>
+
+            <div id="recommendationResults" class="mt-8 bg-white p-6 rounded-2xl border border-purple-50 text-zinc-800 hidden">
+                <h4 class="text-xl font-bold mb-4">Nasza rekomendacja:</h4>
+                <p id="recommendationText" class="text-lg"></p>
+            </div>
+          </div>
+
+          <script is:inline>
+            document.addEventListener('DOMContentLoaded', () => {
+                // Kalkulator kosztów
+                const calculateBtn = document.getElementById('calculateBtn');
+                const resultsDiv = document.getElementById('results');
+                
+                if (calculateBtn) {
+                    calculateBtn.addEventListener('click', () => {
+                        const area = parseFloat(document.getElementById('area').value);
+                        const demand = parseFloat(document.getElementById('demand').value);
+                        const priceGas = parseFloat(document.getElementById('priceGas').value);
+                        const priceLPG = parseFloat(document.getElementById('priceLPG').value);
+                        const priceElec = parseFloat(document.getElementById('priceElec').value);
+                        const cop = parseFloat(document.getElementById('cop').value);
+
+                        if (isNaN(area) || isNaN(demand) || isNaN(priceGas) || isNaN(priceLPG) || isNaN(priceElec) || isNaN(cop) || area <= 0 || demand <= 0 || priceGas <= 0 || priceLPG <= 0 || priceElec <= 0 || cop <= 0) {
+                            alert("Proszę wprowadzić poprawne wartości.");
+                            return;
+                        }
+
+                        const totalDemand = area * demand; // kWh/rok
+                        const annualCWUDemand = 2000; // Szacunkowe roczne zapotrzebowanie na CWU, można dodać do inputów
+
+                        const totalHeatDemand = totalDemand + annualCWUDemand;
+
+                        const costGas = (totalHeatDemand * priceGas).toFixed(2);
+                        const costLPG = (totalHeatDemand * priceLPG).toFixed(2);
+                        const costPC = ((totalHeatDemand / cop) * priceElec).toFixed(2);
+                        const costElec = (totalHeatDemand * priceElec).toFixed(2);
+
+                        document.getElementById('resGas').textContent = costGas;
+                        document.getElementById('resLPG').textContent = costLPG;
+                        document.getElementById('resPC').textContent = costPC;
+                        document.getElementById('resElec').textContent = costElec;
+                        resultsDiv.classList.remove('hidden');
+                    });
+                }
+
+                // Ankieta wyboru systemu
+                const recommendBtn = document.getElementById('recommendBtn');
+                const recommendationResultsDiv = document.getElementById('recommendationResults');
+                const recommendationText = document.getElementById('recommendationText');
+
+                if (recommendBtn) {
+                    recommendBtn.addEventListener('click', () => {
+                        const q1 = document.querySelector('input[name="q1"]:checked');
+                        const q2 = document.querySelector('input[name="q2"]:checked');
+                        const q3 = document.querySelector('input[name="q3"]:checked');
+                        const q4 = document.querySelector('input[name="q4"]:checked');
+
+                        if (!q1 || !q2 || !q3 || !q4) {
+                            alert("Proszę odpowiedzieć na wszystkie pytania w ankiecie.");
+                            return;
+                        }
+
+                        const accessGas = q1.value;
+                        const budget = q2.value;
+                        const ecology = q3.value;
+                        const maintenance = q4.value;
+
+                        let recommendation = "Biorąc pod uwagę Twoje preferencje, ";
+
+                        if (ecology === "very" && budget !== "low") {
+                            recommendation += "<strong>pompa ciepła</strong> jest najbardziej polecanym rozwiązaniem, szczególnie w połączeniu z fotowoltaiką, ze względu na niską emisję i bardzo dobre koszty eksploatacji w dłuższej perspektywie. Jeśli budżet na inwestycję jest wysoki, rozważ pompę gruntową. Przy średnim budżecie, powietrzna pompa ciepła to świetny wybór.";
+                        } else if (accessGas === "yes" && maintenance === "key") {
+                            recommendation += "<strong>ogrzewanie gazem ziemnym</strong> będzie komfortową i bezobsługową opcją. Jest to stabilne źródło ciepła z umiarkowanymi kosztami eksploatacji.";
+                        } else if (accessGas === "no" && maintenance === "key" && budget !== "low") {
+                            recommendation += "<strong>ogrzewanie gazem płynnym (LPG) ze zbiornika</strong> to dobra alternatywa dla gazu ziemnego, zapewniająca wygodę. Warto jednak pamiętać o konieczności magazynowania paliwa i regularnych dostawach.";
+                        } else if (budget === "low" && accessGas === "no" && ecology === "less") {
+                            recommendation += "jeśli priorytetem jest niski koszt początkowy, a kwestie ekologii i bieżących kosztów są mniej ważne, <strong>ogrzewanie elektryczne bezpośrednie</strong> może być rozważane, ale tylko jako rozwiązanie tymczasowe lub dla bardzo małych, doskonale izolowanych budynków. Zdecydowanie zalecamy analizę długoterminową i, jeśli to możliwe, inwestycję w pompę ciepła.";
+                        } else if (accessGas === "yes" && budget === "medium" && ecology === "moderate") {
+                             recommendation += "rozważ <strong>system hybrydowy (gaz + pompa ciepła)</strong>, który zapewni elastyczność i optymalizację kosztów w zależności od cen energii i warunków pogodowych.";
+                        } else {
+                            recommendation += "potrzebujemy więcej informacji lub Twoje preferencje są bardzo zróżnicowane. Sugerujemy dalsze konsultacje z ekspertem DomJakości.pl, aby dopasować idealne rozwiązanie.";
+                        }
+                        recommendationText.innerHTML = recommendation;
+                        recommendationResultsDiv.classList.remove('hidden');
+                    });
+                }
+            });
+          </script>
+        </div>
+
+        <section class="faq mt-20 border-t pt-16">
+           <h2 class="text-4xl font-bold mb-10 text-center text-zinc-800">Najczęstsze pytania inwestorów</h2>
+           <div class="grid gap-6">
+             {faqItems.map(item => (
+               <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                 <h4 class="text-xl font-bold text-gray-900 mb-3">{item.question}</h4>
+                 <p class="text-lg text-gray-700 leading-relaxed">{item.answer}</p>
+               </div>
+             ))}
+           </div>
+        </section>
+      </article>
+      <ArticleSidebar contextNote={contextNote} />
+    </div>
+  </main>
+  <script type="application/ld+json" is:inline>{JSON.stringify(structuredData)}</script>
+</BaseLayout>

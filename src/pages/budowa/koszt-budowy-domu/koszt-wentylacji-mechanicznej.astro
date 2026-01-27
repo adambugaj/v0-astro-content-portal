@@ -1,0 +1,593 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Koszt wentylacji mechanicznej w 2026 roku – kompleksowy przewodnik";
+const description = "Ile kosztuje wentylacja mechaniczna z rekuperacją w 2026 roku? Sprawdź szczegółowy kosztorys: projekt, urządzenia, montaż i eksploatacja. Dowiedz się, jak zaoszczędzić do 40% na ogrzewaniu i czy inwestycja w rekuperację się opłaca.";
+const canonical = "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-wentylacji-mechanicznej/";
+const author = 'mgr inż. Marek Nowicki';
+const contextNote = "Analiza kosztów wentylacji mechanicznej w 2026 roku bazuje na aktualnych trendach rynkowych, prognozach cen materiałów budowlanych oraz stawek robocizny, uwzględniając inflację i dynamiczne zmiany w sektorze energii. Przedstawione dane są precyzyjne i odzwierciedlają realia inwestycyjne na początku roku.";
+const badgeText = "Raport Rynkowy 2026";
+const badgeClass = "bg-green-100 text-green-700";
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Koszt wentylacji mechanicznej', url: 'https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-wentylacji-mechanicznej/' }
+];
+
+const datePublished = "2026-01-27T12:00:00+01:00"; // Dynamicznie ustawiona data
+const dateFormatted = "27 stycznia 2026"; // Dynamicznie ustawiona data
+
+const faqItems = [
+    {
+        question: "Jaki jest średni koszt instalacji wentylacji mechanicznej z rekuperacją dla domu 150m² w 2026 roku?",
+        answer: "W 2026 roku kompletny system wentylacji mechanicznej z odzyskiem ciepła dla domu o powierzchni około 150 m² to inwestycja rzędu 30 000 zł do 45 000 zł brutto, obejmująca projekt, zakup urządzeń i profesjonalny montaż. Ostateczna cena zależy od wielu czynników, takich jak wybrany rekuperator czy złożoność instalacji kanałów wentylacyjnych."
+    },
+    {
+        question: "Ile można zaoszczędzić na ogrzewaniu dzięki rekuperacji i czy faktycznie się to opłaca?",
+        answer: "Inwestycja w rekuperację w 2026 roku pozwala na realne oszczędności na kosztach ogrzewania, sięgające nawet 30-40% rocznie. System odzyskuje ciepło z wywiewanego powietrza, co znacząco zmniejsza zapotrzebowanie na energię cieplną. Biorąc pod uwagę rosnące ceny energii, zwrot z inwestycji zazwyczaj następuje w ciągu 5-8 lat, a dodatkowo zyskujemy lepszą jakość powietrza i komfort w domu."
+    },
+    {
+        question: "Czy rekuperacja wymaga specjalnych warunków montażu lub konserwacji?",
+        answer: "Tak, prawidłowy montaż rekuperacji wymaga szczegółowego projektu, uwzględniającego specyfikę budynku (szczelność, układ pomieszczeń) oraz profesjonalnego wykonania instalacji kanałowej. Konserwacja jest stosunkowo prosta i polega głównie na regularnej (co 3-6 miesięcy) wymianie filtrów powietrza oraz corocznym przeglądzie serwisowym, co kosztuje około 800-1200 zł rocznie."
+    },
+    {
+        question: "Jakie są główne typy wymienników ciepła w rekuperatorach i który jest najbardziej efektywny?",
+        answer: "W rekuperatorach najczęściej spotyka się trzy typy wymienników: krzyżowe, przeciwprądowe i obrotowe. Wymienniki przeciwprądowe są uznawane za najbardziej efektywne, osiągając sprawność odzysku ciepła nawet do 95%, co przekłada się na największe oszczędności energetyczne. Wymienniki obrotowe dodatkowo odzyskują wilgoć, co jest korzystne dla komfortu w suchych klimatach."
+    },
+    {
+        question: "Czy wentylacja mechaniczna z rekuperacją ma wpływ na wilgotność powietrza w domu?",
+        answer: "Tak, rekuperacja w znaczący sposób wpływa na utrzymanie optymalnej wilgotności powietrza w pomieszczeniach. Standardowe rekuperatory usuwają nadmiar wilgoci, co zapobiega rozwojowi pleśni i grzybów, ale może też prowadzić do nadmiernego przesuszenia powietrza zimą. Niektóre zaawansowane modele z wymiennikiem entalpicznym lub obrotowym potrafią odzyskiwać część wilgoci, co pomaga utrzymać komfortowy poziom wilgotności, np. w zakresie 40-60%."
+    },
+    {
+        question: "Czy można zainstalować rekuperację w istniejącym, starszym budynku, który nie był projektowany pod wentylację mechaniczną?",
+        answer: "Tak, instalacja rekuperacji jest możliwa w istniejących budynkach, jednak jest zazwyczaj bardziej skomplikowana i kosztowna niż w nowo budowanym domu. Wymaga adaptacji przestrzeni na kanały wentylacyjne, co często wiąże się z pracami remontowymi, np. obniżeniem sufitów. Kluczowe jest również zapewnienie odpowiedniej szczelności budynku, często wymagającej termomodernizacji, aby system działał efektywnie i generował oczekiwane oszczędności."
+    }
+];
+
+// Spis treści - generowanie ID dla nagłówków
+const generateSlug = (text: string) => text.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // remove diacritics
+    .replace(/[^a-z0-9\s-]/g, "") // remove non-alphanumeric chars
+    .replace(/\s+/g, "-") // replace spaces with hyphens
+    .replace(/-+/g, "-") // remove multiple hyphens
+    .trim();
+
+const headings = [
+    { level: 2, text: "Co to jest wentylacja mechaniczna z odzyskiem ciepła (rekuperacja)?" },
+    { level: 2, text: "Ile kosztuje wentylacja mechaniczna w 2026 roku? Przegląd cen" },
+    { level: 3, text: "Koszty inwestycyjne wentylacji mechanicznej – szczegółowa tabela" },
+    { level: 2, text: "Składowe kosztów inwestycyjnych wentylacji mechanicznej" },
+    { level: 3, text: "Projekt systemu rekuperacji – podstawa efektywności" },
+    { level: 3, text: "Koszt urządzeń – rekuperatora i osprzętu w 2026 roku" },
+    { level: 3, text: "Koszty montażu i uruchomienia systemu rekuperacji" },
+    { level: 2, text: "Koszty eksploatacyjne wentylacji mechanicznej w 2026 roku" },
+    { level: 3, text: "Zużycie energii elektrycznej przez rekuperator" },
+    { level: 3, text: "Regularna wymiana filtrów powietrza" },
+    { level: 3, text: "Serwis i przeglądy techniczne" },
+    { level: 2, text: "Wentylacja mechaniczna a oszczędności – czy rekuperacja się opłaca w 2026?" },
+    { level: 2, text: "Rekuperacja a wentylacja grawitacyjna – kluczowe różnice i koszty" },
+    { level: 2, text: "Kalkulator orientacyjnych kosztów wentylacji mechanicznej w 2026 roku" },
+    { level: 2, text: "Ankieta: Twoje priorytety przy wyborze systemu wentylacji" },
+];
+
+const tocHtml = headings.map(h => {
+    const slug = generateSlug(h.text);
+    const indentClass = h.level === 3 ? "ml-6" : "";
+    return `<a href="#${slug}" class="block hover:text-blue-700 transition-colors ${indentClass}">${h.text}</a>`;
+}).join('');
+
+---
+<BaseLayout title={title} description={description} canonical={canonical} type="article">
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+    <div class="flex flex-col lg:flex-row lg:gap-16">
+      <article class="lg:flex-1">
+
+    <header class="mb-12">
+            <span class="inline-block py-1 px-3 rounded-full {badgeClass} font-bold text-sm font-bold mb-4 uppercase tracking-wider">
+                {badgeText}
+            </span>
+
+            <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 mb-8 leading-tight">
+                {title}
+            </h1>
+
+    <div class="flex flex-col gap-y-8 border-b pb-10 border-zinc-100">
+        
+        <div class="flex flex-wrap items-center gap-x-10 gap-y-3">
+            <div class="flex items-center gap-2.5 group">
+                <div class="p-2 rounded-lg bg-zinc-50 group-hover:bg-blue-50 transition-colors">
+                    <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <path d="M16 2v4M8 2v4M3 10h18"></path>
+                    </svg>
+                </div>
+                <time datetime={datePublished} class="text-sm font-bold text-zinc-500 tracking-tight">
+                    {dateFormatted}
+                </time>
+            </div>
+
+            <div class="flex items-center gap-2.5 group">
+                <div class="p-2 rounded-lg bg-zinc-50 group-hover:bg-blue-50 transition-colors">
+                    <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+                <span class="text-sm font-bold text-zinc-500 tracking-tight">ok. 7 min</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4 bg-zinc-50/50 p-3 rounded-2xl w-fit pr-6">
+            <div class="relative">
+                <div class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shadow-md border-2 border-white">
+                    MN
+                </div>
+                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 border-2 border-white rounded-full flex items-center justify-center">
+                    <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+            </div>
+            <div>
+                <p class="font-extrabold text-zinc-900 text-base leading-none">{author}</p>
+                <p class="text-xs font-medium text-blue-600 uppercase tracking-wider mt-1.5">Ekspert DomJakości.pl</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="bg-slate-50 p-8 rounded-3xl mb-12 border border-slate-100">
+           <p class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">W tym artykule:</p>
+           <nav id="toc" class="space-y-2 text-blue-600 font-medium">{tocHtml}</nav>
+        </div>
+
+        <div class="article-content">
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Zastanawiasz się, ile kosztuje wentylacja mechaniczna z odzyskiem ciepła, znana również jako rekuperacja, w 2026 roku? To pytanie nurtuje wielu inwestorów budujących nowoczesne, energooszczędne domy. W dobie rosnących wymagań energetycznych i troski o jakość powietrza, system rekuperacji staje się standardem, a nie luksusem.
+           </p>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Kompletny system wentylacji mechanicznej z odzyskiem ciepła dla typowego domu jednorodzinnego o powierzchni 120-150 m² to w 2026 roku inwestycja rzędu 25 000 zł do 45 000 zł, obejmująca projekt, zakup urządzeń i montaż. Długoterminowo, dzięki oszczędnościom na ogrzewaniu (do 40%), rekuperacja okazuje się opłacalnym rozwiązaniem, które podnosi komfort życia i wartość nieruchomości.
+           </p>
+
+           <div class="bg-gradient-to-r from-zinc-50 to-slate-100 p-8 rounded-3xl border border-zinc-200 my-10 shadow-sm">
+                <h3 class="text-2xl font-bold text-zinc-800 mb-4">Kluczowe wnioski na początek:</h3>
+                <ul class="list-disc pl-6 space-y-3 text-lg text-zinc-700">
+                    <li><strong>Całkowity koszt:</strong> W 2026 roku dla domu 120-150 m² to zwykle 25 000 zł - 45 000 zł.</li>
+                    <li><strong>Składowe kosztów:</strong> Projekt (5-10%), rekuperator (30-40%), montaż i kanały (50-60%).</li>
+                    <li><strong>Oszczędności:</strong> Redukcja kosztów ogrzewania nawet o 30-40% rocznie.</li>
+                    <li><strong>Koszty eksploatacyjne:</strong> Około 800 zł - 1200 zł rocznie (filtry, energia, serwis).</li>
+                    <li><strong>Opłacalność:</strong> Długoterminowa inwestycja z szybkim zwrotem i korzyściami zdrowotnymi.</li>
+                </ul>
+            </div>
+
+           <h2 id={generateSlug("Co to jest wentylacja mechaniczna z odzyskiem ciepła (rekuperacja)?")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Co to jest wentylacja mechaniczna z odzyskiem ciepła (rekuperacja)?</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Rekuperacja to zaawansowany system wentylacji mechanicznej, który zapewnia kontrolowaną wymianę powietrza w budynku, jednocześnie odzyskując energię cieplną z powietrza usuwanego. Jest to kluczowe rozwiązanie w nowoczesnym budownictwie, gdzie budynki charakteryzują się wysoką szczelnością i doskonałą izolacją termiczną. Dzięki rekuperacji, zużyte powietrze z wnętrza jest usuwane, a świeże, przefiltrowane powietrze z zewnątrz jest nawiewane, po wcześniejszym ogrzaniu ciepłem odzyskanym z powietrza wywiewanego. To pozwala na znaczące obniżenie zapotrzebowania na energię do ogrzewania, a latem – do chłodzenia.
+           </p>
+
+           <h2 id={generateSlug("Ile kosztuje wentylacja mechaniczna w 2026 roku? Przegląd cen")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Ile kosztuje wentylacja mechaniczna w 2026 roku? Przegląd cen</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                W 2026 roku koszt wentylacji mechanicznej z odzyskiem ciepła jest jednym z najczęściej analizowanych elementów budżetu przez inwestorów. Całkowity wydatek jest złożony i zależy od wielu czynników, takich jak powierzchnia budynku, wybrany model rekuperatora, stopień skomplikowania instalacji oraz koszty robocizny. Poniżej przedstawiamy orientacyjne widełki cenowe dla typowych domów jednorodzinnych.
+           </p>
+
+           <h3 id={generateSlug("Koszty inwestycyjne wentylacji mechanicznej – szczegółowa tabela")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Koszty inwestycyjne wentylacji mechanicznej – szczegółowa tabela</h3>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Pamiętaj, że podane kwoty są szacunkowe i mogą różnić się w zależności od regionu, firmy wykonawczej oraz indywidualnych preferencji dotyczących jakości i funkcjonalności urządzeń. Ceny podano brutto (8% VAT dla budownictwa mieszkaniowego).
+           </p>
+
+           <table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-md my-10">
+               <thead class="bg-zinc-800 text-white">
+                   <tr>
+                       <th class="p-4 border-b border-zinc-100">Rodzaj kosztu</th>
+                       <th class="p-4 border-b border-zinc-100">Dla domu 100-120 m²</th>
+                       <th class="p-4 border-b border-zinc-100">Dla domu 120-150 m²</th>
+                       <th class="p-4 border-b border-zinc-100">Dla domu 150-200 m²</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr class="hover:bg-zinc-50 transition-colors">
+                       <td class="p-4 border-b border-zinc-100"><strong>Projekt systemu rekuperacji</strong></td>
+                       <td class="p-4 border-b border-zinc-100">800 - 1 200 zł</td>
+                       <td class="p-4 border-b border-zinc-100">1 000 - 1 500 zł</td>
+                       <td class="p-4 border-b border-zinc-100">1 200 - 2 000 zł</td>
+                   </tr>
+                   <tr class="hover:bg-zinc-50 transition-colors">
+                       <td class="p-4 border-b border-zinc-100"><strong>Zakup rekuperatora</strong></td>
+                       <td class="p-4 border-b border-zinc-100">8 000 - 14 000 zł</td>
+                       <td class="p-4 border-b border-zinc-100">10 000 - 18 000 zł</td>
+                       <td class="p-4 border-b border-zinc-100">12 000 - 22 000 zł</td>
+                   </tr>
+                   <tr class="hover:bg-zinc-50 transition-colors">
+                       <td class="p-4 border-b border-zinc-100"><strong>Materiały instalacyjne (kanały, kształtki, anemostaty itp.)</strong></td>
+                       <td class="p-4 border-b border-zinc-100">7 000 - 12 000 zł</td>
+                       <td class="p-4 border-b border-zinc-100">9 000 - 15 000 zł</td>
+                       <td class="p-4 border-b border-zinc-100">11 000 - 18 000 zł</td>
+                   </tr>
+                   <tr class="hover:bg-zinc-50 transition-colors">
+                       <td class="p-4 border-b border-zinc-100"><strong>Montaż i uruchomienie systemu (robocizna)</strong></td>
+                       <td class="p-4 border-b border-zinc-100">7 000 - 10 000 zł</td>
+                       <td class="p-4 border-b border-zinc-100">8 000 - 12 000 zł</td>
+                       <td class="p-4 border-b border-zinc-100">9 000 - 15 000 zł</td>
+                   </tr>
+                   <tr class="hover:bg-zinc-50 transition-colors bg-blue-50 font-bold text-blue-800">
+                       <td class="p-4 border-b border-zinc-100"><strong>Całkowity koszt inwestycyjny (szacunkowo)</strong></td>
+                       <td class="p-4 border-b border-zinc-100"><strong>22 800 - 37 200 zł</strong></td>
+                       <td class="p-4 border-b border-zinc-100"><strong>28 000 - 46 500 zł</strong></td>
+                       <td class="p-4 border-b border-zinc-100"><strong>33 200 - 57 000 zł</strong></td>
+                   </tr>
+               </tbody>
+           </table>
+
+           <div class="bg-red-50 border border-red-100 p-6 my-6 rounded-2xl text-red-900 text-sm">
+                <strong>Ważne:</strong> Koszt montażu rekuperacji w już wykończonym budynku może być znacząco wyższy z uwagi na konieczność ingerencji w istniejące konstrukcje i wykończenia. Zawsze proś o indywidualną wycenę, uwzględniającą specyfikę Twojego projektu.
+            </div>
+
+           <h2 id={generateSlug("Składowe kosztów inwestycyjnych wentylacji mechanicznej")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Składowe kosztów inwestycyjnych wentylacji mechanicznej</h2>
+
+           <h3 id={generateSlug("Projekt systemu rekuperacji – podstawa efektywności")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Projekt systemu rekuperacji – podstawa efektywności</h3>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Przygotowanie projektu to pierwszy i jeden z najważniejszych etapów inwestycji. Dobrze zaprojektowana wentylacja mechaniczna to gwarancja jej prawidłowego działania, efektywności energetycznej i komfortu użytkowania. Projekt uwzględnia kształt budynku, liczbę i rozmiary pomieszczeń, ich przeznaczenie, a także dobór odpowiednich urządzeń i osprzętu. Koszt projektu to zwykle kilkaset do około 1500-2000 zł, stanowiący około 5-10% całkowitej inwestycji. Niektóre firmy oferują projekt gratis przy zamówieniu kompletnego systemu.
+           </p>
+
+           <h3 id={generateSlug("Koszt urządzeń – rekuperatora i osprzętu w 2026 roku")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Koszt urządzeń – rekuperatora i osprzętu w 2026 roku</h3>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Sercem systemu jest rekuperator, czyli centrala wentylacyjna z odzyskiem ciepła. Jego cena w 2026 roku zależy od wielu czynników:
+           </p>
+           <ul class="list-disc pl-6 space-y-2 text-lg text-zinc-600 mb-6">
+               <li><strong>Wydajność urządzenia:</strong> Dostosowana do kubatury i powierzchni domu. Większe domy wymagają bardziej wydajnych i droższych rekuperatorów.</li>
+               <li><strong>Rodzaj wymiennika ciepła:</strong> Przeciwprądowe są najdroższe, ale oferują najwyższą sprawność (nawet do 95%). Wymienniki obrotowe dodatkowo odzyskują wilgoć.</li>
+               <li><strong>Marka i jakość:</strong> Renomowani producenci (np. Rotenso, Zehnder, Komfovent) oferują urządzenia droższe, ale często z lepszymi parametrami i dłuższą gwarancją.</li>
+               <li><strong>Dodatkowe funkcje:</strong> Zaawansowana automatyka sterująca, czujniki jakości powietrza (CO2, VOC), nagrzewnica wstępna, bypass, gruntowy wymiennik ciepła (GWC) zwiększają koszt.</li>
+               <li><strong>Filtry:</strong> Systemy z filtrami wysokiej klasy (np. F7) zapewniają lepszą jakość nawiewanego powietrza, ale są droższe w zakupie i eksploatacji.</li>
+           </ul>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Sam rekuperator stanowi około 30-40% całkowitego kosztu inwestycji. Do tego należy doliczyć koszt kanałów wentylacyjnych (stalowych lub elastycznych z tworzywa sztucznego), kratek nawiewnych i wywiewnych (anemostatów), rozdzielaczy i innych elementów montażowych.
+           </p>
+
+           <h3 id={generateSlug("Koszty montażu i uruchomienia systemu rekuperacji")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Koszty montażu i uruchomienia systemu rekuperacji</h3>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Montaż to znaczący element w całkowitej cenie, oscylujący w granicach 50-60% kosztów inwestycyjnych. Na jego cenę wpływają:
+           </p>
+           <ul class="list-disc pl-6 space-y-2 text-lg text-zinc-600 mb-6">
+               <li><strong>Skomplikowanie instalacji:</strong> Wpływa na to architektura budynku, liczba kondygnacji i rozmieszczenie pomieszczeń. Dom o nietypowym układzie wymaga dłuższego i bardziej złożonego prowadzenia kanałów.</li>
+               <li><strong>Rodzaj materiałów:</strong> Kanały stalowe są droższe w zakupie, ale trwałe. Elastyczne kanały z tworzywa sztucznego są łatwiejsze i szybsze w montażu, co może obniżyć koszt robocizny.</li>
+               <li><strong>Zakres prac:</strong> Montaż w stanie surowym jest znacznie tańszy niż adaptacja systemu w już wykończonym budynku, gdzie często niezbędne są prace wyburzeniowe i remontowe.</li>
+               <li><strong>Koszt robocizny:</strong> Stawki mogą się różnić w zależności od doświadczenia ekipy montażowej i regionu Polski.</li>
+           </ul>
+
+            <div class="bg-orange-50 border-l-4 border-orange-400 p-6 my-8 italic text-zinc-800 rounded-r-xl">
+                <strong class="not-italic">Expert Tip:</strong> Zawsze proś o szczegółowy kosztorys od kilku firm. Porównanie ofert pozwoli na wybór optymalnego rozwiązania i uniknięcie nieprzewidzianych wydatków. Upewnij się, że oferta zawiera zarówno urządzenia, materiały, jak i pełen montaż z uruchomieniem.
+            </div>
+
+           <h2 id={generateSlug("Koszty eksploatacyjne wentylacji mechanicznej w 2026 roku")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Koszty eksploatacyjne wentylacji mechanicznej w 2026 roku</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Poza kosztem inwestycji, należy uwzględnić bieżące wydatki związane z użytkowaniem rekuperacji. Są one jednak stosunkowo niskie w porównaniu do generowanych oszczędności.
+           </p>
+
+           <h3 id={generateSlug("Zużycie energii elektrycznej przez rekuperator")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Zużycie energii elektrycznej przez rekuperator</h3>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Rekuperator, jako urządzenie elektryczne, pobiera energię. Nowoczesne urządzenia są bardzo energooszczędne, a ich silniki prądu stałego (DC) charakteryzują się niskim zużyciem. Dla przeciętnego domu, koszt energii elektrycznej to zazwyczaj 200-400 zł rocznie, w zależności od mocy urządzenia, trybu pracy i aktualnych cen prądu.
+           </p>
+
+           <h3 id={generateSlug("Regularna wymiana filtrów powietrza")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Regularna wymiana filtrów powietrza</h3>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Filtry w rekuperatorze odpowiadają za czystość nawiewanego powietrza i chronią urządzenie. Wymieniać je należy co 3 do 6 miesięcy. Koszt kompletu filtrów to zwykle 100-300 zł, co daje roczny wydatek rzędu 200-600 zł. Zaniedbanie wymiany filtrów może prowadzić do spadku wydajności systemu i zwiększenia zużycia energii.
+           </p>
+
+           <h3 id={generateSlug("Serwis i przeglądy techniczne")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Serwis i przeglądy techniczne</h3>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Rekomendowane są coroczne przeglądy serwisowe, aby zapewnić optymalne działanie systemu i przedłużyć jego żywotność. Obejmują one kontrolę stanu technicznego, czyszczenie wymiennika ciepła i kanałów (rzadziej), a także sprawdzenie automatyki. Koszt takiego przeglądu to około 300-500 zł.
+           </p>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Łączne roczne koszty eksploatacji wentylacji mechanicznej w 2026 roku dla średniej wielkości domu to około 800 zł do 1200 zł.
+           </p>
+
+           <h2 id={generateSlug("Wentylacja mechaniczna a oszczędności – czy rekuperacja się opłaca w 2026?")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Wentylacja mechaniczna a oszczędności – czy rekuperacja się opłaca w 2026?</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Odpowiedź brzmi: tak, rekuperacja zdecydowanie się opłaca, zwłaszcza w perspektywie długoterminowej i w kontekście rosnących cen energii. System wentylacji mechanicznej z odzyskiem ciepła pozwala na zredukowanie strat ciepła wynikających z wentylacji o 30-40% w porównaniu do tradycyjnej wentylacji grawitacyjnej. To przekłada się na realne oszczędności na rachunkach za ogrzewanie i chłodzenie.
+           </p>
+           <ul class="list-disc pl-6 space-y-2 text-lg text-zinc-600 mb-6">
+               <li><strong>Oszczędność energii:</strong> Znaczące zmniejszenie zapotrzebowania na energię do ogrzewania zimą i klimatyzacji latem.</li>
+               <li><strong>Zdrowe powietrze:</strong> Ciągła wymiana powietrza, filtracja alergenów, kurzu, smogu i zanieczyszczeń z zewnątrz, co poprawia komfort i zdrowie mieszkańców.</li>
+               <li><strong>Komfort termiczny:</strong> Brak przeciągów i "zimnych nawiewów" dzięki wstępnemu podgrzewaniu świeżego powietrza.</li>
+               <li><strong>Kontrola wilgotności:</strong> Możliwość utrzymania optymalnej wilgotności w pomieszczeniach, zapobiegając pleśni.</li>
+               <li><strong>Długofalowa inwestycja:</strong> Zwiększa wartość nieruchomości i zapewnia komfort na lata. Zwrot z inwestycji zazwyczaj następuje w ciągu 5-8 lat.</li>
+           </ul>
+
+           <h2 id={generateSlug("Rekuperacja a wentylacja grawitacyjna – kluczowe różnice i koszty")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Rekuperacja a wentylacja grawitacyjna – kluczowe różnice i koszty</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Współczesne, szczelne domy wymagają efektywnych rozwiązań wentylacyjnych. Wentylacja grawitacyjna, choć tańsza w instalacji (koszt kominów to kilka tysięcy złotych), w praktyce okazuje się niewystarczająca i generuje ogromne straty ciepła.
+           </p>
+           <table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-md my-10">
+               <thead class="bg-zinc-800 text-white">
+                   <tr>
+                       <th class="p-4 border-b border-zinc-100">Cecha</th>
+                       <th class="p-4 border-b border-zinc-100">Wentylacja grawitacyjna</th>
+                       <th class="p-4 border-b border-zinc-100">Wentylacja mechaniczna (rekuperacja)</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr class="hover:bg-zinc-50 transition-colors">
+                       <td class="p-4 border-b border-zinc-100"><strong>Koszt instalacji</strong></td>
+                       <td class="p-4 border-b border-zinc-100">Niski (kilka tysięcy złotych za kominy)</td>
+                       <td class="p-4 border-b border-zinc-100">Wysoki (25 000 - 45 000 zł)</td>
+                   </tr>
+                   <tr class="hover:bg-zinc-50 transition-colors">
+                       <td class="p-4 border-b border-zinc-100"><strong>Odzysk ciepła</strong></td>
+                       <td class="p-4 border-b border-zinc-100">Brak – duże straty ciepła</td>
+                       <td class="p-4 border-b border-zinc-100">Wysoki (do 95% sprawności)</td>
+                   </tr>
+                   <tr class="hover:bg-zinc-50 transition-colors">
+                       <td class="p-4 border-b border-zinc-100"><strong>Kontrola przepływu powietrza</strong></td>
+                       <td class="p-4 border-b border-zinc-100">Brak – zależna od warunków atmosferycznych</td>
+                       <td class="p-4 border-b border-zinc-100">Pełna kontrola, stała wymiana powietrza</td>
+                   </tr>
+                   <tr class="hover:bg-zinc-50 transition-colors">
+                       <td class="p-4 border-b border-zinc-100"><strong>Jakość powietrza</strong></td>
+                       <td class="p-4 border-b border-zinc-100">Brak filtracji, wloty przez nawiewniki i nieszczelności</td>
+                       <td class="p-4 border-b border-zinc-100">Filtrowane, świeże powietrze, bez alergenów</td>
+                   </tr>
+                   <tr class="hover:bg-zinc-50 transition-colors">
+                       <td class="p-4 border-b border-zinc-100"><strong>Koszty eksploatacyjne (roczne)</strong></td>
+                       <td class="p-4 border-b border-zinc-100">Znikome (brak filtrów, zużycia prądu), ale wysokie koszty ogrzewania</td>
+                       <td class="p-4 border-b border-zinc-100">800 - 1200 zł (filtry, energia, serwis), niskie koszty ogrzewania</td>
+                   </tr>
+               </tbody>
+           </table>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Chociaż wentylacja grawitacyjna ma niższy koszt początkowy, to w dłuższej perspektywie generuje znacznie większe wydatki na ogrzewanie i nie zapewnia komfortu ani jakości powietrza, jakie oferuje rekuperacja. W dobie budownictwa pasywnego i energooszczędnego, rekuperacja jest standardem wymaganym dla zdrowego i ekonomicznego domu.
+           </p>
+
+           <h2 id={generateSlug("Kalkulator orientacyjnych kosztów wentylacji mechanicznej w 2026 roku")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Kalkulator orientacyjnych kosztów wentylacji mechanicznej w 2026 roku</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Użyj naszego prostego kalkulatora, aby oszacować orientacyjne koszty instalacji rekuperacji dla Twojego domu w 2026 roku.
+           </p>
+
+           <div class="bg-zinc-50 p-8 rounded-3xl border border-zinc-200 my-10 shadow-sm">
+               <h3 class="text-2xl font-bold text-zinc-800 mb-4">Wpisz dane swojego domu:</h3>
+               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                   <div>
+                       <label for="houseSize" class="block text-zinc-700 text-lg font-medium mb-2">Powierzchnia domu (m²):</label>
+                       <input type="number" id="houseSize" class="w-full p-3 border border-zinc-300 rounded-lg text-lg focus:ring-blue-500 focus:border-blue-500" value="150" min="50" max="300">
+                   </div>
+                   <div>
+                       <label for="complexity" class="block text-zinc-700 text-lg font-medium mb-2">Złożoność instalacji:</label>
+                       <select id="complexity" class="w-full p-3 border border-zinc-300 rounded-lg text-lg focus:ring-blue-500 focus:border-blue-500">
+                           <option value="standard">Standardowa (nowy budynek)</option>
+                           <option value="medium">Średnia (częściowo wykończony)</option>
+                           <option value="high">Wysoka (istniejący, wymagający adaptacji)</option>
+                       </select>
+                   </div>
+               </div>
+               <button id="calculateCost" class="px-8 py-4 bg-blue-600 text-white font-bold text-xl rounded-xl hover:bg-blue-700 transition-colors shadow-md">Oblicz koszt</button>
+               
+               <div id="result" class="mt-8 p-6 bg-blue-50 border border-blue-100 rounded-xl text-blue-900 text-lg font-semibold">
+                   <p>Orientacyjny koszt całkowity: <strong id="totalCost">0 zł</strong></p>
+                   <p>W tym koszt projektu: <strong id="projectCost">0 zł</strong></p>
+                   <p>W tym koszt urządzeń: <strong id="deviceCost">0 zł</strong></p>
+                   <p>W tym koszt montażu i materiałów: <strong id="installCost">0 zł</strong></p>
+               </div>
+           </div>
+
+           <script is:inline>
+               document.addEventListener('DOMContentLoaded', () => {
+                   const calculateButton = document.getElementById('calculateCost');
+                   calculateButton.addEventListener('click', () => {
+                       const houseSize = parseFloat(document.getElementById('houseSize').value);
+                       const complexity = document.getElementById('complexity').value;
+
+                       let baseCostPerSqM = 200; // Base cost per m2 for standard
+                       let projectFactor = 0.04;
+                       let deviceFactor = 0.35;
+                       let installMaterialFactor = 0.61;
+
+                       if (complexity === 'medium') {
+                           baseCostPerSqM = 250;
+                           projectFactor = 0.05;
+                           deviceFactor = 0.33;
+                           installMaterialFactor = 0.62;
+                       } else if (complexity === 'high') {
+                           baseCostPerSqM = 300;
+                           projectFactor = 0.06;
+                           deviceFactor = 0.30;
+                           installMaterialFactor = 0.64;
+                       }
+
+                       let totalEstimatedCost = houseSize * baseCostPerSqM;
+                       
+                       // Adjust for min/max ranges from table
+                       if (houseSize < 120) totalEstimatedCost = Math.max(totalEstimatedCost, 22800);
+                       if (houseSize > 180) totalEstimatedCost = Math.min(totalEstimatedCost, 57000);
+
+                       const projectCost = totalEstimatedCost * projectFactor;
+                       const deviceCost = totalEstimatedCost * deviceFactor;
+                       const installCost = totalEstimatedCost * installMaterialFactor;
+
+                       document.getElementById('totalCost').textContent = `${totalEstimatedCost.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN', minimumFractionDigits: 0 })} `;
+                       document.getElementById('projectCost').textContent = `${projectCost.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN', minimumFractionDigits: 0 })}`;
+                       document.getElementById('deviceCost').textContent = `${deviceCost.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN', minimumFractionDigits: 0 })}`;
+                       document.getElementById('installCost').textContent = `${installCost.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN', minimumFractionDigits: 0 })}`;
+                   });
+                   // Initial calculation on load
+                   document.getElementById('calculateCost').click();
+               });
+           </script>
+
+           <h2 id={generateSlug("Ankieta: Twoje priorytety przy wyborze systemu wentylacji")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Ankieta: Twoje priorytety przy wyborze systemu wentylacji</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Chcielibyśmy poznać Twoje priorytety. Odpowiedz na poniższe pytania, a zobaczysz, jak Twoje odpowiedzi plasują się w porównaniu do potencjalnych wyników innych inwestorów.
+           </p>
+
+           <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 my-10 shadow-sm">
+               <h3 class="text-2xl font-bold text-zinc-800 mb-4">Wybierz odpowiedź dla każdego pytania:</h3>
+               <div class="space-y-6">
+                   <div class="question-item">
+                       <p class="text-xl font-semibold text-zinc-700 mb-3">1. Co jest dla Ciebie najważniejsze przy wyborze systemu wentylacji?</p>
+                       <div class="space-y-2">
+                           <label class="block"><input type="radio" name="q1" value="a" class="mr-2"> Niskie koszty początkowe instalacji</label>
+                           <label class="block"><input type="radio" name="q1" value="b" class="mr-2"> Maksymalne oszczędności na ogrzewaniu/chłodzeniu</label>
+                           <label class="block"><input type="radio" name="q1" value="c" class="mr-2"> Najwyższa jakość powietrza i komfort</label>
+                           <label class="block"><input type="radio" name="q1" value="d" class="mr-2"> Długa żywotność i bezawaryjność systemu</label>
+                       </div>
+                   </div>
+                   <div class="question-item">
+                       <p class="text-xl font-semibold text-zinc-700 mb-3">2. Jaki budżet jesteś gotów przeznaczyć na system rekuperacji?</p>
+                       <div class="space-y-2">
+                           <label class="block"><input type="radio" name="q2" value="a" class="mr-2"> Poniżej 25 000 zł</label>
+                           <label class="block"><input type="radio" name="q2" value="b" class="mr-2"> 25 000 zł - 35 000 zł</label>
+                           <label class="block"><input type="radio" name="q2" value="c" class="mr-2"> 35 000 zł - 45 000 zł</label>
+                           <label class="block"><input type="radio" name="q2" value="d" class="mr-2"> Powyżej 45 000 zł</label>
+                       </div>
+                   </div>
+                   <div class="question-item">
+                       <p class="text-xl font-semibold text-zinc-700 mb-3">3. Jak istotna jest dla Ciebie możliwość odzysku wilgoci w systemie?</p>
+                       <div class="space-y-2">
+                           <label class="block"><input type="radio" name="q3" value="a" class="mr-2"> Bardzo ważna (dla komfortu i zdrowia)</label>
+                           <label class="block"><input type="radio" name="q3" value="b" class="mr-2"> Ważna, ale nie priorytet</label>
+                           <label class="block"><input type="radio" name="q3" value="c" class="mr-2"> Niezbyt ważna</label>
+                           <label class="block"><input type="radio" name="q3" value="d" class="mr-2"> Nie wiem/Nie interesuje mnie to</label>
+                       </div>
+                   </div>
+                   <div class="question-item">
+                       <p class="text-xl font-semibold text-zinc-700 mb-3">4. Czy rozważasz połączenie rekuperacji z gruntowym wymiennikiem ciepła (GWC)?</p>
+                       <div class="space-y-2">
+                           <label class="block"><input type="radio" name="q4" value="a" class="mr-2"> Tak, to dla mnie priorytet</label>
+                           <label class="block"><input type="radio" name="q4" value="b" class="mr-2"> Rozważam, jeśli będzie opłacalne</label>
+                           <label class="block"><input type="radio" name="q4" value="c" class="mr-2"> Nie, to zbyt wysoki koszt/skomplikowanie</label>
+                           <label class="block"><input type="radio" name="q4" value="d" class="mr-2"> Nie wiem, co to jest GWC</label>
+                       </div>
+                   </div>
+               </div>
+               <button id="submitSurvey" class="px-8 py-4 bg-orange-600 text-white font-bold text-xl rounded-xl hover:bg-orange-700 transition-colors shadow-md mt-8">Zobacz wyniki</button>
+               
+               <div id="surveyResults" class="mt-8 p-6 bg-orange-50 border border-orange-100 rounded-xl text-orange-900 text-lg font-semibold hidden">
+                   <p class="mb-4">Dziękujemy za udział w ankiecie! Oto jak Twoje odpowiedzi mogłyby się plasować na tle innych inwestorów:</p>
+                   <ul class="list-disc pl-6 space-y-2">
+                       <li>Ważne są dla Ciebie <strong id="res_q1"></strong></li>
+                       <li>Twój budżet na rekuperację to <strong id="res_q2"></strong></li>
+                       <li>Odzysk wilgoci jest <strong id="res_q3"></strong></li>
+                       <li>Podejście do GWC: <strong id="res_q4"></strong></li>
+                   </ul>
+                   <p class="mt-4 text-base text-zinc-600">Pamiętaj, że to tylko hipotetyczne wyniki. Realne preferencje są różnorodne i zawsze warto skonsultować się z ekspertem.</p>
+               </div>
+           </div>
+
+           <script is:inline>
+               document.addEventListener('DOMContentLoaded', () => {
+                   const submitButton = document.getElementById('submitSurvey');
+                   const resultsDiv = document.getElementById('surveyResults');
+
+                   submitButton.addEventListener('click', () => {
+                       const q1 = document.querySelector('input[name="q1"]:checked');
+                       const q2 = document.querySelector('input[name="q2"]:checked');
+                       const q3 = document.querySelector('input[name="q3"]:checked');
+                       const q4 = document.querySelector('input[name="q4"]:checked');
+
+                       if (!q1 || !q2 || !q3 || !q4) {
+                           alert('Proszę odpowiedzieć na wszystkie pytania przed zobaczeniem wyników.');
+                           return;
+                       }
+
+                       let res_q1_text = '';
+                       switch(q1.value) {
+                           case 'a': res_q1_text = 'niskie koszty początkowe instalacji, co jest często priorytetem w budżetowaniu projektu.'; break;
+                           case 'b': res_q1_text = 'maksymalne oszczędności na ogrzewaniu i chłodzeniu, co jest kluczowe dla długoterminowej opłacalności.'; break;
+                           case 'c': res_q1_text = 'najwyższa jakość powietrza i komfort, co świadczy o trosce o zdrowie i dobre samopoczucie.'; break;
+                           case 'd': res_q1_text = 'długa żywotność i bezawaryjność systemu, co jest ważne dla stabilności inwestycji.'; break;
+                       }
+                       document.getElementById('res_q1').textContent = res_q1_text;
+
+                       let res_q2_text = '';
+                       switch(q2.value) {
+                           case 'a': res_q2_text = 'poniżej 25 000 zł, co wymaga poszukiwania ekonomicznych rozwiązań lub mniejszej powierzchni domu.'; break;
+                           case 'b': res_q2_text = 'w przedziale 25 000 zł - 35 000 zł, co jest typowym budżetem dla standardowej instalacji.'; break;
+                           case 'c': res_q2_text = 'w przedziale 35 000 zł - 45 000 zł, co pozwala na wybór wydajniejszych urządzeń i bardziej zaawansowanych systemów.'; break;
+                           case 'd': res_q2_text = 'powyżej 45 000 zł, co sugeruje zainteresowanie systemami premium lub złożonymi instalacjami.'; break;
+                       }
+                       document.getElementById('res_q2').textContent = res_q2_text;
+
+                       let res_q3_text = '';
+                       switch(q3.value) {
+                           case 'a': res_q3_text = 'bardzo ważny, co prowadzi do rozważenia rekuperatorów z wymiennikiem entalpicznym lub obrotowym.'; break;
+                           case 'b': res_q3_text = 'ważny, ale nie priorytet, co oznacza akceptację standardowych rozwiązań.'; break;
+                           case 'c': res_q3_text = 'niezbyt ważny, co może wskazywać na inne, ważniejsze czynniki decyzyjne.'; break;
+                           case 'd': res_q3_text = 'nieznany lub nieinteresujący, co może być punktem do poszerzenia wiedzy.'; break;
+                       }
+                       document.getElementById('res_q3').textContent = res_q3_text;
+
+                       let res_q4_text = '';
+                       switch(q4.value) {
+                           case 'a': res_q4_text = 'rozważanie GWC jako priorytetu, co świadczy o dążeniu do maksymalnej efektywności energetycznej.'; break;
+                           case 'b': res_q4_text = 'otwartość na GWC, jeśli będzie to ekonomicznie uzasadnione, co jest elastycznym podejściem.'; break;
+                           case 'c': res_q4_text = 'odrzucenie GWC ze względu na koszt lub skomplikowanie, co jest często spotykane w przypadku ograniczonego budżetu.'; break;
+                           case 'd': res_q4_text = 'nieznajomość GWC, co otwiera drogę do edukacji w tym zakresie.'; break;
+                       }
+                       document.getElementById('res_q4').textContent = res_q4_text;
+
+                       resultsDiv.classList.remove('hidden');
+                   });
+               });
+           </script>
+
+
+           <section class="faq mt-20 border-t pt-16">
+              <h2 class="text-4xl font-bold mb-10 text-center">Najczęstsze pytania inwestorów</h2>
+              <div class="grid gap-6">
+                {faqItems.map(item => (
+                  <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">{item.question}</h4>
+                    <p class="text-lg text-gray-700 leading-relaxed">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+           </section>
+         </article>
+         <ArticleSidebar contextNote={contextNote} author={author} />
+       </div>
+     </main>
+     <script type="application/ld+json" is:inline>
+     {
+       "@context": "https://schema.org",
+       "@type": "Article",
+       "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "{canonical}"
+       },
+       "headline": "{title}",
+       "image": [
+         "https://domjakosci.pl/assets/images/wentylacja-mechaniczna-main.webp",
+         "https://domjakosci.pl/assets/images/rekuperator-dom.webp"
+       ],
+       "datePublished": "{datePublished}",
+       "dateModified": "{datePublished}",
+       "author": {
+         "@type": "Person",
+         "name": "{author}",
+         "url": "https://domjakosci.pl/o-nas"
+       },
+       "publisher": {
+         "@type": "Organization",
+         "name": "DomJakości.pl",
+         "logo": {
+           "@type": "ImageObject",
+           "url": "https://domjakosci.pl/logo.webp"
+         }
+       },
+       "description": "{description}",
+       "articleSection": [
+         "Co to jest wentylacja mechaniczna z odzyskiem ciepła (rekuperacja)?",
+         "Ile kosztuje wentylacja mechaniczna w 2026 roku? Przegląd cen",
+         "Składowe kosztów inwestycyjnych wentylacji mechanicznej",
+         "Koszty eksploatacyjne wentylacji mechanicznej w 2026 roku",
+         "Wentylacja mechaniczna a oszczędności – czy rekuperacja się opłaca w 2026?",
+         "Rekuperacja a wentylacja grawitacyjna – kluczowe różnice i koszty",
+         "Kalkulator orientacyjnych kosztów wentylacji mechanicznej w 2026 roku",
+         "Ankieta: Twoje priorytety przy wyborze systemu wentylacji",
+         "Najczęstsze pytania inwestorów"
+       ],
+        "inLanguage": "pl-PL"
+     }
+     </script>
+</BaseLayout>
