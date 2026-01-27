@@ -1,0 +1,532 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Koszt budowy domu tradycyjnego w 2026 roku: kompleksowy przewodnik";
+const description = "Dowiedz się, ile kosztuje budowa domu tradycyjnego w 2026 roku. Analizujemy koszty za metr kwadratowy, wpływ materiałów i robocizny, a także dajemy wskazówki, jak zoptymalizować budżet.";
+const canonical = "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-tradycyjnego/";
+const author = 'mgr inż. Marek Nowicki';
+const contextNote = "Dane przedstawione w artykule bazują na najnowszych raportach rynkowych oraz analizach ekspertów z branży budowlanej, odzwierciedlając aktualne realia gospodarcze i prognozy na rok 2026. Uwzględniają one zmieniające się ceny materiałów, koszty robocizny oraz wskaźniki inflacji, zapewniając rzetelne i wiarygodne informacje dla inwestorów.";
+const badgeText = "Raport Rynkowy 2026";
+const badgeClass = "bg-green-100 text-green-700";
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Koszt budowy domu tradycyjnego', url: 'https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-tradycyjnego/' }
+];
+
+const DATE_PUBLISHED = "2026-01-27T12:00:00+01:00";
+const DATE_FORMATTED = "27 stycznia 2026";
+const DATE_MODIFIED = "2026-01-27T14:08:32+01:00"; // Przykładowa data modyfikacji, można dynamicznie aktualizować
+const readingTime = "ok. 10 min"; // Szacowany czas czytania
+
+const faqItems = [
+    {
+        question: "Czy w 2026 roku budowa domu tradycyjnego stanie się luksusem?",
+        answer: "Chociaż ceny materiałów i robocizny stale rosną, eksperci wskazują na stabilizację dynamiki wzrostu kosztów w 2026 roku, co uspokaja sytuację w porównaniu do lat 2020-2025. Budowa domu tradycyjnego wymaga solidnego budżetu, jednak dzięki dokładnemu planowaniu i optymalizacji, pozostaje osiągalną inwestycją dla wielu rodzin. Średnio, w 2026 roku, koszt budowy domu jednorodzinnego o powierzchni 100m² w standardzie pod klucz może wynieść od 550 000 do 750 000 zł."
+    },
+    {
+        question: "Ile dokładnie kosztuje budowa 100m² domu tradycyjnego pod klucz w 2026 roku?",
+        answer: "Szacunkowy koszt budowy domu tradycyjnego o powierzchni 100m² w standardzie pod klucz w 2026 roku mieści się w przedziale od 5 500 zł do 7 500 zł za metr kwadratowy. Oznacza to, że za cały dom zapłacimy od około 550 000 zł do 750 000 zł. Należy pamiętać, że ceny mogą być wyższe w dużych aglomeracjach miejskich, takich jak Warszawa czy Kraków, o 10-15% ze względu na droższą robociznę i logistykę."
+    },
+    {
+        question: "Jaki wpływ na koszt ma spełnienie norm energetycznych WT 2021 w budownictwie tradycyjnym?",
+        answer: "Spełnienie norm WT 2021 jest obligatoryjne i ma znaczący wpływ na koszty początkowe, podnosząc je o około 5-10% w stosunku do budynków z wcześniejszych lat. Wymaga to lepszej izolacji termicznej (np. współczynnik U dla ścian 0.20 W/m²K), energooszczędnych okien oraz zastosowania systemów wentylacji mechanicznej z odzyskiem ciepła (rekuperacja). Długoterminowo jednak, inwestycja ta przekłada się na znacznie niższe rachunki za ogrzewanie, redukując koszty eksploatacji nawet o 30-50%."
+    },
+    {
+        question: "Czym różni się koszt budowy domu tradycyjnego od technologii prefabrykowanych betonowych w 2026 roku?",
+        answer: "W 2026 roku, domy z prefabrykatów betonowych w standardzie deweloperskim kosztują średnio od 5 800 zł/m² do 8 500 zł/m², co jest często wyższą kwotą niż w przypadku budownictwa tradycyjnego na tym samym etapie. Wyższa cena prefabrykatów betonowych wynika z energochłonnego procesu produkcji cementu i kosztownego transportu ciężkich elementów. Budowa tradycyjna może oferować większą elastyczność w doborze materiałów i wykonawców, co potencjalnie pozwala na większą kontrolę nad budżetem, ale często wiąże się z dłuższym czasem realizacji."
+    },
+    {
+        question: "Jakie innowacyjne materiały mogą zoptymalizować koszty i parametry energetyczne tradycyjnego domu w 2026 roku?",
+        answer: "W 2026 roku, innowacyjne materiały takie jak płyty rezolowe z bardzo niskim współczynnikiem przewodzenia ciepła (lambda od 0.020 W/mK) czy zaawansowane systemy ociepleniowe na bazie aerożeli mogą znacząco poprawić parametry energetyczne, choć ich koszt początkowy jest wyższy. Na etapie konstrukcyjnym, użycie wysokiej klasy drewna konstrukcyjnego C24 (około 2200 zł/m³) w elementach więźby dachowej, a także nowoczesne pustaki ceramiczne z wypełnieniem izolacyjnym, mogą przyczynić się do optymalizacji zarówno kosztów, jak i efektywności cieplnej, redukując zapotrzebowanie na energię końcową budynku (EK)."
+    },
+    {
+        question: "Czy regionalne różnice cenowe na rynku nieruchomości wpływają proporcjonalnie na koszty budowy domu tradycyjnego?",
+        answer: "Tak, regionalne różnice cenowe na rynku nieruchomości mają proporcjonalny, a czasem nawet wyższy wpływ na koszty budowy domu tradycyjnego. W regionach o wysokiej dynamice cen nieruchomości (np. Mazowsze, Małopolska) koszty zakupu działki są zdecydowanie wyższe, ale również stawki za robociznę mogą być o 15-25% wyższe niż w mniejszych ośrodkach. Dodatkowo, ceny transportu materiałów i lokalna dostępność ekip budowlanych również różnicują ostateczny koszt inwestycji, tworząc dysproporcje w przedziale od 500 do 1000 zł/m² w zależności od województwa."
+    }
+];
+
+// Helper function to generate slug from text
+const slugify = (text) => {
+  return text
+    .toString()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-');
+};
+
+const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "url": canonical,
+            "name": title,
+            "description": description,
+            "publisher": {
+                "@type": "Organization",
+                "name": "DomJakości.pl",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://domjakosci.pl/logo.webp"
+                }
+            },
+            "datePublished": DATE_PUBLISHED,
+            "dateModified": DATE_MODIFIED,
+            "inLanguage": "pl-PL"
+        },
+        {
+            "@type": "Article",
+            "headline": title,
+            "description": description,
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://domjakosci.pl/images/koszt-budowy-domu-tradycyjnego-hero.webp",
+                "width": 1200,
+                "height": 675,
+                "alt": "Wizualizacja nowoczesnego domu tradycyjnego w otoczeniu zieleni"
+            },
+            "datePublished": DATE_PUBLISHED,
+            "dateModified": DATE_MODIFIED,
+            "author": {
+                "@type": "Person",
+                "name": author
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "DomJakości.pl",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://domjakosci.pl/logo.webp"
+                }
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": canonical
+            },
+            "articleSection": [
+                "Koszty budowy",
+                "Budownictwo tradycyjne",
+                "Poradnik inwestora",
+                "Prognozy rynkowe 2026"
+            ],
+            "keywords": "koszt budowy domu tradycyjnego 2026, budowa domu cena m2, ile kosztuje dom tradycyjny, koszt stanu surowego zamkniętego 2026, koszt stanu deweloperskiego 2026, koszt pod klucz 2026, budżet budowy domu, materiały budowlane 2026, robocizna budowlana"
+        }
+    ]
+};
+---
+<BaseLayout title={title} description={description} canonical={canonical} type="article">
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+    <div class="flex flex-col lg:flex-row lg:gap-16">
+      <article class="lg:flex-1">
+
+        <header class="mb-12">
+            <span class={`inline-block py-1 px-3 rounded-full ${badgeClass} font-bold text-sm font-bold mb-4 uppercase tracking-wider`}>
+                {badgeText}
+            </span>
+
+            <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 mb-8 leading-tight">
+                {title}
+            </h1>
+
+            <div class="flex flex-col gap-y-6 border-b pb-8 border-gray-100">
+                
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">MN</div>
+                    <div>
+                        <p class="font-bold text-zinc-900 text-sm leading-none">{author}</p>
+                        <p class="text-xs text-zinc-500 mt-1">Ekspert DomJakości.pl</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-x-8">
+                    <div class="flex items-center gap-2 text-sm text-zinc-500 font-medium">
+                        <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <path d="M16 2v4M8 2v4M3 10h18"></path>
+                        </svg>
+                        <time datetime={DATE_PUBLISHED}>{DATE_FORMATTED}</time>
+                    </div>
+
+                    <div class="flex items-center gap-2 text-sm text-zinc-500 font-medium">
+                        <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>{readingTime}</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="bg-slate-50 p-8 rounded-3xl mb-12 border border-slate-100">
+           <p class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">W tym artykule:</p>
+           <nav id="toc" class="space-y-2 text-blue-600 font-medium">
+             <div class="space-y-2 text-blue-600 font-medium">
+                <a href="#ile-kosztuje-budowa-domu-tradycyjnego-w-2026-roku-podstawowe-zalozenia" class="block py-2 hover:text-orange-600 transition-colors">1. Ile kosztuje budowa domu tradycyjnego w 2026 roku? Podstawowe założenia.</a>
+                <a href="#stan-surowy-zamkniety-ssz-co-wchodzi-w-sklad-i-ile-to-kosztuje" class="block py-1 pl-6 text-sm hover:text-orange-600 transition-colors">-- Stan surowy zamknięty (SSZ) – co wchodzi w skład i ile to kosztuje?</a>
+                <a href="#stan-deweloperski-koszt-i-zakres-prac" class="block py-1 pl-6 text-sm hover:text-orange-600 transition-colors">-- Stan deweloperski – koszt i zakres prac.</a>
+                <a href="#stan-pod-klucz-luksus-czy-koniecznosc" class="block py-1 pl-6 text-sm hover:text-orange-600 transition-colors">-- Stan pod klucz – luksus czy konieczność?</a>
+                <a href="#kluczowe-czynniki-wplywajace-na-koszt-budowy-domu-tradycyjnego" class="block py-2 hover:text-orange-600 transition-colors">2. Kluczowe czynniki wpływające na koszt budowy domu tradycyjnego.</a>
+                <a href="#lokalizacja-dzialki-jak-wplywa-na-cene" class="block py-1 pl-6 text-sm hover:text-orange-600 transition-colors">-- Lokalizacja działki – jak wpływa na cenę?</a>
+                <a href="#rodzaj-projektu-i-technologia-dom-prosty-kontra-zlozony" class="block py-1 pl-6 text-sm hover:text-orange-600 transition-colors">-- Rodzaj projektu i technologia – dom prosty kontra złożony.</a>
+                <a href="#wybor-materialow-budowlanych-oszczednosci-czy-jakosc" class="block py-1 pl-6 text-sm hover:text-orange-600 transition-colors">-- Wybór materiałów budowlanych – oszczędności czy jakość?</a>
+                <a href="#koszty-robocizny-rosnace-stawki-i-dostepnosc-fachowcow" class="block py-1 pl-6 text-sm hover:text-orange-600 transition-colors">-- Koszty robocizny – rosnące stawki i dostępność fachowców.</a>
+                <a href="#prace-dodatkowe-i-nieprzewidziane-wydatki-bufor-bezpieczenstwa" class="block py-1 pl-6 text-sm hover:text-orange-600 transition-colors">-- Prace dodatkowe i nieprzewidziane wydatki – bufor bezpieczeństwa.</a>
+                <a href="#porownanie-dom-tradycyjny-vs-domy-prefabrykowane-w-2026-roku" class="block py-2 hover:text-orange-600 transition-colors">3. Porównanie: Dom tradycyjny vs domy prefabrykowane w 2026 roku.</a>
+                <a href="#jak-obnizyc-koszty-budowy-domu-tradycyjnego-w-2026-roku" class="block py-2 hover:text-orange-600 transition-colors">4. Jak obniżyć koszty budowy domu tradycyjnego w 2026 roku?</a>
+                <a href="#mini-kalkulator-kosztow-budowy-domu-tradycyjnego-2026" class="block py-2 hover:text-orange-600 transition-colors">5. Mini kalkulator kosztów budowy domu tradycyjnego (2026).</a>
+                <a href="#ankieta-jaki-dom-tradycyjny-jest-dla-ciebie" class="block py-2 hover:text-orange-600 transition-colors">6. Ankieta: Jaki dom tradycyjny jest dla Ciebie?</a>
+                <a href="#podsumowanie-i-prognozy-na-przyszlosc" class="block py-2 hover:text-orange-600 transition-colors">7. Podsumowanie i prognozy na przyszłość.</a>
+             </div>
+           </nav>
+        </div>
+
+        <div class="article-content">
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                W 2026 roku, budowa domu tradycyjnego nadal pozostaje marzeniem wielu Polaków, jednak koszty z nią związane wymagają szczegółowej analizy i świadomego planowania.
+                Aktualne prognozy wskazują na stabilizację dynamiki wzrostu cen w sektorze budowlanym po dynamicznym okresie 2020-2025.
+                Średnio, należy liczyć się z wydatkiem rzędu <strong>5 500 zł do 7 500 zł za metr kwadratowy</strong> dla domu w standardzie pod klucz, co dla typowego domu o powierzchni 100 m² oznacza koszt od 550 000 zł do 750 000 zł.
+            </p>
+
+            <h2 id={slugify("Ile kosztuje budowa domu tradycyjnego w 2026 roku? Podstawowe założenia.")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Ile kosztuje budowa domu tradycyjnego w 2026 roku? Podstawowe założenia.</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Rok 2026 przynosi pewne wyhamowanie dynamiki wzrostu cen, lecz bazowe koszty budowy domu tradycyjnego utrzymują się na wysokim poziomie. W porównaniu do lat poprzednich, sektor budowlany dostosowuje się do nowych realiów rynkowych, a inwestorzy mogą liczyć na większą przewidywalność. Kluczowe jest zrozumienie, że ostateczny koszt zależy od wielu czynników, w tym od wybranego standardu wykończenia. Poniżej przedstawiamy szczegółowe rozłożenie kosztów w zależności od etapu prac.
+            </p>
+
+            <h3 id={slugify("Stan surowy zamknięty (SSZ) – co wchodzi w skład i ile to kosztuje?")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Stan surowy zamknięty (SSZ) – co wchodzi w skład i ile to kosztuje?</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Stan surowy zamknięty to pierwszy kluczowy etap budowy, który obejmuje wykonanie fundamentów, ścian konstrukcyjnych, stropów, więźby dachowej z pokryciem, a także montaż stolarki okiennej i drzwiowej zewnętrznej.
+                W 2026 roku koszt osiągnięcia stanu surowego zamkniętego dla domu tradycyjnego o powierzchni około 100-120 m² waha się przeważnie w przedziale od <strong>2 500 zł do 3 500 zł za m²</strong> powierzchni użytkowej.
+                Dla domu o powierzchni 100 m² oznacza to wydatek rzędu <strong>250 000 zł – 350 000 zł</strong>. Na tym etapie znacząco wpływają ceny certyfikowanego drewna konstrukcyjnego (C24), które w 2026 roku kosztuje około 2200 zł/m³ (wzrost z 1900 zł/m³ w 2025 roku), oraz rosnące koszty robocizny.
+            </p>
+
+            <h3 id={slugify("Stan deweloperski – koszt i zakres prac.")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Stan deweloperski – koszt i zakres prac.</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Stan deweloperski to etap, po którym dom jest przygotowany do prac wykończeniowych. Obejmuje on wszystkie prace SSZ plus wykonanie instalacji wewnętrznych (elektrycznej, wodno-kanalizacyjnej, grzewczej), tynków wewnętrznych, wylewek podłogowych oraz ocieplenia budynku z elewacją.
+                W 2026 roku, koszt doprowadzenia domu do stanu deweloperskiego to zazwyczaj dodatkowe <strong>1 800 zł – 2 500 zł za m²</strong>. Łącznie, dla 100 m² domu, stan deweloperski będzie kosztował od <strong>4 300 zł do 6 000 zł za m²</strong>, czyli od <strong>430 000 zł do 600 000 zł</strong>. Wysokiej jakości izolacja termiczna, zgodna z normami WT 2021, stanowi istotną część tych wydatków.
+            </p>
+
+            <h3 id={slugify("Stan pod klucz – luksus czy konieczność?")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Stan pod klucz – luksus czy konieczność?</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Stan pod klucz to kompleksowe wykończenie domu, umożliwiające natychmiastowe zamieszkanie. Obejmuje on wszystkie prace stanu deweloperskiego plus montaż podłóg, drzwi wewnętrznych, malowanie ścian, białego montażu w łazienkach, a także montaż osprzętu elektrycznego. Koszty wykończenia "pod klucz" są najbardziej zróżnicowane i zależą od standardu wybranych materiałów – od ekonomicznych po premium.
+                W 2026 roku, do stanu deweloperskiego należy doliczyć od <strong>1 200 zł do nawet 3 000 zł za m²</strong>, w zależności od wybranego standardu.
+                Oznacza to, że całkowity koszt budowy domu tradycyjnego o powierzchni 100 m² w standardzie pod klucz wynosi od <strong>5 500 zł do 9 000 zł za m²</strong>, co przekłada się na kwoty od <strong>550 000 zł do 900 000 zł</strong>.
+            </p>
+
+            <div class="bg-orange-50 border-l-4 border-orange-400 p-6 my-8 italic text-zinc-800 rounded-r-xl">
+                <p>
+                    <strong>Ważna wskazówka eksperta:</strong> Aby precyzyjnie oszacować koszt budowy, zawsze zaleca się wykonanie szczegółowego kosztorysu na podstawie projektu wykonawczego. Pozwala to uniknąć niespodzianek i realnie zaplanować budżet, który powinien zawierać minimum 10-15% buforu na nieprzewidziane wydatki.
+                </p>
+            </div>
+
+            <table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-md my-10">
+                <thead class="bg-zinc-800 text-white">
+                    <tr>
+                        <th class="p-4 border-b border-zinc-100">Etap budowy</th>
+                        <th class="p-4 border-b border-zinc-100">Zakres prac</th>
+                        <th class="p-4 border-b border-zinc-100">Szacunkowy koszt za m² (2026)</th>
+                        <th class="p-4 border-b border-zinc-100">Szacunkowy koszt dla 100 m² (2026)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Stan surowy zamknięty (SSZ)</td>
+                        <td class="p-4 border-b border-zinc-100">Fundamenty, ściany, stropy, dach, okna, drzwi zewnętrzne</td>
+                        <td class="p-4 border-b border-zinc-100">2 500 zł - 3 500 zł</td>
+                        <td class="p-4 border-b border-zinc-100">250 000 zł - 350 000 zł</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Stan deweloperski</td>
+                        <td class="p-4 border-b border-zinc-100">SSZ + instalacje, tynki, wylewki, ocieplenie, elewacja</td>
+                        <td class="p-4 border-b border-zinc-100">4 300 zł - 6 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">430 000 zł - 600 000 zł</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Stan pod klucz (standard średni)</td>
+                        <td class="p-4 border-b border-zinc-100">Deweloperski + podłogi, drzwi wew., malowanie, armatura</td>
+                        <td class="p-4 border-b border-zinc-100">5 500 zł - 7 500 zł</td>
+                        <td class="p-4 border-b border-zinc-100">550 000 zł - 750 000 zł</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Stan pod klucz (standard premium)</td>
+                        <td class="p-4 border-b border-zinc-100">Deweloperski + wysokiej jakości materiały wykończeniowe</td>
+                        <td class="p-4 border-b border-zinc-100">7 500 zł - 9 000+ zł</td>
+                        <td class="p-4 border-b border-zinc-100">750 000 zł - 900 000+ zł</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id={slugify("Kluczowe czynniki wpływające na koszt budowy domu tradycyjnego.")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Kluczowe czynniki wpływające na koszt budowy domu tradycyjnego.</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Oprócz standardu wykończenia, istnieje wiele innych zmiennych, które znacząco wpływają na ostateczny koszt inwestycji w budowę domu tradycyjnego. Ich świadomość pozwala na lepsze zarządzanie budżetem.
+            </p>
+
+            <h3 id={slugify("Lokalizacja działki – jak wpływa na cenę?")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Lokalizacja działki – jak wpływa na cenę?</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Cena działki to często jeden z największych składników kosztu całej inwestycji, a jej lokalizacja ma kluczowe znaczenie. W dużych miastach i ich bezpośrednim otoczeniu (np. Warszawa, Kraków, Poznań) ceny działek są wielokrotnie wyższe niż w mniejszych miejscowościach czy na terenach wiejskich. Co więcej, w tych regionach wyższe są również stawki za robociznę oraz koszty transportu materiałów, co może podnieść ogólny koszt budowy domu o 10-20% w porównaniu do średniej krajowej.
+            </p>
+
+            <h3 id={slugify("Rodzaj projektu i technologia – dom prosty kontra złożony.")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Rodzaj projektu i technologia – dom prosty kontra złożony.</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Proste, zwarte bryły domów z dwuspadowym dachem są zawsze tańsze w budowie niż projekty z licznymi załamaniami, wykuszami, lukarnami czy wielospadowym dachem. Każdy dodatkowy element architektoniczny zwiększa ilość zużytych materiałów, złożoność prac i tym samym koszty robocizny. Wybór technologii budowy (np. tradycyjna murowana z pustaków ceramicznych, silikatów, czy bloczków z betonu komórkowego) również ma wpływ, ale w obrębie budownictwa tradycyjnego różnice są mniejsze niż między technologiami (np. z prefabrykatami).
+            </p>
+
+            <h3 id={slugify("Wybór materiałów budowlanych – oszczędności czy jakość?")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Wybór materiałów budowlanych – oszczędności czy jakość?</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Na rynku dostępne są materiały budowlane w szerokim zakresie cenowym i jakościowym. Wybierając tańsze zamienniki, można obniżyć koszty, ale często wiąże się to z niższą trwałością, gorszymi parametrami termoizolacyjnymi lub estetyką. W 2026 roku, materiały takie jak certyfikowane drewno konstrukcyjne C24 (ok. 2200 zł/m³) czy wysokiej jakości izolacje (np. wełna mineralna lub płyty rezolowe) są droższe, ale ich zastosowanie gwarantuje spełnienie norm WT 2021 i niższe koszty eksploatacji w przyszłości.
+            </p>
+
+            <h3 id={slugify("Koszty robocizny – rosnące stawki i dostępność fachowców.")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Koszty robocizny – rosnące stawki i dostępność fachowców.</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Stawki za robociznę konsekwentnie rosną, a niedobór wykwalifikowanych fachowców jest wyzwaniem. W 2026 roku można zaobserwować dalszy wzrost kosztów pracy, szczególnie w dużych miastach. Warto pamiętać, że doświadczona i sprawdzona ekipa budowlana to gwarancja jakości i terminowości, ale wiąże się z wyższymi stawkami.
+            </p>
+
+            <h3 id={slugify("Prace dodatkowe i nieprzewidziane wydatki – bufor bezpieczeństwa.")} class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Prace dodatkowe i nieprzewidziane wydatki – bufor bezpieczeństwa.</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                W budownictwie często pojawiają się nieprzewidziane koszty, takie jak konieczność wzmocnienia fundamentów z powodu niekorzystnych warunków gruntowych, zmiany w projekcie na etapie budowy, czy wzrost cen materiałów. Dlatego kluczowe jest uwzględnienie w budżecie co najmniej <strong>10-15% buforu</strong> na nieprzewidziane wydatki.
+            </p>
+
+            <div class="bg-red-50 border border-red-100 p-6 my-6 rounded-2xl text-red-900 text-sm">
+                <p><strong>Ważne:</strong> Kuszące oferty "domów prefabrykowanych za 1500-2000 zł/m²" często dotyczą obiektów o standardzie domku ogrodowego, niezgodnych z Warunkami Technicznymi (WT 2021) i pozbawionych wymaganych obliczeń statycznych. Taka "oszczędność" może prowadzić do poważnych problemów bezpieczeństwa i prawnych. Zawsze weryfikuj standard i dokumentację techniczną!</p>
+            </div>
+
+            <h2 id={slugify("Porównanie: Dom tradycyjny vs domy prefabrykowane w 2026 roku.")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Porównanie: Dom tradycyjny vs domy prefabrykowane w 2026 roku.</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                W 2026 roku, obok budownictwa tradycyjnego, dużą popularnością cieszą się domy prefabrykowane. Warto przyjrzeć się, jak kształtują się ich ceny w porównaniu do tradycyjnych rozwiązań.
+                Domy z prefabrykatów drewnianych (szkieletowych) charakteryzują się cenami w przedziale <strong>4 800 zł/m² do 7 500 zł/m²</strong> w standardzie deweloperskim. Natomiast prefabrykaty betonowe są droższe, kosztując od <strong>5 800 zł/m² do 8 500 zł/m²</strong> w stanie deweloperskim, głównie ze względu na energochłonność produkcji cementu i transport ciężkich elementów.
+            </p>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Budowa tradycyjna oferuje większą elastyczność projektową i etapowanie prac, co może być korzystne dla budżetu rozłożonego w czasie. Domy prefabrykowane z kolei wyróżnia znacznie krótszy czas realizacji (nawet do 6 miesięcy pod klucz), jednak wymagają jednorazowo większej płynności finansowej i mają ograniczoną możliwość modyfikacji w trakcie budowy.
+            </p>
+
+            <h2 id={slugify("Jak obniżyć koszty budowy domu tradycyjnego w 2026 roku?")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Jak obniżyć koszty budowy domu tradycyjnego w 2026 roku?</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Planując budżet na budowę domu tradycyjnego, warto rozważyć kilka strategii, które mogą pomóc w optymalizacji wydatków bez znaczącego uszczerbku na jakości.
+            </p>
+            <ul class="list-disc list-inside text-lg text-zinc-600 leading-relaxed mb-6 pl-5 space-y-2">
+                <li><strong>Optymalizacja projektu:</strong> Wybór prostego projektu domu z nieskomplikowaną bryłą i dachem dwuspadowym może zredukować koszty nawet o 15-20%. Rezygnacja z piwnicy czy skomplikowanych balkonów to również znaczne oszczędności.</li>
+                <li><strong>Dokładny kosztorys:</strong> Inwestycja w profesjonalny kosztorys wykonawczy (ok. 1000 zł) pozwala na precyzyjne oszacowanie wydatków i negocjowanie cen z wykonawcami.</li>
+                <li><strong>Wybór materiałów:</strong> Monitorowanie rynku i korzystanie z promocji (np. na wyprzedażach posezonowych) może obniżyć koszty materiałów. Warto jednak pamiętać o zachowaniu odpowiedniej jakości, szczególnie w przypadku elementów konstrukcyjnych i izolacji.</li>
+                <li><strong>Etapowanie prac:</strong> Budowa etapami pozwala rozłożyć koszty w czasie i finansować kolejne etapy z bieżących oszczędności lub mniejszych kredytów.</li>
+                <li><strong>Samodzielne wykonanie części prac:</strong> Jeśli masz odpowiednie umiejętności i czas, możesz samodzielnie wykonać część prac wykończeniowych (np. malowanie, układanie paneli), co pozwoli zaoszczędzić na robociźnie.</li>
+                <li><strong>Porównywanie ofert:</strong> Zawsze pozyskuj oferty od kilku ekip budowlanych i dostawców materiałów. Różnice w cenach mogą być zaskakujące.</li>
+            </ul>
+
+            <h2 id={slugify("Mini kalkulator kosztów budowy domu tradycyjnego (2026).")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Mini kalkulator kosztów budowy domu tradycyjnego (2026).</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Użyj naszego prostego kalkulatora, aby oszacować orientacyjny koszt budowy Twojego wymarzonego domu tradycyjnego w 2026 roku.
+            </p>
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-3xl border border-blue-100 my-10 shadow-sm">
+                <h3 class="text-2xl font-bold text-blue-800 mb-6">Oblicz orientacyjny koszt</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="powierzchnia" class="block text-zinc-700 text-sm font-bold mb-2">Powierzchnia użytkowa (m²):</label>
+                        <input type="number" id="powierzchnia" class="shadow appearance-none border rounded w-full py-3 px-4 text-zinc-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" min="50" max="300" value="100">
+                    </div>
+                    <div>
+                        <label for="standard" class="block text-zinc-700 text-sm font-bold mb-2">Standard wykończenia:</label>
+                        <select id="standard" class="shadow border rounded w-full py-3 px-4 text-zinc-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="ssz">Stan surowy zamknięty (SSZ)</option>
+                            <option value="deweloperski">Stan deweloperski</option>
+                            <option value="podklucz_sredni" selected>Stan pod klucz (standard średni)</option>
+                            <option value="podklucz_premium">Stan pod klucz (standard premium)</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="obliczKoszt" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors">Oblicz koszt</button>
+                <div id="wynikKalkulatora" class="mt-8 text-xl font-semibold text-zinc-800">
+                    Szacunkowy koszt: <span class="text-orange-600">---</span>
+                </div>
+            </div>
+            <script is:inline>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const powierzchniaInput = document.getElementById('powierzchnia');
+                    const standardSelect = document.getElementById('standard');
+                    const obliczKosztBtn = document.getElementById('obliczKoszt');
+                    const wynikKalkulatoraSpan = document.querySelector('#wynikKalkulatora span');
+
+                    const costsPerSqM = {
+                        ssz: { min: 2500, max: 3500 },
+                        deweloperski: { min: 4300, max: 6000 },
+                        podklucz_sredni: { min: 5500, max: 7500 },
+                        podklucz_premium: { min: 7500, max: 9000 }
+                    };
+
+                    const calculateCost = () => {
+                        const powierzchnia = parseFloat(powierzchniaInput.value);
+                        const standard = standardSelect.value;
+
+                        if (isNaN(powierzchnia) || powierzchnia <= 0) {
+                            wynikKalkulatoraSpan.textContent = "Wprowadź poprawną powierzchnię.";
+                            return;
+                        }
+
+                        const selectedCosts = costsPerSqM[standard];
+                        if (selectedCosts) {
+                            const minCost = powierzchnia * selectedCosts.min;
+                            const maxCost = powierzchnia * selectedCosts.max;
+                            wynikKalkulatoraSpan.textContent = `${minCost.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN', minimumFractionDigits: 0, maximumFractionDigits: 0 })} - ${maxCost.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN', minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+                        } else {
+                            wynikKalkulatoraSpan.textContent = "Błąd: Nieznany standard wykończenia.";
+                        }
+                    };
+
+                    obliczKosztBtn.addEventListener('click', calculateCost);
+                    powierzchniaInput.addEventListener('input', calculateCost);
+                    standardSelect.addEventListener('change', calculateCost);
+
+                    // Initial calculation on load
+                    calculateCost();
+                });
+            </script>
+
+            <h2 id={slugify("Ankieta: Jaki dom tradycyjny jest dla Ciebie?")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Ankieta: Jaki dom tradycyjny jest dla Ciebie?</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Odpowiedz na kilka pytań, abyśmy mogli lepiej zrozumieć Twoje priorytety i zasugerować, na co powinieneś zwrócić szczególną uwagę podczas planowania budowy domu tradycyjnego.
+            </p>
+            <div class="bg-gradient-to-r from-emerald-50 to-lime-50 p-8 rounded-3xl border border-emerald-100 my-10 shadow-sm">
+                <h3 class="text-2xl font-bold text-emerald-800 mb-6">Twoje preferencje budowlane</h3>
+                <div class="space-y-6 mb-6">
+                    <div>
+                        <p class="text-lg font-semibold text-zinc-700 mb-2">1. Co jest dla Ciebie najważniejsze podczas budowy domu?</p>
+                        <div class="space-y-2">
+                            <label class="block text-zinc-600"><input type="radio" name="p1" value="budzet" class="mr-2"> Niskie koszty początkowe</label>
+                            <label class="block text-zinc-600"><input type="radio" name="p1" value="jakosc" class="mr-2"> Wysoka jakość i trwałość</label>
+                            <label class="block text-zinc-600"><input type="radio" name="p1" value="czas" class="mr-2"> Krótki czas realizacji</label>
+                            <label class="block text-zinc-600"><input type="radio" name="p1" value="eko" class="mr-2"> Energooszczędność i ekologia</label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-lg font-semibold text-zinc-700 mb-2">2. Jak bardzo elastyczny jest Twój budżet?</p>
+                        <div class="space-y-2">
+                            <label class="block text-zinc-600"><input type="radio" name="p2" value="sztywny" class="mr-2"> Bardzo ograniczony, szukam oszczędności</label>
+                            <label class="block text-zinc-600"><input type="radio" name="p2" value="umiarkowany" class="mr-2"> Umiarkowany, mogę pozwolić sobie na kompromisy</label>
+                            <label class="block text-zinc-600"><input type="radio" name="p2" value="elastyczny" class="mr-2"> Elastyczny, priorytetem jest jakość i komfort</label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-lg font-semibold text-zinc-700 mb-2">3. Jaki jest Twój stosunek do samodzielnego wykonywania prac?</p>
+                        <div class="space-y-2">
+                            <label class="block text-zinc-600"><input type="radio" name="p3" value="wszystko_ekipa" class="mr-2"> Wszystko zlecam ekipie</label>
+                            <label class="block text-zinc-600"><input type="radio" name="p3" value="czesciowo_sam" class="mr-2"> Chętnie wykonam część prac wykończeniowych</label>
+                            <label class="block text-zinc-600"><input type="radio" name="p3" value="duzo_sam" class="mr-2"> Jestem w stanie wykonać dużą część prac budowlanych</label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-lg font-semibold text-zinc-700 mb-2">4. Jak ważny jest dla Ciebie czas oddania domu do użytku?</p>
+                        <div class="space-y-2">
+                            <label class="block text-zinc-600"><input type="radio" name="p4" value="bardzo_krotko" class="mr-2"> Im szybciej, tym lepiej (poniżej roku)</label>
+                            <label class="block text-zinc-600"><input type="radio" name="p4" value="standard" class="mr-2"> Standardowy czas (1-2 lata)</label>
+                            <label class="block text-zinc-600"><input type="radio" name="p4" value="bez_presji" class="mr-2"> Nie spieszy mi się, wolę budować etapami</label>
+                        </div>
+                    </div>
+                </div>
+                <button id="wynikAnkietyBtn" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors">Pokaż rekomendacje</button>
+                <div id="wynikAnkiety" class="mt-8 text-xl font-semibold text-zinc-800">
+                    <span class="text-emerald-600">Odpowiedz na wszystkie pytania, aby uzyskać rekomendację.</span>
+                </div>
+            </div>
+            <script is:inline>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const wynikAnkietyBtn = document.getElementById('wynikAnkietyBtn');
+                    const wynikAnkietyDiv = document.getElementById('wynikAnkiety');
+
+                    const getRecommendation = () => {
+                        const p1 = document.querySelector('input[name="p1"]:checked');
+                        const p2 = document.querySelector('input[name="p2"]:checked');
+                        const p3 = document.querySelector('input[name="p3"]:checked');
+                        const p4 = document.querySelector('input[name="p4"]:checked');
+
+                        if (!p1 || !p2 || !p3 || !p4) {
+                            wynikAnkietyDiv.innerHTML = '<span class="text-red-600">Proszę odpowiedzieć na wszystkie pytania, aby uzyskać rekomendację.</span>';
+                            return;
+                        }
+
+                        let recommendation = "Na podstawie Twoich odpowiedzi:";
+
+                        // Logic for P1 (Main priority)
+                        if (p1.value === "budzet") {
+                            recommendation += " Priorytetem są niskie koszty początkowe. Skup się na prostym projekcie, wybieraj materiały o dobrym stosunku ceny do jakości i rozważ samodzielne wykonanie części prac wykończeniowych. Dokładny kosztorys jest kluczowy.";
+                        } else if (p1.value === "jakosc") {
+                            recommendation += " Stawiasz na wysoką jakość i trwałość. Zainwestuj w certyfikowane materiały (np. drewno C24, płyty rezolowe), renomowaną ekipę i szczegółową kontrolę jakości. Pamiętaj o buforze finansowym.";
+                        } else if (p1.value === "czas") {
+                            recommendation += " Zależy Ci na krótkim czasie realizacji. Rozważ współpracę z generalnym wykonawcą, który oferuje kompleksową usługę 'pod klucz', choć może to zwiększyć koszty. Alternatywnie, przyjrzyj się domom prefabrykowanym, które mają krótszy cykl budowy.";
+                        } else if (p1.value === "eko") {
+                            recommendation += " Priorytetem jest energooszczędność. Skup się na solidnej izolacji (WT 2021, współczynnik U dla ścian 0.20 W/m²K), wentylacji mechanicznej z odzyskiem ciepła i instalacjach OZE. To inwestycja, która zwróci się w niższych rachunkach.";
+                        }
+
+                        // Additional notes based on other answers
+                        if (p2.value === "sztywny") {
+                            recommendation += " Twój budżet jest ograniczony, dlatego optymalizacja kosztów na każdym etapie jest niezwykle ważna. Unikaj skomplikowanych rozwiązań architektonicznych i szukaj sprawdzonych, ekonomicznych rozwiązań.";
+                        } else if (p2.value === "elastyczny") {
+                            recommendation += " Posiadasz elastyczny budżet, co pozwala na większą swobodę w wyborze materiałów i technologii. Możesz pozwolić sobie na inwestycje, które podniosą komfort i wartość domu w przyszłości.";
+                        }
+
+                        if (p3.value === "czesciowo_sam" || p3.value === "duzo_sam") {
+                            recommendation += " Samodzielne prace pozwolą znacząco obniżyć koszty robocizny, zwłaszcza na etapie wykończenia. Pamiętaj jednak o ocenie swoich umiejętności i czasu, aby nie opóźnić inwestycji.";
+                        }
+
+                        if (p4.value === "bardzo_krotko") {
+                            recommendation += " Szybki czas oddania domu do użytku może wiązać się z wyższymi kosztami, szczególnie jeśli wybierzesz firmy oferujące ekspresową realizację. W budownictwie tradycyjnym może to być wyzwanie.";
+                        } else if (p4.value === "bez_presji") {
+                            recommendation += " Brak presji czasowej to atut. Możesz spokojnie planować, kupować materiały w promocjach i rozkładać budowę na etapy, co sprzyja optymalizacji budżetu.";
+                        }
+
+                        wynikAnkietyDiv.innerHTML = `<span class="text-emerald-800">${recommendation}</span>`;
+                    };
+
+                    wynikAnkietyBtn.addEventListener('click', getRecommendation);
+
+                    // Ensure no initial recommendation is shown, or provide a default prompt
+                    wynikAnkietyDiv.innerHTML = '<span class="text-emerald-600">Odpowiedz na wszystkie pytania, aby uzyskać rekomendację.</span>';
+                });
+            </script>
+
+
+            <h2 id={slugify("Podsumowanie i prognozy na przyszłość.")} class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Podsumowanie i prognozy na przyszłość.</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Budowa domu tradycyjnego w 2026 roku to inwestycja, która wymaga przemyślanej strategii i świadomego zarządzania budżetem. Choć koszty wzrosły w ostatnich latach, obecny rynek wykazuje oznaki stabilizacji, co jest dobrą wiadomością dla inwestorów. Kluczem do sukcesu jest szczegółowe planowanie, wybór odpowiedniego projektu i technologii, a także rozsądne podejście do zakupu materiałów i wyboru wykonawców.
+            </p>
+            <div class="bg-gradient-to-r from-zinc-50 to-slate-100 p-8 rounded-3xl border border-zinc-200 my-10 shadow-sm">
+                <h3 class="text-2xl font-bold text-zinc-800 mb-6">Kluczowe wnioski (Key Takeaways):</h3>
+                <ul class="list-disc list-inside text-lg text-zinc-600 leading-relaxed space-y-3 pl-5">
+                    <li><strong>Stabilizacja cen:</strong> W 2026 roku obserwujemy wyhamowanie dynamiki wzrostu kosztów budowy po latach intensywnych podwyżek.</li>
+                    <li><strong>Średni koszt:</strong> Za dom tradycyjny o powierzchni 100 m² w standardzie pod klucz należy przygotować od <strong>550 000 zł do 750 000 zł</strong>.</li>
+                    <li><strong>Wpływ standardu:</strong> Największe różnice w kosztach wynikają z wybranego standardu wykończenia (SSZ, deweloperski, pod klucz) oraz jakości materiałów.</li>
+                    <li><strong>Lokalizacja i projekt:</strong> Miejscowość budowy i złożoność architektoniczna projektu mają znaczący wpływ na ostateczny budżet. Proste bryły są znacznie tańsze.</li>
+                    <li><strong>Bufor finansowy:</strong> Niezbędne jest uwzględnienie <strong>10-15%</strong> budżetu na nieprzewidziane wydatki.</li>
+                    <li><strong>Normy WT 2021:</strong> Spełnienie wymogów energetycznych podnosi koszty początkowe, ale obniża rachunki eksploatacyjne w przyszłości.</li>
+                </ul>
+            </div>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Patrząc w przyszłość, można spodziewać się dalszego nacisku na energooszczędność i technologie proekologiczne, co może wpływać na ewolucję kosztów. Jednak świadomy inwestor, uzbrojony w rzetelne informacje i dobrze przygotowany kosztorys, ma szansę zrealizować swoje marzenie o własnym domu tradycyjnym.
+            </p>
+        </div>
+
+        <section class="faq mt-20 border-t pt-16">
+           <h2 class="text-4xl font-bold mb-10 text-center">Najczęstsze pytania inwestorów</h2>
+           <div class="grid gap-6">
+             {faqItems.map((item) => (
+               <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                 <h4 class="text-xl font-bold text-gray-900 mb-3">{item.question}</h4>
+                 <p class="text-lg text-gray-700 leading-relaxed">{item.answer}</p>
+               </div>
+             ))}
+           </div>
+        </section>
+      </article>
+      <ArticleSidebar client:load />
+    </div>
+  </main>
+  <script type="application/ld+json" is:inline>{JSON.stringify(structuredData)}</script>
+</BaseLayout>
+```

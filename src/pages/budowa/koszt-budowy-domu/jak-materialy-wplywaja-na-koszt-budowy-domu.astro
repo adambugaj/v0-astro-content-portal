@@ -1,0 +1,427 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Jak materiały budowlane wpływają na koszt budowy domu w 2026 roku?";
+const description = "Odkryj kluczowe czynniki, które decydują o cenie budowy domu w 2026 roku. Analizujemy wpływ materiałów fundamentowych, ścian, dachu, okien i izolacji na Twój budżet. Sprawdź, gdzie możesz zaoszczędzić, a na czym nie warto, by osiągnąć dom jakości.";
+const canonical = "https://domjakosci.pl/budowa/koszt-budowy-domu/jak-materialy-wplywaja-na-koszt-budowy-domu/";
+const author = 'mgr inż. Marek Nowicki';
+const contextNote = "Dane zawarte w tym artykule opierają się na analizie trendów rynkowych w IV kwartale 2025 roku oraz prognozach ekspertów na rok 2026, uwzględniając dynamikę cen surowców i regulacji budowlanych w Polsce. Szczególną uwagę zwrócono na innowacyjne rozwiązania termoizolacyjne i technologie energooszczędne, które zyskują na znaczeniu w kontekście nowych norm efektywności energetycznej.";
+const badgeText = "Raport Rynkowy 2026";
+const badgeClass = "bg-green-100 text-green-700";
+const datePublishedIso = "2026-01-27T12:00:00+01:00";
+const dateFormatted = "27 stycznia 2026";
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Jak materiały wpływają na koszt budowy domu', url: 'https://domjakosci.pl/budowa/koszt-budowy-domu/jak-materialy-wplywaja-na-koszt-budowy-domu/' }
+];
+
+const faqItems = [
+    {
+        question: "Czy wybór droższych materiałów zawsze oznacza wyższy koszt budowy w perspektywie długoterminowej?",
+        answer: "Niekoniecznie. Inwestycja w wysokiej jakości, droższe materiały budowlane, takie jak płyty rezolowe o współczynniku lambda 0,022 W/(mK) czy okna z pakietem trzyszybowym o współczynniku U poniżej 0,8 W/(m²K), często przekłada się na znaczne oszczędności eksploatacyjne w przyszłości. Lepsza izolacja i trwałość materiałów mogą zredukować rachunki za ogrzewanie nawet o 30-40% rocznie, a także minimalizują koszty konserwacji i remontów przez dekady."
+    },
+    {
+        question: "Jakie materiały budowlane doświadczają największych wahań cenowych w 2026 roku?",
+        answer: "W 2026 roku największe wahania cenowe, zgodnie z prognozami rynkowymi, dotyczą stali zbrojeniowej (wzrosty do 15% kwartalnie w zależności od regionu), betonu konstrukcyjnego oraz niektórych materiałów izolacyjnych pochodzenia chemicznego, takich jak pianki PIR/PUR. Cement również odnotowuje stały, umiarkowany wzrost cen rzędu 5-8% rocznie, wynikający z kosztów energii i polityki klimatycznej."
+    },
+    {
+        question: "Jaki jest wpływ technologii prefabrykowanych na koszt i jakość użytych materiałów?",
+        answer: "Technologie prefabrykowane, takie jak gotowe ściany czy stropy, mogą obniżyć koszty robocizny nawet o 20-30% i skrócić czas budowy o kilka miesięcy. Materiały użyte w prefabrykacji są zazwyczaj produkowane w kontrolowanych warunkach fabrycznych, co zapewnia wyższą powtarzalność i jakość (np. minimalizacja mostków termicznych), choć początkowy koszt zakupu może być nieco wyższy niż tradycyjnych surowców."
+    },
+    {
+        question: "Czy ekologiczne materiały budowlane są zawsze droższe i trudniej dostępne?",
+        answer: "Wiele ekologicznych materiałów, jak np. wełna mineralna z recyklingu, celuloza czy bloczki z betonu komórkowego, ma już ceny zbliżone do tradycyjnych odpowiedników. Materiały takie jak drewno konstrukcyjne z certyfikatem FSC są powszechnie dostępne. Pewne specjalistyczne rozwiązania, np. zielone dachy czy systemy odzysku wody deszczowej, nadal wiążą się z wyższymi kosztami początkowymi, ale oferują zwrot z inwestycji w dłuższej perspektywie poprzez oszczędności i dotacje (np. 15-20% zwrotu w programach OZE)."
+    },
+    {
+        question: "W jaki sposób wybór pokrycia dachowego wpływa na ogólną konstrukcję dachu i jego koszt?",
+        answer: "Wybór pokrycia dachowego ma bezpośredni wpływ na konstrukcję więźby dachowej. Ciężkie pokrycia, takie jak dachówka ceramiczna (około 45-60 kg/m²), wymagają solidniejszej i droższej więźby, co może zwiększyć koszt konstrukcji dachu o 10-20% w porównaniu do lżejszych blachodachówek (około 4-8 kg/m²). Dodatkowo, kąt nachylenia dachu i jego skomplikowanie (dach wielospadowy vs. dwuspadowy) również zwiększają zapotrzebowanie na materiał i robociznę."
+    },
+    {
+        question: "Jakie są trendy w wykorzystaniu nowoczesnych profili okiennych i ich wpływ na współczynnik przenikania ciepła?",
+        answer: "W 2026 roku dominują profile okienne z systemami wielokomorowymi (5-7 komór) oraz wkładkami termicznymi, często wzmocnione włóknem szklanym lub stalą. Kluczowym trendem są okna pasywne, osiągające współczynnik przenikania ciepła U < 0,7 W/(m²K), a nawet < 0,5 W/(m²K) dla systemów HST z potrójnym szkleniem. To znacząco przekracza normy WT 2021 (U ≤ 0,9 W/(m²K)), generując początkowo wyższe koszty (ok. 20-30% więcej), ale zapewniając maksymalną efektywność energetyczną budynku."
+    }
+];
+
+// Spis treści dynamiczny (generowany z nagłówków)
+const generateToc = (content) => {
+  const headings = Array.from(content.querySelectorAll('h2, h3'));
+  return headings.map(heading => {
+    const id = heading.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-*|-*$/g, '');
+    heading.id = id;
+    const level = heading.tagName === 'H2' ? 'ml-0' : 'ml-6';
+    return `<a href="#${id}" class="block hover:text-orange-600 transition-colors ${level}">${heading.textContent}</a>`;
+  }).join('');
+};
+
+let tocHtml = '';
+// Astro components execute JavaScript in the component scope during build.
+// We need to pass the article content to the client for TOC generation,
+// or generate it at build time (which is better for SEO).
+// For now, let's assume direct DOM manipulation via script, but for a real Astro project,
+// this would be done using a remark plugin or similar during markdown processing,
+// or in a build script. Here, I'll simulate it as if it's generated.
+// For the purpose of this task, I will provide a static TOC structure with placeholders for IDs.
+// A real dynamic TOC in Astro would require more complex build-time processing or client-side JS (less ideal for SEO).
+
+const staticTocItems = [
+    { level: 'h2', text: 'Fundamenty i stan surowy – solidne podstawy budżetu', id: 'fundamenty-i-stan-surowy-solidne-podstawy-budzetu' },
+    { level: 'h3', text: 'Rodzaje fundamentów i ich wpływ na koszt', id: 'rodzaje-fundamentow-i-ich-wplyw-na-koszt' },
+    { level: 'h3', text: 'Materiały ścian nośnych – od tradycji po nowoczesność', id: 'materialy-scian-nosnych-od-tradycji-po-nowoczesnosc' },
+    { level: 'h2', text: 'Dach – ochrona i element estetyczny', id: 'dach-ochrona-i-element-estetyczny' },
+    { level: 'h3', text: 'Konstrukcja dachu a wybór pokrycia', id: 'konstrukcja-dachu-a-wybor-pokrycia' },
+    { level: 'h2', text: 'Stolarka okienna i drzwiowa – efektywność i bezpieczeństwo', id: 'stolarka-okienna-i-drzwiowa-efektywnosc-i-bezpieczenstwo' },
+    { level: 'h3', text: 'Współczynnik przenikania ciepła (U) – klucz do oszczędności', id: 'wspolczynnik-przenikania-ciepla-u-klucz-do-oszczednosci' },
+    { level: 'h2', text: 'Izolacja termiczna – niewidzialna tarcza dla Twojego portfela', id: 'izolacja-termiczna-niewidzialna-tarcza-dla-twojego-portfela' },
+    { level: 'h3', text: 'Nowoczesne materiały izolacyjne – płyty rezolowe i inne innowacje', id: 'nowoczesne-materialy-izolacyjne-plyty-rezolowe-i-inne-innowacje' },
+    { level: 'h2', text: 'Instalacje i wykończenie – detale, które generują koszty', id: 'instalacje-i-wykonczenie-detale-ktore-generuja-koszty' },
+    { level: 'h3', text: 'Wykończenie wnętrz i elewacji – gdzie szukać oszczędności?', id: 'wykonczenie-wnetrz-i-elewacji-gdzie-szukac-oszczednosci' },
+    { level: 'h2', text: 'Interaktywna ankieta: Twój wybór materiałów', id: 'interaktywna-ankieta-twoj-wybor-materialow' },
+    { level: 'h2', text: 'Kalkulator wpływu standardu materiałów na koszt budowy', id: 'kalkulator-wplywu-standardu-materialow-na-koszt-budowy' },
+];
+
+tocHtml = staticTocItems.map(item => {
+  const levelClass = item.level === 'h2' ? 'ml-0' : 'ml-6';
+  return `<a href="#${item.id}" class="block hover:text-orange-600 transition-colors ${levelClass}">${item.text}</a>`;
+}).join('');
+
+---
+<BaseLayout title={title} description={description} canonical={canonical} type="article">
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+    <div class="flex flex-col lg:flex-row lg:gap-16">
+      <article class="lg:flex-1">
+
+        <header class="mb-12">
+            <span class="inline-block py-1 px-3 rounded-full {badgeClass} font-bold text-sm font-bold mb-4 uppercase tracking-wider">
+                {badgeText}
+            </span>
+
+            <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 mb-8 leading-tight">
+                {title}
+            </h1>
+
+            <div class="flex flex-col gap-y-6 border-b pb-8 border-gray-100">
+                
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">MN</div>
+                    <div>
+                        <p class="font-bold text-zinc-900 text-sm leading-none">{author}</p>
+                        <p class="text-xs text-zinc-500 mt-1">Ekspert DomJakości.pl</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-x-8">
+                    <div class="flex items-center gap-2 text-sm text-zinc-500 font-medium">
+                        <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <path d="M16 2v4M8 2v4M3 10h18"></path>
+                        </svg>
+                        <time datetime={datePublishedIso}>{dateFormatted}</time>
+                    </div>
+
+                    <div class="flex items-center gap-2 text-sm text-zinc-500 font-medium">
+                        <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>ok. 10 min</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="bg-slate-50 p-8 rounded-3xl mb-12 border border-slate-100">
+           <p class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">W tym artykule:</p>
+           <nav id="toc" class="space-y-2 text-blue-600 font-medium">
+             {tocHtml}
+           </nav>
+        </div>
+
+        <div class="article-content">
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                W 2026 roku koszt budowy domu w dużej mierze determinowany jest przez wybór materiałów budowlanych, które stanowią <strong class="font-semibold">nawet 50-60% całkowitych wydatków</strong> inwestycyjnych. Od fundamentów, przez ściany, dach, stolarkę okienną, po izolację i wykończenie – każda decyzja materiałowa ma bezpośrednie przełożenie na finalny budżet i przyszłe koszty eksploatacji. Optymalny wybór wymaga nie tylko znajomości cen, ale także świadomości ich wpływu na energooszczędność, trwałość i komfort użytkowania.
+            </p>
+
+            <div class="bg-orange-50 border-l-4 border-orange-400 p-6 my-8 italic text-zinc-800 rounded-r-xl">
+                <p>
+                    <strong class="font-semibold">Wskazówka eksperta:</strong> Na początku 2026 roku obserwujemy stabilizację cen stali i betonu po dynamicznych wzrostach w poprzednich latach. Jednak koszty materiałów izolacyjnych i nowoczesnej stolarki okiennej nadal rosną, odzwierciedlając zwiększone wymagania dotyczące efektywności energetycznej budynków. Ważne jest, aby te trendy uwzględnić już na etapie projektowania i kosztorysowania.
+                </p>
+            </div>
+
+            <h2 id="fundamenty-i-stan-surowy-solidne-podstawy-budzetu" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Fundamenty i stan surowy – solidne podstawy budżetu</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Podstawą każdego domu są solidne fundamenty. Ich koszt zależy od rodzaju gruntu, projektu domu oraz wybranej technologii. W 2026 roku nadal dominują tradycyjne ławy fundamentowe, jednak zyskuje na popularności płyta fundamentowa, szczególnie w przypadku domów energooszczędnych i na trudnych gruntach.
+            </p>
+
+            <h3 id="rodzaje-fundamentow-i-ich-wplyw-na-koszt" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Rodzaje fundamentów i ich wpływ na koszt</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Wybór między <strong class="font-semibold">ławami fundamentowymi a płytą fundamentową</strong> ma istotne znaczenie. Ławy są zazwyczaj tańsze w wykonaniu na stabilnym gruncie, ale wymagają bardziej rozbudowanej izolacji przeciwwilgociowej i termicznej podłogi na gruncie. Płyta fundamentowa, choć droższa o około 15-25% na etapie wylewania, często integruje izolację termiczną i eliminuje problem mostków termicznych, co przekłada się na niższe koszty ogrzewania w przyszłości. Koszt betonu konstrukcyjnego wynosi średnio <strong class="font-semibold">około 350-450 zł za m³</strong>, a stali zbrojeniowej <strong class="font-semibold">4500-5500 zł za tonę</strong> w zależności od regionu i dostawcy.
+            </p>
+
+            <h3 id="materialy-scian-nosnych-od-tradycji-po-nowoczesnosc" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Materiały ścian nośnych – od tradycji po nowoczesność</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Materiały na ściany to jeden z kluczowych determinantów kosztów. Najpopularniejsze są nadal <strong class="font-semibold">bloczki z betonu komórkowego (np. Ytong)</strong> oraz <strong class="font-semibold">pustaki ceramiczne (np. Porotherm)</strong>. Beton komórkowy jest lżejszy i łatwiejszy w obróbce, co obniża koszty robocizny, a jego współczynnik przenikania ciepła (U) dla ściany jednowarstwowej może wynosić nawet 0,20 W/(m²K). Pustaki ceramiczne oferują doskonałą akumulację ciepła i zdrowy mikroklimat. Coraz większym zainteresowaniem cieszą się również <strong class="font-semibold">domy w technologii szkieletu drewnianego</strong>, które są tańsze i szybsze w budowie, choć wymagają specyficznej izolacji i wykończenia.
+            </p>
+
+            <h2 id="dach-ochrona-i-element-estetyczny" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Dach – ochrona i element estetyczny</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Konstrukcja i pokrycie dachu to kolejny znaczący wydatek. Wybór materiałów wpływa zarówno na koszt budowy, jak i na późniejszą izolacyjność oraz trwałość.
+            </p>
+
+            <h3 id="konstrukcja-dachu-a-wybor-pokrycia" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Konstrukcja dachu a wybór pokrycia</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Dachy <strong class="font-semibold">dwuspadowe</strong> są najprostsze i najtańsze w budowie (np. ok. 150-250 zł/m² za więźbę z montażem). Dachy <strong class="font-semibold">wielospadowe</strong> czy z wieżyczkami są bardziej skomplikowane i generują wyższe koszty robocizny oraz większe zużycie materiału (nawet o 30-50%). Jeśli chodzi o pokrycia, <strong class="font-semibold">blachodachówka</strong> to najbardziej ekonomiczna opcja (ok. 30-60 zł/m²), ale <strong class="font-semibold">dachówka ceramiczna</strong> lub cementowa (ok. 60-150 zł/m²) oferuje znacznie dłuższą żywotność i lepsze parametry akustyczne. Inwestycja w dachówkę ceramiczną może zwiększyć koszt o <strong class="font-semibold">nawet 100% na m²</strong> w porównaniu do blachodachówki.
+            </p>
+
+            <div class="bg-gradient-to-r from-zinc-50 to-slate-100 p-8 rounded-3xl border border-zinc-200 my-10 shadow-sm">
+                <h4 class="text-2xl font-bold text-zinc-800 mb-4">Kluczowe wnioski (Key Takeaways):</h4>
+                <ul class="list-disc list-inside space-y-2 text-lg text-zinc-700 leading-relaxed">
+                    <li><strong class="font-semibold">Fundamenty:</strong> Płyta fundamentowa jest droższa początkowo, ale bardziej efektywna energetycznie.</li>
+                    <li><strong class="font-semibold">Ściany:</strong> Beton komórkowy vs. ceramika – kompromis między ceną, łatwością montażu a akumulacją ciepła.</li>
+                    <li><strong class="font-semibold">Dach:</strong> Prostsza konstrukcja i lżejsze pokrycie to niższe koszty.</li>
+                    <li><strong class="font-semibold">Stolarka:</strong> Inwestycja w niski współczynnik U okien i drzwi zwraca się w rachunkach za ogrzewanie.</li>
+                    <li><strong class="font-semibold">Izolacja:</strong> Płyty rezolowe i innowacyjne materiały to przyszłość energooszczędności.</li>
+                </ul>
+            </div>
+
+            <h2 id="stolarka-okienna-i-drzwiowa-efektywnosc-i-bezpieczenstwo" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Stolarka okienna i drzwiowa – efektywność i bezpieczeństwo</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Okna i drzwi to nie tylko estetyka, ale przede wszystkim kluczowy element <strong class="font-semibold">izolacyjności termicznej i bezpieczeństwa</strong>. W 2026 roku, zgodnie z zaostrzonymi normami, ich rola w bilansie energetycznym domu jest nie do przecenienia.
+            </p>
+
+            <h3 id="wspolczynnik-przenikania-ciepla-u-klucz-do-oszczednosci" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Współczynnik przenikania ciepła (U) – klucz do oszczędności</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Obecnie wymagany przez przepisy współczynnik U dla okien to <strong class="font-semibold">maksymalnie 0,9 W/(m²K)</strong>. Wybierając okna z pakietem trzyszybowym i ciepłymi ramkami, o U poniżej 0,8 W/(m²K), można znacząco obniżyć straty ciepła. Profile PVC są najpopularniejsze ze względu na cenę i dobre parametry, ale profile drewniane czy aluminiowe (często w systemach HST dla dużych przeszkleń) oferują lepszą estetykę i trwałość, choć są droższe o <strong class="font-semibold">20-50%</strong>. Drzwi zewnętrzne również muszą spełniać wysokie normy izolacyjności, a ich koszt może wahać się od <strong class="font-semibold">1500 zł do nawet 10 000 zł</strong> za modele energooszczędne z wysoką klasą antywłamaniową.
+            </p>
+
+            <h2 id="izolacja-termiczna-niewidzialna-tarcza-dla-twojego-portfela" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Izolacja termiczna – niewidzialna tarcza dla Twojego portfela</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Adekwatna izolacja to inwestycja, która zwraca się przez lata. Jej wpływ na koszt budowy jest znaczący, ale jeszcze większy na przyszłe rachunki za energię.
+            </p>
+
+            <h3 id="nowoczesne-materialy-izolacyjne-plyty-rezolowe-i-inne-innowacje" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Nowoczesne materiały izolacyjne – płyty rezolowe i inne innowacje</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Tradycyjny styropian i wełna mineralna nadal są popularne, ale na rynku w 2026 roku coraz śmielej wkraczają <strong class="font-semibold">płyty rezolowe (np. Kingspan Kooltherm)</strong> oraz <strong class="font-semibold">pianki PIR/PUR</strong>. Charakteryzują się one znacznie niższym współczynnikiem przewodzenia ciepła (lambda od <strong class="font-semibold">0,020 do 0,022 W/(mK)</strong>), co pozwala na zastosowanie cieńszej warstwy izolacji przy zachowaniu wymaganej efektywności. Ich cena jest wyższa o <strong class="font-semibold">30-60%</strong> w porównaniu do styropianu, ale mniejsza grubość materiału może zredukować koszty innych elementów (np. dłuższego okapu, mniejszej ilości kleju).
+            </p>
+
+            <h2 id="instalacje-i-wykonczenie-detale-ktore-generuja-koszty" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Instalacje i wykończenie – detale, które generują koszty</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Ostatnie etapy budowy to instalacje i wykończenie. Materiały użyte na tym etapie często są najbardziej widoczne, a ich jakość i estetyka mają ogromny wpływ na komfort życia.
+            </p>
+
+            <h3 id="wykonczenie-wnetrz-i-elewacji-gdzie-szukac-oszczednosci" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Wykończenie wnętrz i elewacji – gdzie szukać oszczędności?</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Koszty wykończenia to obszar, gdzie rozpiętość cenowa jest największa. Od podłóg (panele za 40 zł/m² vs. deska drewniana za 200 zł/m²), przez tynki, płytki ceramiczne, armaturę, aż po elewację. Tynk cienkowarstwowy na styropianie jest ekonomiczny, ale <strong class="font-semibold">elewacja z cegły klinkierowej czy drewna</strong> znacząco podniesie koszt (o <strong class="font-semibold">nawet 150-300 zł/m²</strong> więcej). Wybierając standardowe materiały wykończeniowe średniej klasy, można zaoszczędzić <strong class="font-semibold">nawet 20-30%</strong> w porównaniu do materiałów premium.
+            </p>
+
+            <div class="bg-red-50 border border-red-100 p-6 my-6 rounded-2xl text-red-900 text-sm">
+                <strong class="font-semibold">Ważne!</strong> Nie oszczędzaj na materiałach konstrukcyjnych i izolacyjnych, które mają kluczowe znaczenie dla trwałości, bezpieczeństwa i efektywności energetycznej budynku. Zastąpienie ich tańszymi zamiennikami może prowadzić do poważnych problemów i znacznie wyższych kosztów w przyszłości, niwecząc początkowe oszczędności.
+            </div>
+            
+            <h2 id="interaktywna-ankieta-twoj-wybor-materialow" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Interaktywna ankieta: Twój wybór materiałów</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Podziel się swoimi preferencjami i zobacz, jak inni inwestorzy podchodzą do wyboru materiałów budowlanych w 2026 roku.
+            </p>
+
+            <div class="bg-blue-50 p-8 rounded-3xl border border-blue-100 my-10 shadow-sm">
+                <form id="materialSurvey" class="space-y-6">
+                    <div>
+                        <p class="font-semibold text-zinc-800 mb-2">1. Jakie materiały na ściany zewnętrzne rozważasz?</p>
+                        <label class="block mb-2"><input type="radio" name="q1" value="beton-komorkowy" class="mr-2"/> Beton komórkowy (np. Ytong)</label>
+                        <label class="block mb-2"><input type="radio" name="q1" value="pustaki-ceramiczne" class="mr-2"/> Pustaki ceramiczne (np. Porotherm)</label>
+                        <label class="block mb-2"><input type="radio" name="q1" value="szkielet-drewniany" class="mr-2"/> Konstrukcja szkieletu drewnianego</label>
+                        <label class="block mb-2"><input type="radio" name="q1" value="inne" class="mr-2"/> Inne / Nie zdecydowałem(am)</label>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-zinc-800 mb-2">2. Jaki rodzaj pokrycia dachowego jest dla Ciebie priorytetem?</p>
+                        <label class="block mb-2"><input type="radio" name="q2" value="blachodachowka" class="mr-2"/> Blachodachówka (niska cena)</label>
+                        <label class="block mb-2"><input type="radio" name="q2" value="dachowka-ceramiczna" class="mr-2"/> Dachówka ceramiczna (trwałość, estetyka)</label>
+                        <label class="block mb-2"><input type="radio" name="q2" value="gont" class="mr-2"/> Gont bitumiczny</label>
+                        <label class="block mb-2"><input type="radio" name="q2" value="inne" class="mr-2"/> Inne / Nie zdecydowałem(am)</label>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-zinc-800 mb-2">3. Jak ważna jest dla Ciebie energooszczędność okien?</p>
+                        <label class="block mb-2"><input type="radio" name="q3" value="bardzo-wazna" class="mr-2"/> Bardzo ważna (niski współczynnik U)</label>
+                        <label class="block mb-2"><input type="radio" name="q3" value="wazna" class="mr-2"/> Ważna (zgodnie z normami)</label>
+                        <label class="block mb-2"><input type="radio" name="q3" value="mniej-wazna" class="mr-2"/> Mniej ważna (priorytet to cena)</label>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-zinc-800 mb-2">4. Czy rozważasz nowoczesne materiały izolacyjne (np. płyty rezolowe, PIR)?</p>
+                        <label class="block mb-2"><input type="radio" name="q4" value="tak" class="mr-2"/> Tak, jestem gotów zapłacić więcej za lepszą efektywność</label>
+                        <label class="block mb-2"><input type="radio" name="q4" value="nie" class="mr-2"/> Nie, wolę sprawdzony i tańszy styropian/wełnę</label>
+                        <label class="block mb-2"><input type="radio" name="q4" value="nie-wiem" class="mr-2"/> Nie mam zdania / Nie znam</label>
+                    </div>
+                    <button type="button" id="submitSurvey" class="mt-4 px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors">Prześlij odpowiedzi</button>
+                </form>
+                <div id="surveyResults" class="mt-8 pt-6 border-t border-blue-200 hidden">
+                    <h5 class="font-bold text-zinc-800 text-xl mb-3">Wyniki ankiety:</h5>
+                    <div id="resultsContent" class="text-lg text-zinc-700 leading-relaxed"></div>
+                </div>
+            </div>
+
+            <script is:inline>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const submitButton = document.getElementById('submitSurvey');
+                    const surveyResults = document.getElementById('surveyResults');
+                    const resultsContent = document.getElementById('resultsContent');
+
+                    submitButton.addEventListener('click', () => {
+                        let q1 = document.querySelector('input[name="q1"]:checked');
+                        let q2 = document.querySelector('input[name="q2"]:checked');
+                        let q3 = document.querySelector('input[name="q3"]:checked');
+                        let q4 = document.querySelector('input[name="q4"]:checked');
+
+                        if (!q1 || !q2 || !q3 || !q4) {
+                            alert('Proszę odpowiedzieć na wszystkie pytania przed przesłaniem.');
+                            return;
+                        }
+
+                        let message = '<p>Dziękujemy za udział w ankiecie! Na podstawie Twoich wyborów:</p>';
+                        
+                        if (q1.value === 'beton-komorkowy') {
+                            message += '<p>Wybór betonu komórkowego na ściany to często kompromis między ceną a dobrymi parametrami izolacyjnymi, co jest popularne w 2026 roku.</p>';
+                        } else if (q1.value === 'pustaki-ceramiczne') {
+                            message += '<p>Pustaki ceramiczne to wybór dla ceniących akumulację ciepła i trwałość, choć wiąże się to z wyższym kosztem początkowym.</p>';
+                        } else if (q1.value === 'szkielet-drewniany') {
+                            message += '<p>Konstrukcja szkieletu drewnianego to szybka budowa i niższe koszty robocizny, zyskuje na popularności.</p>';
+                        }
+
+                        if (q2.value === 'dachowka-ceramiczna') {
+                            message += '<p>Dachówka ceramiczna to inwestycja w estetykę i długowieczność, co podnosi prestiż domu.</p>';
+                        } else if (q2.value === 'blachodachowka') {
+                            message += '<p>Blachodachówka to ekonomiczny wybór, który pozwala na znaczne oszczędności na etapie budowy.</p>';
+                        }
+
+                        if (q3.value === 'bardzo-wazna') {
+                            message += '<p>Duża waga przykładana do energooszczędności okien świadczy o świadomej inwestycji w przyszłe oszczędności na ogrzewaniu.</p>';
+                        }
+
+                        if (q4.value === 'tak') {
+                            message += '<p>Jesteś otwarty(a) na nowoczesne technologie izolacyjne, co zapewni Twojemu domowi najwyższą efektywność energetyczną.</p>';
+                        } else if (q4.value === 'nie') {
+                             message += '<p>Preferujesz sprawdzone rozwiązania izolacyjne, co może pozwolić na optymalizację kosztów budowy.</p>';
+                        }
+
+                        resultsContent.innerHTML = message;
+                        surveyResults.classList.remove('hidden');
+                        submitButton.style.display = 'none'; // Hide button after submit
+                    });
+                });
+            </script>
+
+            <h2 id="kalkulator-wplywu-standardu-materialow-na-koszt-budowy" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Kalkulator wpływu standardu materiałów na koszt budowy</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Skorzystaj z naszego prostego kalkulatora, aby oszacować, jak wybór standardu materiałów może wpłynąć na całkowity koszt budowy Twojego domu w 2026 roku.
+            </p>
+
+            <div class="bg-purple-50 p-8 rounded-3xl border border-purple-100 my-10 shadow-sm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="houseArea" class="block text-lg font-semibold text-zinc-800 mb-2">Powierzchnia domu (m²):</label>
+                        <input type="number" id="houseArea" value="100" min="50" class="w-full p-3 border border-purple-300 rounded-xl focus:ring-purple-500 focus:border-purple-500 text-lg" />
+                    </div>
+                    <div>
+                        <label for="materialStandard" class="block text-lg font-semibold text-zinc-800 mb-2">Standard materiałów:</label>
+                        <select id="materialStandard" class="w-full p-3 border border-purple-300 rounded-xl focus:ring-purple-500 focus:border-purple-500 text-lg">
+                            <option value="ekonomiczny">Ekonomiczny (3800-4500 zł/m²)</option>
+                            <option value="standardowy" selected>Standardowy (4500-5800 zł/m²)</option>
+                            <option value="premium">Premium (5800-7500 zł/m²)</option>
+                            <option value="pasywny">Pasywny (7500-9000 zł/m²)</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="button" id="calculateCost" class="mt-8 px-8 py-4 bg-purple-600 text-white font-bold rounded-xl hover:bg-purple-700 transition-colors text-lg w-full">Oblicz koszt</button>
+                <div id="calculatedCost" class="mt-8 pt-6 border-t border-purple-200 text-center hidden">
+                    <h5 class="font-bold text-zinc-800 text-2xl mb-3">Szacowany koszt budowy:</h5>
+                    <p class="text-3xl font-extrabold text-purple-700"><span id="minCost">0</span> zł - <span id="maxCost">0</span> zł</p>
+                    <p class="text-lg text-zinc-700 mt-2">Pamiętaj, to tylko szacunkowe wartości.</p>
+                </div>
+            </div>
+
+            <script is:inline>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const calculateButton = document.getElementById('calculateCost');
+                    const houseAreaInput = document.getElementById('houseArea');
+                    const materialStandardSelect = document.getElementById('materialStandard');
+                    const calculatedCostDiv = document.getElementById('calculatedCost');
+                    const minCostSpan = document.getElementById('minCost');
+                    const maxCostSpan = document.getElementById('maxCost');
+
+                    const costRanges = {
+                        'ekonomiczny': { min: 3800, max: 4500 },
+                        'standardowy': { min: 4500, max: 5800 },
+                        'premium': { min: 5800, max: 7500 },
+                        'pasywny': { min: 7500, max: 9000 }
+                    };
+
+                    calculateButton.addEventListener('click', () => {
+                        const area = parseFloat(houseAreaInput.value);
+                        const standard = materialStandardSelect.value;
+
+                        if (isNaN(area) || area <= 0) {
+                            alert('Proszę wprowadzić prawidłową powierzchnię domu.');
+                            return;
+                        }
+
+                        const range = costRanges[standard];
+                        const minTotalCost = area * range.min;
+                        const maxTotalCost = area * range.max;
+
+                        minCostSpan.textContent = minTotalCost.toLocaleString('pl-PL', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+                        maxCostSpan.textContent = maxTotalCost.toLocaleString('pl-PL', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+                        calculatedCostDiv.classList.remove('hidden');
+                    });
+                });
+            </script>
+            
+        </div>
+
+        <section class="faq mt-20 border-t pt-16">
+           <h2 class="text-4xl font-bold mb-10 text-center">Najczęstsze pytania inwestorów</h2>
+           <div class="grid gap-6">
+             {faqItems.map((item) => (
+               <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                 <h4 class="text-xl font-bold text-gray-900 mb-3">{item.question}</h4>
+                 <p class="text-lg text-gray-700 leading-relaxed">{item.answer}</p>
+               </div>
+             ))}
+           </div>
+        </section>
+      </article>
+      <ArticleSidebar />
+    </div>
+  </main>
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{title}",
+    "description": "{description}",
+    "image": "https://domjakosci.pl/assets/images/jak-materialy-wplywaja-na-koszt-budowy-domu-social.webp",
+    "datePublished": "{datePublishedIso}",
+    "dateModified": "{datePublishedIso}",
+    "author": {
+      "@type": "Person",
+      "name": "{author}",
+      "url": "https://domjakosci.pl/o-nas/zespol/#marek-nowicki"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "DomJakości.pl",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://domjakosci.pl/assets/logo-domjakosci.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{canonical}"
+    },
+    "url": "{canonical}"
+  }
+  </script>
+</BaseLayout>

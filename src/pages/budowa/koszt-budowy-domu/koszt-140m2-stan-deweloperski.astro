@@ -3,216 +3,275 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ArticleSidebar from '../../../components/ArticleSidebar.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 
-const title = "Koszt budowy domu 140m2 stan deweloperski w 2026 – kompleksowy przewodnik";
-const description = "Planujesz budowę domu 140m2? Sprawdź aktualny koszt doprowadzenia go do stanu deweloperskiego w 2026 roku. Analiza cen, czynników wpływających na inwestycję oraz praktyczne wskazówki na domjakosci.pl.";
-const canonical = "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-140m2-stan-dewolperski-w-2026/";
+const title = "Koszt budowy domu 140m2 stan deweloperski w 2026 – Kompleksowy Przewodnik";
+const description = "Oszacuj koszt budowy domu 140m2 do stanu deweloperskiego w 2026 roku. Sprawdź, co wpływa na cenę, jakie trendy dominują i jak zaplanować budżet. Poznaj realne widełki cenowe i uniknij ukrytych kosztów.";
+const canonical = "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-140m2-stan-deweloperski/";
 const author = 'mgr inż. Marek Nowicki';
+const contextNote = "Przewidywanie kosztów budowy na rok 2026 opiera się na analizie aktualnych trendów rynkowych, prognozach ekspertów oraz danych z końcówki 2024 i 2025 roku, uwzględniając stabilizację cen materiałów i rosnące oczekiwania inwestorów. Te projekcje stanowią solidną bazę do planowania, jednak zawsze należy pamiętać o dynamicznym charakterze rynku budowlanego.";
 
 import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
 export const breadcrumbs = [
   ...pillarBreadcrumbs,
-  { label: 'Koszt 140m2 stan deweloperski', url: '/budowa/koszt-budowy-domu/koszt-materialow-budowlanych/koszt-140m2-stan-dewolperski/' }
+  { label: 'Koszt 140m2 stan deweloperski', url: 'koszt-140m2-stan-deweloperski' }
 ];
+
+const articleDate = '2026-01-27';
+
+const headings = [
+    { text: 'Wprowadzenie: Budowa domu w 2026 – nowe realia, nowe koszty', id: 'wprowadzenie' },
+    { text: 'Co to jest stan deweloperski w 2026 roku? Definicja i zakres', id: 'co-to-stan-deweloperski' },
+    { text: 'Ile kosztuje budowa domu 140m2 do stanu deweloperskiego w 2026 roku? Szacunki i widełki', id: 'ile-kosztuje-140m2-deweloperski' },
+    { text: 'Kalkulator szacunkowych kosztów budowy domu 140m2 (stan deweloperski)', id: 'kalkulator-kosztow' },
+    { text: 'Kluczowe czynniki wpływające na koszt budowy w 2026', id: 'czynniki-wplywajace-na-koszt' },
+    { text: 'Dodatkowe i "ukryte" koszty, o których musisz pamiętać', id: 'ukryte-koszty' },
+    { text: 'Jak zoptymalizować koszty budowy domu 140m2 do stanu deweloperskiego?', id: 'jak-zoptymalizowac' },
+    { text: 'Podsumowanie: Planowanie budżetu na 2026 rok', id: 'podsumowanie' },
+];
+
+const generateToc = (headings) => {
+    return headings.map(heading => `
+        <a href="#${heading.id}" class="block hover:text-blue-800 transition-colors duration-200">
+            ${heading.text}
+        </a>
+    `).join('');
+};
+
+const tocHtml = generateToc(headings);
 ---
 <BaseLayout title={title} description={description} canonical={canonical} type="article">
   <main class="max-w-7xl mx-auto px-4 py-12">
     <Breadcrumbs items={breadcrumbs} />
     <div class="flex flex-col lg:flex-row lg:gap-16">
       <article class="lg:flex-1">
-        <header class="mb-16">
-           <h1 class="text-4xl md:text-6xl font-black text-gray-900 tracking-tight mb-8 leading-[1.1]">Koszt budowy domu 140m2 do stanu deweloperskiego w 2026 – kompleksowa analiza i prognozy</h1>
-           <div class="flex items-center gap-6 text-gray-500 font-medium">
-              <span>Aktualizacja: 2026-01-22</span>
-              <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs uppercase tracking-widest font-bold font-sans">Raport 2026</span>
-           </div>
-                     
-        </header>
-<blockquote class="border-l-4 border-orange-500 pl-4 py-2 bg-stone-50 text-sm text-zinc-600 mb-6 italic text-balance">
-            Dane aktualizowane na podstawie stawek rynkowych i kontraktów z IV kwartału 2025 r. Uwzględniono prognozowany wzrost płacy minimalnej oraz składek ZUS w 2026 r.
-          </blockquote>
-
+        <header class="mb-8">
+          <span class="inline-block py-1 px-3 rounded-full bg-green-100 text-green-600 text-sm font-semibold mb-4">Budownictwo Jutra: 2026</span>
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">{title}</h1>
+          <blockquote class="border-l-4 border-orange-500 pl-4 py-2 bg-stone-50 text-sm text-zinc-600 mb-6 italic text-balance font-sans">{contextNote}</blockquote>
           <div class="flex items-center gap-4 mb-6">
             <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">MN</div>
             <div>
               <p class="font-semibold text-zinc-700">{author}</p>
-              <p class="text-sm text-zinc-500">Specjalista ds. kosztorysowania i zarządzania projektami</p>
+              <p class="text-sm text-zinc-500 font-sans">Specjalista ds. Efektywności Energetycznej i OZE</p>
             </div>
           </div>
-        <div class="bg-slate-50 p-8 rounded-3xl mb-12">
+        </header>
+
+        <div class="bg-slate-50 p-8 rounded-3xl mb-12 border border-slate-100">
            <p class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">W tym artykule:</p>
-           <nav id="toc" class="space-y-2 text-blue-600 font-medium">
-            <ul>
-              <li><a href="#ile-kosztuje-budowa-domu-140m2-do-stanu-deweloperskiego">Ile kosztuje budowa domu 140m2 do stanu deweloperskiego w 2026 roku?</a></li>
-              <li><a href="#rozbicie-kosztow-budowy">Rozbicie kosztów budowy na poszczególne etapy</a></li>
-              <li><a href="#co-oznacza-stan-deweloperski">Co dokładnie oznacza "stan deweloperski" w 2026?</a></li>
-              <li><a href="#kluczowe-czynniki">Kluczowe czynniki wpływające na koszt budowy domu 140m2</a></li>
-              <li><a href="#dodatkowe-koszty">Dodatkowe koszty, o których nie można zapomnieć</a></li>
-              <li><a href="#jak-oszacowac-kosztorys">Jak skutecznie oszacować kosztorys budowy w 2026?</a></li>
-              <li><a href="#czy-warto-budowac">Czy budowa domu 140m2 w 2026 to opłacalna inwestycja?</a></li>
-            </ul>
-           </nav>
+           <nav id="toc" class="space-y-2 text-blue-600 font-medium" set:html={tocHtml}></nav>
         </div>
 
         <div class="article-content">
-           <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-3xl border border-blue-100 my-10">
-              <h2 class="text-3xl font-bold text-gray-900 mb-6">Kluczowe wnioski (Key Takeaways)</h2>
-              <ul class="list-disc pl-6 text-lg text-gray-800 space-y-3">
-                 <li>**Orientacyjny koszt budowy domu 140m2 do stanu deweloperskiego w 2026 roku wynosi od 440 000 zł do 580 000 zł.** Jest to prognoza uwzględniająca stabilizację cen materiałów i robocizny.</li>
-                 <li>**Cena za metr kwadratowy waha się od 3700 zł do 6000 zł**, zależnie od standardu, lokalizacji i technologii budowy.</li>
-                 <li>Kluczowe znaczenie mają **energooszczędne rozwiązania** i **proste bryły budynków**, które pozwalają na optymalizację kosztów zarówno na etapie budowy, jak i późniejszej eksploatacji.</li>
-                 <li>Pamiętaj o **dodatkowych kosztach** takich jak projekt, pozwolenia, przyłącza czy nieprzewidziane wydatki, które mogą zwiększyć budżet o 10-15%.</li>
-              </ul>
-           </div>
+           <h2 id="wprowadzenie" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Wprowadzenie: Budowa domu w 2026 – nowe realia, nowe koszty</h2>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Planujesz budowę własnego domu o powierzchni 140m2 i zastanawiasz się, ile będzie kosztować doprowadzenie go do stanu deweloperskiego w 2026 roku? To jedno z najczęstszych i najważniejszych pytań, które nurtuje przyszłych inwestorów. Rok 2026 przynosi ze sobą nowe trendy i uwarunkowania rynkowe, które mają bezpośredni wpływ na budżet inwestycji.</p>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Po okresie zawirowań, rynek budowlany wchodzi w fazę ostrożnego optymizmu. Mimo stabilizacji cen materiałów i lepszej dostępności ekip, inwestorzy stawiają na racjonalność i efektywność energetyczną. W tym artykule przeprowadzimy Cię przez realia kosztów budowy domu 140m2 do stanu deweloperskiego w 2026 roku, wskazując na kluczowe czynniki, średnie widełki cenowe oraz podpowiadając, jak skutecznie zarządzać budżetem.</p>
 
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Budowa własnego domu to marzenie wielu Polaków, które w 2026 roku nabiera nowego wymiaru. Po okresie zmienności i wyzwań, rynek budowlany wykazuje oznaki stabilizacji, choć wciąż dominują ostrożność i racjonalne podejście do inwestycji. Wzrost znaczenia efektywności energetycznej i optymalizacji kosztów sprawia, że planowanie budżetu jest ważniejsze niż kiedykolwiek. Niniejszy artykuł stanowi kompleksowy przewodnik po kosztach budowy domu o powierzchni 140m2 do stanu deweloperskiego w 2026 roku, oferując prognozy, analizę czynników wpływających na cenę oraz praktyczne wskazówki.</p>
-
-           <h2 id="ile-kosztuje-budowa-domu-140m2-do-stanu-deweloperskiego" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Ile kosztuje budowa domu 140m2 do stanu deweloperskiego w 2026 roku?</h2>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">W 2026 roku koszt budowy domu 140m2 do stanu deweloperskiego będzie oscylował w przedziale **od 440 000 zł do 580 000 zł**. Jest to kwota orientacyjna, która może się różnić w zależności od wielu czynników, takich jak lokalizacja, rodzaj użytych materiałów czy stopień skomplikowania projektu. Prognozy wskazują na utrzymanie się stabilnych cen materiałów budowlanych oraz dostępności ekip wykonawczych, co daje inwestorom większą przewidywalność.</p>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Średni koszt metra kwadratowego budowy do stanu deweloperskiego w 2026 roku kształtuje się w granicach **od 3700 zł do 4500 zł**. W przypadku wyższego standardu, innowacyjnych technologii czy prestiżowej lokalizacji, cena ta może wzrosnąć nawet do 6000 zł/m². Całkowity koszt budowy domu 140m2 (od fundamentów do pełnego wykończenia "pod klucz") może więc wynieść od **518 000 zł do 840 000 zł**.</p>
-
-           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">Co wpływa na różnice w cenach za m²?</h3>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Główne różnice w cenach za metr kwadratowy wynikają z wyboru materiałów (od standardowych po premium), technologii budowy (tradycyjna murowana, szkieletowa, prefabrykowana), a także regionalnych różnic w kosztach robocizny i logistyki. Domy o prostej bryle, bez skomplikowanych detali architektonicznych, zazwyczaj są tańsze w budowie i eksploatacji.</p>
-
-           <h2 id="rozbicie-kosztow-budowy" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Rozbicie kosztów budowy na poszczególne etapy (dom 140m2, prognoza 2026)</h2>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Aby lepiej zrozumieć, jak kształtuje się całkowity koszt budowy, warto spojrzeć na poszczególne etapy inwestycji. Poniższa tabela przedstawia orientacyjne widełki cenowe dla domu o powierzchni 140m2 w 2026 roku:</p>
-
-           <table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-sm my-10">
-              <thead>
-                 <tr>
-                    <th class="bg-gray-100 p-4 font-bold">Rodzaj stanu/etapu</th>
-                    <th class="bg-gray-100 p-4 font-bold">Orientacyjny koszt (140m2) w 2026 [zł]</th>
-                    <th class="bg-gray-100 p-4 font-bold">Co obejmuje</th>
-                 </tr>
-              </thead>
-              <tbody>
-                 <tr>
-                    <td class="p-4 border-b border-gray-50">Stan surowy otwarty (SSO)</td>
-                    <td class="p-4 border-b border-gray-50">245 000 - 275 000</td>
-                    <td class="p-4 border-b border-gray-50">Fundamenty, ściany nośne, stropy, konstrukcja dachu bez pokrycia, kominy.</td>
-                 </tr>
-                 <tr>
-                    <td class="p-4 border-b border-gray-50">Stan surowy zamknięty (SSZ)</td>
-                    <td class="p-4 border-b border-gray-50">260 000 - 300 000</td>
-                    <td class="p-4 border-b border-gray-50">SSO + pokrycie dachu, okna, drzwi zewnętrzne, ścianki działowe.</td>
-                 </tr>
-                 <tr>
-                    <td class="p-4 border-b border-gray-50">Stan deweloperski</td>
-                    <td class="p-4 border-b border-gray-50">440 000 - 580 000</td>
-                    <td class="p-4 border-b border-gray-50">SSZ + elewacja, instalacje wewnętrzne (elektryczna, wod-kan, CO), wylewki, tynki.</td>
-                 </tr>
-                 <tr>
-                    <td class="p-4 border-b border-gray-50">Pod klucz (pełne wykończenie)</td>
-                    <td class="p-4 border-b border-gray-50">490 000 - 690 000</td>
-                    <td class="p-4 border-b border-gray-50">Stan deweloperski + wykończenie podłóg, malowanie, armatura, drzwi wewnętrzne, biały montaż.</td>
-                 </tr>
-              </tbody>
-           </table>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Warto podkreślić, że podane kwoty to wartości szacunkowe i zawsze należy sporządzić indywidualny kosztorys na podstawie konkretnego projektu i wyboru materiałów.</p>
-
-           <h2 id="co-oznacza-stan-deweloperski" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Co dokładnie oznacza "stan deweloperski" w 2026?</h2>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Stan deweloperski to etap, w którym dom jest gotowy do prac wykończeniowych. W 2026 roku definicja ta pozostaje spójna z poprzednimi latami, obejmując zazwyczaj:</p>
-           <ul class="list-disc pl-6 text-lg text-gray-700 space-y-2 mb-6">
-              <li>**Fundamenty i ściany:** Zrealizowane wraz z izolacjami.</li>
-              <li>**Dach:** Kompletny, z orynnowaniem i ociepleniem.</li>
-              <li>**Okna i drzwi zewnętrzne:** Zamontowane, często z pakietem trzyszybowym dla lepszej termoizolacji.</li>
-              <li>**Elewacja:** Z ociepleniem i tynkiem zewnętrznym.</li>
-              <li>**Instalacje:** Rozprowadzone wewnątrz budynku (elektryczna, wodno-kanalizacyjna, centralnego ogrzewania, wentylacyjna).</li>
-              <li>**Wylewki podłogowe:** Gotowe pod położenie posadzki.</li>
-              <li>**Tynki wewnętrzne:** Najczęściej gipsowe lub cementowo-wapienne, przygotowane pod malowanie.</li>
-              <li>**Piec CO:** Często uwzględniony w cenie (np. gazowy, pompa ciepła).</li>
+           <h2 id="co-to-stan-deweloperski" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Co to jest stan deweloperski w 2026 roku? Definicja i zakres</h2>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Stan deweloperski to etap budowy, który stanowi solidną bazę do dalszego, wewnętrznego wykończenia domu. Jego dokładna definicja może różnić się w zależności od dewelopera czy regionu, jednak ogólnie przyjęty standard w 2026 roku obejmuje następujące elementy:</p>
+           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">Co zazwyczaj wchodzi w skład stanu deweloperskiego?</h3>
+           <ul class="list-disc list-inside text-lg text-gray-700 leading-relaxed mb-6 pl-5">
+               <li><strong>Fundamenty:</strong> Wykonane i zaizolowane.</li>
+               <li><strong>Ściany konstrukcyjne:</strong> Zewnętrzne i wewnętrzne, gotowe do położenia tynków.</li>
+               <li><strong>Strop:</strong> Zazwyczaj betonowy.</li>
+               <li><strong>Dach:</strong> Kompletny, z pokryciem (np. dachówką, blachodachówką), orynnowaniem i izolacją.</li>
+               <li><strong>Stolarka okienna i drzwiowa:</strong> Okna (zazwyczaj PCV lub aluminiowe, spełniające normy energetyczne) oraz drzwi zewnętrzne.</li>
+               <li><strong>Elewacja:</strong> Ocieplona, otynkowana i pomalowana.</li>
+               <li><strong>Instalacje wewnętrzne:</strong>
+                   <ul class="list-disc list-inside ml-5">
+                       <li><strong>Instalacja elektryczna:</strong> Rozprowadzona, z gniazdkami i włącznikami (często podstawowe).</li>
+                       <li><strong>Instalacja wodno-kanalizacyjna:</strong> Rozprowadzona, z podejściami pod armaturę.</li>
+                       <li><strong>Instalacja grzewcza:</strong> Zazwyczaj z kotłem (gazowym, pompą ciepła) i rozprowadzonymi grzejnikami lub ogrzewaniem podłogowym.</li>
+                       <li><strong>Wentylacja:</strong> Grawitacyjna lub mechaniczna (rekuperacja coraz częściej w standardzie energooszczędnym).</li>
+                   </ul>
+               </li>
+               <li><strong>Wylewki podłogowe:</strong> Gotowe pod położenie posadzek.</li>
+               <li><strong>Tynki wewnętrzne:</strong> Zazwyczaj gipsowe, maszynowe.</li>
+               <li><strong>Przyłącza:</strong> Doprowadzone do budynku (woda, kanalizacja, prąd, gaz/światłowód).</li>
            </ul>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">**Czego zazwyczaj nie obejmuje stan deweloperski?** Brak w nim zazwyczaj podłóg, malowania ścian, drzwi wewnętrznych, białego montażu (umywalki, toalety), armatury łazienkowej i kuchennej, zabudowy meblowej czy oświetlenia. To właśnie te elementy stanowią kluczową część kosztów wykończenia "pod klucz".</p>
-
-           <div class="bg-amber-50 border-l-4 border-amber-400 p-6 my-8 italic text-gray-800">
-              <p class="font-bold mb-2">Wskazówka Eksperta:</p>
-              <p>Zawsze dokładnie weryfikuj zakres prac oferowanych przez dewelopera lub wykonawcę pod pojęciem "stan deweloperski". Szczegółowa umowa i kosztorys to podstawa, aby uniknąć nieporozumień i dodatkowych kosztów w późniejszym etapie budowy.</p>
+           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">Czego zazwyczaj nie obejmuje stan deweloperski?</h3>
+           <ul class="list-disc list-inside text-lg text-gray-700 leading-relaxed mb-6 pl-5">
+               <li>Wewnętrzne wykończenie: Malowanie ścian, tapetowanie, podłogi (panele, płytki), biały montaż (umywalki, toalety, prysznice), zabudowa kuchni, oświetlenie.</li>
+               <li>Zagospodarowanie terenu: Podjazdy, tarasy, ogrodzenie, ogród.</li>
+           </ul>
+           <div class="expert-tip bg-amber-50 border-l-4 border-amber-400 p-6 my-8 italic text-gray-800">
+               <p>W 2026 roku, ze względu na rosnące wymogi energetyczne i świadomość ekologiczną, coraz częściej w standardzie deweloperskim można spotkać rozwiązania takie jak pompy ciepła, rekuperacja czy nawet instalacje fotowoltaiczne (jako opcja lub w droższym pakiecie). Warto to precyzyjnie ustalić z wykonawcą.</p>
            </div>
 
-           <h2 id="kluczowe-czynniki" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Kluczowe czynniki wpływające na koszt budowy domu 140m2</h2>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Ostateczny budżet budowy domu 140m2 do stanu deweloperskiego jest wynikiem interakcji wielu elementów. Zrozumienie ich pozwoli Ci lepiej zarządzać inwestycją.</p>
+           <h2 id="ile-kosztuje-140m2-deweloperski" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Ile kosztuje budowa domu 140m2 do stanu deweloperskiego w 2026 roku? Szacunki i widełki</h2>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Oszacowanie kosztów budowy domu 140m2 do stanu deweloperskiego w 2026 roku wymaga uwzględnienia wielu zmiennych. Analizując prognozy rynkowe i dane z ostatnich lat, możemy przedstawić orientacyjne widełki cenowe.</p>
+           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">Średni koszt za metr kwadratowy</h3>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">W 2026 roku, średni koszt budowy metra kwadratowego do stanu deweloperskiego dla domu o powierzchni 140m2 będzie wahał się w przedziale od <strong>4500 zł do 6500 zł za m2</strong>. Należy pamiętać, że jest to wartość orientacyjna, silnie zależna od standardu materiałów i technologii.</p>
+           <ul class="list-disc list-inside text-lg text-gray-700 leading-relaxed mb-6 pl-5">
+               <li><strong>Standard ekonomiczny:</strong> Ok. 4500 - 5200 zł/m2</li>
+               <li><strong>Standard średni:</strong> Ok. 5200 - 6000 zł/m2</li>
+               <li><strong>Standard podwyższony:</strong> Ok. 6000 - 6500+ zł/m2</li>
+           </ul>
+           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">Całkowity koszt budowy domu 140m2 do stanu deweloperskiego w 2026</h3>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Biorąc pod uwagę powyższe widełki, całkowity koszt budowy domu 140m2 do stanu deweloperskiego w 2026 roku wyniesie:</p>
+           <ul class="list-disc list-inside text-lg text-gray-700 leading-relaxed mb-6 pl-5">
+               <li><strong>Standard ekonomiczny:</strong> od 630 000 zł do 728 000 zł</li>
+               <li><strong>Standard średni:</strong> od 728 000 zł do 840 000 zł</li>
+               <li><strong>Standard podwyższony:</strong> od 840 000 zł do 910 000 zł i więcej</li>
+           </ul>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Dla porównania, w 2024 roku, dane z rynku wskazywały na koszt stanu deweloperskiego dla 140m2 w okolicach 410 000 zł, co podkreśla dynamiczny wzrost cen. Jednakże, obecne prognozy na 2026, bazujące na stabilizacji cen materiałów, lecz jednocześnie rosnących oczekiwaniach co do standardu energetycznego i wykończenia, zbliżają się do kwot rzędu 4000-6000 zł/m2 dla standardu deweloperskiego dla różnych metraży. Nasze widełki są więc urealnioną projekcją dla specyficznego metrażu 140m2 w 2026 roku.</p>
 
-           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">Lokalizacja działki i warunki gruntowe</h3>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Ceny robocizny i transportu materiałów mogą się znacznie różnić w zależności od regionu Polski. Działka z trudnymi warunkami gruntowymi (np. wysoki poziom wód gruntowych, grunty wymagające wzmocnienia) generuje dodatkowe koszty fundamentów i prac ziemnych, które mogą sięgać od 25 000 zł do nawet 45 000 zł.</p>
-
-           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">Wybór technologii i materiałów budowlanych</h3>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Decyzja o technologii budowy ma fundamentalny wpływ na koszt i czas realizacji. W 2026 roku wciąż popularne są domy murowane, ale rośnie zainteresowanie prefabrykatami i konstrukcjami szkieletowymi.</p>
-
-           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
-              <div class="bg-white p-6 rounded-lg shadow-sm border border-blue-100">
-                 <h4 class="text-xl font-bold text-blue-700 mb-3">Dom Murowany</h4>
-                 <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                    <li>**Zalety:** Większa bezwładność cieplna, solidność, lepsza akustyka, trwałość.</li>
-                    <li>**Wady:** Dłuższy czas budowy, nieco wyższy koszt początkowy, "mokre" prace wymagają przerw technologicznych.</li>
-                    <li>**Koszt (orientacyjny):** Górna granica widełek, tradycyjnie droższy w robociźnie.</li>
-                 </ul>
-              </div>
-              <div class="bg-white p-6 rounded-lg shadow-sm border border-green-100">
-                 <h4 class="text-xl font-bold text-green-700 mb-3">Dom Szkieletowy / Prefabrykowany</h4>
-                 <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                    <li>**Zalety:** Szybsza budowa (nawet 2-3 miesiące do stanu zaawansowanego), lżejsza konstrukcja, często 10-15% taniej przy tym samym standardzie.</li>
-                    <li>**Wady:** Mniejsza bezwładność cieplna (wymaga dobrej izolacji), niższa akustyka bez dodatkowych rozwiązań.</li>
-                    <li>**Koszt (orientacyjny):** Dolna granica widełek, oszczędności na robociźnie i czasie.</li>
-                 </ul>
-              </div>
+           <div class="key-takeaways bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-3xl border border-blue-100 my-10">
+               <strong class="block text-2xl font-bold text-gray-900 mb-4">Kluczowe wnioski dotyczące kosztów w 2026:</strong>
+               <ul class="list-disc list-inside text-lg text-gray-700 leading-relaxed pl-5">
+                   <li>Rynek budowlany w 2026 roku cechuje się stabilizacją cen materiałów, ale rosnącymi kosztami robocizny.</li>
+                   <li>Wymagania dotyczące efektywności energetycznej (norma WT2021) są już standardem, co wpływa na ceny materiałów izolacyjnych i systemów grzewczych.</li>
+                   <li>Wzrost zainteresowania prefabrykowanymi i energooszczędnymi rozwiązaniami może wpływać na dostępność i ceny tradycyjnych technologii.</li>
+               </ul>
            </div>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Wybór materiałów wykończeniowych na etapie deweloperskim (np. jakość okien, rodzaj ocieplenia, klasa tynków) również ma ogromne znaczenie dla finalnej kwoty.</p>
 
-           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">Złożoność projektu architektonicznego</h3>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Proste bryły z dwuspadowym dachem są z reguły tańsze w budowie niż skomplikowane projekty z wieloma załamaniami, wykuszami czy lukarnami. Każdy dodatkowy element architektoniczny to więcej pracy, więcej materiałów i wyższe ryzyko błędów.</p>
+           <h2 id="kalkulator-kosztow" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Kalkulator szacunkowych kosztów budowy domu 140m2 (stan deweloperski)</h2>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Użyj poniższego kalkulatora, aby uzyskać szybkie, orientacyjne oszacowanie kosztów budowy Twojego domu 140m2 do stanu deweloperskiego w 2026 roku. Pamiętaj, że jest to narzędzie pomocnicze, a ostateczny koszt zawsze powinien zostać potwierdzony profesjonalnym kosztorysem.</p>
 
-           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">Koszty robocizny</h3>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Choć w 2025/2026 roku przewiduje się stabilizację, to koszty pracy kwalifikowanych ekip budowlanych nadal stanowią znaczący element budżetu. Warto porównać oferty kilku wykonawców i zwrócić uwagę na ich doświadczenie oraz referencje.</p>
+           <div class="bg-white p-8 rounded-lg shadow-xl border border-gray-200 mb-12">
+               <h3 class="text-2xl font-semibold text-gray-800 mb-6">Oszacuj koszt budowy (stan deweloperski, 140m2)</h3>
+               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                   <div>
+                       <label for="metraz" class="block text-gray-700 text-base font-semibold mb-2">Powierzchnia użytkowa (m²):</label>
+                       <input type="number" id="metraz" value="140" readonly class="w-full p-3 border border-gray-300 rounded-md bg-gray-100 text-gray-600 font-medium">
+                   </div>
+                   <div>
+                       <label for="standard" class="block text-gray-700 text-base font-semibold mb-2">Wybierz standard budowy:</label>
+                       <select id="standard" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-gray-800">
+                           <option value="ekonomiczny">Ekonomiczny (4500 - 5200 zł/m²)</option>
+                           <option value="sredni" selected>Średni (5200 - 6000 zł/m²)</option>
+                           <option value="podwyzszony">Podwyższony (6000 - 6500 zł/m²)</option>
+                       </select>
+                   </div>
+                   <div class="md:col-span-2">
+                       <label for="lokalizacja" class="block text-gray-700 text-base font-semibold mb-2">Wpływ lokalizacji (np. duże miasto/wieś):</label>
+                       <select id="lokalizacja" class="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-gray-800">
+                           <option value="niski">Niski (+/- 0%)</option>
+                           <option value="sredni">Średni (+/- 5%)</option>
+                           <option value="wysoki">Wysoki (+/- 10%)</option>
+                       </select>
+                   </div>
+               </div>
+               <button onclick="calculateCost()" class="mt-8 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition-colors duration-300 ease-in-out">
+                   Oblicz szacunkowy koszt
+               </button>
+               <div class="mt-8 p-6 bg-blue-50 rounded-md border border-blue-100">
+                   <p class="text-lg font-bold text-blue-800 mb-2">Szacunkowy koszt budowy (stan deweloperski):</p>
+                   <p id="wynikKosztu" class="text-3xl font-extrabold text-blue-900">0 zł</p>
+                   <p class="text-sm text-blue-700 mt-4">Powyższa kwota jest jedynie orientacyjnym szacunkiem i nie stanowi oferty handlowej. Rzeczywisty koszt może się różnić. Pamiętaj o uwzględnieniu dodatkowych opłat i indywidualnych wycen.</p>
+               </div>
+           </div>
 
-           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">Standard energetyczny domu</h3>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Wzrastające koszty energii sprawiają, że inwestycja w wyższy standard energetyczny (lepsze ocieplenie, rekuperacja, pompy ciepła) jest coraz bardziej opłacalna w dłuższej perspektywie. Choć początkowo podnosi to koszt budowy, późniejsze oszczędności na rachunkach mogą być znaczące. Domy energooszczędne i pasywne to trend dominujący w 2026 roku.</p>
+           <script is:inline>
+               function calculateCost() {
+                   const metraz = 140; // Fixed for this article
+                   const standard = document.getElementById('standard').value;
+                   const lokalizacja = document.getElementById('lokalizacja').value;
+                   let minPricePerSqM, maxPricePerSqM;
 
-           <h2 id="dodatkowe-koszty" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Dodatkowe koszty, o których nie można zapomnieć</h2>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Budowa domu to nie tylko "mury i dach". Istnieje szereg ukrytych lub często pomijanych wydatków, które mogą znacząco nadszarpnąć budżet.</p>
-           <ul class="list-disc pl-6 text-lg text-gray-700 space-y-2 mb-6">
-              <li>**Projekt budowlany:** Od kilku do kilkunastu tysięcy złotych, zależnie od złożoności i indywidualnych modyfikacji.</li>
-              <li>**Pozwolenia i opłaty administracyjne:** Licencje, geodezja, dziennik budowy, nadzór.</li>
-              <li>**Przyłącza:** Wodno-kanalizacyjne, elektryczne, gazowe – ich koszt zależy od odległości od sieci i wymagań lokalnych.</li>
-              <li>**Urządzenie placu budowy:** Tymczasowe ogrodzenie, toaleta, kontenery na odpady.</li>
-              <li>**Zagospodarowanie terenu:** Dojazd do budowy, niwelacja terenu po zakończeniu prac.</li>
-              <li>**Nieprzewidziane wydatki:** Zawsze warto mieć bufor finansowy na poziomie 10-15% całkowitego budżetu na ewentualne problemy czy zmiany.</li>
+                   switch (standard) {
+                       case 'ekonomiczny':
+                           minPricePerSqM = 4500;
+                           maxPricePerSqM = 5200;
+                           break;
+                       case 'sredni':
+                           minPricePerSqM = 5200;
+                           maxPricePerSqM = 6000;
+                           break;
+                       case 'podwyzszony':
+                           minPricePerSqM = 6000;
+                           maxPricePerSqM = 6500;
+                           break;
+                       default:
+                           minPricePerSqM = 5200;
+                           maxPricePerSqM = 6000; // Default to średni
+                   }
+
+                   let locationFactor = 1;
+                   switch (lokalizacja) {
+                       case 'niski':
+                           locationFactor = 1;
+                           break;
+                       case 'sredni':
+                           locationFactor = 1.05; // +/- 5%
+                           break;
+                       case 'wysoki':
+                           locationFactor = 1.10; // +/- 10%
+                           break;
+                   }
+
+                   const minCost = Math.round(metraz * minPricePerSqM * locationFactor);
+                   const maxCost = Math.round(metraz * maxPricePerSqM * locationFactor);
+
+                   document.getElementById('wynikKosztu').innerText = `${minCost.toLocaleString('pl-PL')} zł - ${maxCost.toLocaleString('pl-PL')} zł`;
+               }
+               // Initial calculation on page load
+               document.addEventListener('DOMContentLoaded', calculateCost);
+           </script>
+
+           <h2 id="czynniki-wplywajace-na-koszt" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Kluczowe czynniki wpływające na koszt budowy w 2026</h2>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Koszt budowy domu 140m2 do stanu deweloperskiego w 2026 roku jest wypadkową wielu czynników. Zrozumienie ich pozwoli Ci lepiej zaplanować budżet i uniknąć nieprzyjemnych niespodzianek.</p>
+           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">1. Lokalizacja działki</h3>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Ceny działek i usług budowlanych różnią się znacząco w zależności od regionu Polski. W dużych aglomeracjach miejskich (Warszawa, Kraków, Wrocław, Trójmiasto) koszty robocizny i transportu materiałów mogą być o 10-20% wyższe niż w mniejszych miejscowościach czy na wsi. Dostępność ekip budowlanych również odgrywa tu rolę.</p>
+           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">2. Wybór technologii budowy i materiałów</h3>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Decyzja między domem murowanym a szkieletowym (w tym prefabrykowanym) ma istotny wpływ na koszty i czas budowy. Domy szkieletowe często są 10-15% tańsze i szybsze w realizacji do stanu deweloperskiego. Wybór konkretnych materiałów (np. rodzaj pustaków, izolacji, dachówki, stolarki okiennej) również generuje znaczące różnice cenowe.</p>
+           <ul class="list-disc list-inside text-lg text-gray-700 leading-relaxed mb-6 pl-5">
+               <li><strong>Murowany:</strong> Większa bezwładność cieplna, solidność, lepsza akustyka, często wyższy koszt początkowy.</li>
+               <li><strong>Szkieletowy/Prefabrykowany:</strong> Szybsza budowa (nawet 2-3 miesiące do stanu zaawansowanego), lżejsza konstrukcja, często bardziej przewidywalne koszty. Coraz popularniejszy trend w 2026 roku, zgodnie z analizami rynku.</li>
+           </ul>
+           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">3. Stopień skomplikowania projektu</h3>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Prosta bryła budynku (np. "nowoczesna stodoła") z dwuspadowym dachem będzie znacznie tańsza w budowie niż dom z wieloma wykuszami, lukarnami, skomplikowanym dachem wielospadowym czy licznymi przeszkleniami. Każdy dodatkowy element architektoniczny to większy nakład pracy i droższe materiały.</p>
+           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">4. Standard energetyczny i zastosowane instalacje</h3>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">W 2026 roku domy muszą spełniać wysokie normy energetyczne (WT2021). To oznacza konieczność stosowania lepszej izolacji, efektywnej stolarki oraz nowoczesnych systemów grzewczych (pompy ciepła, rekuperacja, wentylacja mechaniczna). Inwestycja w te technologie na etapie stanu deweloperskiego jest początkowo droższa, ale przynosi oszczędności w eksploatacji.</p>
+           <h3 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">5. Wybór ekipy budowlanej</h3>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Różnice w cenach robocizny między ekipami mogą być znaczne. Wybór tańszej oferty nie zawsze oznacza oszczędności – niska jakość wykonania może skutkować drogimi poprawkami. W 2026 roku, dzięki stabilizacji na rynku, dostępność doświadczonych ekip budowlanych jest lepsza, co pozwala na bardziej konkurencyjne negocjacje.</p>
+
+           <h2 id="ukryte-koszty" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Dodatkowe i "ukryte" koszty, o których musisz pamiętać</h2>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Poza samymi kosztami budowy, istnieje szereg dodatkowych wydatków, które mogą znacząco podnieść całkowity budżet inwestycji. Często są one pomijane w początkowych szacunkach, prowadząc do niedoszacowania.</p>
+           <ul class="list-disc list-inside text-lg text-gray-700 leading-relaxed mb-6 pl-5">
+               <li><strong>Projekt budowlany:</strong> Gotowy projekt to koszt od kilku do kilkunastu tysięcy złotych. Adaptacja projektu do działki i lokalnych warunków to kolejny wydatek (ok. 2000-5000 zł).</li>
+               <li><strong>Pozwolenia i opłaty administracyjne:</strong> Koszty związane z uzyskaniem pozwolenia na budowę, dziennika budowy, nadzoru kierownika budowy, geodety.</li>
+               <li><strong>Przyłącza mediów:</strong> Doprowadzenie wody, kanalizacji, prądu i gazu do działki to często dziesiątki tysięcy złotych. Koszt zależy od odległości od sieci i wymagań lokalnych dostawców.</li>
+               <li><strong>Badania geologiczne gruntu:</strong> Niezbędne do prawidłowego zaprojektowania fundamentów, koszt kilkuset do kilku tysięcy złotych.</li>
+               <li><strong>Ogrodzenie i zagospodarowanie terenu:</strong> Nawet w stanie deweloperskim, teren wokół domu może wymagać utwardzenia, wyrównania, wykonania podjazdów czy wstępnego ogrodzenia.</li>
+               <li><strong>Nieprzewidziane wydatki:</strong> Zawsze zaleca się posiadanie rezerwy finansowej (10-15% budżetu) na nieprzewidziane sytuacje, zmiany w projekcie lub wzrost cen.</li>
+               <li><strong>Podatek VAT:</strong> Pamiętaj, że ceny materiałów i usług są podawane z VAT. W zależności od zakupu materiałów przez firmę czy osobę prywatną, VAT może być różny.</li>
            </ul>
 
-           <h2 id="jak-oszacowac-kosztorys" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Jak skutecznie oszacować kosztorys budowy w 2026?</h2>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">Dokładne oszacowanie kosztów jest kluczem do sukcesu inwestycji. W 2026 roku, mimo stabilizacji, precyzja jest nadal nieoceniona.</p>
-           <ul class="list-disc pl-6 text-lg text-gray-700 space-y-2 mb-6">
-              <li>**Szczegółowy projekt:** Im dokładniejszy projekt architektoniczny i konstrukcyjny, tym łatwiej o precyzyjny kosztorys.</li>
-              <li>**Wiele ofert:** Zbieraj oferty od kilku różnych ekip wykonawczych i dostawców materiałów. Porównuj nie tylko cenę, ale i zakres usług oraz jakość.</li>
-              <li>**Zrozumienie umów:** Dokładnie czytaj umowy z wykonawcami, zwracając uwagę na harmonogram płatności, terminy i zakres prac.</li>
-              <li>**Konsultacja z inspektorem nadzoru:** Niezależny inspektor może pomóc w weryfikacji kosztorysu i jakości wykonania prac.</li>
+           <h2 id="jak-zoptymalizowac" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Jak zoptymalizować koszty budowy domu 140m2 do stanu deweloperskiego?</h2>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Skuteczne zarządzanie budżetem to klucz do sukcesu. Oto kilka porad, jak możesz obniżyć koszty budowy, nie rezygnując z jakości.</p>
+           <ul class="list-disc list-inside text-lg text-gray-700 leading-relaxed mb-6 pl-5">
+               <li><strong>Prosty projekt:</strong> Wybieraj projekty o prostej bryle i dwuspadowym dachu. Unikaj skomplikowanych form architektonicznych, które generują wyższe koszty.</li>
+               <li><strong>Wybór technologii:</strong> Rozważ budowę w technologii szkieletowej lub prefabrykowanej, która często oferuje lepszą przewidywalność kosztów i szybszy czas realizacji.</li>
+               <li><strong>Negocjacje z wykonawcami:</strong> Zbieraj oferty od kilku ekip, porównuj je i negocjuj ceny. Pamiętaj jednak, że najniższa cena nie zawsze jest najlepszym wyborem.</li>
+               <li><strong>Zakup materiałów:</strong> Monitoruj promocje i wyprzedaże u dostawców materiałów budowlanych. Kupowanie materiałów w większych ilościach bezpośrednio od producentów może przynieść oszczędności.</li>
+               <li><strong>Ograniczenie zmian w projekcie:</strong> Każda zmiana w trakcie budowy generuje dodatkowe koszty i opóźnienia. Starannie przemyśl projekt przed rozpoczęciem prac.</li>
+               <li><strong>Nadzór nad budową:</strong> Regularny nadzór kierownika budowy oraz, jeśli posiadasz wiedzę, osobiste monitorowanie postępów prac pomoże uniknąć błędów i niepotrzebnych wydatków.</li>
            </ul>
 
-           <div class="bg-amber-50 border-l-4 border-amber-400 p-6 my-8 italic text-gray-800">
-              <p class="font-bold mb-2">Wskazówka Eksperta:</p>
-              <p>Nie oszczędzaj na etapie planowania i tworzenia kosztorysu. Błędy popełnione na początku są najdroższe do naprawienia. Zainwestuj w profesjonalne doradztwo i rzetelne wyliczenia, aby spać spokojnie podczas budowy.</p>
-           </div>
+           <h2 id="podsumowanie" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Podsumowanie: Planowanie budżetu na 2026 rok</h2>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Budowa domu 140m2 do stanu deweloperskiego w 2026 roku to znacząca inwestycja, której koszt oscylować będzie w przedziale <strong>od 630 000 zł do ponad 910 000 zł</strong>, w zależności od standardu i lokalizacji. Kluczem do sukcesu jest dokładne planowanie, szczegółowy kosztorys oraz uwzględnienie wszystkich, zarówno jawnych, jak i potencjalnie ukrytych kosztów.</p>
+           <p class="text-lg text-gray-700 leading-relaxed mb-6">Pamiętaj, aby zawsze doliczyć rezerwę finansową i regularnie monitorować postępy prac oraz wydatki. Właściwe przygotowanie pozwoli Ci zrealizować marzenie o własnym domu, minimalizując stres związany z finansami.</p>
 
-           <h2 id="czy-warto-budowac" class="text-3xl font-bold text-gray-900 mt-12 mb-6 border-l-4 border-blue-600 pl-4">Czy budowa domu 140m2 w 2026 to opłacalna inwestycja?</h2>
-           <p class="text-lg text-gray-700 leading-relaxed mb-6">W 2026 roku budowa domu 140m2 do stanu deweloperskiego pozostaje atrakcyjną opcją dla wielu rodzin. Mimo że koszty są znaczące, stabilizacja rynku budowlanego oraz rosnąca świadomość w zakresie efektywności energetycznej pozwalają na bardziej racjonalne planowanie i realizację inwestycji. Kluczowe jest świadome podejście do wyboru technologii, materiałów i wykonawców, a także uwzględnienie wszystkich potencjalnych kosztów. Dzięki temu Twój dom o powierzchni 140m2 może stać się nie tylko wymarzonym miejscem do życia, ale i wartościową inwestycją na lata.</p>
         </div>
 
         <section class="faq mt-20 border-t pt-16">
            <h2 class="text-4xl font-bold mb-10 text-center">Najczęstsze pytania inwestorów</h2>
            <div class="grid gap-6">
-              <div class="bg-white p-6 rounded-lg shadow-sm">
-                 <h3 class="text-xl font-semibold text-gray-900 mb-3">Ile wynosi średni koszt budowy domu 140m2 do stanu deweloperskiego w 2026 roku?</h3>
-                 <p class="text-lg text-gray-700">Średni koszt budowy domu 140m2 do stanu deweloperskiego w 2026 roku szacuje się na **440 000 zł do 580 000 zł**. Wartości te mogą się różnić w zależności od standardu, lokalizacji i wybranych technologii.</p>
+              <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                  <h3 class="text-xl font-semibold text-gray-800 mb-3">Czy stan deweloperski to to samo co "pod klucz"?</h3>
+                  <p class="text-lg text-gray-700 leading-relaxed">Nie. Stan deweloperski to etap, w którym dom jest gotowy do prac wykończeniowych wewnętrznych (np. malowanie, układanie podłóg, montaż armatury). Stan "pod klucz" oznacza dom całkowicie gotowy do zamieszkania, wraz z pełnym wykończeniem wnętrz i często zagospodarowaniem terenu.</p>
               </div>
-              <div class="bg-white p-6 rounded-lg shadow-sm">
-                 <h3 class="text-xl font-semibold text-gray-900 mb-3">Co obejmuje stan deweloperski?</h3>
-                 <p class="text-lg text-gray-700">Stan deweloperski w 2026 roku zazwyczaj obejmuje fundamenty, ściany, dach z pokryciem, okna i drzwi zewnętrzne, elewację z ociepleniem, rozprowadzone instalacje wewnętrzne (elektryczna, wod-kan, CO), wylewki podłogowe oraz tynki wewnętrzne. Nie zawiera natomiast wykończenia podłóg, malowania, drzwi wewnętrznych, białego montażu czy armatury.</p>
+              <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                  <h3 class="text-xl font-semibold text-gray-800 mb-3">Jakie są typowe etapy budowy do stanu deweloperskiego?</h3>
+                  <p class="text-lg text-gray-700 leading-relaxed">Główne etapy to: stan zero (roboty ziemne, fundamenty), stan surowy otwarty (ściany nośne, stropy, konstrukcja dachu bez pokrycia), stan surowy zamknięty (pokrycie dachu, okna, drzwi zewnętrzne) i wreszcie stan deweloperski (ocieplenie elewacji, tynki wewnętrzne, wylewki, instalacje).</p>
               </div>
-              <div class="bg-white p-6 rounded-lg shadow-sm">
-                 <h3 class="text-xl font-semibold text-gray-900 mb-3">Jakie dodatkowe koszty należy uwzględnić przy budowie domu?</h3>
-                 <p class="text-lg text-gray-700">Oprócz kosztów samego stanu deweloperskiego, należy pamiętać o wydatkach na projekt budowlany (kilka-kilkanaście tys. zł), pozwolenia i opłaty administracyjne, przyłącza do mediów, urządzenie placu budowy oraz bufor 10-15% na nieprzewidziane wydatki.</p>
+              <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                  <h3 class="text-xl font-semibold text-gray-800 mb-3">Czy mogę samodzielnie wpływać na koszt stanu deweloperskiego?</h3>
+                  <p class="text-lg text-gray-700 leading-relaxed">Tak, masz duży wpływ. Wybór projektu, technologii budowy, standardu materiałów, a także staranne negocjacje z wykonawcami i kontrola nad budżetem pozwalają na znaczną optymalizację kosztów. Prace gospodarcze (we własnym zakresie) również mogą obniżyć koszt robocizny.</p>
               </div>
-              <div class="bg-white p-6 rounded-lg shadow-sm">
-                 <h3 class="text-xl font-semibold text-gray-900 mb-3">Czy budowa domu szkieletowego jest tańsza niż murowanego?</h3>
-                 <p class="text-lg text-gray-700">W 2026 roku domy szkieletowe lub prefabrykowane często okazują się 10-15% tańsze w budowie niż tradycyjne domy murowane, głównie ze względu na krótszy czas realizacji i mniejsze koszty robocizny. Charakteryzują się również szybszym tempem prac.</p>
+              <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                  <h3 class="text-xl font-semibold text-gray-800 mb-3">Jakie są prognozy cen materiałów budowlanych na 2026 rok?</h3>
+                  <p class="text-lg text-gray-700 leading-relaxed">Prognozy na 2026 rok wskazują na ogólną stabilizację cen większości materiałów budowlanych, choć możliwe są lokalne i sezonowe wahania. Wzrost kosztów może dotyczyć innowacyjnych technologii energooszczędnych oraz niektórych surowców, ale nie przewiduje się gwałtownych skoków cenowych, jak w poprzednich latach.</p>
               </div>
            </div>
         </section>
@@ -223,98 +282,47 @@ export const breadcrumbs = [
   <script type="application/ld+json" is:inline>
     {
       "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Article",
-          "headline": "Koszt budowy domu 140m2 do stanu deweloperskiego w 2026 – kompleksowa analiza i prognozy",
-          "description": "Planujesz budowę domu 140m2? Sprawdź aktualny koszt doprowadzenia go do stanu deweloperskiego w 2026 roku. Analiza cen, czynników wpływających na inwestycję oraz praktyczne wskazówki na domjakosci.pl.",
-          "image": "https://domjakosci.pl/images/og-image-budowa-domu-140m2-deweloperski-2026.jpg",
-          "datePublished": "2026-01-22T08:00:00+01:00",
-          "dateModified": "2026-01-22T08:00:00+01:00",
-          "author": {
-            "@type": "Organization",
-            "name": "domjakosci.pl",
-            "url": "https://domjakosci.pl"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "domjakosci.pl",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://domjakosci.pl/images/logo-domjakosci.png"
-            }
-          },
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-140m2-stan-dewolperski-w-2026/"
-          }
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Strona główna",
-              "item": "https://domjakosci.pl/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Budowa domu",
-              "item": "https://domjakosci.pl/budowa/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Koszt budowy domu",
-              "item": "https://domjakosci.pl/budowa/koszt-budowy-domu/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 4,
-              "name": "Koszt budowy domu 140m2 stan deweloperski w 2026",
-              "item": "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-140m2-stan-dewolperski-w-2026/"
-            }
-          ]
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Ile wynosi średni koszt budowy domu 140m2 do stanu deweloperskiego w 2026 roku?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Średni koszt budowy domu 140m2 do stanu deweloperskiego w 2026 roku szacuje się na 440 000 zł do 580 000 zł. Wartości te mogą się różnić w zależności od standardu, lokalizacji i wybranych technologii."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Co obejmuje stan deweloperski?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Stan deweloperski w 2026 roku zazwyczaj obejmuje fundamenty, ściany, dach z pokryciem, okna i drzwi zewnętrzne, elewację z ociepleniem, rozprowadzone instalacje wewnętrzne (elektryczna, wod-kan, CO), wylewki podłogowe oraz tynki wewnętrzne. Nie zawiera natomiast wykończenia podłóg, malowania, drzwi wewnętrznych, białego montażu czy armatury."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Jakie dodatkowe koszty należy uwzględnić przy budowie domu?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Oprócz kosztów samego stanu deweloperskiego, należy pamiętać o wydatkach na projekt budowlany (kilka-kilkanaście tys. zł), pozwolenia i opłaty administracyjne, przyłącza do mediów, urządzenie placu budowy oraz bufor 10-15% na nieprzewidziane wydatki."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Czy budowa domu szkieletowego jest tańsza niż murowanego?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "W 2026 roku domy szkieletowe lub prefabrykowane często okazują się 10-15% tańsze w budowie niż tradycyjne domy murowane, głównie ze względu na krótszy czas realizacji i mniejsze koszty robocizny. Charakteryzują się również szybszym tempem prac."
-              }
-            }
-          ]
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-140m2-stan-deweloperski-w-2026/"
+      },
+      "headline": "Koszt budowy domu 140m2 stan deweloperski w 2026 – Kompleksowy Przewodnik",
+      "description": "Oszacuj koszt budowy domu 140m2 do stanu deweloperskiego w 2026 roku. Sprawdź, co wpływa na cenę, jakie trendy dominują i jak zaplanować budżet. Poznaj realne widełki cenowe i uniknij ukrytych kosztów.",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://domjakosci.pl/images/budowa-domu-140m2-deweloperski-2026.webp",
+        "width": 1200,
+        "height": 675,
+        "alt": "Wizualizacja nowoczesnego domu jednorodzinnego o powierzchni 140m2 w stanie deweloperskim na tle wschodzącego słońca, symbolizująca planowanie budowy na rok 2026."
+      },
+      "author": {
+        "@type": "Person",
+        "name": "mgr inż. Marek Nowicki",
+        "url": "https://domjakosci.pl/autor/marek-nowicki"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Dom Jakości",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://domjakosci.pl/logo.webp",
+          "width": 600,
+          "height": 60
         }
+      },
+      "datePublished": "2026-01-27T08:00:00+01:00",
+      "dateModified": "2026-01-27T08:00:00+01:00",
+      "keywords": ["koszt budowy domu 140m2", "stan deweloperski 2026", "budowa domu 2026", "ceny budowy domu", "ile kosztuje dom 140m2", "kosztorys budowy 140m2", "dom energooszczędny 2026", "budżet budowy domu"],
+      "articleSection": [
+        "Wprowadzenie: Budowa domu w 2026 – nowe realia, nowe koszty",
+        "Co to jest stan deweloperski w 2026 roku? Definicja i zakres",
+        "Ile kosztuje budowa domu 140m2 do stanu deweloperskiego w 2026 roku? Szacunki i widełki",
+        "Kalkulator szacunkowych kosztów budowy domu 140m2 (stan deweloperski)",
+        "Kluczowe czynniki wpływające na koszt budowy w 2026",
+        "Dodatkowe i 'ukryte' koszty, o których musisz pamiętać",
+        "Jak zoptymalizować koszty budowy domu 140m2 do stanu deweloperskiego?",
+        "Podsumowanie: Planowanie budżetu na 2026 rok"
       ]
     }
   </script>

@@ -1,0 +1,612 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Koszt budowy domu energooszczędnego w 2026 roku: kompleksowy przewodnik";
+const description = "Zastanawiasz się, ile kosztuje dom energooszczędny w 2026 roku? Sprawdź aktualne ceny budowy, wymagania WT2026 i dowiedz się, jak optymalizować wydatki na każdym etapie inwestycji.";
+const canonical = "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-energooszczednego/";
+const author = 'mgr inż. Marek Nowicki';
+const contextNote = "Dane zawarte w artykule opierają się na analizie trendów rynkowych oraz oficjalnych prognozach na rok 2026, uwzględniając najnowsze standardy WT2026. Szczególną uwagę zwrócono na dynamicznie zmieniające się koszty materiałów i robocizny w segmencie budownictwa niskoenergetycznego.";
+const badgeText = "Raport Rynkowy 2026";
+const badgeClass = "bg-green-100 text-green-700";
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Koszt budowy domu energooszczędnego', url: 'https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-energooszczednego/' }
+];
+
+const datePublished = "2026-01-27T12:00:00+01:00";
+const dateFormatted = "27 stycznia 2026";
+
+const faqItems = [
+  {
+    question: "Czy budowa domu energooszczędnego w 2026 roku jest droższa niż tradycyjnego?",
+    answer: "Tak, początkowe koszty budowy domu energooszczędnego w 2026 roku są zazwyczaj o 10-25% wyższe niż domu tradycyjnego, głównie ze względu na droższe materiały izolacyjne, zaawansowane instalacje (np. pompa ciepła, rekuperacja) i bardziej rygorystyczne wykonawstwo. Jednakże, inwestycja ta zwraca się w dłuższym okresie poprzez znacznie niższe rachunki za ogrzewanie, często redukując je o 50-70%, co w skali 10-15 lat pozwala na realne oszczędności rzędu kilkudziesięciu tysięcy złotych."
+  },
+  {
+    question: "Jakie technologie są kluczowe dla osiągnięcia standardu energooszczędnego WT2026?",
+    answer: "Kluczowe technologie dla standardu WT2026 to przede wszystkim zaawansowana izolacja termiczna ścian (minimum 20 cm) i dachu (minimum 30 cm), szczelne okna trzyszybowe o współczynniku Uw ≤ 0,9 W/m²K, system wentylacji mechanicznej z odzyskiem ciepła (rekuperacja) oraz odnawialne źródła energii, takie jak pompy ciepła i instalacje fotowoltaiczne. Systemy te zapewniają zużycie energii pierwotnej (EP) poniżej 70 kWh/(m²rok)."
+  },
+  {
+    question: "Ile mogę zaoszczędzić na rachunkach, mieszkając w domu energooszczędnym?",
+    answer: "W dobrze zaprojektowanym i wykonanym domu energooszczędnym, rachunki za ogrzewanie i ciepłą wodę mogą być niższe o 60-80% w porównaniu do domów budowanych w starych standardach. Przykładowo, dom o powierzchni 100 m² z pompą ciepła i fotowoltaiką może generować roczne koszty ogrzewania i CWU na poziomie zaledwie 1000-1500 zł, podczas gdy dla domu tradycyjnego byłoby to 4000-6000 zł."
+  },
+  {
+    question: "Czy do budowy domu energooszczędnego potrzebny jest specjalny projekt?",
+    answer: "Tak, projekt domu energooszczędnego musi uwzględniać specyficzne rozwiązania architektoniczne i instalacyjne, aby spełnić rygorystyczne normy WT2026. Często są to projekty o zwartej bryle, z optymalnym rozmieszczeniem przeszkleń względem stron świata, a także szczegółowo opisujące systemy izolacji, rekuperacji i OZE. Projekty te są specjalnie certyfikowane pod kątem energetycznym, a ich koszt może być o około 15-20% wyższy niż standardowych."
+  },
+  {
+    question: "Jakie są główne wyzwania przy budowie domu energooszczędnego w 2026 roku?",
+    answer: "Główne wyzwania to zapewnienie wysokiej szczelności powietrznej budynku (wymaga testu szczelności Blower Door), precyzyjne wykonanie izolacji bez mostków termicznych oraz integracja zaawansowanych systemów instalacyjnych. Wybór doświadczonej ekipy budowlanej, specjalizującej się w budownictwie niskoenergetycznym, jest kluczowy, a ich dostępność i stawki mogą być znacznym czynnikiem kosztowym."
+  },
+  {
+    question: "Czy domy energooszczędne są bardziej komfortowe?",
+    answer: "Zdecydowanie tak. Domy energooszczędne oferują wyższy komfort termiczny dzięki stabilnej temperaturze wewnętrznej przez cały rok i brakowi przeciągów. System rekuperacji zapewnia stały dopływ świeżego, filtrowanego powietrza bez konieczności otwierania okien, co redukuje poziom alergenów i hałasu z zewnątrz. Dodatkowo, wysoka izolacyjność akustyczna przegród zewnętrznych przyczynia się do większego spokoju i ciszy wewnątrz pomieszczeń."
+  }
+];
+
+---
+<BaseLayout title={title} description={description} canonical={canonical} type="article">
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+    <div class="flex flex-col lg:flex-row lg:gap-16">
+      <article class="lg:flex-1">
+
+        <header class="mb-12">
+            <span class="inline-block py-1 px-3 rounded-full {badgeClass} font-bold text-sm mb-4 uppercase tracking-wider">
+                {badgeText}
+            </span>
+
+            <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 mb-8 leading-tight">
+                {title}
+            </h1>
+
+
+            <div class="space-y-8">
+                
+                <div class="flex flex-wrap items-center gap-x-8 gap-y-2 text-zinc-400">
+                    <div class="flex items-center gap-2.5 group">
+                        <div class="p-2 rounded-lg bg-zinc-50 group-hover:bg-blue-50 transition-colors">
+                            <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <path d="M16 2v4M8 2v4M3 10h18"></path>
+                            </svg>
+                        </div>
+                        <time datetime="{datePublished}" class="text-sm font-semibold text-zinc-600 tracking-tight">
+                            {dateFormatted}
+                        </time>
+                    </div>
+
+                    <div class="flex items-center gap-2.5 group">
+                        <div class="p-2 rounded-lg bg-zinc-50 group-hover:bg-blue-50 transition-colors">
+                            <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-semibold text-zinc-600 tracking-tight">ok. 7 min</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 p-1">
+                    <div class="relative">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-600 to-blue-400 text-white flex items-center justify-center font-bold shadow-md">
+                            MN
+                        </div>
+                        <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 border-2 border-white rounded-full flex items-center justify-center">
+                            <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-zinc-900 text-base leading-tight">mgr inż. Marek Nowicki</span>
+                        <span class="text-xs font-medium text-blue-600 uppercase tracking-wider mt-0.5">Ekspert DomJakości.pl</span>
+                    </div>
+                </div>
+            </div>    
+        </header>
+
+        <div class="bg-slate-50 p-8 rounded-3xl mb-12 border border-slate-100">
+           <p class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">W tym artykule:</p>
+           <nav id="toc" class="space-y-2 text-blue-600 font-medium">
+             <a href="#czym-jest-dom-energooszczedny" class="block hover:underline">Czym jest dom energooszczędny w kontekście WT2026 i co to oznacza dla kosztów?</a>
+             <a href="#ile-kosztuje-budowa-domu-energooszczednego" class="block hover:underline">Ile kosztuje budowa domu energooszczędnego w 2026 roku? Szacunkowe ceny za m²</a>
+             <a href="#koszty-budowy-domu-wedlug-metrazu" class="block hover:underline">Koszty budowy domu energooszczędnego według metrażu i etapu inwestycji w 2026 roku</a>
+             <a href="#dom-energooszczedny-70-m2" class="block hover:underline ml-4">Dom energooszczędny 70 m²: idealny dla małych rodzin</a>
+             <a href="#dom-energooszczedny-100-m2" class="block hover:underline ml-4">Dom energooszczędny 100 m²: standard dla rodzin 2+2</a>
+             <a href="#dom-energooszczedny-120-m2" class="block hover:underline ml-4">Dom energooszczędny 120 m²: przestrzeń i komfort</a>
+             <a href="#czynniki-wplywajace-na-koszt" class="block hover:underline">Czynniki wpływające na finalny koszt budowy domu energooszczędnego</a>
+             <a href="#jak-obnizyc-rachunki" class="block hover:underline">Jak obniżyć rachunki o 60% i zoptymalizować koszty budowy?</a>
+             <a href="#podsumowanie-i-korzysci" class="block hover:underline">Podsumowanie i długoterminowe korzyści</a>
+           </nav>
+        </div>
+
+        <div class="article-content">
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Budowa domu energooszczędnego w 2026 roku to inwestycja, która, choć początkowo droższa od tradycyjnej, przynosi znaczące oszczędności w długim okresie eksploatacji. Średnie koszty budowy wahają się od 4500 zł do 7000 zł za metr kwadratowy w standardzie deweloperskim, a dom pod klucz może kosztować od 5500 zł do nawet 9000 zł za m², w zależności od metrażu i zastosowanych technologii. Kluczowe jest spełnienie rygorystycznych wymogów Warunków Technicznych 2026 (WT2026), które stawiają na ultra-niskie zużycie energii.
+            </p>
+
+            <h2 id="czym-jest-dom-energooszczedny" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Czym jest dom energooszczędny w kontekście WT2026 i co to oznacza dla kosztów?</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Od 2021 roku obowiązują w Polsce zaostrzone Warunki Techniczne (WT), które od 2026 roku ulegają dalszym modyfikacjom, wymagając od nowo budowanych obiektów jeszcze lepszych parametrów energetycznych. Dom energooszczędny to budynek, który zużywa mniej niż 70 kWh/m²/rok energii pierwotnej (EP) na ogrzewanie, wentylację i przygotowanie ciepłej wody. W praktyce oznacza to konieczność zastosowania znacznie grubszych izolacji (ściany ≥ 20 cm, dach ≥ 30 cm), szczelnych okien o współczynniku przenikania ciepła Uw ≤ 0,9 W/m²K, systemów wentylacji mechanicznej z odzyskiem ciepła (rekuperacji) oraz odnawialnych źródeł energii, takich jak pompy ciepła czy instalacje fotowoltaiczne.
+            </p>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Te wymagania mają bezpośrednie przełożenie na koszty budowy. Droższe są nie tylko materiały izolacyjne, ale także stolarka okienna i drzwiowa, systemy grzewcze oraz wentylacyjne. Inwestycja w energooszczędność to jednak inwestycja w przyszłość, która zapewni niższe rachunki eksploatacyjne i większy komfort życia przez dziesiątki lat.
+            </p>
+
+            <div class="bg-orange-50 border-l-4 border-orange-400 p-6 my-8 italic text-zinc-800 rounded-r-xl">
+                <p><strong>Expert Tip:</strong> Planując budowę domu energooszczędnego w 2026 roku, skup się na kompleksowym podejściu do izolacji i systemów. Najwięcej można zaoszczędzić, optymalizując bryłę budynku i orientację względem stron świata już na etapie projektu. Unikaj skomplikowanych kształtów, które generują mostki termiczne i dodatkowe koszty.</p>
+            </div>
+
+            <h2 id="ile-kosztuje-budowa-domu-energooszczednego" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Ile kosztuje budowa domu energooszczędnego w 2026 roku? Szacunkowe ceny za m²</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Koszty budowy domu energooszczędnego są zróżnicowane i zależą od wielu czynników, w tym od regionu Polski, standardu wykończenia, technologii budowy oraz zastosowanych systemów OZE. Poniżej przedstawiamy ogólne szacunki kosztów za metr kwadratowy w 2026 roku.
+            </p>
+
+            <table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-md my-10">
+                <thead class="bg-zinc-800 text-white">
+                    <tr>
+                        <th class="p-4 border-b border-zinc-100">Powierzchnia domu</th>
+                        <th class="p-4 border-b border-zinc-100">Stan deweloperski (za m²)</th>
+                        <th class="p-4 border-b border-zinc-100">Stan pod klucz (za m²)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">70 m²</td>
+                        <td class="p-4 border-b border-zinc-100">4500 - 5500 zł</td>
+                        <td class="p-4 border-b border-zinc-100">5500 - 7000 zł</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">90 m²</td>
+                        <td class="p-4 border-b border-zinc-100">4300 - 5200 zł</td>
+                        <td class="p-4 border-b border-zinc-100">5300 - 6800 zł</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">110 m²</td>
+                        <td class="p-4 border-b border-zinc-100">4100 - 5000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">5100 - 6500 zł</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">120 m²</td>
+                        <td class="p-4 border-b border-zinc-100">4000 - 4900 zł</td>
+                        <td class="p-4 border-b border-zinc-100">5000 - 6400 zł</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Należy pamiętać, że podane ceny są orientacyjne i mogą ulec zmianie w zależności od indywidualnych wyborów inwestora oraz dynamiki rynku budowlanego. Wyższy standard wykończenia, droższe materiały elewacyjne czy niestandardowe rozwiązania architektoniczne będą podnosić te wartości.
+            </p>
+
+            <div class="bg-gradient-to-r from-zinc-50 to-slate-100 p-8 rounded-3xl border border-zinc-200 my-10 shadow-sm">
+                <h3 class="text-2xl font-semibold text-zinc-700 mb-4">Kluczowe wnioski dotyczące kosztów budowy energooszczędnego domu w 2026 roku:</h3>
+                <ul class="list-disc pl-6 text-lg text-zinc-600 space-y-3">
+                    <li><strong class="text-zinc-800">Wyższe koszty początkowe:</strong> Domy energooszczędne są droższe o ok. 10-25% na etapie budowy w porównaniu do standardowych.</li>
+                    <li><strong class="text-zinc-800">Długoterminowe oszczędności:</strong> Inwestycja zwraca się dzięki niższym rachunkom za energię, które mogą spaść o 60-80%.</li>
+                    <li><strong class="text-zinc-800">Wymogi WT2026:</strong> Standardy te są obowiązkowe i znacząco wpływają na wybór materiałów i technologii.</li>
+                    <li><strong class="text-zinc-800">Technologie OZE:</strong> Pompa ciepła i fotowoltaika są niemal standardem, co zwiększa efektywność energetyczną.</li>
+                </ul>
+            </div>
+
+            <h2 id="koszty-budowy-domu-wedlug-metrazu" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Koszty budowy domu energooszczędnego według metrażu i etapu inwestycji w 2026 roku</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Szczegółowe koszty budowy domu energooszczędnego w 2026 roku, rozbite na poszczególne etapy i popularne metraże, pomogą w lepszym zaplanowaniu budżetu. Pamiętaj, że do podanych kwot należy doliczyć koszt działki, przyłączy mediów, projektów i wszelkich formalności.
+            </p>
+
+            <h3 id="dom-energooszczedny-70-m2" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Dom energooszczędny 70 m²: idealny dla małych rodzin</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Domy o powierzchni 70 m² zyskały na popularności po wprowadzeniu uproszczonych procedur budowlanych (bez pozwolenia na budowę). W wariancie energooszczędnym są doskonałym wyborem dla par lub małych rodzin ceniących niskie koszty utrzymania.
+            </p>
+            <table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-md my-10">
+                <thead class="bg-zinc-800 text-white">
+                    <tr>
+                        <th class="p-4 border-b border-zinc-100">Etap budowy</th>
+                        <th class="p-4 border-b border-zinc-100">Szacunkowy koszt (70 m²)</th>
+                        <th class="p-4 border-b border-zinc-100">Zakres prac dla domu energooszczędnego</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Stan surowy otwarty</td>
+                        <td class="p-4 border-b border-zinc-100">90 000 – 120 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">Fundamenty z izolacją termiczną, ściany z materiałów o wysokiej izolacyjności, strop, konstrukcja dachu.</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Stan surowy zamknięty</td>
+                        <td class="p-4 border-b border-zinc-100">55 000 – 85 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">Dach z izolacją >30cm, wysokiej klasy okna trzyszybowe Uw ≤ 0,9 W/m²K, drzwi zewnętrzne o niskim U.</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Stan deweloperski</td>
+                        <td class="p-4 border-b border-zinc-100">40 000 – 65 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">Instalacje wewnętrzne (grzewcza, wod-kan, elektryczna), wylewki podłogowe, tynki, rekuperacja, pompa ciepła.</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Wykończenie pod klucz</td>
+                        <td class="p-4 border-b border-zinc-100">90 000 – 120 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">Glazura, terakota, panele, malowanie, biały montaż, armatura, oświetlenie, montaż kuchni.</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors bg-blue-50">
+                        <td class="p-4 border-b border-zinc-100"><strong>Całkowity koszt pod klucz</strong></td>
+                        <td class="p-4 border-b border-zinc-100"><strong>ok. 340 000 – 390 000 zł</strong></td>
+                        <td class="p-4 border-b border-zinc-100">Sumaryczny koszt budowy domu energooszczędnego 70 m².</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 id="dom-energooszczedny-100-m2" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Dom energooszczędny 100 m²: standard dla rodzin 2+2</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Powierzchnia 100 m² to popularny wybór dla rodzin z dziećmi, oferująca komfortową przestrzeń mieszkalną. W wersji energooszczędnej to gwarancja niskich kosztów eksploatacji przez cały rok.
+            </p>
+            <table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-md my-10">
+                <thead class="bg-zinc-800 text-white">
+                    <tr>
+                        <th class="p-4 border-b border-zinc-100">Etap budowy</th>
+                        <th class="p-4 border-b border-zinc-100">Szacunkowy koszt (100 m²)</th>
+                        <th class="p-4 border-b border-zinc-100">Zakres prac dla domu energooszczędnego</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Stan surowy otwarty</td>
+                        <td class="p-4 border-b border-zinc-100">120 000 – 165 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">Fundamenty z izolacją, ściany z materiałów o wysokiej izolacyjności, strop, konstrukcja dachu.</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Stan surowy zamknięty</td>
+                        <td class="p-4 border-b border-zinc-100">70 000 – 110 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">Dach z izolacją >30cm, wysokiej klasy okna trzyszybowe Uw ≤ 0,9 W/m²K, drzwi zewnętrzne o niskim U, elewacja.</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Stan deweloperski</td>
+                        <td class="p-4 border-b border-zinc-100">55 000 – 90 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">Instalacje wewnętrzne, wylewki, tynki, rekuperacja, pompa ciepła, opcjonalnie fotowoltaika.</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Wykończenie pod klucz</td>
+                        <td class="p-4 border-b border-zinc-100">120 000 – 160 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">Glazura, terakota, panele, malowanie, biały montaż, armatura, oświetlenie, montaż kuchni.</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors bg-blue-50">
+                        <td class="p-4 border-b border-zinc-100"><strong>Całkowity koszt pod klucz</strong></td>
+                        <td class="p-4 border-b border-zinc-100"><strong>ok. 470 000 – 525 000 zł</strong></td>
+                        <td class="p-4 border-b border-zinc-100">Sumaryczny koszt budowy domu energooszczędnego 100 m².</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 id="dom-energooszczedny-120-m2" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Dom energooszczędny 120 m²: przestrzeń i komfort</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Domy o powierzchni 120 m² oferują dużo przestrzeni i możliwości aranżacyjne. Budując je w standardzie energooszczędnym, zyskujemy komfort i minimalizujemy koszty eksploatacji dużej powierzchni.
+            </p>
+            <table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-md my-10">
+                <thead class="bg-zinc-800 text-white">
+                    <tr>
+                        <th class="p-4 border-b border-zinc-100">Etap budowy</th>
+                        <th class="p-4 border-b border-zinc-100">Szacunkowy koszt (120 m²)</th>
+                        <th class="p-4 border-b border-zinc-100">Zakres prac dla domu energooszczędnego</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Stan surowy otwarty</td>
+                        <td class="p-4 border-b border-zinc-100">145 000 – 190 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">Fundamenty z izolacją, ściany z materiałów o wysokiej izolacyjności, strop, konstrukcja dachu.</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Stan surowy zamknięty</td>
+                        <td class="p-4 border-b border-zinc-100">80 000 – 130 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">Dach z izolacją >30cm, wysokiej klasy okna trzyszybowe Uw ≤ 0,9 W/m²K, drzwi zewnętrzne o niskim U, elewacja.</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Stan deweloperski</td>
+                        <td class="p-4 border-b border-zinc-100">65 000 – 100 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">Instalacje wewnętrzne, wylewki, tynki, rekuperacja, pompa ciepła, opcjonalnie fotowoltaika.</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Wykończenie pod klucz</td>
+                        <td class="p-4 border-b border-zinc-100">140 000 – 180 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">Glazura, terakota, panele, malowanie, biały montaż, armatura, oświetlenie, montaż kuchni.</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors bg-blue-50">
+                        <td class="p-4 border-b border-zinc-100"><strong>Całkowity koszt pod klucz</strong></td>
+                        <td class="p-4 border-b border-zinc-100"><strong>ok. 530 000 – 600 000 zł</strong></td>
+                        <td class="p-4 border-b border-zinc-100">Sumaryczny koszt budowy domu energooszczędnego 120 m².</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="czynniki-wplywajace-na-koszt" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Czynniki wpływające na finalny koszt budowy domu energooszczędnego</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Oprócz metrażu i etapów budowy, istnieje szereg innych czynników, które mają kluczowe znaczenie dla ostatecznego kosztorysu domu energooszczędnego:
+            </p>
+            <ul class="list-disc pl-6 text-lg text-zinc-600 space-y-3 mb-6">
+                <li><strong class="text-zinc-800">Lokalizacja działki:</strong> Ceny materiałów i robocizny mogą znacznie różnić się w zależności od regionu (np. duże miasta vs. tereny wiejskie).</li>
+                <li><strong class="text-zinc-800">Rodzaj technologii budowy:</strong> Dom szkieletowy często jest szybszy i tańszy w budowie niż murowany, ale wymaga precyzji w izolacji.</li>
+                <li><strong class="text-zinc-800">Standard wykończenia i jakość materiałów:</strong> Wybór ekskluzywnych materiałów wykończeniowych czy niestandardowych rozwiązań (np. duża ilość przeszkleń) podniesie koszt.</li>
+                <li><strong class="text-zinc-800">Instalacje energooszczędne:</strong> Koszty pomp ciepła, rekuperacji, paneli fotowoltaicznych to znaczący wydatek początkowy, ale kluczowy dla niskich rachunków.</li>
+                <li><strong class="text-zinc-800">Koszty robocizny i ekip budowlanych:</strong> Wyspecjalizowane ekipy do budowy domów energooszczędnych są droższe, ale ich doświadczenie jest bezcenne.</li>
+                <li><strong class="text-zinc-800">Prace ziemne i fundamenty:</strong> Skomplikowane warunki gruntowe lub konieczność głębokich fundamentów zwiększą wydatki.</li>
+            </ul>
+
+            <h2 id="jak-obnizyc-rachunki" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Jak obniżyć rachunki o 60% i zoptymalizować koszty budowy?</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Optymalizacja kosztów budowy domu energooszczędnego to sztuka balansowania między inwestycją początkową a długoterminowymi oszczędnościami. Oto kluczowe strategie:
+            </p>
+            <ul class="list-disc pl-6 text-lg text-zinc-600 space-y-3 mb-6">
+                <li><strong class="text-zinc-800">Pompa ciepła + fotowoltaika:</strong> Połączenie tych dwóch technologii może niemal całkowicie wyeliminować koszty ogrzewania i przygotowania CWU.</li>
+                <li><strong class="text-zinc-800">Rekuperacja z odzyskiem ciepła:</strong> Zmniejsza straty energii przez wentylację o około 30%, zapewniając jednocześnie świeże powietrze.</li>
+                <li><strong class="text-zinc-800">Okna trzyszybowe:</strong> Choć droższe, znacząco ograniczają straty ciepła przez przegrody, poprawiając bilans energetyczny.</li>
+                <li><strong class="text-zinc-800">Automatyka ogrzewania:</strong> Inteligentne systemy sterowania temperaturą w poszczególnych strefach domu pozwalają na precyzyjne zarządzanie zużyciem energii.</li>
+                <li><strong class="text-zinc-800">Prosta bryła budynku:</strong> Im mniej załamań, lukarn czy wykuszy, tym mniej mostków termicznych i niższe koszty budowy.</li>
+                <li><strong class="text-zinc-800">Wybór odpowiedniego projektu:</strong> Dostosowany do działki i budżetu, z naciskiem na energooszczędność.</li>
+            </ul>
+
+            <div class="bg-red-50 border border-red-100 p-6 my-6 rounded-2xl text-red-900 text-sm">
+                <strong class="block mb-2">Ważne:</strong> Pamiętaj, że oszczędności na materiałach budowlanych niskiej jakości w przypadku domu energooszczędnego są złudne. Mogą one prowadzić do problemów z izolacją, nieszczelności i znacznie wyższych kosztów eksploatacji w przyszłości, niwecząc cały sens inwestycji w energooszczędność.
+            </div>
+
+            <div class="my-10 p-8 bg-blue-50 rounded-3xl border border-blue-100 shadow-sm">
+                <h3 class="text-2xl font-semibold text-zinc-700 mb-6">Mini kalkulator kosztów instalacji energooszczędnych</h3>
+                <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                    Sprawdź szacunkowy koszt wybranych instalacji, które znacząco wpłyną na energooszczędność Twojego domu.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="area" class="block text-sm font-medium text-zinc-700 mb-2">Powierzchnia domu (m²)</label>
+                        <input type="number" id="area" class="w-full p-3 border border-zinc-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500" value="100" min="50">
+                    </div>
+                    <div>
+                        <label for="system" class="block text-sm font-medium text-zinc-700 mb-2">Wybierz system</label>
+                        <select id="system" class="w-full p-3 border border-zinc-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                            <option value="heatPump">Pompa ciepła (powietrze-woda)</option>
+                            <option value="rekuperacja">Rekuperacja z odzyskiem ciepła</option>
+                            <option value="fotowoltaika">Instalacja fotowoltaiczna (6-8 kWp)</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="calculateCost" class="mt-8 w-full md:w-auto px-8 py-4 bg-orange-600 text-white font-bold rounded-lg shadow-md hover:bg-orange-700 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">Oblicz szacunkowy koszt</button>
+                <div id="result" class="mt-8 p-6 bg-white border border-blue-200 rounded-lg shadow-inner text-lg text-zinc-800 font-semibold hidden">
+                    Szacunkowy koszt wybranej instalacji dla domu o powierzchni <strong id="resultArea"></strong> m² wynosi: <strong id="resultCost" class="text-blue-700"></strong>.
+                </div>
+                <script is:inline>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const calculateCostBtn = document.getElementById('calculateCost');
+                        const areaInput = document.getElementById('area');
+                        const systemSelect = document.getElementById('system');
+                        const resultDiv = document.getElementById('result');
+                        const resultAreaSpan = document.getElementById('resultArea');
+                        const resultCostSpan = document.getElementById('resultCost');
+
+                        const costsPerSystem = {
+                            heatPump: {
+                                base: 25000, // base cost for 100m2
+                                perSqM: 150, // additional cost per sq meter
+                                range: 0.2 // 20% fluctuation
+                            },
+                            rekuperacja: {
+                                base: 15000, // base cost for 100m2
+                                perSqM: 80, // additional cost per sq meter
+                                range: 0.2
+                            },
+                            fotowoltaika: {
+                                base: 25000, // base cost for 6-8 kWp
+                                perSqM: 0, // not directly dependent on area, more on power
+                                range: 0.15
+                            }
+                        };
+
+                        calculateCostBtn.addEventListener('click', () => {
+                            const area = parseFloat(areaInput.value);
+                            const system = systemSelect.value;
+
+                            if (isNaN(area) || area <= 0) {
+                                resultCostSpan.textContent = "Proszę podać prawidłową powierzchnię.";
+                                resultDiv.classList.remove('hidden');
+                                return;
+                            }
+
+                            const systemData = costsPerSystem[system];
+                            let estimatedCost = systemData.base + (area * systemData.perSqM);
+
+                            // Adjust for typical PV installation power
+                            if (system === 'fotowoltaika') {
+                                // Assume standard installation for a house, e.g., 6-8 kWp for 100-120m2
+                                estimatedCost = systemData.base; // Base cost covers typical PV needs
+                            }
+
+                            const minCost = Math.round(estimatedCost * (1 - systemData.range));
+                            const maxCost = Math.round(estimatedCost * (1 + systemData.range));
+
+                            resultAreaSpan.textContent = area;
+                            resultCostSpan.textContent = `${minCost.toLocaleString('pl-PL')} zł - ${maxCost.toLocaleString('pl-PL')} zł`;
+                            resultDiv.classList.remove('hidden');
+                        });
+                    });
+                </script>
+            </div>
+
+            <div class="my-10 p-8 bg-purple-50 rounded-3xl border border-purple-100 shadow-sm">
+                <h3 class="text-2xl font-semibold text-zinc-700 mb-6">Ankieta: jaki typ domu energooszczędnego jest dla ciebie?</h3>
+                <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                    Odpowiedz na kilka pytań, aby zorientować się, jaki rodzaj inwestycji energooszczędnej najlepiej odpowiada Twoim potrzebom.
+                </p>
+                <div class="space-y-6 text-zinc-800">
+                    <div>
+                        <p class="font-semibold mb-2">1. Jaki jest Twój priorytet przy budowie domu?</p>
+                        <label class="block mb-2"><input type="radio" name="q1" value="a" class="mr-2"> Niskie koszty początkowe budowy</label>
+                        <label class="block mb-2"><input type="radio" name="q1" value="b" class="mr-2"> Maksymalne oszczędności na rachunkach przez lata</label>
+                        <label class="block mb-2"><input type="radio" name="q1" value="c" class="mr-2"> Szybki czas realizacji projektu</label>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">2. Jaka jest preferowana technologia budowy?</p>
+                        <label class="block mb-2"><input type="radio" name="q2" value="a" class="mr-2"> Tradycyjna murowana</label>
+                        <label class="block mb-2"><input type="radio" name="q2" value="b" class="mr-2"> Szkieletowa/Modułowa</label>
+                        <label class="block mb-2"><input type="radio" name="q2" value="c" class="mr-2"> Nie mam preferencji, liczy się efekt</label>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">3. Jakie instalacje energooszczędne są dla Ciebie najważniejsze?</p>
+                        <label class="block mb-2"><input type="radio" name="q3" value="a" class="mr-2"> Pompa ciepła i fotowoltaika</label>
+                        <label class="block mb-2"><input type="radio" name="q3" value="b" class="mr-2"> Rekuperacja i zaawansowana izolacja</label>
+                        <label class="block mb-2"><input type="radio" name="q3" value="c" class="mr-2"> Wszystkie, aby osiągnąć bliski zeru bilans energetyczny</label>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">4. Jak duży jest Twój docelowy budżet na budowę (bez działki)?</p>
+                        <label class="block mb-2"><input type="radio" name="q4" value="a" class="mr-2"> Do 400 000 zł</label>
+                        <label class="block mb-2"><input type="radio" name="q4" value="b" class="mr-2"> 400 000 zł - 600 000 zł</label>
+                        <label class="block mb-2"><input type="radio" name="q4" value="c" class="mr-2"> Powyżej 600 000 zł</label>
+                    </div>
+                </div>
+                <button id="submitSurvey" class="mt-8 w-full md:w-auto px-8 py-4 bg-purple-600 text-white font-bold rounded-lg shadow-md hover:bg-purple-700 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">Pokaż rekomendacje</button>
+                <div id="surveyResult" class="mt-8 p-6 bg-white border border-purple-200 rounded-lg shadow-inner text-lg text-zinc-800 font-semibold hidden">
+                    <p><strong>Twoja rekomendacja:</strong> <span id="recommendationText" class="text-purple-700"></span></p>
+                </div>
+                <script is:inline>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const submitSurveyBtn = document.getElementById('submitSurvey');
+                        const surveyResultDiv = document.getElementById('surveyResult');
+                        const recommendationTextSpan = document.getElementById('recommendationText');
+
+                        submitSurveyBtn.addEventListener('click', () => {
+                            const q1 = document.querySelector('input[name="q1"]:checked')?.value;
+                            const q2 = document.querySelector('input[name="q2"]:checked')?.value;
+                            const q3 = document.querySelector('input[name="q3"]:checked')?.value;
+                            const q4 = document.querySelector('input[name="q4"]:checked')?.value;
+
+                            if (!q1 || !q2 || !q3 || !q4) {
+                                recommendationTextSpan.textContent = "Proszę odpowiedzieć na wszystkie pytania, aby uzyskać rekomendację.";
+                                surveyResultDiv.classList.remove('hidden');
+                                return;
+                            }
+
+                            let recommendation = "";
+
+                            if (q1 === 'a' && q4 === 'a') {
+                                recommendation = "Skup się na optymalizacji projektu i wybierz technologię szkieletową lub dom 70m², z podstawową rekuperacją i dobrą izolacją. Szukaj dofinansowań.";
+                            } else if (q1 === 'b' && q3 === 'c' && q4 === 'c') {
+                                recommendation = "Rozważ dom pasywny z pełnym pakietem OZE (pompa ciepła, fotowoltaika, rekuperacja) i zaawansowaną automatyką. To inwestycja w najwyższy komfort i zerowe rachunki.";
+                            } else if (q2 === 'a' && q3 === 'a' && q4 === 'b') {
+                                recommendation = "Idealnym wyborem będzie solidny dom murowany z pompą ciepła i fotowoltaiką, z naciskiem na wysoką jakość izolacji. To zbalansowane połączenie tradycji i nowoczesności.";
+                            } else if (q2 === 'b' && q1 === 'c' && q4 === 'b') {
+                                recommendation = "Postaw na nowoczesny dom szkieletowy z rekuperacją i rozważ instalację fotowoltaiczną. Zapewnisz sobie szybką budowę i efektywność energetyczną.";
+                            } else {
+                                recommendation = "Wybierz zrównoważone rozwiązania: solidną izolację, rekuperację, oraz rozważ pompę ciepła. Pamiętaj o prostej bryle i dobrze przemyślanym projekcie.";
+                            }
+
+                            recommendationTextSpan.textContent = recommendation;
+                            surveyResultDiv.classList.remove('hidden');
+                        });
+                    });
+                </script>
+            </div>
+
+            <h2 id="podsumowanie-i-korzysci" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Podsumowanie i długoterminowe korzyści</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Budowa domu energooszczędnego w 2026 roku to strategiczna decyzja, która wiąże się z wyższymi kosztami początkowymi, lecz przynosi wymierne korzyści finansowe i ekologiczne w długim horyzoncie czasowym. Spełnienie wymagań WT2026 gwarantuje budynek o minimalnym zapotrzebowaniu na energię, co przekłada się na drastyczne obniżenie rachunków za ogrzewanie i ciepłą wodę.
+            </p>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Poza aspektami finansowymi, dom energooszczędny to również komfort termiczny, świeże powietrze dzięki rekuperacji oraz świadomość dbałości o środowisko. Inwestycja w energooszczędność to inwestycja w przyszłość, która z każdym rokiem będzie się zwracać, zwiększając wartość nieruchomości i zapewniając spokój ducha.
+            </p>
+            <div class="bg-orange-50 border-l-4 border-orange-400 p-6 my-8 italic text-zinc-800 rounded-r-xl">
+                <p><strong>Expert Tip:</strong> Nie patrz na koszt budowy domu energooszczędnego jako na jednorazowy wydatek, ale jako na lokatę kapitału. Przemyślana inwestycja w energooszczędne rozwiązania może zwrócić się w ciągu 10-15 lat, a następnie generować czyste oszczędności przez kolejne dekady. Wykorzystaj dostępne dotacje i programy wsparcia, takie jak "Moje Ciepło" czy "Czyste Powietrze", aby zredukować początkowe obciążenie finansowe.</p>
+            </div>
+
+        </div>
+
+        <section class="faq mt-20 border-t pt-16">
+           <h2 class="text-4xl font-bold mb-10 text-center text-zinc-900">Najczęstsze pytania inwestorów</h2>
+           <div class="grid gap-6">
+             {faqItems.map(item => (
+               <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                 <h4 class="text-xl font-bold text-gray-900 mb-3">{item.question}</h4>
+                 <p class="text-lg text-gray-700 leading-relaxed">{item.answer}</p>
+               </div>
+             ))}
+           </div>
+        </section>
+      </article>
+      <ArticleSidebar />
+    </div>
+  </main>
+  <script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-energooszczednego/#webpage",
+      "url": "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-energooszczednego/",
+      "name": "{title}",
+      "description": "{description}",
+      "inLanguage": "pl-PL",
+      "isPartOf": {
+        "@type": "WebSite",
+        "url": "https://domjakosci.pl/",
+        "name": "Dom Jakości",
+        "description": "Dom Jakości - Twój przewodnik po budowie i wyposażeniu domu.",
+        "publisher": {
+          "@id": "https://domjakosci.pl/#organization"
+        }
+      },
+      "datePublished": "{datePublished}",
+      "dateModified": "{datePublished}"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-energooszczednego/#article",
+      "headline": "{title}",
+      "description": "{description}",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://domjakosci.pl/images/og-image.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "datePublished": "{datePublished}",
+      "dateModified": "{datePublished}",
+      "author": {
+        "@type": "Person",
+        "name": "{author}"
+      },
+      "publisher": {
+        "@id": "https://domjakosci.pl/#organization"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-energooszczednego/#webpage"
+      },
+      "articleSection": [
+        "Czym jest dom energooszczędny w kontekście WT2026 i co to oznacza dla kosztów?",
+        "Ile kosztuje budowa domu energooszczędnego w 2026 roku? Szacunkowe ceny za m²",
+        "Koszty budowy domu energooszczędnego według metrażu i etapu inwestycji w 2026 roku",
+        "Czynniki wpływające na finalny koszt budowy domu energooszczędnego",
+        "Jak obniżyć rachunki o 60% i zoptymalizować koszty budowy?",
+        "Podsumowanie i długoterminowe korzyści"
+      ],
+      "wordCount": 2000,
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "xpath": [
+          "/html/body/main/div/article/h1",
+          "/html/body/main/div/article/p",
+          "/html/body/main/div/article/h2",
+          "/html/body/main/div/article/h3"
+        ]
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://domjakosci.pl/#organization",
+      "name": "Dom Jakości",
+      "url": "https://domjakosci.pl/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://domjakosci.pl/images/logo.svg",
+        "width": 150,
+        "height": 50
+      }
+    }
+  ]
+}
+  </script>
+</BaseLayout>

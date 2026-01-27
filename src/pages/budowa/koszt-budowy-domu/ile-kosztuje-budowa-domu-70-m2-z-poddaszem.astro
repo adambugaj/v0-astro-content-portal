@@ -1,0 +1,464 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Ile Kosztuje Budowa Domu 70 m2 z Poddaszem w 2026 Roku?";
+const description = "Poznaj aktualne koszty budowy domu 70m2 z poddaszem w 2026 roku. Sprawdź, ile wydasz na stan surowy, deweloperski i pod klucz, oraz jak optymalizować budżet. Ekspertyza DomJakości.pl.";
+const canonical = "https://domjakosci.pl/budowa/koszt-budowy-domu/ile-kosztuje-budowa-domu-70-m2-z-poddaszem/";
+const author = 'mgr inż. Marek Nowicki';
+const contextNote = "Dane zawarte w artykule opierają się na analizie rynkowych trendów i cen materiałów budowlanych na początku 2026 roku. Prezentowane szacunki uwzględniają dynamiczne zmiany kosztów pracy i surowców, dostarczając najbardziej aktualnych informacji dla inwestorów.";
+const badgeText = "Raport Rynkowy 2026";
+const badgeClass = "bg-blue-100 text-blue-700";
+const datePublishedISO = "2026-01-27T12:00:00+01:00";
+const dateFormatted = "27 stycznia 2026";
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Ile kosztuje budowa domu 70 m2 z poddaszem', url: 'https://domjakosci.pl/budowa/koszt-budowy-domu/ile-kosztuje-budowa-domu-70-m2-z-poddaszem/' }
+];
+
+const schemaGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": canonical
+      },
+      "headline": title,
+      "description": description,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://domjakosci.pl/assets/images/dom-70m2-poddasze.webp", 
+        "width": 1200,
+        "height": 675
+      },
+      "author": {
+        "@type": "Person",
+        "name": author
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DomJakości.pl",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://domjakosci.pl/assets/logo.png", 
+          "width": 600,
+          "height": 60
+        }
+      },
+      "datePublished": datePublishedISO,
+      "dateModified": datePublishedISO, 
+      "keywords": "koszt budowy domu, 70 m2, poddasze, 2026, budowa na zgłoszenie, stan surowy, stan deweloperski, pod klucz, dom energooszczędny, polski ład, poddasze użytkowe"
+    },
+    {
+      "@type": "WebPage",
+      "@id": canonical,
+      "url": canonical,
+      "name": title,
+      "description": description,
+      "isPartOf": {
+        "@type": "WebSite",
+        "url": "https://domjakosci.pl/",
+        "name": "DomJakości.pl - Projekty i Koszty Budowy Domów"
+      },
+      "inLanguage": "pl-PL"
+    }
+  ]
+};
+---
+<BaseLayout title={title} description={description} canonical={canonical} type="article">
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+    <div class="flex flex-col lg:flex-row lg:gap-16">
+      <article class="lg:flex-1">
+
+        <header class="mb-12">
+                    <span class="inline-block py-1 px-3 rounded-full {badgeClass} font-bold text-sm font-bold mb-4 uppercase tracking-wider">
+                        {badgeText}
+                    </span>
+
+                    <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 mb-6 leading-tight">
+                        {title}
+                    </h1>
+
+                    <div class="flex flex-wrap items-center gap-x-8 gap-y-4 border-b pb-8 border-gray-100">
+                        
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">MN</div>
+                            <div>
+                                <p class="font-bold text-zinc-900 text-sm leading-none">mgr inż. Marek Nowicki</p>
+                                <p class="text-xs text-zinc-500 mt-1">Ekspert DomJakości.pl</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-6">
+                            <div class="flex items-center gap-2 text-sm text-zinc-500 font-medium">
+                                <svg class="w-4 h-4 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <time datetime={datePublishedISO}>{dateFormatted}</time>
+                            </div>
+
+                            <div class="flex items-center gap-2 text-sm text-zinc-500 font-medium">
+                                <svg class="w-4 h-4 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <span>ok. 7 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+        <div class="bg-slate-50 p-8 rounded-3xl mb-12 border border-slate-100">
+           <p class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">W tym artykule:</p>
+           <nav id="toc" class="space-y-2 text-blue-600 font-medium">
+                <ul>
+                    <li><a href="#koszt-budowy-domu-70m2-z-poddaszem-2026">Ile kosztuje budowa domu 70 m2 z poddaszem w 2026 roku?</a></li>
+                    <li><a href="#dlaczego-dom-70m2-z-poddaszem">Dlaczego dom 70 m2 z poddaszem?</a></li>
+                    <li><a href="#etapy-budowy-koszty-70m2-z-poddaszem">Etapy budowy i koszty: dom 70 m2 z poddaszem</a></li>
+                    <li><a href="#szczegolowy-kosztorys-70m2-z-poddaszem">Szczegółowy kosztorys budowy domu 70 m2 z poddaszem (pow. zabudowy)</a></li>
+                    <li><a href="#czynniki-wplywajace-na-koszt">Co wpływa na koszt budowy domu 70 m2 z poddaszem?</a></li>
+                    <li><a href="#jak-obnizyc-koszty">Jak obniżyć koszty budowy domu 70 m2 z poddaszem?</a></li>
+                    <li><a href="#kalkulator-kosztow-budowy">Kalkulator kosztów budowy Domu 70 m2 z Poddaszem</a></li>
+                    <li><a href="#ankieta-twoje-priorytety-budowy">Ankieta: Twoje Priorytety Budowy Domu</a></li>
+                </ul>
+           </nav>
+        </div>
+
+        <div class="article-content">
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">W 2026 roku, koszt budowy domu o powierzchni użytkowej około 70 m² z poddaszem, liczony od stanu surowego otwartego do wykończenia pod klucz, może wynosić od <strong>320 000 zł do nawet 490 000 zł</strong>, w zależności od standardu i technologii. Kluczowe jest rozróżnienie między powierzchnią zabudowy a powierzchnią użytkową, gdyż dom z poddaszem o 70 m² powierzchni zabudowy zaoferuje znacznie większą przestrzeń mieszkalną, często zbliżoną do 100-120 m² powierzchni użytkowej. Inwestycja ta oferuje atrakcyjny stosunek jakości do ceny, zwłaszcza w kontekście uproszczonych formalności związanych z budową na zgłoszenie.</p>
+
+           <div class="bg-orange-50 border-l-4 border-orange-400 p-6 my-8 italic text-zinc-800 rounded-r-xl">
+               <p class="text-lg text-zinc-600 leading-relaxed mb-6">{contextNote}</p>
+           </div>
+
+           <h2 id="koszt-budowy-domu-70m2-z-poddaszem-2026" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Ile kosztuje budowa domu 70 m2 z poddaszem w 2026 roku?</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">Budowa domu o powierzchni zabudowy do 70 m² z poddaszem użytkowym to jedno z najbardziej poszukiwanych rozwiązań na rynku nieruchomości w 2026 roku. Dzięki możliwościom, jakie daje uproszczona procedura budowlana ("dom na zgłoszenie" z Polskiego Ładu), inwestorzy mogą liczyć na szybszą realizację projektu przy optymalizacji kosztów. Warto jednak pamiętać, że poddasze użytkowe znacząco zwiększa powierzchnię do zaaranżowania, co wpływa na całkowity budżet.</p>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">Szacunkowe koszty dla domu z poddaszem, przyjmując powierzchnię użytkową zbliżoną do 100-120 m² (przy powierzchni zabudowy 70 m²), kształtują się następująco:</p>
+
+            <div class="bg-gradient-to-r from-zinc-50 to-slate-100 p-8 rounded-3xl border border-zinc-200 my-10 shadow-sm">
+                <h3 class="text-2xl font-semibold text-zinc-700 mt-0 mb-4">Key Takeaways: Szacunkowe koszty budowy domu 70 m² z poddaszem (pow. użytkowa ok. 100-120 m²) w 2026</h3>
+                <ul class="list-disc pl-5 text-lg text-zinc-600 leading-relaxed mb-0">
+                    <li><strong>Stan surowy otwarty:</strong> od 130 000 zł do 180 000 zł</li>
+                    <li><strong>Stan surowy zamknięty:</strong> od 190 000 zł do 280 000 zł</li>
+                    <li><strong>Stan deweloperski:</strong> od 280 000 zł do 400 000 zł</li>
+                    <li><strong>Stan pod klucz:</strong> od 380 000 zł do 490 000 zł (w standardzie średnim do podwyższonego)</li>
+                </ul>
+            </div>
+
+           <h2 id="dlaczego-dom-70m2-z-poddaszem" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Dlaczego dom 70 m2 z poddaszem? Rozróżnienie powierzchni</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">Popularność domów o powierzchni zabudowy do 70 m² bez pozwolenia, wprowadzonego w ramach Polskiego Ładu w styczniu 2022 roku, wynika z uproszczonych formalności. Jednakże, kluczowe jest zrozumienie, że limit 70 m² dotyczy <strong>powierzchni zabudowy</strong> (rzutu budynku na grunt), a nie <strong>powierzchni użytkowej</strong>. Dodając poddasze użytkowe, znacząco zwiększamy metraż mieszkalny – często do 100-120 m², nie przekraczając jednocześnie limitu powierzchni zabudowy, co jest ogromną zaletą.</p>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">Wariant z poddaszem użytkowym, mimo że jest droższy niż dom parterowy o tej samej powierzchni zabudowy (ze względu na konieczność budowy stropu, schodów, bardziej złożonej konstrukcji dachu i docieplenia), oferuje znacznie więcej przestrzeni życiowej. Jest to idealne rozwiązanie dla małych rodzin, które potrzebują dodatkowych sypialni czy miejsca do pracy.</p>
+
+           <div class="bg-red-50 border border-red-100 p-6 my-6 rounded-2xl text-red-900 text-sm">
+               <p><strong>Ważne:</strong> Przepisy dotyczące domów do 70 m² na zgłoszenie wymagają, aby budynek był przeznaczony do celów mieszkalnych oraz aby inwestor złożył oświadczenie, że buduje dom w celu zaspokojenia własnych potrzeb mieszkaniowych. Konieczne jest także zapewnienie zgodności projektu z miejscowym planem zagospodarowania przestrzennego lub decyzją o warunkach zabudowy.</p>
+           </div>
+
+           <h2 id="etapy-budowy-koszty-70m2-z-poddaszem" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Etapy budowy i koszty: dom 70 m2 z poddaszem</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">Koszt budowy domu jest ściśle powiązany z wybranym etapem zaawansowania prac. Poniżej przedstawiamy szczegółowe szacunki dla domu o powierzchni zabudowy 70 m² z poddaszem użytkowym (o łącznej powierzchni użytkowej ok. 100-120 m²) w 2026 roku.</p>
+
+           <h3 class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">1. Stan surowy otwarty (SSO)</h3>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">Ten etap obejmuje fundamenty, ściany nośne, stropy, konstrukcję dachu (bez pokrycia) oraz schody na poddasze. To podstawa całej konstrukcji.</p>
+           <ul class="list-disc pl-5 text-lg text-zinc-600 leading-relaxed mb-6">
+               <li><strong>Fundamenty:</strong> ok. 25 000 - 40 000 zł</li>
+               <li><strong>Ściany nośne i działowe (parter):</strong> ok. 40 000 - 60 000 zł</li>
+               <li><strong>Strop nad parterem (pod poddasze):</strong> ok. 20 000 - 35 000 zł</li>
+               <li><strong>Konstrukcja dachu (więźba):</strong> ok. 30 000 - 45 000 zł</li>
+               <li><strong>Schody wewnętrzne (konstrukcja):</strong> ok. 10 000 - 15 000 zł</li>
+               <li><strong>RAZEM SSO: od 130 000 zł do 180 000 zł</strong></li>
+           </ul>
+
+           <h3 class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">2. Stan surowy zamknięty (SSZ)</h3>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">Do SSO dodajemy pokrycie dachu, montaż okien i drzwi zewnętrznych oraz elewację (bez ostatecznego wykończenia).</p>
+           <ul class="list-disc pl-5 text-lg text-zinc-600 leading-relaxed mb-6">
+               <li><strong>Pokrycie dachu (np. dachówka):</strong> ok. 40 000 - 60 000 zł</li>
+               <li><strong>Okna i drzwi zewnętrzne:</strong> ok. 20 000 - 35 000 zł</li>
+               <li><strong>Elewacja (ocieplenie + tynk):</strong> ok. 30 000 - 45 000 zł</li>
+               <li><strong>RAZEM SSZ (SSO + powyższe): od 190 000 zł do 280 000 zł</strong></li>
+           </ul>
+
+           <h3 class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">3. Stan deweloperski</h3>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">To etap, w którym dom jest gotowy do prac wykończeniowych. Obejmuje instalacje wewnętrzne (elektryczną, wod-kan, c.o.), wylewki podłogowe, tynki wewnętrzne, docieplenie poddasza oraz montaż parapetów.</p>
+           <ul class="list-disc pl-5 text-lg text-zinc-600 leading-relaxed mb-6">
+               <li><strong>Instalacje wewnętrzne:</strong> ok. 50 000 - 80 000 zł</li>
+               <li><strong>Wylewki i tynki wewnętrzne:</strong> ok. 30 000 - 50 000 zł</li>
+               <li><strong>Docieplenie poddasza (wełna mineralna, płyty GK):</strong> ok. 15 000 - 25 000 zł</li>
+               <li><strong>Parapety wewnętrzne i zewnętrzne:</strong> ok. 5 000 - 10 000 zł</li>
+               <li><strong>RAZEM Stan deweloperski (SSZ + powyższe): od 280 000 zł do 400 000 zł</strong></li>
+           </ul>
+
+           <h3 class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">4. Stan pod klucz</h3>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">To finalny etap, w którym dom jest gotowy do zamieszkania. Obejmuje wykończenie podłóg, malowanie, montaż drzwi wewnętrznych, biały montaż w łazienkach, wyposażenie kuchni oraz drobne prace wykończeniowe.</p>
+           <ul class="list-disc pl-5 text-lg text-zinc-600 leading-relaxed mb-6">
+               <li><strong>Podłogi (panele/płytki):</strong> ok. 25 000 - 40 000 zł</li>
+               <li><strong>Malowanie i tapetowanie:</strong> ok. 10 000 - 20 000 zł</li>
+               <li><strong>Drzwi wewnętrzne:</strong> ok. 10 000 - 20 000 zł</li>
+               <li><strong>Biały montaż (łazienki):</strong> ok. 15 000 - 30 000 zł</li>
+               <li><strong>Kuchnia (zabudowa, sprzęty):</strong> od 30 000 zł (górna granica praktycznie nie istnieje)</li>
+               <li><strong>Inne wykończenia (oświetlenie, szafy):</strong> ok. 10 000 - 25 000 zł</li>
+               <li><strong>RAZEM Stan pod klucz (Stan deweloperski + powyższe): od 380 000 zł do 490 000 zł</strong></li>
+           </ul>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">Należy pamiętać, że podane kwoty to szacunki dla <strong>ekonomicznego do średniego standardu wykończenia</strong>. Wyższy standard, unikalne rozwiązania projektowe czy droższe materiały mogą znacząco podnieść te koszty.</p>
+
+           <h2 id="szczegolowy-kosztorys-70m2-z-poddaszem" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Szczegółowy kosztorys budowy domu 70 m2 z poddaszem (pow. zabudowy)</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">Poniższa tabela przedstawia orientacyjny podział kosztów dla domu z poddaszem użytkowym, którego powierzchnia zabudowy nie przekracza 70 m². Zwróć uwagę, że powierzchnia użytkowa takiego budynku może wynosić realnie <strong>od 90 m² do 120 m²</strong>.</p>
+           
+           <table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-md my-10">
+               <thead class="bg-zinc-800 text-white">
+                   <tr>
+                       <th class="p-4 border-b border-zinc-100">Etap budowy</th>
+                       <th class="p-4 border-b border-zinc-100">Zakres prac</th>
+                       <th class="p-4 border-b border-zinc-100">Orientacyjny koszt (2026)</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr class="hover:bg-zinc-50 transition-colors">
+                       <td class="p-4 border-b border-zinc-100"><strong>I. Stan surowy otwarty</strong></td>
+                       <td class="p-4 border-b border-zinc-100">Fundamenty, ściany nośne, stropy, konstrukcja dachu, schody na poddasze</td>
+                       <td class="p-4 border-b border-zinc-100"><strong>130 000 - 180 000 zł</strong></td>
+                   </tr>
+                   <tr class="hover:bg-zinc-50 transition-colors">
+                       <td class="p-4 border-b border-zinc-100"><strong>II. Stan surowy zamknięty</strong></td>
+                       <td class="p-4 border-b border-zinc-100">Pokrycie dachu, okna, drzwi zewnętrzne, elewacja</td>
+                       <td class="p-4 border-b border-zinc-100"><strong>60 000 - 100 000 zł</strong> (dodatkowo do SSO)</td>
+                   </tr>
+                   <tr class="hover:bg-zinc-50 transition-colors">
+                       <td class="p-4 border-b border-zinc-100"><strong>III. Stan deweloperski</strong></td>
+                       <td class="p-4 border-b border-zinc-100">Instalacje, wylewki, tynki, docieplenie poddasza, parapety</td>
+                       <td class="p-4 border-b border-zinc-100"><strong>90 000 - 165 000 zł</strong> (dodatkowo do SSZ)</td>
+                   </tr>
+                   <tr class="hover:bg-zinc-50 transition-colors">
+                       <td class="p-4 border-b border-zinc-100"><strong>IV. Wykończenie pod klucz</strong></td>
+                       <td class="p-4 border-b border-zinc-100">Podłogi, malowanie, drzwi wewn., biały montaż, kuchnia, inne wykończenia</td>
+                       <td class="p-4 border-b border-zinc-100"><strong>100 000 - 200 000 zł</strong> (dodatkowo do deweloperskiego)</td>
+                   </tr>
+                   <tr class="hover:bg-zinc-50 transition-colors bg-zinc-100 font-bold">
+                       <td class="p-4 border-b border-zinc-100" colspan="2"><strong>Całkowity koszt pod klucz (pow. użytkowa 100-120 m²)</strong></td>
+                       <td class="p-4 border-b border-zinc-100"><strong>380 000 - 490 000 zł</strong></td>
+                   </tr>
+               </tbody>
+           </table>
+
+           <h2 id="czynniki-wplywajace-na-koszt" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Co wpływa na koszt budowy domu 70 m2 z poddaszem?</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">Ostateczna cena budowy domu zależy od wielu zmiennych. Oto najważniejsze z nich:</p>
+           <ul class="list-disc pl-5 text-lg text-zinc-600 leading-relaxed mb-6">
+               <li><strong>Technologia budowy:</strong> Dom murowany (tradycyjny) zazwyczaj jest droższy niż dom szkieletowy na etapie konstrukcji, ale może oferować lepszą akumulację ciepła. Domy modułowe mogą być szybkie w realizacji, ale ich koszt początkowy bywa zbliżony do tradycyjnych.</li>
+               <li><strong>Standard wykończenia:</strong> Od materiałów budowlanych (cegła, pustak, dachówka, blachodachówka, okna PVC, drewno, aluminium) po wyposażenie wnętrz (armatura, podłogi, meble).</li>
+               <li><strong>Lokalizacja inwestycji:</strong> Ceny robocizny i dostępność ekip budowlanych różnią się w zależności od regionu Polski.</li>
+               <li><strong>Skomplikowanie projektu:</strong> Prosta bryła budynku z dwuspadowym dachem będzie tańsza niż rozbudowany projekt z wieloma wykuszami, lukarnami czy skomplikowaną konstrukcją dachu na poddaszu.</li>
+               <li><strong>Standard energetyczny:</strong> Dom energooszczędny lub pasywny wiąże się z wyższymi kosztami początkowymi (lepsze ocieplenie, rekuperacja, pompa ciepła), ale generuje znaczne oszczędności w eksploatacji. W 2026 roku staje się to coraz ważniejsze.</li>
+               <li><strong>Prace dodatkowe i przyłącza:</strong> Koszty zagospodarowania terenu, ogrodzenia, podjazdów, a także doprowadzenia mediów (woda, prąd, gaz, kanalizacja) mogą stanowić znaczący procent całkowitych wydatków.</li>
+               <li><strong>System budowy:</strong> Budowa systemem gospodarczym (DIY) pozwala zaoszczędzić na robociźnie, ale wymaga czasu, wiedzy i doświadczenia.</li>
+           </ul>
+
+           <div class="bg-orange-50 border-l-4 border-orange-400 p-6 my-8 italic text-zinc-800 rounded-r-xl">
+               <h3 class="text-2xl font-semibold text-zinc-700 mt-0 mb-4">Expert Tip: Optymalizacja przestrzeni na poddaszu</h3>
+               <p class="text-lg text-zinc-600 leading-relaxed mb-6">Projektując dom z poddaszem o powierzchni zabudowy 70 m², maksymalizuj przestrzeń użytkową poprzez inteligentne wykorzystanie skosów i minimalizację zbędnych komunikacji. Dobre doświetlenie poddasza (np. lukarny zamiast wyłącznie okien połaciowych) oraz przemyślane rozmieszczenie ścian działowych są kluczowe dla funkcjonalności i komfortu.</p>
+           </div>
+
+           <h2 id="jak-obnizyc-koszty" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Jak obniżyć koszty budowy domu 70 m2 z poddaszem?</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">Planowanie budżetu to klucz do sukcesu. Oto kilka sprawdzonych sposobów na optymalizację kosztów w 2026 roku:</p>
+           <ul class="list-disc pl-5 text-lg text-zinc-600 leading-relaxed mb-6">
+               <li><strong>Prosta bryła i dach:</strong> Im prostsza konstrukcja, tym niższe koszty materiałów i robocizny. Dach dwuspadowy będzie tańszy niż wielopołaciowy.</li>
+               <li><strong>Wybór odpowiedniej technologii:</strong> Rozważ dom szkieletowy, który może być szybszy i tańszy w realizacji niż murowany, szczególnie na etapie konstrukcji.</li>
+               <li><strong>System gospodarczy:</strong> Samodzielne wykonanie części prac (np. proste prace wykończeniowe, malowanie) może znacznie obniżyć koszty robocizny.</li>
+               <li><strong>Porównanie ofert:</strong> Zawsze zbieraj oferty od kilku ekip budowlanych i dostawców materiałów. Negocjuj ceny.</li>
+               <li><strong>Materiały budowlane:</strong> Wybieraj sprawdzone, ale niekoniecznie najdroższe materiały. Szukaj promocji i wyprzedaży.</li>
+               <li><strong>Termin budowy:</strong> Rozważ rozpoczęcie budowy poza sezonem wysokiego popytu (jesień/zima), co może skutkować niższymi cenami usług.</li>
+               <li><strong>Energooszczędność:</strong> Inwestycja w dobrej jakości ocieplenie, okna i systemy grzewcze (np. pompa ciepła z dotacją) zmniejszy koszty eksploatacji w przyszłości, co w dłuższej perspektywie jest oszczędnością.</li>
+           </ul>
+
+           <h2 id="kalkulator-kosztow-budowy" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Kalkulator kosztów budowy Domu 70 m2 z Poddaszem</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">Użyj naszego prostego kalkulatora, aby wstępnie oszacować koszt budowy domu o powierzchni zabudowy do 70 m² z poddaszem użytkowym, w zależności od wybranego etapu i standardu. Pamiętaj, że są to orientacyjne wartości na rok 2026.</p>
+
+           <div class="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 my-10 max-w-2xl mx-auto">
+               <h3 class="text-2xl font-bold text-gray-900 mb-6">Oszacuj koszt budowy</h3>
+               <div class="mb-6">
+                   <label for="stageSelect" class="block text-gray-700 text-lg font-medium mb-2">Wybierz etap budowy:</label>
+                   <select id="stageSelect" class="block w-full p-3 border border-gray-300 rounded-lg text-lg focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                       <option value="sso">Stan surowy otwarty</option>
+                       <option value="ssz">Stan surowy zamknięty</option>
+                       <option value="deweloperski">Stan deweloperski</option>
+                       <option value="podklucz">Stan pod klucz</option>
+                   </select>
+               </div>
+               <div class="mb-8">
+                   <label for="standardSelect" class="block text-gray-700 text-lg font-medium mb-2">Wybierz standard wykończenia:</label>
+                   <select id="standardSelect" class="block w-full p-3 border border-gray-300 rounded-lg text-lg focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                       <option value="ekonomiczny">Ekonomiczny</option>
+                       <option value="sredni">Średni</option>
+                       <option value="wysoki">Wysoki</option>
+                   </select>
+               </div>
+               <button id="calculateCost" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg text-xl transition-colors shadow-md">Oblicz koszt</button>
+               <div id="result" class="mt-8 p-6 bg-blue-50 border border-blue-100 rounded-lg text-blue-900 text-xl font-semibold text-center hidden">
+                   <p>Orientacyjny koszt: <span id="estimatedCost"></span> zł</p>
+               </div>
+           </div>
+
+           <script is:inline>
+               document.addEventListener('DOMContentLoaded', () => {
+                   const stageSelect = document.getElementById('stageSelect');
+                   const standardSelect = document.getElementById('standardSelect');
+                   const calculateButton = document.getElementById('calculateCost');
+                   const resultDiv = document.getElementById('result');
+                   const estimatedCostSpan = document.getElementById('estimatedCost');
+
+                   const costs = {
+                       sso: {
+                           ekonomiczny: 130000,
+                           sredni: 155000,
+                           wysoki: 180000
+                       },
+                       ssz: {
+                           ekonomiczny: 190000,
+                           sredni: 235000,
+                           wysoki: 280000
+                       },
+                       deweloperski: {
+                           ekonomiczny: 280000,
+                           sredni: 340000,
+                           wysoki: 400000
+                       },
+                       podklucz: {
+                           ekonomiczny: 380000,
+                           sredni: 435000,
+                           wysoki: 490000
+                       }
+                   };
+
+                   calculateButton.addEventListener('click', () => {
+                       const selectedStage = stageSelect.value;
+                       const selectedStandard = standardSelect.value;
+                       const cost = costs[selectedStage][selectedStandard];
+                       
+                       if (cost) {
+                           estimatedCostSpan.textContent = cost.toLocaleString('pl-PL');
+                           resultDiv.classList.remove('hidden');
+                       } else {
+                           estimatedCostSpan.textContent = 'Brak danych dla wybranej kombinacji.';
+                           resultDiv.classList.remove('hidden');
+                       }
+                   });
+               });
+           </script>
+
+           <h2 id="ankieta-twoje-priorytety-budowy" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Ankieta: Twoje Priorytety Budowy Domu</h2>
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">Pomóż nam lepiej zrozumieć potrzeby inwestorów. Odpowiedz na kilka pytań dotyczących Twoich priorytetów podczas budowy domu.</p>
+
+           <div class="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 my-10 max-w-2xl mx-auto">
+               <form id="buildSurvey" class="space-y-6">
+                   <div>
+                       <p class="text-lg font-semibold text-gray-800 mb-3">1. Jaki jest Twój najważniejszy priorytet?</p>
+                       <label class="block mb-2"><input type="radio" name="priority" value="koszt" class="mr-2"> Minimalizacja kosztów początkowych</label>
+                       <label class="block mb-2"><input type="radio" name="priority" value="jakosc" class="mr-2"> Wysoka jakość i trwałość</label>
+                       <label class="block mb-2"><input type="radio" name="priority" value="czas" class="mr-2"> Szybkość realizacji</label>
+                       <label class="block mb-2"><input type="radio" name="priority" value="energooszczednosc" class="mr-2"> Energooszczędność i niskie koszty eksploatacji</label>
+                   </div>
+                   <div>
+                       <p class="text-lg font-semibold text-gray-800 mb-3">2. Jaki typ domu preferujesz?</p>
+                       <label class="block mb-2"><input type="radio" name="type" value="murowany" class="mr-2"> Tradycyjny murowany</label>
+                       <label class="block mb-2"><input type="radio" name="type" value="szkieletowy" class="mr-2"> Szkieletowy / Drewniany</label>
+                       <label class="block mb-2"><input type="radio" name="type" value="modulowy" class="mr-2"> Modułowy / Prefabrykowany</label>
+                   </div>
+                   <div>
+                       <p class="text-lg font-semibold text-gray-800 mb-3">3. Jak zamierzasz finansować budowę?</p>
+                       <label class="block mb-2"><input type="radio" name="finance" value="gotowka" class="mr-2"> Własne środki (gotówka)</label>
+                       <label class="block mb-2"><input type="radio" name="finance" value="kredyt" class="mr-2"> Kredyt hipoteczny</label>
+                       <label class="block mb-2"><input type="radio" name="finance" value="mieszane" class="mr-2"> Mieszane (częściowo własne, częściowo kredyt)</label>
+                   </div>
+                   <div>
+                       <p class="text-lg font-semibold text-gray-800 mb-3">4. Czy planujesz samodzielne wykonanie części prac?</p>
+                       <label class="block mb-2"><input type="radio" name="diy" value="tak" class="mr-2"> Tak, w dużym zakresie</label>
+                       <label class="block mb-2"><input type="radio" name="diy" value="niewielki" class="mr-2"> Tak, w niewielkim zakresie (drobne prace)</label>
+                       <label class="block mb-2"><input type="radio" name="diy" value="nie" class="mr-2"> Nie, zlecę wszystko specjalistom</label>
+                   </div>
+                   <button type="button" id="submitSurvey" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-xl transition-colors shadow-md">Pokaż moją poradę</button>
+               </form>
+               <div id="surveyResult" class="mt-8 p-6 bg-indigo-50 border border-indigo-100 rounded-lg text-indigo-900 text-lg hidden">
+                   <p class="font-bold mb-2">Twoja spersonalizowana porada:</p>
+                   <p id="surveyAdvice"></p>
+               </div>
+           </div>
+
+           <script is:inline>
+               document.addEventListener('DOMContentLoaded', () => {
+                   const submitButton = document.getElementById('submitSurvey');
+                   const surveyResultDiv = document.getElementById('surveyResult');
+                   const surveyAdviceP = document.getElementById('surveyAdvice');
+
+                   submitButton.addEventListener('click', () => {
+                       const form = document.getElementById('buildSurvey');
+                       const formData = new FormData(form);
+                       const priority = formData.get('priority');
+                       const type = formData.get('type');
+                       const finance = formData.get('finance');
+                       const diy = formData.get('diy');
+
+                       let advice = "Dziękujemy za wypełnienie ankiety! Brak wystarczających danych do spersonalizowanej porady. Pamiętaj, że planowanie to podstawa.";
+
+                       if (priority === 'koszt' && diy === 'tak') {
+                           advice = "Skupiając się na minimalizacji kosztów i samodzielnym wykonaniu prac, rozważ projekty domów szkieletowych o prostej bryle. Poszukaj sprawdzonych dostawców materiałów budowlanych i aktywnie zarządzaj budżetem. Pamiętaj o dokładnej kalkulacji czasu, jaki jesteś w stanie poświęcić na budowę systemem gospodarczym.";
+                       } else if (priority === 'jakosc' && type === 'murowany') {
+                           advice = "Jeśli priorytetem jest wysoka jakość i trwałość, tradycyjny dom murowany będzie dobrym wyborem. Skoncentruj się na doborze renomowanych wykonawców i materiałów premium. Przygotuj odpowiednio większy budżet i bądź gotów na nieco dłuższy czas realizacji. Inwestycja w sprawdzone rozwiązania opłaci się w dłuższej perspektywie.";
+                       } else if (priority === 'czas' && type === 'modulowy') {
+                           advice = "Gdy kluczowa jest szybkość realizacji, dom modułowy lub prefabrykowany to najlepsza opcja. Pozwalają one na znaczące skrócenie czasu budowy do kilku miesięcy. Pamiętaj, że wymaga to precyzyjnego planowania na wczesnym etapie i często jednorazowo większej inwestycji początkowej.";
+                       } else if (priority === 'energooszczednosc' && finance === 'kredyt') {
+                           advice = "Inwestycja w energooszczędność przy finansowaniu kredytem to mądre posunięcie. Rozważ nowoczesne systemy grzewcze (pompa ciepła), rekuperację oraz wysokiej jakości izolację termiczną. Sprawdź dostępne programy dopłat i ulg podatkowych, które mogą obniżyć początkowe koszty i zmniejszyć raty kredytu dzięki niższym rachunkom za energię. Poszukaj kredytów 'zielonych' oferujących lepsze warunki.";
+                       } else if (priority === 'koszt' && finance === 'kredyt') {
+                            advice = "Przy minimalizacji kosztów i finansowaniu kredytem, skoncentruj się na prostym projekcie i dokładnej kontroli wydatków. Wybierz ekonomiczny standard wykończenia i poszukaj kredytu z najkorzystniejszymi warunkami. Ewentualne prace wykończeniowe możesz rozłożyć w czasie lub wykonać je samodzielnie, aby zmniejszyć kwotę kredytu.";
+                        } else if (priority === 'jakosc' && diy === 'nie') {
+                            advice = "Dążąc do wysokiej jakości bez samodzielnego angażowania się w prace, kluczowe będzie wybranie zaufanej i doświadczonej ekipy budowlanej oraz dokładne sprawdzenie referencji. Przygotuj bufor finansowy na nieprzewidziane wydatki i regularnie monitoruj postęp prac, aby zapewnić zgodność z projektem i standardem. Koszt końcowy będzie wyższy, ale zyskasz spokój i gwarancję jakości.";
+                        }
+                       
+                       surveyAdviceP.textContent = advice;
+                       surveyResultDiv.classList.remove('hidden');
+                   });
+               });
+           </script>
+
+        </div>
+
+        <section class="faq mt-20 border-t pt-16">
+           <h2 class="text-4xl font-bold mb-10 text-center">Najczęstsze pytania inwestorów</h2>
+           <div class="grid gap-6">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Czy dom 70 m² z poddaszem naprawdę kwalifikuje się jako "dom na zgłoszenie"?</h4>
+                    <p class="text-lg text-gray-700 leading-relaxed">Tak, dom o powierzchni zabudowy do 70 m² może być budowany na zgłoszenie. Kluczowe jest, aby powierzchnia zabudowy (rzut budynku na grunt) nie przekraczała tego limitu. Powierzchnia użytkowa z poddaszem może być znacznie większa, często osiągając 100-120 m², co jest zgodne z przepisami, o ile rzut parteru mieści się w 70 m².</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Czy budowa domu 70 m² z poddaszem w 2026 roku faktycznie jest tańsza niż większego metrażu?</h4>
+                    <p class="text-lg text-gray-700 leading-relaxed">Tak, w przeliczeniu na powierzchnię użytkową, budowa domu o mniejszej powierzchni zabudowy (np. 70 m²) z poddaszem jest zazwyczaj bardziej ekonomiczna niż budowa domu o powierzchni zabudowy 100-120 m² na jednym poziomie. Mniejsze fundamenty, uproszczone formalności i mniejsza ilość materiałów na parter przekładają się na niższe koszty początkowe, choć poddasze generuje dodatkowe wydatki na strop, schody i docieplenie. Oszczędności mogą wynieść 10-20% w porównaniu do budowy domu o tej samej powierzchni użytkowej, ale większej powierzchni zabudowy.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Czy technologia szkieletowa jest lepsza dla domu 70 m² z poddaszem niż murowana?</h4>
+                    <p class="text-lg text-gray-700 leading-relaxed">Technologia szkieletowa oferuje szybszy czas budowy (nawet 3-4 miesiące do stanu deweloperskiego) i zazwyczaj niższe koszty robocizny na etapie konstrukcji. Dla domów z poddaszem jest to często korzystne ze względu na lekkość konstrukcji. Jednak dom murowany zapewnia większą bezwładność cieplną i trwałość, a jego koszt może być o 10-20% wyższy na etapie surowym. Wybór zależy od priorytetów inwestora – szybkości i początkowych kosztów vs. trwałości i akumulacji ciepła.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Jakie są kluczowe różnice w kosztach między domem parterowym a domem z poddaszem o tej samej powierzchni zabudowy 70 m²?</h4>
+                    <p class="text-lg text-gray-700 leading-relaxed">Dom parterowy o powierzchni zabudowy 70 m² będzie miał około 60-65 m² powierzchni użytkowej, a jego budowa będzie prostsza (brak stropu, schodów, mniejszy zakres prac na dachu). Dom z poddaszem o tej samej powierzchni zabudowy może mieć 90-120 m² powierzchni użytkowej, ale wiąże się z dodatkowymi kosztami rzędu 40 000 - 80 000 zł na strop, schody, docieplenie poddasza i bardziej złożony dach. Różnica w cenie za m² powierzchni użytkowej może być więc na korzyść domu z poddaszem, oferującym więcej przestrzeni za relatywnie mniejszą dopłatą na metr kwadratowy.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Jakie są potencjalne pułapki w interpretacji przepisów o budowie domu do 70 m² na zgłoszenie?</h4>
+                    <p class="text-lg text-gray-700 leading-relaxed">Główną pułapką jest błędne rozumienie "powierzchni zabudowy" jako "powierzchni użytkowej". Inwestor musi pamiętać o wymogach prawnych, takich jak przeznaczenie na własne potrzeby mieszkaniowe, zgodność z MPZP/WZ oraz niekiedy konieczność wykonania badań geologicznych gruntu. Brak nadzoru kierownika budowy (opcjonalny dla tych domów) może prowadzić do błędów konstrukcyjnych, a niedopilnowanie formalności po stronie inwestora może skutkować konsekwencjami prawnymi, takimi jak nakaz rozbiórki lub legalizacja wiążąca się z karami administracyjnymi rzędu kilkudziesięciu tysięcy złotych.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Czy warto inwestować w rozwiązania smart home w tak niewielkim domu, jak 70 m² z poddaszem?</h4>
+                    <p class="text-lg text-gray-700 leading-relaxed">W małym domu 70 m² z poddaszem, systemy smart home mogą przynieść wyjątkowo dobre rezultaty, zwłaszcza w kontekście zarządzania energią. Inteligentne sterowanie ogrzewaniem, oświetleniem czy wentylacją (np. rekuperacją) może zoptymalizować zużycie energii nawet o 15-25%. Koszty implementacji (od 5 000 zł do 20 000 zł za podstawowy system) są relatywnie niskie w porównaniu do potencjalnych oszczędności i zwiększonego komfortu użytkowania, co sprawia, że jest to opłacalna inwestycja z szybkim zwrotem.</p>
+                </div>
+           </div>
+        </section>
+      </article>
+      <ArticleSidebar />
+    </div>
+  </main>
+  <script type="application/ld+json" is:inline>{JSON.stringify(schemaGraph)}</script>
+</BaseLayout>

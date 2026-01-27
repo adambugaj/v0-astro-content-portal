@@ -1,0 +1,524 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Ile kosztuje budowa domu 70 m2 w 2027 roku? Kompleksowy przewodnik";
+const description = "Szukasz informacji o kosztach budowy domu 70m2 w 2027 roku? Sprawdź szczegółowe wyceny dla stanu surowego, deweloperskiego i pod klucz, uwzględniające inflację i trendy rynkowe. Dowiedz się, jak zoptymalizować budżet i wybrać najlepszą technologię.";
+const canonical = "https://domjakosci.pl/budowa/koszt-budowy-domu/ile-kosztuje-budowa-domu-70-m2/";
+const author = 'mgr inż. Marek Nowicki';
+const contextNote = "Prognozy kosztów budowy na rok 2027 uwzględniają dynamiczną inflację w sektorze budowlanym oraz rosnące ceny materiałów i usług. Przedstawione dane są precyzyjnym oszacowaniem, bazującym na analizie trendów rynkowych i ekspertyzach branżowych.";
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Ile kosztuje budowa domu 70 m2', url: 'https://domjakosci.pl/budowa/koszt-budowy-domu/ile-kosztuje-budowa-domu-70-m2/' }
+];
+
+const faqItems = [
+  {
+    question: "Czy budowa domu 70 m2 bez pozwolenia jest możliwa i opłacalna w 2027 roku?",
+    answer: "Tak, budowa domu o powierzchni zabudowy do 70 m2 na zgłoszenie pozostaje atrakcyjną opcją w 2027 roku, dzięki uproszczonym procedurom z Polskiego Ładu. Omija się konieczność uzyskania pozwolenia na budowę oraz zatrudnienia kierownika budowy (pod pewnymi warunkami), co znacząco skraca czas realizacji i obniża koszty formalne, szacunkowo o 5-10%."
+  },
+  {
+    question: "Jakie są główne czynniki wpływające na ostateczny koszt domu 70 m2 w 2027 roku?",
+    answer: "Główne czynniki to technologia budowy (murowana, szkieletowa), lokalizacja działki, standard wykończenia (ekonomiczny, średni, wysoki), rodzaj użytych materiałów (np. energooszczędne izolacje), oraz system realizacji inwestycji (system gospodarczy vs. generalny wykonawca). Różnice w kosztach między standardem ekonomicznym a wysokim mogą wynosić nawet 100%."
+  },
+  {
+    question: "Jakie technologie budowy są najpopularniejsze dla domów 70 m2 w 2027 roku i ile kosztują?",
+    answer: "W 2027 roku najpopularniejsze technologie to tradycyjna murowana i szkieletowa. Budowa domu murowanego do stanu deweloperskiego to koszt około 190 000 - 280 000 zł, natomiast dom szkieletowy w tym samym standardzie może kosztować nieco mniej, bo około 180 000 - 270 000 zł, głównie ze względu na krótszy czas budowy i mniejsze zapotrzebowanie na ciężki sprzęt."
+  },
+  {
+    question: "Co obejmuje stan deweloperski dla domu 70 m2 i ile kosztuje jego osiągnięcie w 2027 roku?",
+    answer: "Stan deweloperski w 2027 roku oznacza kompleksowe przygotowanie budynku do prac wykończeniowych. Obejmuje fundamenty, ściany, stropy, dach z pokryciem, stolarkę okienną i drzwiową, ocieplenie elewacji, tynki zewnętrzne, wszystkie instalacje wewnętrzne (elektryczne, wod-kan, grzewcze) oraz wylewki podłogowe. Koszt doprowadzenia domu 70 m2 do tego stanu szacuje się na 170 000 - 290 000 zł."
+  },
+  {
+    question: "Jakie są korzyści z budowy domu energooszczędnego 70 m2 w perspektywie długoterminowej?",
+    answer: "Budowa domu energooszczędnego 70 m2, choć początkowo droższa o około 10-15%, przynosi znaczące oszczędności w długoterminowej eksploatacji. Dzięki zaawansowanym izolacjom, rekuperacji i nowoczesnym systemom grzewczym, roczne koszty ogrzewania mogą być niższe nawet o 50-70% w porównaniu do tradycyjnych budynków, co przekłada się na zwrot inwestycji w ciągu 8-12 lat."
+  },
+  {
+    question: "Czy budowa domu modułowego 70 m2 jest konkurencyjna cenowo w 2027 roku?",
+    answer: "Tak, budowa domu modułowego 70 m2 staje się coraz bardziej konkurencyjna, oferując szybki czas realizacji (nawet 2-3 miesiące) i często bardziej przewidywalne koszty. W 2027 roku ceny domów modułowych pod klucz oscylują w granicach 300 000 - 420 000 zł, co jest porównywalne lub nawet niższe niż w przypadku budownictwa tradycyjnego, szczególnie przy standardzie wykończenia średniego i wysokiego."
+  }
+];
+---
+<BaseLayout title={title} description={description} canonical={canonical} type="article">
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+    <div class="flex flex-col lg:flex-row lg:gap-16">
+      <article class="lg:flex-1">
+        <header class="mb-8">
+          <span class="inline-block py-1 px-3 rounded-full bg-green-100 text-green-600 text-sm font-semibold mb-4">Budownictwo Jutra: 2027</span>
+          <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-700 mb-4">{title}</h1>
+          <blockquote class="border-l-4 border-orange-500 pl-4 py-2 bg-stone-50 text-sm text-zinc-600 mb-6 italic text-balance font-sans">{contextNote}</blockquote>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">MN</div>
+            <div>
+              <p class="font-semibold text-zinc-700">{author}</p>
+              <p class="text-sm text-zinc-500 font-sans">Specjalista ds. Efektywności Energetycznej i OZE</p>
+            </div>
+          </div>
+        </header>
+
+        <div class="bg-slate-50 p-8 rounded-3xl mb-12 border border-slate-100">
+           <p class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">W tym artykule:</p>
+           <nav id="toc" class="space-y-2 text-blue-600 font-medium">
+             <a href="#dlaczego-dom-70-m2-staje-sie-coraz-popularniejszy-w-2027-roku" class="hover:underline block">Dlaczego dom 70 m2 staje się coraz popularniejszy w 2027 roku?</a>
+             <a href="#ile-kosztuje-budowa-domu-70-m2-w-2027-roku" class="hover:underline block">Ile kosztuje budowa domu 70 m2 w 2027 roku?</a>
+             <a href="#co-wplywa-na-koszt-budowy-domu-70-m2" class="hover:underline block">Co wpływa na koszt budowy domu 70 m2?</a>
+             <a href="#szacunkowe-koszty-budowy-domu-70-m2-w-poszczegolnych-etapach-2027-rok" class="hover:underline block">Szacunkowe koszty budowy domu 70 m2 w poszczególnych etapach (2027 rok)</a>
+             <a href="#technologie-budowy-domu-70-m2-porownanie-kosztow-2027" class="hover:underline block">Technologie budowy domu 70 m2: porównanie kosztów (2027)</a>
+             <a href="#interaktywny-kalkulator-kosztow-budowy-domu-70-m2-w-2027" class="hover:underline block">Interaktywny kalkulator kosztów budowy domu 70 m2 w 2027</a>
+             <a href="#jak-obnizyc-koszty-budowy-domu-70-m2-w-2027-roku-checklista" class="hover:underline block">Jak obniżyć koszty budowy domu 70 m2 w 2027 roku? (Checklista)</a>
+             <a href="#dodatkowe-koszty-o-ktorych-nie-mozna-zapomniec" class="hover:underline block">Dodatkowe koszty, o których nie można zapomnieć</a>
+             <a href="#quiz-sprawdz-swoja-wiedze-o-budowie-domu-70-m2" class="hover:underline block">Quiz: Sprawdź swoją wiedzę o budowie domu 70 m2!</a>
+           </nav>
+        </div>
+
+        <div class="article-content">
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Budowa domu o powierzchni 70 m2 w 2027 roku to inwestycja, której koszt w stanie deweloperskim może wahać się od <strong>170 000 zł do 290 000 zł</strong>, natomiast dom pod klucz to wydatek rzędu <strong>340 000 zł do 450 000 zł</strong>. Ostateczna cena zależy od wielu czynników, takich jak wybrana technologia, standard wykończenia oraz lokalizacja. Wartości te uwzględniają przewidywaną inflację i wzrost cen materiałów budowlanych na najbliższe lata.
+          </p>
+
+          <h2 id="dlaczego-dom-70-m2-staje-sie-coraz-popularniejszy-w-2027-roku" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Dlaczego dom 70 m2 staje się coraz popularniejszy w 2027 roku?</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Popularność domów o powierzchni zabudowy do 70 m2 nie słabnie, a wręcz rośnie w 2027 roku. Głównym motorem napędowym tego trendu jest ustawa, która weszła w życie 3 stycznia 2022 roku w ramach Polskiego Ładu, umożliwiająca budowę takich obiektów <strong >bez konieczności uzyskania pozwolenia na budowę</strong>. Wystarczy jedynie zgłosić zamiar budowy do odpowiedniego organu administracji architektoniczno-budowlanej. To znacząco przyspiesza formalności i eliminuje część kosztów administracyjnych.
+          </p>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Poza uproszczonymi procedurami, mniejszy metraż oznacza również <strong >znaczne oszczędności</strong> w zakresie zakupu materiałów budowlanych, robocizny, a także na kosztach zakupu mniejszej działki. Domy te są również bardziej <strong >ekonomiczne w utrzymaniu i ogrzewaniu</strong>, co jest kluczowe w obliczu rosnących cen energii. Kompaktowy projekt, jeśli jest dobrze przemyślany, może zaoferować pełną funkcjonalność dla pary, małej rodziny lub osób szukających własnego, efektywnego kosztowo azylu.
+          </p>
+
+          <div class="bg-gradient-to-r from-zinc-50 to-slate-100 p-8 rounded-3xl border border-zinc-200 my-10 shadow-sm">
+            <h3 class="text-2xl font-semibold text-zinc-700 mt-0 mb-4">Key Takeaways: Korzyści z budowy domu 70 m2</h3>
+            <ul class="list-disc list-inside space-y-2 text-lg text-zinc-600">
+              <li>Uproszczone formalności (budowa na zgłoszenie bez pozwolenia).</li>
+              <li>Brak wymogu zatrudnienia kierownika budowy (w niektórych przypadkach).</li>
+              <li>Niższe koszty zakupu materiałów i robocizny.</li>
+              <li>Mniejsze zapotrzebowanie na powierzchnię działki.</li>
+              <li>Oszczędności na kosztach eksploatacji (ogrzewanie, utrzymanie).</li>
+              <li>Szybszy czas realizacji inwestycji.</li>
+            </ul>
+          </div>
+
+          <h2 id="ile-kosztuje-budowa-domu-70-m2-w-2027-roku" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Ile kosztuje budowa domu 70 m2 w 2027 roku?</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Szacunkowy koszt budowy domu o powierzchni 70 m2 w 2027 roku, w zależności od standardu i etapu zaawansowania, przedstawia się następująco:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-lg text-zinc-600 mb-6">
+              <li><strong>Stan surowy otwarty (SSO):</strong> od 85 000 zł do 120 000 zł.</li>
+              <li><strong>Stan surowy zamknięty (SSZ):</strong> od 133 000 zł do 205 000 zł.</li>
+              <li><strong>Stan deweloperski:</strong> od 170 000 zł do 290 000 zł.</li>
+              <li><strong>Stan pod klucz (standard ekonomiczny/średni):</strong> od 340 000 zł do 450 000 zł.</li>
+          </ul>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Pamiętaj, że są to wartości uśrednione i mogą ulec zmianie w zależności od <strong >konkretnych wyborów projektowych i rynkowych</strong>.
+          </p>
+
+          <h2 id="co-wplywa-na-koszt-budowy-domu-70-m2" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Co wpływa na koszt budowy domu 70 m2?</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Ostateczny koszt budowy domu 70 m2 w 2027 roku zależy od szeregu zmiennych. Zrozumienie ich pomoże w efektywnym planowaniu budżetu.
+          </p>
+          <h3 class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Lokalizacja i działka</h3>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Ceny usług budowlanych oraz dostępność ekip mogą <strong >różnić się znacząco w zależności od regionu Polski</strong>. Duże aglomeracje miejskie i ich okolice zazwyczaj generują wyższe koszty robocizny. Ponadto, specyfika działki (np. konieczność niwelacji terenu, trudne warunki gruntowe) może podnieść wydatki na etapie fundamentów o 10-20%.
+          </p>
+          <h3 class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Technologia budowy</h3>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Wybór między domem murowanym a szkieletowym, czy też prefabrykowanym, ma <strong >ogromny wpływ na budżet i czas realizacji</strong>. Domy szkieletowe i modułowe są często szybsze w budowie, co może generować oszczędności na robociźnie i skracać czas od rozpoczęcia do zamieszkania.
+          </p>
+          <h3 class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Materiały i standard wykończenia</h3>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Od wyboru fundamentów, przez rodzaj ocieplenia, typ dachu (np. dwuspadowy, płaski, kopertowy), po okna (PVC, drewno, aluminium), drzwi i materiały wykończeniowe wnętrz – każdy element ma swoją cenę. <strong >Wybór energooszczędnych rozwiązań</strong>, choć droższy na początku (o ok. 10-15%), gwarantuje niższe koszty eksploatacji w przyszłości.
+          </p>
+          <h3 class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Zakres prac i system budowy</h3>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Budowa systemem gospodarczym (samodzielnie) może obniżyć koszty robocizny nawet o <strong >30-50%</strong>, ale wymaga ogromnego zaangażowania czasowego i wiedzy. Powierzenie budowy generalnemu wykonawcy zapewnia komfort i przewidywalność, ale jest droższe.
+          </p>
+
+          <div class="bg-orange-50 border-l-4 border-orange-400 p-6 my-8 italic text-zinc-800 rounded-r-xl">
+            <p><strong>Expert Tip:</strong> Planując budżet na 2027 rok, zawsze zakładaj rezerwę finansową w wysokości co najmniej 10-15% przewidywanych kosztów. Nieprzewidziane wydatki, takie jak wzrost cen materiałów, dodatkowe prace ziemne czy zmiana projektu w trakcie budowy, są normą i mogą znacząco wpłynąć na ostateczną kwotę.</p>
+          </div>
+
+          <h2 id="szacunkowe-koszty-budowy-domu-70-m2-w-poszczegolnych-etapach-2027-rok" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Szacunkowe koszty budowy domu 70 m2 w poszczególnych etapach (2027 rok)</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Poniżej przedstawiamy szczegółowy rozkład kosztów budowy domu 70 m2, uwzględniając różne etapy realizacji projektu w 2027 roku. Wartości te są uśrednione dla standardowego budynku murowanego o dobrej izolacyjności.
+          </p>
+
+          <table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-md my-10">
+            <thead class="bg-zinc-800 text-white">
+              <tr>
+                <th class="p-4 border-b border-zinc-100">Etap budowy</th>
+                <th class="p-4 border-b border-zinc-100">Zakres prac</th>
+                <th class="p-4 border-b border-zinc-100">Szacunkowy koszt (2027)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="p-4 border-b border-zinc-100"><strong>Stan Surowy Otwarty (SSO)</strong></td>
+                <td class="p-4 border-b border-zinc-100">Fundamenty, ściany nośne, stropy, konstrukcja dachu z pokryciem</td>
+                <td class="p-4 border-b border-zinc-100">85 000 zł - 120 000 zł</td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="p-4 border-b border-zinc-100"><strong>Stan Surowy Zamknięty (SSZ)</strong></td>
+                <td class="p-4 border-b border-zinc-100">SSO + stolarka okienna i drzwiowa, ścianki działowe</td>
+                <td class="p-4 border-b border-zinc-100">133 000 zł - 205 000 zł (łącznie)</td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="p-4 border-b border-zinc-100"><strong>Stan Deweloperski</strong></td>
+                <td class="p-4 border-b border-zinc-100">SSZ + elewacja, ocieplenie, instalacje wewnętrzne (wod-kan, CO, elektryka), wylewki, tynki</td>
+                <td class="p-4 border-b border-zinc-100">170 000 zł - 290 000 zł (łącznie)</td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="p-4 border-b border-zinc-100"><strong>Stan Pod Klucz</strong></td>
+                <td class="p-4 border-b border-zinc-100">Deweloperski + wykończenie wnętrz (podłogi, malowanie, biały montaż, drzwi wewnętrzne)</td>
+                <td class="p-4 border-b border-zinc-100">340 000 zł - 450 000 zł (łącznie)</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Należy pamiętać, że podane kwoty są orientacyjne i odzwierciedlają aktualne trendy rynkowe. Rzeczywiste koszty mogą być <strong >niższe przy samodzielnej pracy (system gospodarczy)</strong> lub <strong >wyższe przy wyborze luksusowych materiałów i rozwiązań</strong>.
+          </p>
+
+          <div class="bg-red-50 border border-red-100 p-6 my-6 rounded-2xl text-red-900 text-sm">
+            <strong class="block mb-2">Ważne! Ukryte koszty budowy</strong>
+            <p>Nie zapominaj o kosztach okołobudowlanych, takich jak projekt architektoniczny (ok. 5 000 - 15 000 zł), przyłącza mediów (gaz, woda, prąd, kanalizacja - od 15 000 zł do 40 000 zł), zagospodarowanie terenu, ogrodzenie, a także podatek VAT na materiały budowlane i usługi. Te dodatkowe wydatki mogą stanowić <strong >15-25% całkowitego budżetu</strong>.</p>
+          </div>
+
+          <h2 id="technologie-budowy-domu-70-m2-porownanie-kosztow-2027" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Technologie budowy domu 70 m2: porównanie kosztów (2027)</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Wybór technologii budowy ma kluczowe znaczenie dla ostatecznych kosztów. W 2027 roku dominują dwie główne metody: tradycyjna murowana i nowoczesna szkieletowa.
+          </p>
+
+          <h3 class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Dom murowany 70 m2</h3>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Technologia murowana to sprawdzony i <strong >trwały sposób budowy</strong>. Domy murowane charakteryzują się wysoką akumulacją ciepła i dobrą izolacyjnością akustyczną. Czas budowy jest zazwyczaj dłuższy niż w przypadku domów szkieletowych, ze względu na konieczność przestrzegania przerw technologicznych.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-lg text-zinc-600 mb-6">
+              <li><strong>Koszt (stan deweloperski 2027):</strong> około 190 000 zł - 280 000 zł.</li>
+              <li><strong>Koszt (stan pod klucz 2027):</strong> około 350 000 zł - 480 000 zł.</li>
+          </ul>
+
+          <h3 class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Dom szkieletowy 70 m2</h3>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Domy szkieletowe, zwane również kanadyjskimi, zyskują na popularności dzięki <strong >szybkiemu czasowi realizacji</strong> (nawet 3-4 miesiące do stanu deweloperskiego) i często niższym kosztom robocizny. Charakteryzują się bardzo dobrą izolacyjnością termiczną.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-lg text-zinc-600 mb-6">
+              <li><strong>Koszt (stan deweloperski 2027):</strong> około 180 000 zł - 270 000 zł.</li>
+              <li><strong>Koszt (stan pod klucz 2027):</strong> około 330 000 zł - 450 000 zł.</li>
+          </ul>
+
+          <h2 id="interaktywny-kalkulator-kosztow-budowy-domu-70-m2-w-2027" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Interaktywny kalkulator kosztów budowy domu 70 m2 w 2027</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Skorzystaj z naszego kalkulatora, aby oszacować orientacyjne koszty budowy domu 70 m2 w wybranej technologii i na wybranym etapie zaawansowania, z uwzględnieniem prognoz na rok 2027.
+          </p>
+
+          <div class="bg-blue-50 p-8 rounded-3xl border border-blue-100 my-10 shadow-md">
+            <h3 class="text-2xl font-semibold text-blue-800 mb-6">Kalkulator Kosztów Budowy Domu 70 m2 (2027)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label for="buildingTechnology" class="block text-zinc-700 text-lg font-medium mb-2">Technologia budowy:</label>
+                <select id="buildingTechnology" class="w-full p-3 border border-zinc-300 rounded-lg text-lg focus:ring-blue-500 focus:border-blue-500">
+                  <option value="murowany">Tradycyjny murowany</option>
+                  <option value="szkieletowy">Szkieletowy (drewniany)</option>
+                </select>
+              </div>
+              <div>
+                <label for="completionStage" class="block text-zinc-700 text-lg font-medium mb-2">Etap zaawansowania:</label>
+                <select id="completionStage" class="w-full p-3 border border-zinc-300 rounded-lg text-lg focus:ring-blue-500 focus:border-blue-500">
+                  <option value="sso">Stan Surowy Otwarty (SSO)</option>
+                  <option value="ssz">Stan Surowy Zamknięty (SSZ)</option>
+                  <option value="deweloperski">Stan Deweloperski</option>
+                  <option value="podklucz">Stan Pod Klucz</option>
+                </select>
+              </div>
+            </div>
+            <button id="calculateCost" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-xl transition-colors duration-200">
+              Oblicz Koszt
+            </button>
+            <div id="costResult" class="mt-8 p-6 bg-blue-100 rounded-lg text-blue-800 text-xl font-semibold text-center hidden">
+              Szacunkowy koszt: <span id="estimatedCost"></span>
+            </div>
+          </div>
+
+          <script is:inline>
+            document.addEventListener('DOMContentLoaded', () => {
+              const calculateCostButton = document.getElementById('calculateCost');
+              const buildingTechnologySelect = document.getElementById('buildingTechnology');
+              const completionStageSelect = document.getElementById('completionStage');
+              const costResultDiv = document.getElementById('costResult');
+              const estimatedCostSpan = document.getElementById('estimatedCost');
+
+              calculateCostButton.addEventListener('click', () => {
+                const technology = buildingTechnologySelect.value;
+                const stage = completionStageSelect.value;
+                let minCost = 0;
+                let maxCost = 0;
+
+                // Costs for 70m2 house in 2027
+                const costs = {
+                  murowany: {
+                    sso: { min: 85000, max: 120000 },
+                    ssz: { min: 133000, max: 205000 },
+                    deweloperski: { min: 170000, max: 290000 },
+                    podklucz: { min: 340000, max: 480000 } // Adjusted max for average standard
+                  },
+                  szkieletowy: {
+                    sso: { min: 80000, max: 110000 },
+                    ssz: { min: 125000, max: 190000 },
+                    deweloperski: { min: 160000, max: 270000 },
+                    podklucz: { min: 330000, max: 450000 }
+                  }
+                };
+
+                if (costs[technology] && costs[technology][stage]) {
+                  minCost = costs[technology][stage].min;
+                  maxCost = costs[technology][stage].max;
+                  estimatedCostSpan.textContent = `${minCost.toLocaleString('pl-PL')} zł - ${maxCost.toLocaleString('pl-PL')} zł`;
+                  costResultDiv.classList.remove('hidden');
+                } else {
+                  estimatedCostSpan.textContent = "Brak danych dla wybranej konfiguracji.";
+                  costResultDiv.classList.remove('hidden');
+                }
+              });
+            });
+          </script>
+
+          <h2 id="jak-obnizyc-koszty-budowy-domu-70-m2-w-2027-roku-checklista" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Jak obniżyć koszty budowy domu 70 m2 w 2027 roku? (Checklista)</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Budowa domu, nawet tak kompaktowego jak 70 m2, to znaczący wydatek. Oto lista sprawdzonych sposobów na zoptymalizowanie budżetu w 2027 roku:
+          </p>
+          <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 my-10">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Checklista Oszczędności</h3>
+            <ul class="space-y-4 text-lg text-gray-700">
+              <li class="flex items-start">
+                <input type="checkbox" id="tip1" class="mt-1 mr-3 w-5 h-5 accent-orange-500">
+                <label for="tip1"><strong>Wybierz prosty projekt:</strong> Domy o nieskomplikowanej bryle, bez lukarn, balkonów i skomplikowanych dachów (np. dwuspadowy) są znacznie tańsze w realizacji.</label>
+              </li>
+              <li class="flex items-start">
+                <input type="checkbox" id="tip2" class="mt-1 mr-3 w-5 h-5 accent-orange-500">
+                <label for="tip2"><strong>Zbuduj dom na zgłoszenie:</strong> Skorzystaj z możliwości budowy do 70 m2 bez pozwolenia, co oszczędza czas i koszty formalne.</label>
+              </li>
+              <li class="flex items-start">
+                <input type="checkbox" id="tip3" class="mt-1 mr-3 w-5 h-5 accent-orange-500">
+                <label for="tip3"><strong>System gospodarczy:</strong> Samodzielne wykonanie części prac lub nadzór nad ekipami może obniżyć koszty robocizny o 20-40%.</label>
+              </li>
+              <li class="flex items-start">
+                <input type="checkbox" id="tip4" class="mt-1 mr-3 w-5 h-5 accent-orange-500">
+                <label for="tip4"><strong>Optymalizacja materiałów:</strong> Porównuj ceny materiałów od różnych dostawców, szukaj promocji, kupuj hurtowo. Rozważ lokalne materiały budowlane.</label>
+              </li>
+              <li class="flex items-start">
+                <input type="checkbox" id="tip5" class="mt-1 mr-3 w-5 h-5 accent-orange-500">
+                <label for="tip5"><strong>Technologie energooszczędne:</strong> Początkowo droższe, ale oszczędności na ogrzewaniu (nawet 50-70% rocznie) szybko zwrócą inwestycję.</label>
+              </li>
+              <li class="flex items-start">
+                <input type="checkbox" id="tip6" class="mt-1 mr-3 w-5 h-5 accent-orange-500">
+                <label for="tip6"><strong>Monitoruj wydatki:</strong> Prowadź szczegółowy dziennik finansowy, aby na bieżąco kontrolować budżet i szybko reagować na odstępstwa.</label>
+              </li>
+              <li class="flex items-start">
+                <input type="checkbox" id="tip7" class="mt-1 mr-3 w-5 h-5 accent-orange-500">
+                <label for="tip7"><strong>Rozważ dom szkieletowy/modułowy:</strong> Krótszy czas budowy często oznacza niższe koszty robocizny i szybsze zamieszkanie.</label>
+              </li>
+            </ul>
+          </div>
+
+          <h2 id="dodatkowe-koszty-o-ktorych-nie-mozna-zapomniec" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Dodatkowe koszty, o których nie można zapomnieć</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Oprócz bezpośrednich kosztów budowy, istnieje szereg dodatkowych wydatków, które mogą znacząco podnieść całkowity budżet inwestycji:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-lg text-zinc-600 mb-6">
+            <li><strong>Projekt architektoniczny:</strong> Gotowy projekt (od 2 000 zł do 5 000 zł) lub indywidualny (od 8 000 zł do 20 000 zł).</li>
+            <li><strong>Badania geologiczne gruntu:</strong> Koszt około 1 000 zł - 2 500 zł, kluczowe dla bezpieczeństwa i optymalizacji fundamentów.</li>
+            <li><strong>Przyłącza mediów:</strong> Woda, kanalizacja, prąd, gaz – od 15 000 zł do 40 000 zł, w zależności od odległości od sieci i lokalnych stawek.</li>
+            <li><strong>Dziennik budowy:</strong> Koszt kilkudziesięciu złotych.</li>
+            <li><strong>Geodeta:</strong> Wytyczenie budynku i inwentaryzacja powykonawcza – od 1 500 zł do 3 000 zł.</li>
+            <li><strong>Zagospodarowanie terenu:</strong> Niwelacja, podjazdy, chodniki, ogrodzenie, zieleń – od 10 000 zł do nawet 50 000 zł i więcej.</li>
+            <li><strong>Ubezpieczenie budowy:</strong> Kilkaset do kilku tysięcy złotych rocznie.</li>
+            <li><strong>Nadzór inwestorski/kierownik budowy:</strong> Jeśli nie budujesz na zgłoszenie lub przekraczasz wymagania, koszt to 3 000 - 8 000 zł.</li>
+          </ul>
+
+          <h2 id="quiz-sprawdz-swoja-wiedze-o-budowie-domu-70-m2" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Quiz: Sprawdź swoją wiedzę o budowie domu 70 m2!</h2>
+          <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+            Zweryfikuj, ile zapamiętałeś z naszego przewodnika.
+          </p>
+
+          <div class="bg-purple-50 p-8 rounded-3xl border border-purple-100 my-10 shadow-md">
+            <h3 class="text-2xl font-semibold text-purple-800 mb-6">Pytanie 1/3:</h3>
+            <p class="text-lg text-zinc-700 mb-4">W którym roku wprowadzono przepisy umożliwiające budowę domów do 70 m2 na zgłoszenie?</p>
+            <div class="space-y-3 mb-6">
+              <label class="block text-lg text-zinc-600">
+                <input type="radio" name="quiz1" value="2020" class="mr-2"> 2020
+              </label>
+              <label class="block text-lg text-zinc-600">
+                <input type="radio" name="quiz1" value="2022" class="mr-2"> 2022
+              </label>
+              <label class="block text-lg text-zinc-600">
+                <input type="radio" name="quiz1" value="2024" class="mr-2"> 2024
+              </label>
+            </div>
+            <h3 class="text-2xl font-semibold text-purple-800 mb-6">Pytanie 2/3:</h3>
+            <p class="text-lg text-zinc-700 mb-4">Jaki jest szacunkowy koszt budowy domu 70 m2 w stanie deweloperskim w 2027 roku (technologia murowana)?</p>
+            <div class="space-y-3 mb-6">
+              <label class="block text-lg text-zinc-600">
+                <input type="radio" name="quiz2" value="100-150k" class="mr-2"> 100 000 zł - 150 000 zł
+              </label>
+              <label class="block text-lg text-zinc-600">
+                <input type="radio" name="quiz2" value="170-290k" class="mr-2"> 170 000 zł - 290 000 zł
+              </label>
+              <label class="block text-lg text-zinc-600">
+                <input type="radio" name="quiz2" value="300-400k" class="mr-2"> 300 000 zł - 400 000 zł
+              </label>
+            </div>
+            <h3 class="text-2xl font-semibold text-purple-800 mb-6">Pytanie 3/3:</h3>
+            <p class="text-lg text-zinc-700 mb-4">Która z technologii budowy domu 70 m2 charakteryzuje się zazwyczaj szybszym czasem realizacji?</p>
+            <div class="space-y-3 mb-6">
+              <label class="block text-lg text-zinc-600">
+                <input type="radio" name="quiz3" value="murowany" class="mr-2"> Tradycyjny murowany
+              </label>
+              <label class="block text-lg text-zinc-600">
+                <input type="radio" name="quiz3" value="szkieletowy" class="mr-2"> Szkieletowy (drewniany)
+              </label>
+              <label class="block text-lg text-zinc-600">
+                <input type="radio" name="quiz3" value="obydwie" class="mr-2"> Obydwie w podobnym tempie
+              </label>
+            </div>
+            <button id="submitQuiz" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg text-xl transition-colors duration-200">
+              Sprawdź odpowiedzi!
+            </button>
+            <div id="quizResult" class="mt-8 p-6 bg-purple-100 rounded-lg text-purple-800 text-xl font-semibold text-center hidden">
+              Twój wynik: <span id="quizScore"></span>/3<br>
+              <span id="quizMessage" class="font-normal text-lg mt-2 block"></span>
+            </div>
+          </div>
+
+          <script is:inline>
+            document.addEventListener('DOMContentLoaded', () => {
+              const submitQuizButton = document.getElementById('submitQuiz');
+              const quizResultDiv = document.getElementById('quizResult');
+              const quizScoreSpan = document.getElementById('quizScore');
+              const quizMessageSpan = document.getElementById('quizMessage');
+
+              submitQuizButton.addEventListener('click', () => {
+                let score = 0;
+                const answer1 = document.querySelector('input[name="quiz1"]:checked')?.value;
+                const answer2 = document.querySelector('input[name="quiz2"]:checked')?.value;
+                const answer3 = document.querySelector('input[name="quiz3"]:checked')?.value;
+
+                if (answer1 === '2022') score++;
+                if (answer2 === '170-290k') score++;
+                if (answer3 === 'szkieletowy') score++;
+
+                quizScoreSpan.textContent = score;
+                if (score === 3) {
+                  quizMessageSpan.textContent = "Gratulacje! Znasz się na rzeczy!";
+                } else if (score >= 1) {
+                  quizMessageSpan.textContent = "Dobrze, ale możesz jeszcze pogłębić swoją wiedzę. Spróbuj przeczytać artykuł ponownie!";
+                } else {
+                  quizMessageSpan.textContent = "Warto jeszcze raz przejrzeć artykuł. Wiele ciekawych informacji czeka na odkrycie!";
+                }
+                quizResultDiv.classList.remove('hidden');
+              });
+            });
+          </script>
+
+        </div>
+
+        <section class="faq mt-20 border-t pt-16">
+           <h2 class="text-4xl font-bold mb-10 text-center">Najczęstsze pytania inwestorów</h2>
+           <div class="grid gap-6">
+             {faqItems.map(item => (
+               <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                 <h4 class="text-xl font-bold text-gray-900 mb-3">{item.question}</h4>
+                 <p class="text-lg text-gray-700 leading-relaxed">{item.answer}</p>
+               </div>
+             ))}
+           </div>
+        </section>
+      </article>
+      <ArticleSidebar />
+    </div>
+  </main>
+  <script type="application/ld+json" is:inline>
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "{title}",
+          "description": "{description}",
+          "image": "https://domjakosci.pl/assets/images/budowa-domu-70m2.webp",
+          "datePublished": "2026-01-27",
+          "dateModified": "2026-01-27",
+          "author": {
+            "@type": "Person",
+            "name": "{author}"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Dom Jakości",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://domjakosci.pl/assets/logo.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "{canonical}"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "{faqItems[0].question}",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "{faqItems[0].answer}"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "{faqItems[1].question}",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "{faqItems[1].answer}"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "{faqItems[2].question}",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "{faqItems[2].answer}"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "{faqItems[3].question}",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "{faqItems[3].answer}"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "{faqItems[4].question}",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "{faqItems[4].answer}"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "{faqItems[5].question}",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "{faqItems[5].answer}"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script>
+</BaseLayout>

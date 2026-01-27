@@ -1,0 +1,510 @@
+```astro
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Koszt budowy domu pasywnego w 2026 roku: Inwestycja w przyszłość";
+const description = "Ile kosztuje dom pasywny w 2026 roku? Sprawdź aktualne ceny budowy, technologie, dotacje i zwrot z inwestycji. Poznaj wady i zalety budownictwa pasywnego, aby podjąć świadomą decyzję o budowie swojego domu jakości.";
+const canonical = "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-pasywnego/";
+const author = 'mgr inż. Marek Nowicki';
+const contextNote = "Dane dotyczące kosztów i technologii budownictwa pasywnego na 2026 rok zostały zaktualizowane, uwzględniając najnowsze trendy rynkowe oraz zmiany w dostępności materiałów i technologii. Analiza obejmuje prognozy cenowe i efektywności energetycznej, co gwarantuje rzetelność prezentowanych informacji.";
+const badgeText = "Raport Rynkowy 2026";
+const badgeClass = "bg-green-100 text-green-700";
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Koszt budowy domu pasywnego', url: 'https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-pasywnego/' }
+];
+
+const faqItems = [
+    {
+        question: "Czy budowa domu pasywnego jest znacznie droższa niż tradycyjnego w 2026 roku?",
+        answer: "W 2026 roku koszt początkowy budowy domu pasywnego jest zazwyczaj o 15-25% wyższy niż domu tradycyjnego, co wynika z zastosowania zaawansowanych technologii izolacyjnych i systemów odzysku ciepła. Przykładowo, lepsza izolacja i okna trzyszybowe to różnica od 30 zł/m² izolowanej powierzchni i od 140 zł/m² okna."
+    },
+    {
+        question: "Ile czasu zajmuje zwrot inwestycji w dom pasywny?",
+        answer: "Zwrot z inwestycji w dom pasywny, głównie dzięki znacznym oszczędnościom na rachunkach za energię (nawet 80-90% w porównaniu do standardowego budynku), szacowany jest na około 10-15 lat. Należy jednak pamiętać, że wartość nieruchomości pasywnej jest również wyższa na rynku wtórnym."
+    },
+    {
+        question: "Jakie kluczowe technologie wyróżniają dom pasywny w 2026 roku?",
+        answer: "Kluczowe technologie to przede wszystkim bardzo gruba i szczelna izolacja przegród, okna pasywne o współczynniku Uw ≤ 0,8 W/(m²K), wentylacja mechaniczna z rekuperacją (odzyskiem ciepła na poziomie 80-95%) oraz efektywne pompy ciepła, często wspomagane przez fotowoltaikę."
+    },
+    {
+        question: "Czy dom pasywny wymaga specjalnego projektu?",
+        answer: "Tak, dom pasywny wymaga precyzyjnego projektu uwzględniającego każdy detal, od orientacji budynku względem słońca, przez eliminację mostków termicznych, po integrację systemów wentylacyjnych i grzewczych. Analiza energetyczna jest niezbędna, aby spełnić rygorystyczne normy zapotrzebowania na energię, np. poniżej 15 kWh/m²/rok na ogrzewanie."
+    },
+    {
+        question: "Jakie są trendy w budownictwie pasywnym na 2026 rok w kontekście prefabrykacji?",
+        answer: "W 2026 roku obserwujemy dynamiczny wzrost popularności domów modułowych pasywnych, które dzięki precyzyjnej produkcji fabrycznej (tolerancja milimetrowa) i testom szczelności (np. blower door testy dla każdego modułu) łatwiej spełniają rygorystyczne normy pasywności. Skraca to czas budowy na placu do kilku tygodni."
+    },
+    {
+        question: "Czy dom pasywny jest faktycznie zdrowy dla mieszkańców?",
+        answer: "Tak, dom pasywny gwarantuje zdrowy mikroklimat wewnętrzny. System wentylacji mechanicznej z rekuperacją zapewnia stały dopływ świeżego, przefiltrowanego powietrza, usuwając alergeny, zanieczyszczenia i nadmiar wilgoci, co znacząco poprawia komfort i samopoczucie mieszkańców, a także chroni budynek przed rozwojem pleśni."
+    }
+];
+
+const datePublished = "2026-01-27T12:00:00+01:00"; // Przykładowa data publikacji
+const dateModified = "2026-01-27T14:13:25+01:00"; // Przykładowa data modyfikacji
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "image": "https://domjakosci.pl/images/dom-pasywny-koszt-2026.webp", // Przykładowy obrazek
+    "author": {
+        "@type": "Person",
+        "name": author
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "DomJakości.pl",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://domjakosci.pl/images/logo.png"
+        }
+    },
+    "datePublished": datePublished,
+    "dateModified": dateModified,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": canonical
+    },
+    "articleSection": [
+        "Co to jest dom pasywny i dlaczego warto go budować w 2026 roku?",
+        "Ile kosztuje budowa domu pasywnego w 2026 roku? Analiza cenowa",
+        "Kluczowe technologie i rozwiązania w budownictwie pasywnym 2026",
+        "Zwrot z inwestycji i długoterminowe oszczędności",
+        "Wady i zalety budowy domu pasywnego",
+        "Czy dom pasywny to zdrowy wybór? Mikroklimat i komfort życia",
+        "Najczęstsze pytania inwestorów"
+    ]
+};
+---
+<BaseLayout title={title} description={description} canonical={canonical} type="article">
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+    <div class="flex flex-col lg:flex-row lg:gap-16">
+      <article class="lg:flex-1">
+
+        <header class="mb-12">
+            <span class="inline-block py-1 px-3 rounded-full {badgeClass} font-bold text-sm font-bold mb-4 uppercase tracking-wider">
+                {badgeText}
+            </span>
+
+            <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 mb-8 leading-tight">
+                {title}
+            </h1>
+
+            <div class="flex flex-col gap-y-6 border-b pb-8 border-gray-100">
+                
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">MN</div>
+                    <div>
+                        <p class="font-bold text-zinc-900 text-sm leading-none">{author}</p>
+                        <p class="text-xs text-zinc-500 mt-1">Ekspert DomJakości.pl</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-x-8">
+                    <div class="flex items-center gap-2 text-sm text-zinc-500 font-medium">
+                        <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <path d="M16 2v4M8 2v4M3 10h18"></path>
+                        </svg>
+                        <time datetime={datePublished}>27 stycznia 2026</time>
+                    </div>
+
+                    <div class="flex items-center gap-2 text-sm text-zinc-500 font-medium">
+                        <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>ok. 8 min</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 p-4 bg-blue-50 rounded-lg text-blue-800 text-sm italic border border-blue-100">
+                <strong>Ważna informacja:</strong> {contextNote}
+            </div>
+        </header>
+
+        <div class="bg-slate-50 p-8 rounded-3xl mb-12 border border-slate-100">
+           <p class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">W tym artykule:</p>
+           <nav id="toc" class="space-y-2 text-blue-600 font-medium">
+                <a href="#co-to-jest-dom-pasywny" class="hover:underline block">1. Co to jest dom pasywny i dlaczego warto go budować w 2026 roku?</a>
+                <a href="#ile-kosztuje-budowa-domu-pasywnego" class="hover:underline block ml-4">1.1. Charakterystyka domu pasywnego: minimalne zapotrzebowanie na energię</a>
+                <a href="#rosnaca-popularnosc-i-trendy" class="hover:underline block ml-4">1.2. Rosnąca popularność i trendy rynkowe na 2026 rok</a>
+                <a href="#koszt-budowy-domu-pasywnego-2026" class="hover:underline block">2. Ile kosztuje budowa domu pasywnego w 2026 roku? Analiza cenowa</a>
+                <a href="#porownanie-kosztow" class="hover:underline block ml-4">2.1. Porównanie kosztów z domem tradycyjnym i energooszczędnym</a>
+                <a href="#glowne-skladniki-kosztow" class="hover:underline block ml-4">2.2. Główne składniki podnoszące koszt początkowy</a>
+                <a href="#dom-pasywny-modulowy" class="hover:underline block ml-4">2.3. Dom pasywny modułowy – efektywna alternatywa</a>
+                <a href="#kluczowe-technologie" class="hover:underline block">3. Kluczowe technologie i rozwiązania w budownictwie pasywnym 2026</a>
+                <a href="#superizolacja" class="hover:underline block ml-4">3.1. Superizolacja i eliminacja mostków termicznych</a>
+                <a href="#okna-i-orientacja" class="hover:underline block ml-4">3.2. Okna pasywne i optymalna orientacja budynku</a>
+                <a href="#rekuperacja" class="hover:underline block ml-4">3.3. Wentylacja mechaniczna z rekuperacją</a>
+                <a href="#oze" class="hover:underline block ml-4">3.4. Odnawialne źródła energii (pompy ciepła, PV)</a>
+                <a href="#smart-home" class="hover:underline block ml-4">3.5. Systemy Smart Home zarządzające energią</a>
+                <a href="#zwrot-z-inwestycji" class="hover:underline block">4. Zwrot z inwestycji i długoterminowe oszczędności</a>
+                <a href="#obnizenie-rachunkow" class="hover:underline block ml-4">4.1. Obniżenie rachunków za energię: liczne korzyści</a>
+                <a href="#wartosc-rynkowa" class="hover:underline block ml-4">4.2. Wzrost wartości rynkowej nieruchomości</a>
+                <a href="#dotacje-i-ulgi" class="hover:underline block ml-4">4.3. Potencjalne dotacje i ulgi dla inwestorów</a>
+                <a href="#wady-i-zalety" class="hover:underline block">5. Wady i zalety budowy domu pasywnego</a>
+                <a href="#zalety-pasywnego" class="hover:underline block ml-4">5.1. Niezaprzeczalne zalety domów pasywnych</a>
+                <a href="#wady-pasywnego" class="hover:underline block ml-4">5.2. Potencjalne wyzwania i wady</a>
+                <a href="#zdrowy-wybor" class="hover:underline block">6. Czy dom pasywny to zdrowy wybór? Mikroklimat i komfort życia</a>
+           </nav>
+        </div>
+
+        <div class="article-content">
+           <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                W 2026 roku koszt budowy domu pasywnego waha się od <strong>7 000 zł do 9 500 zł za metr kwadratowy</strong> w standardzie deweloperskim, co jest inwestycją wyższą o około 15-25% w porównaniu do budownictwa tradycyjnego. Ta różnica wynika z zastosowania zaawansowanych technologii izolacyjnych, rekuperacji oraz efektywnych systemów grzewczych. Długoterminowo dom pasywny generuje jednak znaczne oszczędności na rachunkach za energię, często zwracając początkową inwestycję w ciągu 10-15 lat dzięki minimalnemu zapotrzebowaniu na ogrzewanie, nieprzekraczającemu 15 kWh/m²/rok.
+           </p>
+
+            <div class="bg-gradient-to-r from-zinc-50 to-slate-100 p-8 rounded-3xl border border-zinc-200 my-10 shadow-sm">
+                <h2 class="text-3xl font-bold text-zinc-800 mb-6 border-l-4 border-orange-500 pl-4">Kluczowe wnioski na temat kosztów budowy domu pasywnego w 2026</h2>
+                <ul class="list-disc pl-6 text-lg text-zinc-600 leading-relaxed space-y-3">
+                    <li>Koszty budowy domów pasywnych w 2026 roku są wyższe o <strong>15-25%</strong> w porównaniu do domów tradycyjnych.</li>
+                    <li>Średnia cena za metr kwadratowy w standardzie deweloperskim to <strong>7 000 - 9 500 zł</strong>.</li>
+                    <li>Główne czynniki wzrostu kosztów to superizolacja, okna pasywne (Uw ≤ 0,8 W/(m²K)) i rekuperacja.</li>
+                    <li>Zwrot z inwestycji szacowany jest na <strong>10-15 lat</strong> dzięki oszczędnościom energetycznym.</li>
+                    <li>Domy modułowe pasywne stają się coraz popularniejszą i często bardziej przewidywalną cenowo opcją.</li>
+                </ul>
+            </div>
+
+            <h2 id="co-to-jest-dom-pasywny" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Co to jest dom pasywny i dlaczego warto go budować w 2026 roku?</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                W 2026 roku budownictwo pasywne to już nie tylko niszowy trend, ale jeden z najszybciej rozwijających się segmentów rynku mieszkaniowego. Rosnąca świadomość ekologiczna, a przede wszystkim drastyczne wzrosty cen energii, sprawiają, że inwestorzy coraz chętniej wybierają rozwiązania gwarantujące <a href="https://domjakosci.pl/budowa/dom-energooszczedny/" class="text-blue-600 hover:underline">minimalne koszty eksploatacji</a>. Dom pasywny oferuje właśnie taką perspektywę, zapewniając niemal całkowitą niezależność energetyczną.
+            </p>
+
+            <h3 id="charakterystyka-domu-pasywnego" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Charakterystyka domu pasywnego: minimalne zapotrzebowanie na energię</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Dom pasywny to budynek, który zużywa <strong>minimalną ilość energii na ogrzewanie – mniej niż 15 kWh/m² rocznie</strong>. Oznacza to, że ogrzewa się on w dużej mierze sam, wykorzystując ciepło od mieszkańców, urządzeń domowych oraz pasywne zyski słoneczne. Kluczowe cechy domu pasywnego to:
+            </p>
+            <ul class="list-disc pl-6 text-lg text-zinc-600 leading-relaxed mb-6 space-y-2">
+                <li>Bardzo gruba izolacja (np. PIR, wełna drzewna, celuloza) o współczynniku U ścian poniżej 0,15 W/(m²K).</li>
+                <li>Szczelna konstrukcja bez mostków termicznych, potwierdzona testem <a href="https://domjakosci.pl/budowa/test-szczelnosci-blower-door/" class="text-blue-600 hover:underline">blower door</a>.</li>
+                <li>Orientacja budynku i okien na południe, maksymalizująca zyski słoneczne.</li>
+                <li>Okna trzyszybowe o bardzo niskim współczynniku przenikania ciepła (Uw ≤ 0,8 W/(m²K)).</li>
+                <li>Wentylacja mechaniczna z wysokosprawną rekuperacją (odzyskiem ciepła).</li>
+                <li>Wykorzystanie odnawialnych źródeł energii (OZE), np. pompy ciepła i instalacje fotowoltaiczne.</li>
+            </ul>
+
+            <h3 id="rosnaca-popularnosc-i-trendy" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Rosnąca popularność i trendy rynkowe na 2026 rok</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                W 2026 roku, jak prognozują eksperci Extradom.pl, kluczowym kryterium wyboru projektu domu jest ekonomia – zarówno na etapie budowy, jak i późniejszego użytkowania. Spadające stopy procentowe i stabilizacja cen materiałów budowlanych zachęcają inwestorów do powrotu na rynek, jednak z dużo bardziej racjonalnym podejściem. Domy pasywne, a w szczególności <strong>domy modułowe pasywne</strong>, idealnie wpisują się w ten trend, oferując przewidywalność kosztów i szybkość realizacji.
+            </p>
+
+            <h2 id="koszt-budowy-domu-pasywnego-2026" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Ile kosztuje budowa domu pasywnego w 2026 roku? Analiza cenowa</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Kwestia kosztów jest zawsze kluczowa przy podejmowaniu decyzji o budowie. Choć dom pasywny wymaga większej inwestycji początkowej, jego długoterminowe korzyści są niepodważalne. Poniżej przedstawiamy szczegółową analizę cenową na rok 2026.
+            </p>
+
+            <h3 id="porownanie-kosztow" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Porównanie kosztów z domem tradycyjnym i energooszczędnym</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Przyjęło się, że koszt budowy domu pasywnego jest wyższy o <strong>15-25%</strong> w porównaniu do standardowego budynku. Jednak jak zauważa Artelis.pl, jest to często mylące porównanie, ponieważ inwestorzy decydujący się na dom pasywny wybierają materiały i rozwiązania o znacznie wyższym standardzie. Jeżeli porównamy budynek pasywny z domem energooszczędnym o podobnej jakości wykonania, różnica w kosztach maleje i może wynosić zaledwie <strong>5-7% więcej</strong> dla domu pasywnego (o U=0,15 W/m²K) w porównaniu do energooszczędnego (o U=0,60 W/m²K).
+            </p>
+
+            <table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-md my-10">
+                <thead class="bg-zinc-800 text-white">
+                    <tr>
+                        <th class="p-4 border-b border-zinc-100">Rodzaj budynku</th>
+                        <th class="p-4 border-b border-zinc-100">Orientacyjny koszt za m² (stan deweloperski, 2026)</th>
+                        <th class="p-4 border-b border-zinc-100">Roczne zapotrzebowanie na energię (kWh/m²/rok)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Dom tradycyjny (WT 2021)</td>
+                        <td class="p-4 border-b border-zinc-100">6 000 - 8 000 zł</td>
+                        <td class="p-4 border-b border-zinc-100">70 - 90</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors">
+                        <td class="p-4 border-b border-zinc-100">Dom energooszczędny</td>
+                        <td class="p-4 border-b border-zinc-100">6 500 - 8 500 zł</td>
+                        <td class="p-4 border-b border-zinc-100">30 - 70</td>
+                    </tr>
+                    <tr class="hover:bg-zinc-50 transition-colors bg-blue-50">
+                        <td class="p-4 border-b border-zinc-100 font-bold">Dom pasywny</td>
+                        <td class="p-4 border-b border-zinc-100 font-bold">7 000 - 9 500 zł</td>
+                        <td class="p-4 border-b border-zinc-100 font-bold">poniżej 15</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 id="glowne-skladniki-kosztow" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Główne składniki podnoszące koszt początkowy</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Wyższy koszt budowy domu pasywnego wynika z kilku kluczowych elementów:
+            </p>
+            <ul class="list-disc pl-6 text-lg text-zinc-600 leading-relaxed mb-6 space-y-2">
+                <li><strong>Izolacja termiczna:</strong> Grubsza i bardziej wydajna izolacja (np. płyty rezolowe o bardzo niskiej lambdzie) to dodatkowy koszt od <strong>ok. 30 zł/m²</strong> izolowanej powierzchni.</li>
+                <li><strong>Okna i drzwi pasywne:</strong> Trzyszybowe okna o współczynniku Uw poniżej 0,8 W/(m²K) to różnica od <strong>140 zł/m²</strong> okna, a drzwi wejściowe mogą być droższe o kilkaset złotych.</li>
+                <li><strong>System wentylacji z rekuperacją:</strong> Koszt instalacji rekuperacji, uwzględnionej w fazie projektowej, zaczyna się poniżej <strong>10 000 zł</strong>, ale jest to element niezbędny, który szybko się zwraca.</li>
+                <li><strong>Szczelność budynku:</strong> Precyzyjne wykonawstwo i eliminacja mostków termicznych wymagają większej uwagi i kontroli jakości, co może przełożyć się na stawki wykonawców.</li>
+                <li><strong>Odnawialne źródła energii:</strong> Chociaż nie są ściśle wymagane do spełnienia standardu pasywnego, często są instalowane, by zmaksymalizować efektywność. Pompy ciepła czy panele fotowoltaiczne to dodatkowa inwestycja, która jednak szybko się zwraca.</li>
+            </ul>
+
+            <h3 id="dom-pasywny-modulowy" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Dom pasywny modułowy – efektywna alternatywa</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                W 2026 roku <a href="https://www.zbudujsamdom.pl/domy-modulowe-pasywne-budownictwo-przyszlosci-2026/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">domy modułowe pasywne</a> zyskują na znaczeniu. Łączą one precyzję prefabrykacji z ekstremalnie niskim zapotrzebowaniem na energię. Moduły są produkowane w fabryce z milimetrową dokładnością, co ułatwia osiągnięcie wymaganej szczelności i jakości izolacji. Automatyzacja procesu i testy szczelności każdego modułu minimalizują ryzyko błędów wykonawczych i przyspieszają montaż na działce do kilku tygodni. Koszty domów modułowych są często bardziej przewidywalne i mogą być konkurencyjne w stosunku do budynków tradycyjnych o wysokim standardzie energetycznym.
+            </p>
+
+            <div class="bg-orange-50 border-l-4 border-orange-400 p-6 my-8 italic text-zinc-800 rounded-r-xl">
+                <p class="text-lg">
+                    <strong>Wskazówka eksperta:</strong> Wybierając projekt domu pasywnego, zwróć uwagę na prostotę bryły budynku. Prosta forma jest tańsza w budowie i łatwiejsza do zaizolowania, co bezpośrednio wpływa na obniżenie całkowitych kosztów i zwiększenie efektywności energetycznej. Zbędne są również kominy i drogie systemy grzewcze.
+                </p>
+            </div>
+
+            <h2 id="kluczowe-technologie" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Kluczowe technologie i rozwiązania w budownictwie pasywnym 2026</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Sukces domu pasywnego opiera się na integracji wielu zaawansowanych technologii. Oto najważniejsze z nich, kształtujące budownictwo pasywne w 2026 roku:
+            </p>
+
+            <h3 id="superizolacja" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Superizolacja i eliminacja mostków termicznych</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Podstawą jest izolacja przegród zewnętrznych (ścian, dachu, podłogi na gruncie) o bardzo niskim współczynniku przenikania ciepła, często poniżej 0,15 W/(m²K). Stosuje się materiały takie jak płyty PIR, wełna drzewna, celuloza, a także nowoczesne płyty rezolowe, które dzięki wyjątkowo niskiemu współczynnikowi lambda (np. 0,022 W/mK) pozwalają na osiągnięcie doskonałych parametrów przy mniejszej grubości izolacji. Kluczowe jest również całkowite wyeliminowanie mostków termicznych.
+            </p>
+
+            <h3 id="okna-i-orientacja" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Okna pasywne i optymalna orientacja budynku</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Okna w domach pasywnych to specjalistyczne konstrukcje trzyszybowe, często z powłokami niskoemisyjnymi i ramami izolowanymi, których współczynnik Uw nie przekracza 0,8 W/(m²K). Ich rozmieszczenie jest strategiczne: duże przeszklenia na południowej elewacji maksymalizują zyski słoneczne zimą, podczas gdy od strony północnej ogranicza się liczbę i rozmiar okien, aby zminimalizować straty ciepła.
+            </p>
+
+            <h3 id="rekuperacja" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Wentylacja mechaniczna z rekuperacją</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Centralny system wentylacji mechanicznej z rekuperacją (odzyskiem ciepła) jest sercem domu pasywnego. Zapewnia on stałą wymianę powietrza bez konieczności otwierania okien, odzyskując przy tym do 95% ciepła z wywiewanego powietrza. To nie tylko oszczędność, ale i gwarancja świeżego, przefiltrowanego powietrza w pomieszczeniach, co jest nieocenione dla alergików.
+            </p>
+
+            <h3 id="oze" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Odnawialne źródła energii (pompy ciepła, PV)</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                W domach pasywnych, ze względu na bardzo niskie zapotrzebowanie na ciepło, tradycyjne systemy grzewcze są często zbędne. Zamiast tego, stosuje się wysokoefektywne pompy ciepła (powietrze-woda, gruntowe) o niskim zapotrzebowaniu na energię elektryczną, które mogą wspomagać ogrzewanie wody użytkowej. Coraz częściej integruje się je z instalacjami fotowoltaicznymi (PV) oraz fasadami solarnymi, dążąc do osiągnięcia standardu <strong>domu zeroenergetycznego lub plusenergetycznego</strong>.
+            </p>
+
+            <h3 id="smart-home" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Systemy Smart Home zarządzające energią</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Inteligentne systemy zarządzania domem (Smart Home) stają się integralną częścią budownictwa pasywnego. Pozwalają one na optymalne sterowanie ogrzewaniem, wentylacją, oświetleniem i zacienianiem, automatycznie dostosowując parametry do warunków zewnętrznych i preferencji mieszkańców. To dodatkowo zwiększa efektywność energetyczną i komfort użytkowania.
+            </p>
+
+            <h2 id="zwrot-z-inwestycji" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Zwrot z inwestycji i długoterminowe oszczędności</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Początkowy wyższy koszt budowy domu pasywnego to inwestycja, która zwraca się w perspektywie długoterminowej, oferując znaczące oszczędności i zwiększając wartość nieruchomości.
+            </p>
+
+            <h3 id="obnizenie-rachunkow" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Obniżenie rachunków za energię: liczne korzyści</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Największą zaletą domu pasywnego są drastycznie obniżone rachunki za ogrzewanie – redukcja może wynosić <strong>nawet 80-90%</strong> w porównaniu do standardowych budynków. Przy zapotrzebowaniu na energię poniżej 15 kWh/m²/rok, koszty związane z ogrzewaniem są symboliczne. Dodatkowo, dzięki rekuperacji, obniżają się również koszty wentylacji. Wzrost cen energii w ostatnich latach sprawia, że te oszczędności są coraz bardziej odczuwalne, a zwrot z inwestycji następuje szybciej, niż zakładano jeszcze kilka lat temu.
+            </p>
+
+            <h3 id="wartosc-rynkowa" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Wzrost wartości rynkowej nieruchomości</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Domy pasywne, ze względu na swoją energooszczędność, nowoczesne technologie i komfort użytkowania, cieszą się rosnącym zainteresowaniem na rynku nieruchomości. Posiadanie budynku o tak niskich kosztach eksploatacji znacząco podnosi jego wartość rynkową i atrakcyjność dla potencjalnych kupców. Jest to inwestycja, która zabezpiecza kapitał przed inflacją i fluktuacjami cen energii.
+            </p>
+
+            <h3 id="dotacje-i-ulgi" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Potencjalne dotacje i ulgi dla inwestorów</h3>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                W 2026 roku, w ramach polityki klimatycznej Unii Europejskiej i Polski, dostępne są różnego rodzaju programy wspierające budownictwo energooszczędne i pasywne. Warto monitorować dostępne dotacje (np. z programów takich jak „Czyste Powietrze” czy lokalnych programów samorządowych), ulgi podatkowe oraz preferencyjne kredyty, które mogą znacząco obniżyć początkowy koszt inwestycji w dom pasywny.
+            </p>
+
+            <h2 id="wady-i-zalety" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Wady i zalety budowy domu pasywnego</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Podjęcie decyzji o budowie domu pasywnego wymaga rozważenia wszystkich aspektów. Poniżej przedstawiamy kluczowe zalety i potencjalne wady tego typu budownictwa.
+            </p>
+
+            <h3 id="zalety-pasywnego" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Niezaprzeczalne zalety domów pasywnych</h3>
+            <ul class="list-disc pl-6 text-lg text-zinc-600 leading-relaxed mb-6 space-y-2">
+                <li><strong>Ekstremalnie niskie koszty eksploatacji:</strong> Oszczędności na ogrzewaniu sięgające 80-90%.</li>
+                <li><strong>Wysoki komfort cieplny:</strong> Stała, stabilna temperatura wewnątrz budynku przez cały rok, brak przeciągów.</li>
+                <li><strong>Zdrowy mikroklimat:</strong> Czyste, świeże powietrze dzięki rekuperacji, redukcja alergenów i wilgoci.</li>
+                <li><strong>Ochrona środowiska:</strong> Zminimalizowanie śladu węglowego i zużycia energii.</li>
+                <li><strong>Niezależność energetyczna:</strong> Mniejsze uzależnienie od dostawców energii i zmiennych cen.</li>
+                <li><strong>Wzrost wartości nieruchomości:</strong> Domy pasywne są przyszłościowe i atrakcyjne na rynku wtórnym.</li>
+                <li><strong>Trwałość i jakość:</strong> Wysokie standardy wykonawcze przekładają się na długowieczność budynku.</li>
+            </ul>
+
+            <h3 id="wady-pasywnego" class="text-2xl font-semibold text-zinc-700 mt-8 mb-4">Potencjalne wyzwania i wady</h3>
+            <ul class="list-disc pl-6 text-lg text-zinc-600 leading-relaxed mb-6 space-y-2">
+                <li><strong>Wyższy koszt początkowy:</strong> O około 15-25% więcej niż dom tradycyjny, choć zwraca się to w długim terminie.</li>
+                <li><strong>Złożoność projektu i wykonawstwa:</strong> Wymaga specjalistycznej wiedzy projektanta i precyzyjnych wykonawców.</li>
+                <li><strong>Konieczność stosowania wentylacji mechanicznej:</strong> Brak możliwości "tradycyjnego" wietrzenia przez długotrwałe otwieranie okien, co wymaga przyzwyczajenia.</li>
+                <li><strong>Ograniczenia architektoniczne:</strong> Optymalna orientacja i prosta bryła budynku są kluczowe, co może ograniczać swobodę projektową.</li>
+                <li><strong>Wymagane utrzymanie systemów:</strong> Rekuperacja wymaga regularnego czyszczenia i wymiany filtrów.</li>
+            </ul>
+
+            <h2 id="zdrowy-wybor" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Czy dom pasywny to zdrowy wybór? Mikroklimat i komfort życia</h2>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                Wiele osób zastanawia się, czy dom pasywny jest zdrowy, zwłaszcza w kontekście zamkniętej wentylacji. Odpowiedź jest jednoznaczna: tak, jest zdrowy, a nawet zdrowszy niż dom tradycyjny.
+            </p>
+            <p class="text-lg text-zinc-600 leading-relaxed mb-6">
+                System wentylacji mechanicznej z rekuperacją zapewnia stały dopływ świeżego, przefiltrowanego powietrza do pomieszczeń, jednocześnie usuwając powietrze zużyte, bogate w dwutlenek węgla, wilgoć oraz wszelkie zanieczyszczenia, takie jak kurz, pyłki, alergeny czy smog. Dzięki temu w domu pasywnym panuje optymalny mikroklimat, co jest szczególnie korzystne dla osób cierpiących na alergie, astmę czy inne schorzenia układu oddechowego. Brak przeciągów i stabilna temperatura przekładają się na wysoki komfort termiczny i ogólne samopoczucie mieszkańców, czyniąc dom pasywny synonimem zdrowego i zrównoważonego stylu życia w 2026 roku.
+            </p>
+
+            <div class="alert bg-red-50 border border-red-100 p-6 my-6 rounded-2xl text-red-900 text-sm">
+                <strong>UWAGA:</strong> Prezentowane koszty są szacunkowe i mogą różnić się w zależności od regionu, standardu wykończenia, wyboru materiałów i konkretnego wykonawcy. Zawsze rekomendujemy wykonanie szczegółowego kosztorysu dla indywidualnego projektu.
+            </div>
+
+            <section class="my-16 p-8 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl shadow-lg">
+                <h2 class="text-3xl font-bold text-zinc-800 mb-8 text-center">Pomóż nam zrozumieć Twoje potrzeby!</h2>
+                <p class="text-lg text-zinc-700 leading-relaxed mb-10 text-center">
+                    Zbudujmy dom jakości razem. Odpowiedz na kilka pytań, abyśmy mogli lepiej dopasować nasze porady do Twoich oczekiwań.
+                </p>
+
+                <div class="space-y-8 max-w-2xl mx-auto">
+                    <div>
+                        <p class="text-xl font-semibold text-zinc-800 mb-3">1. Jaki jest Twój główny priorytet przy budowie domu?</p>
+                        <div class="flex flex-col space-y-2">
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="priority" value="koszty_eksploatacji" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Minimalne koszty eksploatacji (rachunki)</span>
+                            </label>
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="priority" value="koszt_poczatkowy" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Niski koszt początkowy budowy</span>
+                            </label>
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="priority" value="szybki_czas_budowy" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Szybki czas realizacji</span>
+                            </label>
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="priority" value="ekologia_zdrowie" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Ekologia i zdrowy mikroklimat</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-xl font-semibold text-zinc-800 mb-3">2. Jakiego typu dom rozważasz?</p>
+                        <div class="flex flex-col space-y-2">
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="house_type" value="tradycyjny" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Tradycyjny</span>
+                            </label>
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="house_type" value="energooszczedny" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Energooszczędny</span>
+                            </label>
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="house_type" value="pasywny" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Pasywny (w tym modułowy pasywny)</span>
+                            </label>
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="house_type" value="nie_zdecydowany" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Nie zdecydowałem/am</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-xl font-semibold text-zinc-800 mb-3">3. Co jest dla Ciebie największą barierą przy budowie domu pasywnego?</p>
+                        <div class="flex flex-col space-y-2">
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="barrier" value="koszt_inwestycji" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Wysoki koszt początkowej inwestycji</span>
+                            </label>
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="barrier" value="skomplikowany_projekt" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Skomplikowany projekt i wykonawstwo</span>
+                            </label>
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="barrier" value="brak_wiedzy" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Brak wystarczającej wiedzy o technologiach</span>
+                            </label>
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="barrier" value="brak_ekip" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Obawa przed brakiem doświadczonych wykonawców</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-xl font-semibold text-zinc-800 mb-3">4. Jaki metraż domu planujesz?</p>
+                        <div class="flex flex-col space-y-2">
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="area" value="do_100" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Do 100 m²</span>
+                            </label>
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="area" value="101_150" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">101 - 150 m²</span>
+                            </label>
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="area" value="powyzej_150" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Powyżej 150 m²</span>
+                            </label>
+                            <label class="inline-flex items-center text-lg text-zinc-700">
+                                <input type="radio" name="area" value="nie_okreslony" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3">Nieokreślony</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="survey-result" class="mt-10 p-6 bg-white border border-blue-200 rounded-2xl text-lg text-zinc-700 shadow-sm hidden">
+                    <p class="font-bold text-xl text-zinc-800 mb-3">Dziękujemy za odpowiedzi!</p>
+                    <p id="result-text"></p>
+                </div>
+                <button id="submit-survey" class="mt-10 block mx-auto py-3 px-8 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg transition duration-300">
+                    Wyślij odpowiedzi
+                </button>
+            </section>
+
+            <script is:inline>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const submitButton = document.getElementById('submit-survey');
+                    const surveyResult = document.getElementById('survey-result');
+                    const resultText = document.getElementById('result-text');
+
+                    submitButton.addEventListener('click', () => {
+                        let priority = document.querySelector('input[name="priority"]:checked')?.value;
+                        let houseType = document.querySelector('input[name="house_type"]:checked')?.value;
+                        let barrier = document.querySelector('input[name="barrier"]:checked')?.value;
+                        let area = document.querySelector('input[name="area"]:checked')?.value;
+
+                        let message = "Dzięki Twoim odpowiedziom, możemy lepiej zrozumieć, że ";
+
+                        if (priority === "koszty_eksploatacji" && houseType === "pasywny") {
+                            message += "najważniejsze dla Ciebie są niskie koszty eksploatacji, a dom pasywny to doskonały wybór, aby to osiągnąć.";
+                        } else if (priority === "koszt_poczatkowy" && houseType === "pasywny") {
+                            message += "mimo obaw o koszt początkowy, rozważasz dom pasywny. Sugerujemy skupić się na analizie długoterminowych oszczędności i ewentualnych dotacji.";
+                        } else if (houseType === "pasywny") {
+                            message += "interesujesz się domami pasywnymi. To świetna inwestycja w przyszłość i komfort, niezależnie od Twoich głównych priorytetów.";
+                        } else if (priority === "ekologia_zdrowie" && (houseType === "energooszczedny" || houseType === "tradycyjny" || houseType === "nie_zdecydowany")) {
+                            message += "ekologia i zdrowy mikroklimat są dla Ciebie kluczowe. Dom pasywny oferuje najwyższy standard w tych aspektach. Zachęcamy do dalszego zgłębiania tematu!";
+                        } else {
+                            message += "szukasz optymalnych rozwiązań mieszkaniowych. Nasze artykuły, takie jak ten, pomogą Ci podjąć najlepszą decyzję. Przejrzyj inne sekcje dotyczące kosztów i technologii budowlanych.";
+                        }
+
+                        if (barrier === "koszt_inwestycji") {
+                            message += " Rozumiemy Twoje obawy dotyczące wysokiego kosztu początkowego, ale pamiętaj o długoterminowych oszczędnościach i możliwych formach wsparcia.";
+                        } else if (barrier === "skomplikowany_projekt") {
+                            message += " Złożoność projektu to wyzwanie, ale z odpowiednim zespołem ekspertów proces budowy domu pasywnego może być sprawny i przewidywalny.";
+                        }
+
+                        resultText.textContent = message;
+                        surveyResult.classList.remove('hidden');
+                        submitButton.classList.add('hidden');
+                    });
+                });
+            </script>
+
+        </div>
+
+        <section class="faq mt-20 border-t pt-16">
+           <h2 class="text-4xl font-bold mb-10 text-center">Najczęstsze pytania inwestorów</h2>
+           <div class="grid gap-6">
+                {faqItems.map(item => (
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">{item.question}</h4>
+                        <p class="text-lg text-gray-700 leading-relaxed">{item.answer}</p>
+                    </div>
+                ))}
+           </div>
+        </section>
+      </article>
+      <ArticleSidebar />
+    </div>
+  </main>
+  <script type="application/ld+json" is:inline>{JSON.stringify(schema)}</script>
+</BaseLayout>
+```

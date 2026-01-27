@@ -1,0 +1,467 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleSidebar from '../../../components/ArticleSidebar.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Koszt budowy domu szkieletowego w 2026 roku – kompleksowy przewodnik i realne ceny";
+const description = "Ile naprawdę kosztuje budowa domu szkieletowego w 2026 roku? Sprawdź aktualne ceny za m², porównaj stan surowy, deweloperski i pod klucz. Dowiedz się, co wpływa na koszt i jak zaoszczędzić na 'kanadyjczyku'.";
+const canonical = "https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-szkieletowego/";
+const author = 'mgr inż. Marek Nowicki';
+const contextNote = "Rynek budowlany w 2026 roku charakteryzuje się dynamicznymi zmianami cen materiałów budowlanych oraz rosnącymi kosztami robocizny, co ma istotny wpływ na finalny koszt inwestycji w technologię szkieletową. Niniejsza analiza opiera się na danych rynkowych z początku 2026 roku, uwzględniając prognozy inflacyjne i tendencje wzrostowe w branży.";
+const badgeText = "Raport Rynkowy 2026";
+const badgeClass = "bg-green-100 text-green-700";
+
+import { breadcrumbs as pillarBreadcrumbs } from '../../../data/koszt-budowy-domu-breadcrumbs.js';
+export const breadcrumbs = [
+  ...pillarBreadcrumbs,
+  { label: 'Koszt budowy domu szkieletowego', url: 'https://domjakosci.pl/budowa/koszt-budowy-domu/koszt-budowy-domu-szkieletowego/' }
+];
+
+const faqItems = [
+  {
+    question: "Czy budowa domu szkieletowego jest tańsza niż murowanego w 2026 roku?",
+    answer: "Tak, w 2026 roku budowa domu szkieletowego jest zazwyczaj znacznie tańsza od tradycyjnego domu murowanego. Głównym czynnikiem jest krótszy czas realizacji (nawet 3-4 miesiące zamiast roku czy dwóch) oraz mniejsze zapotrzebowanie na wysoko wykwalifikowanych, a przez to droższych, specjalistów (np. murarzy, tynkarzy), których brakuje na rynku."
+  },
+  {
+    question: "Ile czasu trwa budowa domu szkieletowego do 70 m²?",
+    answer: "Budowa domu szkieletowego o powierzchni do 70 m² jest niezwykle szybka. Od wylania fundamentów do stanu surowego zamkniętego często wystarczy zaledwie 2-4 tygodnie, natomiast kompleksowa realizacja pod klucz może zostać zakończona w ciągu 3 do 5 miesięcy, w zależności od stopnia skomplikowania projektu i organizacji pracy."
+  },
+  {
+    question: "Co to jest drewno konstrukcyjne C24 i dlaczego jest ważne w domach szkieletowych?",
+    answer: "Drewno konstrukcyjne C24 to suszone komorowo, strugane i czterostronnie fazowane drewno o określonej klasie wytrzymałościowej (C24 oznacza minimalną wytrzymałość na zginanie 24 N/mm²). Jest kluczowe dla stabilności i trwałości konstrukcji szkieletowej, minimalizuje ryzyko pęknięć, wypaczeń i ataków szkodników, zapewniając zgodność z normami budowlanymi."
+  },
+  {
+    question: "Jak technologia STEICO wpływa na energooszczędność domu szkieletowego?",
+    answer: "Technologia STEICO wykorzystuje naturalne płyty izolacyjne z włókien drzewnych, które charakteryzują się bardzo niskim współczynnikiem przenikania ciepła (U nawet do 0,16 W/m²K). Zapewnia to doskonałą izolację termiczną zarówno zimą, jak i latem, redukując rachunki za ogrzewanie i klimatyzację, a także poprawiając komfort akustyczny wewnątrz budynku."
+  },
+  {
+    question: "Czy dom szkieletowy wymaga specjalnego fundamentu?",
+    answer: "Dom szkieletowy, będąc konstrukcją lżejszą niż murowany, nie wymaga tak masywnych fundamentów, co może obniżyć koszty. Najczęściej stosuje się płytę fundamentową, ławy fundamentowe lub w przypadku mniejszych konstrukcji (np. rekreacyjnych) fundamenty punktowe czy bloczki betonowe. Wybór zależy od warunków gruntowych i wielkości budynku."
+  },
+  {
+    question: "Jakie są najczęstsze błędy popełniane przy budowie domów szkieletowych i jak ich unikać?",
+    answer: "Najczęstsze błędy to użycie niedosuszonego drewna (nie C24), co prowadzi do pęknięć i deformacji, oraz niewłaściwa izolacja paroszczelna, skutkująca zawilgoceniem ścian. Inne to brak wentylacji, niedokładne montowanie elementów. Uniknąć ich można poprzez wybór certyfikowanych materiałów, doświadczonego wykonawcy z referencjami oraz nadzór budowlany."
+  }
+];
+
+const generateTableOfContents = (content) => {
+  const headings = [];
+  const regex = /<h([2-3]) class="[^"]*">(.*?)<\/h\1>/g;
+  let match;
+
+  while ((match = regex.exec(content)) !== null) {
+    const level = parseInt(match[1]);
+    const text = match[2];
+    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-*|-*$/g, '');
+    headings.push({ level, text, id });
+  }
+
+  let html = '';
+  let currentLevel = 0;
+
+  headings.forEach(heading => {
+    if (heading.level > currentLevel) {
+      for (let i = currentLevel; i < heading.level; i++) {
+        html += '<ul class="pl-4 mt-2 space-y-2">';
+      }
+    } else if (heading.level < currentLevel) {
+      for (let i = currentLevel; i > heading.level; i--) {
+        html += '</ul>';
+      }
+    }
+    html += `<li><a href="#${heading.id}" class="hover:underline">${heading.text}</a></li>`;
+    currentLevel = heading.level;
+  });
+
+  for (let i = currentLevel; i > 0; i--) {
+    html += '</ul>';
+  }
+
+  return html;
+};
+
+const articleContent = `
+<p class="text-lg text-zinc-600 leading-relaxed mb-6">W 2026 roku, budowa domu szkieletowego jest atrakcyjną alternatywą, często tańszą i szybszą niż technologia murowana. Realne koszty za metr kwadratowy wahają się od około <strong>3000 zł/m²</strong> w stanie surowym zamkniętym do <strong>10 000 zł/m²</strong> w wersji pod klucz, w zależności od standardu i zakresu prac. Kluczowe jest dokładne zapoznanie się z ofertą, aby uniknąć ukrytych kosztów i wybrać sprawdzonych wykonawców.</p>
+
+<h2 id="jaka-jest-cena-domu-szkieletowego-w-2026-roku" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Jaka jest cena domu szkieletowego w 2026 roku?</h2>
+<p class="text-lg text-zinc-600 leading-relaxed mb-6">W obliczu dynamicznie zmieniającego się rynku budowlanego, precyzyjne określenie kosztów budowy domu szkieletowego w 2026 roku wymaga uwzględnienia wielu czynników. Ogólnie przyjmuje się, że za dobrą jakość należy zapłacić od <strong>3000 zł/m²</strong> do nawet <strong>10 000 zł/m²</strong>, w zależności od stopnia wykończenia i standardu użytych materiałów. Poniżej przedstawiamy szczegółowe zestawienie.</p>
+
+<table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-md my-10">
+    <thead class="bg-zinc-800 text-white">
+        <tr>
+            <th class="p-4 border-b border-zinc-100">Stan wykończenia</th>
+            <th class="p-4 border-b border-zinc-100">Orientacyjny koszt za m² (2026)</th>
+            <th class="p-4 border-b border-zinc-100">Charakterystyka</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="hover:bg-zinc-50 transition-colors">
+            <td class="p-4 border-b border-zinc-100"><strong>Stan surowy otwarty (SSO)</strong></td>
+            <td class="p-4 border-b border-zinc-100">ok. 1500 - 2500 zł/m²</td>
+            <td class="p-4 border-b border-zinc-100">Konstrukcja ścian nośnych i dachu, pokrycie dachu, brak stolarki okiennej i drzwiowej, brak ścianek działowych.</td>
+        </tr>
+        <tr class="hover:bg-zinc-50 transition-colors">
+            <td class="p-4 border-b border-zinc-100"><strong>Stan surowy zamknięty (SSZ)</strong></td>
+            <td class="p-4 border-b border-zinc-100">ok. 3000 - 4500 zł/m²</td>
+            <td class="p-4 border-b border-zinc-100">SSO + stolarka okienna i drzwi zewnętrznych, poszycie elewacji, dach z ociepleniem.</td>
+        </tr>
+        <tr class="hover:bg-zinc-50 transition-colors">
+            <td class="p-4 border-b border-zinc-100"><strong>Stan deweloperski</strong></td>
+            <td class="p-4 border-b border-zinc-100">ok. 4500 - 7000 zł/m²</td>
+            <td class="p-4 border-b border-zinc-100">SSZ + kompletne instalacje (elektryczna, wod-kan, grzewcza), ocieplenie, wykończenie poddasza, tynki wewnętrzne, wylewki.</td>
+        </tr>
+        <tr class="hover:bg-zinc-50 transition-colors">
+            <td class="p-4 border-b border-zinc-100"><strong>Stan pod klucz</strong></td>
+            <td class="p-4 border-b border-zinc-100">ok. 8000 - 10 000+ zł/m²</td>
+            <td class="p-4 border-b border-zinc-100">Stan deweloperski + wykończenie podłóg, malowanie, biały montaż w łazienkach, montaż drzwi wewnętrznych, często bez kuchni i mebli ruchomych.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="text-lg text-zinc-600 leading-relaxed mb-6">Dla popularnej powierzchni <strong>100 m²</strong>, możemy szacować następujące koszty:</p>
+<table class="w-full text-left border-collapse rounded-xl overflow-hidden shadow-md my-10">
+    <thead class="bg-zinc-800 text-white">
+        <tr>
+            <th class="p-4 border-b border-zinc-100">Stan wykończenia</th>
+            <th class="p-4 border-b border-zinc-100">Orientacyjny koszt dla 100 m² (2026)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="hover:bg-zinc-50 transition-colors">
+            <td class="p-4 border-b border-zinc-100">Stan surowy otwarty</td>
+            <td class="p-4 border-b border-zinc-100">od 150 000 zł</td>
+        </tr>
+        <tr class="hover:bg-zinc-50 transition-colors">
+            <td class="p-4 border-b border-zinc-100">Stan surowy zamknięty</td>
+            <td class="p-4 border-b border-zinc-100">od 300 000 zł</td>
+        </tr>
+        <tr class="hover:bg-zinc-50 transition-colors">
+            <td class="p-4 border-b border-zinc-100">Stan deweloperski</td>
+            <td class="p-4 border-b border-zinc-100">od 450 000 zł</td>
+        </tr>
+        <tr class="hover:bg-zinc-50 transition-colors">
+            <td class="p-4 border-b border-zinc-100">Stan pod klucz</td>
+            <td class="p-4 border-b border-zinc-100">od 800 000 zł</td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="text-lg text-zinc-600 leading-relaxed mb-6">W przypadku mniejszych projektów, takich jak dom szkieletowy do <strong>70 m²</strong>, koszty mogą wyglądać jeszcze korzystniej ze względu na mniejszą ilość materiału i szybszą realizację. Przykładowo, w 2026 roku stan deweloperski dla 70 m² to wydatek rzędu <strong>120 000 – 150 000 zł</strong>, a stan pod klucz około <strong>150 000 – 200 000 zł</strong>.</p>
+
+<div class="bg-red-50 border border-red-100 p-6 my-6 rounded-2xl text-red-900 text-sm">
+    <strong>Ważne:</strong> Podane ceny są orientacyjne i mogą różnić się w zależności od regionu Polski, wyboru wykonawcy oraz standardu wykończenia. Zawsze proś o szczegółowy kosztorys! Nie daj się zwieść wyjątkowo niskim ofertom, które często nie zawierają kluczowych elementów.
+</div>
+
+<h2 id="co-wplywa-na-ostateczny-koszt-budowy-domu-szkieletowego" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Co wpływa na ostateczny koszt budowy domu szkieletowego?</h2>
+<p class="text-lg text-zinc-600 leading-relaxed mb-6">Wiele czynników decyduje o finalnej cenie inwestycji w dom szkieletowy. Zrozumienie ich pomoże w racjonalnym planowaniu budżetu.</p>
+<ul class="list-disc pl-8 text-lg text-zinc-600 leading-relaxed mb-6 space-y-2">
+    <li><strong>Lokalizacja i region:</strong> Ceny działek, dostępność fachowców i koszty transportu materiałów różnią się znacząco w zależności od województwa czy odległości od dużych aglomeracji.</li>
+    <li><strong>Stopień skomplikowania projektu:</strong> Prosta bryła budynku z dwuspadowym dachem będzie znacznie tańsza w budowie niż dom o wielu załamaniach, lukarnach czy skomplikowanej konstrukcji dachu.</li>
+    <li><strong>Standard i jakość materiałów:</strong> Wybór drewna konstrukcyjnego (np. certyfikowane C24), rodzaj izolacji (wełna drzewna STEICO vs. wełna mineralna), jakość okien, drzwi i pokrycia dachowego mają ogromny wpływ na cenę i późniejsze koszty eksploatacji.</li>
+    <li><strong>Zakres prac wykonawcy:</strong> Cena będzie inna dla stanu surowego otwartego, a inna dla wersji pod klucz, gdzie wiele prac wykończeniowych jest wliczonych w koszt.</li>
+    <li><strong>Wybór technologii izolacji i ogrzewania:</strong> Systemy grzewcze (pompa ciepła, rekuperacja) i rodzaj izolacji (np. wspomniane płyty STEICO zapewniające współczynnik U na poziomie 0,16 W/m²K) są kluczowe dla energooszczędności i komfortu, ale znacząco podnoszą początkowy koszt.</li>
+    <li><strong>Prace wykonane we własnym zakresie:</strong> Jeśli jesteś w stanie część prac wykonać samodzielnie (np. wykończenie wnętrz), możesz obniżyć koszt robocizny.</li>
+</ul>
+
+<div class="bg-orange-50 border-l-4 border-orange-400 p-6 my-8 italic text-zinc-800 rounded-r-xl">
+    <strong>Expert Tip:</strong> Zawsze proś wykonawcę o szczegółowy kosztorys, wyszczególniający każdy etap prac i użyte materiały. Pamiętaj, że dom szkieletowy buduje się w innym standardzie niż dom murowany – drewno musi być odpowiednio przygotowane, a izolacja szczelna.
+</div>
+
+<h2 id="czy-dom-szkieletowy-jest-tanszy-od-murowanego-w-2026-roku" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Czy dom szkieletowy jest tańszy od murowanego w 2026 roku?</h2>
+<p class="text-lg text-zinc-600 leading-relaxed mb-6">W 2026 roku z pełną odpowiedzialnością można stwierdzić, że <strong>dom szkieletowy jest sporo tańszy</strong> od murowanego w podobnym standardzie. Ta różnica cenowa, obserwowana już w poprzednich latach, w 2026 roku staje się jeszcze bardziej wyraźna.</p>
+<p class="text-lg text-zinc-600 leading-relaxed mb-6">Głównym powodem jest rosnący deficyt fachowców w technologiach tradycyjnych, takich jak murarze, dekarze czy tynkarze. Ich praca jest wyceniana coraz drożej, co automatycznie windowa ceny domów murowanych. Technologia szkieletowa, opierająca się w dużej mierze na prefabrykacji i szybkiej, zorganizowanej pracy montażowej, jest mniej wrażliwa na te czynniki. Krótszy cykl budowy oznacza także niższe koszty utrzymania placu budowy i szybszą możliwość zamieszkania, co przekłada się na realne oszczędności.</p>
+<p class="text-lg text-zinc-600 leading-relaxed mb-6">Podczas gdy precyzyjne dane dla domów murowanych są trudne do oszacowania z powodu rozbieżności w ofertach i materiałach, można przyjąć, że w 2026 roku koszt budowy domu murowanego w stanie deweloperskim będzie zaczynał się od około <strong>5500-6000 zł/m²</strong>, a w wersji pod klucz z łatwością przekroczy <strong>11 000 - 12 000 zł/m²</strong>, co czyni domy szkieletowe o <strong>15-30%</strong> tańszymi w przeliczeniu na metr kwadratowy.</p>
+
+<h2 id="jakie-prace-zazwyczaj-pozostaja-po-stronie-inwestora" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Jakie prace zazwyczaj pozostają po stronie inwestora?</h2>
+<p class="text-lg text-zinc-600 leading-relaxed mb-6">Nawet decydując się na dom prefabrykowany w technologii szkieletowej, rzadko zdarza się, że pełen zakres prac jest po stronie wykonawcy, chyba że wybieramy opcję "pod klucz". Poniżej przedstawiamy listę najczęstszych zadań, które inwestor musi zorganizować we własnym zakresie:</p>
+<ul class="list-disc pl-8 text-lg text-zinc-600 leading-relaxed mb-6 space-y-2">
+    <li><strong>Fundamenty:</strong> Wykonanie płyty fundamentowej, ław fundamentowych lub fundamentów punktowych – jest to zazwyczaj oddzielny etap, niezależny od montażu konstrukcji szkieletowej.</li>
+    <li><strong>Przyłącza i instalacje wewnętrzne:</strong> Doprowadzenie mediów do działki oraz wykonanie kompletnych instalacji elektrycznych, wodno-kanalizacyjnych i grzewczych wewnątrz budynku.</li>
+    <li><strong>Ocieplenie i wykończenie poddasza/stropodachu od środka:</strong> Często wymaga to dodatkowych prac izolacyjnych i wykończeniowych (np. płyty kartonowo-gipsowe).</li>
+    <li><strong>Gładzie, malowanie i układanie podłóg:</strong> Prace wykończeniowe ścian i podłóg wewnętrznych.</li>
+    <li><strong>Wykończenie łazienek i kuchni:</strong> Montaż ceramiki, armatury, mebli kuchennych i pozostałych elementów wyposażenia.</li>
+    <li><strong>Montaż drzwi wewnętrznych i mebli:</strong> Wewnętrzne drzwi oraz meble są zazwyczaj ostatnim etapem wyposażania domu.</li>
+    <li><strong>Zagospodarowanie terenu:</strong> Układanie kostki, zakładanie ogrodu, budowa podjazdu czy ogrodzenia.</li>
+</ul>
+
+<div class="bg-gradient-to-r from-zinc-50 to-slate-100 p-8 rounded-3xl border border-zinc-200 my-10 shadow-sm">
+    <h3 class="text-2xl font-bold text-zinc-800 mb-4">Key Takeaways – co sprawdzić w ofercie wykonawcy?</h3>
+    <ul class="list-disc pl-8 text-lg text-zinc-600 leading-relaxed space-y-2">
+        <li><strong>Transport i montaż:</strong> Czy w cenie jest transport wszystkich elementów na działkę oraz kompletny montaż konstrukcji?</li>
+        <li><strong>Dźwig i rusztowania:</strong> Czy wykonawca zapewnia niezbędny sprzęt (dźwig, rusztowania)?</li>
+        <li><strong>Materiały konstrukcyjne:</strong> Czy gwarantowane są certyfikowane materiały (np. drewno C24, izolacja STEICO)?</li>
+        <li><strong>Stolarka:</strong> Czy montaż stolarki okiennej i drzwi zewnętrznych jest wliczony?</li>
+        <li><strong>Dokumentacja:</strong> Czy otrzymasz wstępną dokumentację techniczną lub projekt w cenie?</li>
+    </ul>
+</div>
+
+<h2 id="samodzielna-budowa-domu-szkieletowego-czy-to-sie-oplaca" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Samodzielna budowa domu szkieletowego – czy to się opłaca?</h2>
+<p class="text-lg text-zinc-600 leading-relaxed mb-6">Budowa domu szkieletowego systemem gospodarczym jest możliwa i może przynieść znaczące oszczędności, zwłaszcza w zakresie kosztów robocizny. Firmy takie jak HomeinBox oferują zakup gotowych konstrukcji lub prefabrykatów, które inwestor może samodzielnie złożyć na placu budowy.</p>
+<ul class="list-disc pl-8 text-lg text-zinc-600 leading-relaxed mb-6 space-y-2">
+    <li><strong>Zalety:</strong> Największą zaletą jest możliwość obniżenia kosztów robocizny nawet o <strong>30-50%</strong>. Daje to również większą kontrolę nad procesem budowy i wyborem materiałów.</li>
+    <li><strong>Wady i ryzyka:</strong> Samodzielna budowa wymaga jednak dużej wiedzy technicznej, czasu i odpowiednich narzędzi. Brak doświadczenia może prowadzić do błędów konstrukcyjnych (np. użycie wilgotnego drewna, niedokładna izolacja), które w dłuższej perspektywie generują znacznie większe koszty napraw i eksploatacji. Błędy te mogą również skutkować utratą gwarancji producenta materiałów.</li>
+    <li><strong>Kiedy warto:</strong> Samodzielna budowa jest najbardziej opłacalna przy mniejszych domach (do 70 m²), zwłaszcza rekreacyjnych, oraz dla osób z doświadczeniem budowlanym lub wsparciem ze strony wykwalifikowanych znajomych.</li>
+</ul>
+
+<h2 id="najczestsze-bledy-i-na-co-uwazac-przy-wyborze-wykonawcy" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Najczęstsze błędy i na co uważać przy wyborze wykonawcy</h2>
+<p class="text-lg text-zinc-600 leading-relaxed mb-6">Wzrost popularności domów szkieletowych przyciąga na rynek również mniej doświadczonych wykonawców. Aby uniknąć kosztownych błędów, zwróć uwagę na poniższe kwestie:</p>
+<ul class="list-disc pl-8 text-lg text-zinc-600 leading-relaxed mb-6 space-y-2">
+    <li><strong>Użycie wilgotnego drewna:</strong> Niekiedy firmy, w celu obniżenia kosztów, stosują niewysuszone drewno, co prowadzi do pękania, wypaczania się konstrukcji oraz rozwoju grzybów i pleśni. Zawsze wymagaj <strong>certyfikowanego drewna C24</strong>.</li>
+    <li><strong>Niejasny zakres oferty:</strong> Atrakcyjna cena może ukrywać brak kluczowych elementów w kosztorysie (np. fundamenty, instalacje, transport dźwigu). Dokładnie weryfikuj, co zawiera oferta.</li>
+    <li><strong>Brak doświadczenia wykonawcy:</strong> Budowa domu szkieletowego wymaga specjalistycznej wiedzy. Sprawdź referencje, historię realizacji i upewnij się, że firma posiada ubezpieczenie OC.</li>
+    <li><strong>Niewłaściwa izolacja:</strong> Niewystarczające ocieplenie, mostki termiczne lub nieprawidłowe wykonanie paroizolacji i wiatroizolacji drastycznie zwiększą koszty eksploatacji domu. Warto dopytać o współczynnik U dla ścian i dachu.</li>
+    <li><strong>Nieodpowiednie fundamenty:</strong> Choć domy szkieletowe są lżejsze, fundament musi być wykonany solidnie i zgodnie z projektem. Błędy na tym etapie są bardzo trudne do skorygowania.</li>
+</ul>
+
+<h2 id="kalkulator-orientacyjnych-kosztow-budowy-domu-szkieletowego" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Kalkulator orientacyjnych kosztów budowy domu szkieletowego</h2>
+<div class="bg-gradient-to-r from-orange-50 to-orange-100 p-8 rounded-3xl border border-orange-200 my-10 shadow-sm">
+    <p class="text-lg text-zinc-800 leading-relaxed mb-6">Sprawdź, ile może kosztować budowa Twojego domu szkieletowego w 2026 roku. Pamiętaj, że to jedynie orientacyjne szacunki.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+            <label for="area" class="block text-zinc-700 text-sm font-bold mb-2">Powierzchnia domu (m²):</label>
+            <input type="number" id="area" min="30" max="300" value="100" class="shadow appearance-none border rounded w-full py-2 px-3 text-zinc-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div>
+            <label for="standard" class="block text-zinc-700 text-sm font-bold mb-2">Standard wykończenia:</label>
+            <select id="standard" class="shadow border rounded w-full py-2 px-3 text-zinc-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="ssz">Stan surowy zamknięty (3000-4500 zł/m²)</option>
+                <option value="deweloperski">Stan deweloperski (4500-7000 zł/m²)</option>
+                <option value="podklucz">Stan pod klucz (8000-10000 zł/m²)</option>
+            </select>
+        </div>
+    </div>
+    <button id="calculateCost" class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:shadow-outline transition duration-200">Oblicz koszt</button>
+    <div id="result" class="mt-8 p-4 bg-white rounded-lg shadow-inner text-zinc-800 font-bold text-xl">
+        <p>Orientacyjny koszt: <span id="minCost">0</span> zł - <span id="maxCost">0</span> zł</p>
+    </div>
+</div>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        const areaInput = document.getElementById('area');
+        const standardSelect = document.getElementById('standard');
+        const calculateButton = document.getElementById('calculateCost');
+        const minCostSpan = document.getElementById('minCost');
+        const maxCostSpan = document.getElementById('maxCost');
+
+        const pricesPerM2 = {
+            ssz: { min: 3000, max: 4500 },
+            deweloperski: { min: 4500, max: 7000 },
+            podklucz: { min: 8000, max: 10000 }
+        };
+
+        const calculate = () => {
+            const area = parseFloat(areaInput.value);
+            const standard = standardSelect.value;
+
+            if (isNaN(area) || area <= 0) {
+                minCostSpan.textContent = '0';
+                maxCostSpan.textContent = '0';
+                return;
+            }
+
+            const selectedPrices = pricesPerM2[standard];
+            const minTotalCost = area * selectedPrices.min;
+            const maxTotalCost = area * selectedPrices.max;
+
+            minCostSpan.textContent = minTotalCost.toLocaleString('pl-PL');
+            maxCostSpan.textContent = maxTotalCost.toLocaleString('pl-PL');
+        };
+
+        calculateButton.addEventListener('click', calculate);
+        areaInput.addEventListener('change', calculate);
+        standardSelect.addEventListener('change', calculate);
+
+        calculate(); // Initial calculation on page load
+    });
+</script>
+
+<h2 id="ankieta-jaki-dom-szkieletowy-jest-dla-ciebie" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Ankieta: Jaki dom szkieletowy jest dla Ciebie?</h2>
+<div class="bg-gradient-to-r from-blue-50 to-blue-100 p-8 rounded-3xl border border-blue-200 my-10 shadow-sm">
+    <p class="text-lg text-zinc-800 leading-relaxed mb-6">Odpowiedz na kilka pytań, aby lepiej zrozumieć, jaki typ domu szkieletowego będzie dla Ciebie najlepszy!</p>
+    <div class="space-y-6">
+        <div>
+            <p class="text-zinc-700 font-semibold mb-2">1. Jak szybko chcesz zamieszkać w nowym domu?</p>
+            <label class="block mb-1"><input type="radio" name="q1" value="a" class="mr-2"> W ciągu 3-6 miesięcy (priorytet: szybkość)</label>
+            <label class="block mb-1"><input type="radio" name="q1" value="b" class="mr-2"> W ciągu 6-12 miesięcy (priorytet: rozsądny czas)</label>
+            <label class="block mb-1"><input type="radio" name="q1" value="c" class="mr-2"> Bez pośpiechu, najważniejsza kontrola kosztów (priorytet: oszczędność)</label>
+        </div>
+        <div>
+            <p class="text-zinc-700 font-semibold mb-2">2. Jaki masz budżet na budowę (wykończenie pod klucz)?</p>
+            <label class="block mb-1"><input type="radio" name="q2" value="a" class="mr-2"> Do 300 000 zł (szukam najtańszych rozwiązań)</label>
+            <label class="block mb-1"><input type="radio" name="q2" value="b" class="mr-2"> 300 000 - 600 000 zł (chcę dobry stosunek ceny do jakości)</label>
+            <label class="block mb-1"><input type="radio" name="q2" value="c" class="mr-2"> Powyżej 600 000 zł (stawiam na jakość i komfort)</label>
+        </div>
+        <div>
+            <p class="text-zinc-700 font-semibold mb-2">3. Czy masz doświadczenie w pracach budowlanych lub dostęp do fachowców?</p>
+            <label class="block mb-1"><input type="radio" name="q3" value="a" class="mr-2"> Tak, mam duże doświadczenie / mam zaufanych fachowców</label>
+            <label class="block mb-1"><input type="radio" name="q3" value="b" class="mr-2"> Trochę, jestem w stanie nadzorować lub wykonać drobne prace</label>
+            <label class="block mb-1"><input type="radio" name="q3" value="c" class="mr-2"> Nie, wolę zlecić wszystko firmie</label>
+        </div>
+        <div>
+            <p class="text-zinc-700 font-semibold mb-2">4. Jak ważna jest dla Ciebie energooszczędność i ekologia?</p>
+            <label class="block mb-1"><input type="radio" name="q4" value="a" class="mr-2"> Bardzo ważna (chcę niskie rachunki i naturalne materiały)</label>
+            <label class="block mb-1"><input type="radio" name="q4" value="b" class="mr-2"> Ważna (szukam dobrej izolacji w rozsądnej cenie)</label>
+            <label class="block mb-1"><input type="radio" name="q4" value="c" class="mr-2"> Mniej ważna (priorytetem jest niska cena początkowa)</label>
+        </div>
+    </div>
+    <button id="submitSurvey" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg mt-8 focus:outline-none focus:shadow-outline transition duration-200">Zobacz rekomendację</button>
+    <div id="surveyResult" class="mt-8 p-4 bg-white rounded-lg shadow-inner text-zinc-800 font-bold text-xl hidden"></div>
+</div>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        const submitSurveyButton = document.getElementById('submitSurvey');
+        const surveyResultDiv = document.getElementById('surveyResult');
+
+        submitSurveyButton.addEventListener('click', () => {
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+            const q4 = document.querySelector('input[name="q4"]:checked');
+
+            if (!q1 || !q2 || !q3 || !q4) {
+                surveyResultDiv.textContent = 'Proszę odpowiedzieć na wszystkie pytania.';
+                surveyResultDiv.classList.remove('hidden');
+                return;
+            }
+
+            let resultMessage = '';
+
+            // Logic for recommendations
+            if (q1.value === 'a' && q2.value === 'c' && q3.value === 'c' && q4.value === 'a') {
+                resultMessage = "Zależy Ci na szybkości, wysokiej jakości i energooszczędności, a budżet nie jest głównym ograniczeniem. Rozważ gotowe domy prefabrykowane w standardzie 'pod klucz' z premium izolacją (np. STEICO) od renomowanych firm.";
+            } else if (q1.value === 'a' && q2.value === 'a' && q3.value === 'a' && q4.value === 'c') {
+                resultMessage = "Szukasz najtańszych i najszybszych rozwiązań, a masz doświadczenie lub pomoc w budowie. Skup się na zakupie samej konstrukcji szkieletowej do 70 m² i samodzielnym wykończeniu, minimalizując koszty robocizny.";
+            } else if (q1.value === 'b' && q2.value === 'b' && q3.value === 'b' && q4.value === 'b') {
+                resultMessage = "Oczekujesz dobrego kompromisu między ceną, czasem a jakością. Poszukaj wykonawcy oferującego stan deweloperski, z uwzględnieniem energooszczędnych rozwiązań, ale z możliwością pewnych prac wykończeniowych we własnym zakresie.";
+            } else if (q1.value === 'c' && q2.value === 'b' && q3.value === 'a' && q4.value === 'a') {
+                resultMessage = "Masz czas i chcesz maksymalnie kontrolować koszty i jakość, stawiając na ekologię. Rozważ budowę systemem gospodarczym z dokładnym wyborem materiałów (np. C24, STEICO) i zatrudnianiem fachowców do kluczowych etapów.";
+            } else {
+                resultMessage = "Twoje preferencje są zróżnicowane! Skontaktuj się z kilkoma wykonawcami i poproś o szczegółowe wyceny dla stanu deweloperskiego lub pod klucz, jasno określając swoje priorytety.";
+            }
+
+            surveyResultDiv.textContent = "Twoja rekomendacja: " + resultMessage;
+            surveyResultDiv.classList.remove('hidden');
+        });
+    });
+</script>
+
+
+<h2 id="podsumowanie" class="text-3xl font-bold text-zinc-800 mt-12 mb-6 border-l-4 border-orange-500 pl-4">Podsumowanie</h2>
+<p class="text-lg text-zinc-600 leading-relaxed mb-6">Koszty budowy domu szkieletowego w 2026 roku są konkurencyjne w stosunku do technologii murowanej, a dodatkowo oferują krótszy czas realizacji. Kluczem do sukcesu jest rzetelne zaplanowanie budżetu, dokładna weryfikacja ofert wykonawców i świadome podejmowanie decyzji dotyczących standardu wykończenia oraz materiałów. Pamiętaj, że inwestycja w jakość na początkowym etapie budowy to oszczędności w przyszłych kosztach eksploatacji.</p>
+`;
+
+const tocHtml = generateTableOfContents(articleContent);
+
+// Estimate reading time (approx. 200 words per minute)
+const wordCount = articleContent.split(/\s+/).filter(word => word.length > 0).length;
+const readingTimeMinutes = Math.ceil(wordCount / 200);
+
+const datePublishedISO = '2026-01-27T12:00:00+01:00';
+const dateFormatted = '27 stycznia 2026';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": canonical
+      },
+      "headline": title,
+      "description": description,
+      "image": "https://domjakosci.pl/images/og-image.jpg", // Placeholder, ideally specific to article
+      "datePublished": datePublishedISO,
+      "dateModified": datePublishedISO,
+      "author": {
+        "@type": "Person",
+        "name": author
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DomJakości.pl",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://domjakosci.pl/images/logo.png"
+        }
+      }
+    }
+  ]
+};
+---
+<BaseLayout title={title} description={description} canonical={canonical} type="article">
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <Breadcrumbs items={breadcrumbs} />
+    <div class="flex flex-col lg:flex-row lg:gap-16">
+      <article class="lg:flex-1">
+
+    <header class="mb-12">
+            <span class="inline-block py-1 px-3 rounded-full {badgeClass} font-bold text-sm font-bold mb-4 uppercase tracking-wider">
+                {badgeText}
+            </span>
+
+            <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 mb-8 leading-tight">
+                {title}
+            </h1>
+
+            <div class="flex flex-col gap-y-6 border-b pb-8 border-gray-100">
+                
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">MN</div>
+                    <div>
+                        <p class="font-bold text-zinc-900 text-sm leading-none">{author}</p>
+                        <p class="text-xs text-zinc-500 mt-1">Ekspert DomJakości.pl</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-x-8">
+                    <div class="flex items-center gap-2 text-sm text-zinc-500 font-medium">
+                        <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <path d="M16 2v4M8 2v4M3 10h18"></path>
+                        </svg>
+                        <time datetime={datePublishedISO}>{dateFormatted}</time>
+                    </div>
+
+                    <div class="flex items-center gap-2 text-sm text-zinc-500 font-medium">
+                        <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>ok. {readingTimeMinutes} min</span>
+                    </div>
+                </div>
+                <div class="p-4 bg-blue-50 text-blue-700 rounded-lg text-sm italic border border-blue-100">
+                    {contextNote}
+                </div>
+            </div>
+        </header>
+
+        <div class="bg-slate-50 p-8 rounded-3xl mb-12 border border-slate-100">
+           <p class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">W tym artykule:</p>
+           <nav id="toc" class="space-y-2 text-blue-600 font-medium" set:html={tocHtml}></nav>
+        </div>
+
+        <div class="article-content">
+           <Fragment set:html={articleContent} />
+        </div>
+
+        <section class="faq mt-20 border-t pt-16">
+           <h2 class="text-4xl font-bold mb-10 text-center text-zinc-900">Najczęstsze pytania inwestorów</h2>
+           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {faqItems.map((item) => (
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">{item.question}</h4>
+                        <p class="text-lg text-gray-700 leading-relaxed">{item.answer}</p>
+                    </div>
+                ))}
+           </div>
+        </section>
+      </article>
+      <ArticleSidebar />
+    </div>
+  </main>
+  <script type="application/ld+json" is:inline>{JSON.stringify(schema)}</script>
+</BaseLayout>
